@@ -1,5 +1,6 @@
 class Solution(object):
-    def twoSum(self, nums, target):
+
+    def two_sum(self, nums, target):
         d = {}
         for i in range(len(nums)):
             x = nums[i]
