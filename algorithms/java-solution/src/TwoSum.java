@@ -23,8 +23,6 @@
  *
  */
 
-package two_sum;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,7 +45,7 @@ import java.util.Map;
  */
 public class TwoSum {
     /**
-     * The nerd way.
+     * The nerd approach.
      */
     public int[] twoSum1(int[] nums, int target) {
         int len = nums.length;
@@ -71,7 +69,7 @@ public class TwoSum {
     }
 
     /**
-     * Faster way using a HashMap.
+     * Faster approach using a HashMap.
      */
     public int[] twoSum2(int[] nums, int target) {
         int[] res = new int[2];
