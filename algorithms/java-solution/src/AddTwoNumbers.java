@@ -23,7 +23,7 @@
  *
  */
 
-package add_two_numbers;
+import common.ListNode;
 
 import java.math.BigInteger;
 
@@ -47,19 +47,7 @@ import java.math.BigInteger;
 public class AddTwoNumbers {
 
     /**
-     * Definition for singly-linked list.
-     */
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
-
-    /**
-     * The nerd way with the big help of {@link BigInteger}.
+     * The nerd approach with the big help of {@link BigInteger}.
      */
     public ListNode addTwoNumbers1(ListNode l1, ListNode l2) {
         BigInteger sum = listNode2Num(l1).add(listNode2Num(l2));
@@ -92,7 +80,7 @@ public class AddTwoNumbers {
     }
 
     /**
-     * A better recursive function.
+     * A better recursive approach.
      */
     public ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
         return addTwoNumbers2(l1, l2, 0);
