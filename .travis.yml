@@ -1,0 +1,25 @@
+sudo: false
+dist: xenial
+language: java
+
+jdk:
+  - openjdk7
+
+git:
+  submodules: false
+  depth: false
+  quiet: true
+
+branches:
+  only:
+  - master
+
+before_install:
+  - export TZ='Asia/Shanghai'
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq -y make
+
+install: true
+
+script:
+  - echo 'hello world '

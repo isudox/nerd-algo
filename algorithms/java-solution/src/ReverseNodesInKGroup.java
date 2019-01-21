@@ -52,7 +52,45 @@ import common.ListNode;
  */
 public class ReverseNodesInKGroup {
 
+    /**
+     * A nerd approach.
+     */
     public ListNode reverseKGroup(ListNode head, int k) {
-        return null;
+        if (head == null || head.next == null || k < 2) return head;
+
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+
+        ListNode pre = dummy;
+        ListNode cur = head;
+        int counter = 0;
+
+        while (cur != null) {
+            counter++;
+
+            if (counter % k == 0) {
+                pre = reverse(pre, cur.next);
+                cur = pre.next;
+            } else {
+                cur = cur.next;
+            }
+        }
+
+        return dummy.next;
+    }
+
+    private ListNode reverse(ListNode pre, ListNode end) {
+        ListNode head = pre.next;
+        ListNode curr = head.next;
+
+        while (curr != end) {
+            ListNode temp = curr.next;
+            curr.next = pre.next;
+            pre.next = curr;
+            curr = temp;
+        }
+
+        head.next = end;
+        return head;
     }
 }

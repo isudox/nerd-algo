@@ -113,4 +113,23 @@ class SolutionsTest extends Specification {
         Converter.convertArray(res) == [1, 1, 2, 3, 4, 4, 5, 6] as int[]
     }
 
+    /**
+     * 25. Reverse Nodes in k-Group
+     */
+    def "reverse nodes in k-group"(int[] nums, int k, int[] res) {
+        given:
+        def solution = new ReverseNodesInKGroup()
+        def node = Converter.convertListNode(nums)
+
+        expect:
+        Converter.convertArray(solution.reverseKGroup(node, k)) == res
+
+        where:
+        nums                     | k | res
+        [1] as int[]             | 3 | [1] as int[]
+        [1, 2, 3, 4, 5] as int[] | 1 | [1, 2, 3, 4, 5] as int[]
+        [1, 2, 3, 4, 5] as int[] | 2 | [2, 1, 4, 3, 5] as int[]
+        [1, 2, 3, 4, 5] as int[] | 3 | [3, 2, 1, 4, 5] as int[]
+    }
+
 }
