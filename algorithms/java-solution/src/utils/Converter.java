@@ -30,26 +30,26 @@ import common.ListNode;
 import java.util.Arrays;
 
 /**
- * Convenient converters for LeetCcode data structure.
+ * Convenient converters for LeetCode data structure.
  */
 public final class Converter {
 
     /**
      * Convert an array to {@link ListNode}.
      *
-     * @param ints An array of int.
+     * @param nums An array of int.
      * @return ListNode
      */
-    public static ListNode convertListNode(int[] ints) {
-        int len = ints.length;
+    public static ListNode convertListNode(int[] nums) {
+        int len = nums.length;
 
         if (len == 0) {
             return null;
         }
 
         ListNode node = new ListNode(0);
-        node.val = ints[0];
-        node.next = convertListNode(Arrays.copyOfRange(ints, 1, len));
+        node.val = nums[0];
+        node.next = convertListNode(Arrays.copyOfRange(nums, 1, len));
 
         return node;
     }
@@ -60,13 +60,13 @@ public final class Converter {
         }
 
         int size = getSize(listNode);
-        int[] ints = new int[size];
+        int[] nums = new int[size];
         for (int i = 0; i < size; i++) {
-            ints[i] = listNode.val;
+            nums[i] = listNode.val;
             listNode = listNode.next;
         }
 
-        return ints;
+        return nums;
     }
 
     public static int getSize(ListNode listNode) {
