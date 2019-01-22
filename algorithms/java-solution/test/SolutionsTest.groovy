@@ -49,6 +49,7 @@ class SolutionsTest extends Specification {
 
         expect:
         solution.twoSum1(nums, target) == result
+        solution.twoSum2(nums, target) == result
 
         where:
         nums                           | target | result
@@ -151,5 +152,25 @@ class SolutionsTest extends Specification {
         "(()()(()"  | 4
         ")()())"    | 4
         "()(()))))" | 6
+    }
+
+    /**
+     * 33. Search in Rotated Sorted Array
+     */
+    def "search in rotated sorted array"(int[] nums, int target, int res) {
+        given:
+        def solution = new SearchInRotatedSortedArray()
+
+        expect:
+        solution.search1(nums, target) == res
+        solution.search2(nums, target) == res
+
+        where:
+        nums                  | target | res
+        []                    | 1      | -1
+        [1]                   | 1      | 0
+        [1, 3]                | 3      | 1
+        [4, 5, 6, 7, 0, 1, 2] | 0      | 4
+        [4, 5, 6, 7, 0, 1, 2] | 3      | -1
     }
 }
