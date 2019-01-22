@@ -132,4 +132,24 @@ class SolutionsTest extends Specification {
         [1, 2, 3, 4, 5] as int[] | 3 | [3, 2, 1, 4, 5] as int[]
     }
 
+    /**
+     * 32. Longest Valid Parentheses
+     */
+    def " longest valid parentheses"(String s, int len) {
+        given:
+        def solution = new LongestValidParentheses()
+
+        expect:
+        solution.longestValidParentheses(s) == len
+
+        where:
+        s           | len
+        ""          | 0
+        "()"        | 2
+        "((()"      | 2
+        "(()()"     | 4
+        "(()()(()"  | 4
+        ")()())"    | 4
+        "()(()))))" | 6
+    }
 }
