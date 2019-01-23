@@ -10,8 +10,8 @@
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -172,5 +172,73 @@ class SolutionsTest extends Specification {
         [1, 3]                | 3      | 1
         [4, 5, 6, 7, 0, 1, 2] | 0      | 4
         [4, 5, 6, 7, 0, 1, 2] | 3      | -1
+    }
+
+    /**
+     * 34. Find First and Last Position of Element in Sorted Array
+     */
+    def "find first and last position of element in sorted array"(int[] nums, int target, int[] res) {
+        given:
+        def solution = new FindFirstAndLastPositionOfElementInSortedArray()
+
+        expect:
+        solution.searchRange(nums, target) == res
+
+        where:
+        nums                         | target | res
+        [5, 7, 7, 8, 8, 10] as int[] | 8      | [3, 4] as int[]
+        [5, 7, 7, 8, 8, 10] as int[] | 6      | [-1, -1] as int[]
+    }
+
+    /**
+     * 35. Search Insert Position
+     */
+    def "search insert position"(int[] nums, int target, int res) {
+        given:
+        def solution = new SearchInsertPosition()
+
+        expect:
+        solution.searchInsert(nums, target) == res
+
+        where:
+        nums         | target | res
+        []           | 9      | 0
+        [1]          | 2      | 1
+        [1, 3, 5, 6] | 5      | 2
+        [1, 3, 5, 6] | 2      | 1
+        [1, 3, 5, 6] | 7      | 4
+        [1, 3, 5, 6] | 0      | 0
+    }
+
+    /**
+     * 36. Valid Sudoku
+     */
+    def "valid sudoku"(char[][] board, boolean res) {
+        given:
+        def solution = new ValidSudoku()
+
+        expect:
+        res == solution.isValidSudoku(board)
+
+        where:
+        board                                           | res
+        [["8", "3", ".", ".", "7", ".", ".", ".", "."],
+         ["6", ".", ".", "1", "9", "5", ".", ".", "."],
+         [".", "9", "8", ".", ".", ".", ".", "6", "."],
+         ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
+         ["4", ".", ".", "8", ".", "3", ".", ".", "1"],
+         ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
+         [".", "6", ".", ".", ".", ".", "2", "8", "."],
+         [".", ".", ".", "4", "1", "9", ".", ".", "5"],
+         [".", ".", ".", ".", "8", ".", ".", "7", "9"]] | false
+        [["5", "3", ".", ".", "7", ".", ".", ".", "."],
+         ["6", ".", ".", "1", "9", "5", ".", ".", "."],
+         [".", "9", "8", ".", ".", ".", ".", "6", "."],
+         ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
+         ["4", ".", ".", "8", ".", "3", ".", ".", "1"],
+         ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
+         [".", "6", ".", ".", ".", ".", "2", "8", "."],
+         [".", ".", ".", "4", "1", "9", ".", ".", "5"],
+         [".", ".", ".", ".", "8", ".", ".", "7", "9"]] | true
     }
 }
