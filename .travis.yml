@@ -1,22 +1,28 @@
-sudo: false
-dist: xenial
 language: java
+
 jdk:
   - oraclejdk8
 
-git:
-  submodules: false
-  depth: false
-  quiet: true
+os:
+  - linux
 
 branches:
   only:
   - master
+  - stable
+  - dev
 
-before_install:
-  - export TZ='Asia/Shanghai'
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 
-install: true
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
 
-script:
-  - cd algorithms/java-solution && ./gradlew check
+script: cd algorithms/java-solution && ./gradlew clean build test
+
+env:
+  global:
+    - GRADLE_OPTS="-Xms256m -Xmx384m"

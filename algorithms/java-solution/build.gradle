@@ -16,3 +16,7 @@ dependencies {
     compile "org.codehaus.groovy:groovy-all:2.4.15"
     testCompile "org.spockframework:spock-core:1.2-groovy-2.4"
 }
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.10'
+}
