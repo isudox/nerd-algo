@@ -20,11 +20,11 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 
+package com.leetcode.solution
+
 import com.leetcode.common.*
-import com.leetcode.solution.*
 import com.leetcode.util.*
 import spock.lang.Specification
 
@@ -241,5 +241,20 @@ class SolutionsTest extends Specification {
          [".", "6", ".", ".", ".", ".", "2", "8", "."],
          [".", ".", ".", "4", "1", "9", ".", ".", "5"],
          [".", ".", ".", ".", "8", ".", ".", "7", "9"]] | true
+    }
+
+    /**
+     * 979.
+     */
+    def "distribute-coins-in-binary-tree"(TreeNode root, int res) {
+        given:
+        def solution = new DistributeCoinsInBinaryTree()
+
+        expect:
+        solution.distributeCoins(root) == res
+
+        where:
+        root | res
+        null | 0
     }
 }
