@@ -244,7 +244,7 @@ class SolutionsTest extends Specification {
     }
 
     /**
-     * 979.
+     * 979. Distribute Coins in Binary Tree
      */
     def "distribute-coins-in-binary-tree"(TreeNode root, int res) {
         given:
@@ -256,5 +256,39 @@ class SolutionsTest extends Specification {
         where:
         root | res
         null | 0
+    }
+
+    /**
+     * 980. Unique Paths III
+     */
+//    def "unique-paths-iii"(int[][] grid, int res) {
+//        given:
+//        def solution = new UniquePaths3()
+//
+//        expect:
+//        solution.uniquePathsIII(grid) == res
+//
+//        where:
+//        grid                                        | res
+//        [[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 2, -1]] | 2
+//        [[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 2]]  | 4
+//        [[0, 1], [2, 0]]                            | 0
+//    }
+
+    /**
+     * 984. String Without AAA or BBB
+     */
+    def "string-without-3a3b"(int A, int B, String res) {
+        given:
+        def solution = new StringWithout3aOr3b()
+
+        expect:
+        solution.strWithout3a3b(A, B) == res
+
+        where:
+        A | B || res
+        1 | 1 || "ab"
+        1 | 2 || "bba"
+        4 | 1 || "aabaa"
     }
 }
