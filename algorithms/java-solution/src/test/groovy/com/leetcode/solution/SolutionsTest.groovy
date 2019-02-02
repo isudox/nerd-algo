@@ -276,6 +276,22 @@ class SolutionsTest extends Specification {
 //    }
 
     /**
+     * 983. Minimum Cost For Tickets
+     */
+    def "min-cost-tickets"(int[] days, int[] costs, int res) {
+        given:
+        def solution = new MinimumCostForTickets()
+
+        expect:
+        solution.mincostTickets(days, costs) == res
+
+        where:
+        days                                    | costs      | res
+        [1, 4, 6, 7, 8, 20]                     | [2, 7, 15] | 11
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 30, 31] | [2, 7, 15] | 17
+    }
+
+    /**
      * 984. String Without AAA or BBB
      */
     def "string-without-3a3b"(int A, int B, String res) {
