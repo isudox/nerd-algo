@@ -1,0 +1,76 @@
+/*
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2017-2019 sudoz
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+package com.leetcode.solution;
+
+/**
+ * 981. Time Based Key-Value Store
+ * https://leetcode.com/problems/time-based-key-value-store/
+ *
+ * Create a timebased key-value store class TimeMap, that supports two operations.
+ *
+ * 1. set(string key, string value, int timestamp)
+ *
+ *     Stores the key and value, along with the given timestamp.
+ *
+ * 2. get(string key, int timestamp)
+ *
+ *     Returns a value such that set(key, value, timestamp_prev) was called
+ *     previously, with timestamp_prev <= timestamp.
+ *     If there are multiple such values, it returns the one with the largest
+ *     timestamp_prev.
+ *     If there are no values, it returns the empty string ("").
+ *
+ * Example 1:
+ *   Input: inputs = ["TimeMap","set","get","get","set","get","get"], inputs = [[],["foo","bar",1],["foo",1],["foo",3],["foo","bar2",4],["foo",4],["foo",5]]
+ *   Output: [null,null,"bar","bar",null,"bar2","bar2"]
+ *   Explanation:
+ *   TimeMap kv;
+ *   kv.set("foo", "bar", 1); // store the key "foo" and value "bar" along with timestamp = 1
+ *   kv.get("foo", 1);  // output "bar"
+ *   kv.get("foo", 3); // output "bar" since there is no value corresponding to foo at timestamp 3 and timestamp 2, then the only value is at timestamp 1 ie "bar"
+ *   kv.set("foo", "bar2", 4);
+ *   kv.get("foo", 4); // output "bar2"
+ *   kv.get("foo", 5); //output "bar2"
+ *
+ * Example 2:
+ *   Input: inputs = ["TimeMap","set","set","get","get","get","get","get"],
+ *   inputs = [[],["love","high",10],["love","low",20],["love",5],["love",10],["love",15],["love",20],["love",25]]
+ *   Output: [null,null,null,"","high","high","low","low"]
+ */
+public class TimeBasedKeyValueStore {
+
+    /** Initialize your data structure here. */
+    public TimeBasedKeyValueStore() {
+
+    }
+
+    public void set(String key, String value, int timestamp) {
+
+    }
+
+    public String get(String key, int timestamp) {
+        return "";
+    }
+}
