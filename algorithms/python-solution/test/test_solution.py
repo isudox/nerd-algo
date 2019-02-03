@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import pytest
 
+from util.converter import Converter
+
 
 @pytest.mark.parametrize("x, res", [
     (1, True),
@@ -37,6 +39,17 @@ def test_str_without_3a3b(a, b, res):
 def test_minimum_cost_for_tickets(days, costs, res):
     from solution.minimum_cost_for_tickets import Solution
     assert Solution().min_cost_tickets(days, costs) == res
+
+
+@pytest.mark.parametrize("root, res", [
+    ([3, 0, 0], 2),
+    ([0, 3, 0], 3),
+    ([1, 0, 2], 2),
+    ([1, 0, 0, None, 3], 4)
+])
+def test_distribute_coins_in_binary_tree(root, res):
+    from solution.distribute_coins_in_binary_tree import Solution
+    assert Solution().distribute_coins(Converter.list_to_tree(root)) == res
 
 
 def test_time_based_key_value_store():
