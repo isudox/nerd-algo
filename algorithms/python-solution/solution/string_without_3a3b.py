@@ -2,28 +2,28 @@
 
 
 class Solution:
-    def strWithout3a3b(self, A, B):
+    def str_without_3a3b(self, a, b):
         """
-        :type A: int
-        :type B: int
+        :type a: int
+        :type b: int
         :rtype: str
         """
         res = ""
-        while A and B:
-            if A > B:
+        while a and b:
+            if a > b:
                 res = res + "aab"
-                A = A - 2
-                B = B - 1
-            elif A < B:
+                a = a - 2
+                b = b - 1
+            elif a < b:
                 res = res + "bba"
-                A = A - 1
-                B = B - 2
+                a = a - 1
+                b = b - 2
             else:
                 res = res + "ab"
-                A = A - 1
-                B = B - 1
-        if A:
-            res = res + "a" * A
-        if B:
-            res = res + "b" * B
+                a = a - 1
+                b = b - 1
+        if a:
+            res = res + "a" * a
+        if b:
+            res = res + "b" * b
         return res

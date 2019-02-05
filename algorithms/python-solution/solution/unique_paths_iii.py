@@ -28,4 +28,4 @@ class Solution:
             d = [(0, 1), (0, -1), (1, 0), (-1, 0)]
             for x, y in d:
                 x += i
-                y +=j
+                y += j
