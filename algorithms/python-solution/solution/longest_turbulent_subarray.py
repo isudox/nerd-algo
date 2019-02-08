@@ -43,7 +43,8 @@ class Solution:
             c = (a[i - 1] > a[i]) - (a[i - 1] < a[i])
             if c == 0:
                 start = i
-            elif i == size - 1 or c * ((a[i] > a[i + 1]) - (a[i] < a[i + 1])) != -1:
+            elif i == size - 1 \
+                    or c * ((a[i] > a[i + 1]) - (a[i] < a[i + 1])) != -1:
                 max_count = max(max_count, i - start + 1)
                 start = i
         return max_count

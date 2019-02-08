@@ -175,3 +175,22 @@ def test_longest_turbulent_subarray(li, res):
 def test_triples_with_bitwise_and_equal_to_zero(nums, res):
     from solution.triples_with_bitwise_and_equal_to_zero import Solution
     assert Solution().count_triplets(nums) == res
+
+
+@pytest.mark.parametrize("grid, res", [
+    ([[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 2, -1]], 2),
+    ([[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 2]], 4),
+    ([[0, 1], [2, 0]], 0)
+])
+def test_unique_paths_3(grid, res):
+    from solution.unique_paths_iii import Solution
+    assert Solution().unique_paths_iii(grid) == res
+
+
+@pytest.mark.parametrize("x, y, bound, res", [
+    (2, 3, 10, [2, 3, 4, 5, 7, 9, 10]),
+    (3, 5, 15, [2, 4, 6, 8, 10, 14])
+])
+def test_powerful_integers(x, y, bound, res):
+    from solution.powerful_integers import Solution
+    assert Solution().powerful_integers(x, y, bound) == res
