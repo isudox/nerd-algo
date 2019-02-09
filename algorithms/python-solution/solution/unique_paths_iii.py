@@ -39,13 +39,12 @@ class Solution:
                     zero_count += 1
                 elif grid[i][j] == 1:
                     start_i, start_j = i, j
-        # visited = [[False] * columns] * lines
         visited = [[False for _ in range(columns)] for _ in range(lines)]
         visited[start_i][start_j] = True
 
         def backtrack(visited, i, j, zero):
             nonlocal zero_count, ans
-            # 4 directions to move
+            # 4-directional walks
             d = [(0, 1), (0, -1), (1, 0), (-1, 0)]
             for x, y in d:
                 x += i
