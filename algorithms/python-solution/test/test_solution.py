@@ -623,3 +623,14 @@ def test_largest_perimeter(a, res):
 def test_subarray_sums_divisible_by_k(arr, k, res):
     from solution.subarray_sums_divisible_by_k import Solution
     assert Solution().subarrays_div_by_k(arr, k) == res
+
+
+@pytest.mark.parametrize("s, t, res", [
+    ("0.(52)", "0.5(25)", True),
+    ("0.1666(6)", "0.166(66)", True),
+    ("0.9(9)", "1.", True),
+    ("0.12", "0.12(1)", False)
+])
+def test_equal_rational_numbers(s, t, res):
+    from solution.equal_rational_numbers import Solution
+    assert Solution().is_rational_equal(s, t) == res
