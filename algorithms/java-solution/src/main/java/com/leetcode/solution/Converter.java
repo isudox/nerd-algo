@@ -1,6 +1,7 @@
 package com.leetcode.solution;
 
 import java.util.Arrays;
+import java.util.Collection;
 
 /**
  * Convenient converters for LeetCode data structure.
@@ -63,6 +64,12 @@ public final class Converter {
             listNode = listNode.next;
         }
         return out.toString();
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T> T[] collToArr(Collection<T> list) {
+        T[] array = (T[]) new Object[list.size()];
+        return list.toArray(array);
     }
 
     public static void main(String[] args) {
