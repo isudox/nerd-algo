@@ -155,3 +155,12 @@ def test_k_closest_points_to_origin(points, k, res):
 def test_pancake_sorting(nums, res):
     from solution.pancake_sorting import Solution
     assert Solution().pancake_sort(nums) == res
+
+
+@pytest.mark.parametrize("x, target, ans", [
+    (3, 19, 5),
+    (5, 501, 8)
+])
+def test_least_operators_to_express_number(x, target, ans):
+    from solution.least_operators_to_express_number import Solution
+    assert Solution().least_ops_express_target(x, target) == ans
