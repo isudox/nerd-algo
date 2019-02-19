@@ -44,23 +44,47 @@ Note:
 2 <= x <= 100
 1 <= target <= 2 * 10^8
 """
+from functools import lru_cache
 
 
 class Solution:
     def least_ops_express_target(self, x: 'int', target: 'int') -> 'int':
         if target < x:
+            # if x>target, target=x-x/x-x/x... or target=x/x+x/x+x/x
             return min(2 * target - 1, 2 * (x - target))
 
-        num, ops = x, 0
-        while num < target:
-            num *= x
+        cur, ops = x, 0
+        while cur < target:
+            cur *= x
             ops += 1
 
-        if num == target:
+        if cur == target:
             return ops
 
-        r = self.least_ops_express_target(x, target - (num // x)) + ops - 1
-        if num - target < target:
-            l = self.least_ops_express_target(x, num - target) + ops
-            return min(l, r) + 1
-        return r + 1
+        # if cur > target, step back to the previous x
+        left = self.least_ops_express_target(x, target - (cur / x)) - 1
+        if cur - target >= target:
+            return left + ops + 1
+        right = self.least_ops_express_target(x, cur - target)
+        return min(left, right) + ops + 1
+
+    # fucking amazing!!!
+    def least_ops_express_target_2(self, x: 'int', target: 'int') -> 'int':
+        # cost = [2,1,3,4,5,6,...,39]
+        cost = list(range(40))
+        cost[0] = 2
+
+        @lru_cache(None)
+        def dp(i, targ):
+            if targ == 0:
+                return 0
+            if targ == 1:
+                return cost[i]
+            if i >= 39:
+                return float('inf')
+
+            t, r = divmod(targ, x)
+            return min(r * cost[i] + dp(i + 1, t),
+                       (x - r) * cost[i] + dp(i + 1, t + 1))
+
+        return dp(0, target) - 1

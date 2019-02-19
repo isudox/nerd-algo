@@ -315,4 +315,18 @@ class SolutionsTest extends Specification {
         [3, 2, 4, 1] | [3, 4, 2, 3, 2]
         [1, 2, 3]    | []
     }
+
+    def "least-operators-to-express-number"(int x, int target, int ans) {
+        given:
+        def solution = new LeastOperatorsToExpressNumber()
+
+        expect:
+        solution.leastOpsExpressTarget(x, target) == ans
+
+        where:
+        x   | target    | ans
+        3   | 19        | 5
+        5   | 501       | 8
+        100 | 200000000 | 7
+    }
 }

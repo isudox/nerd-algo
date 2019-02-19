@@ -159,8 +159,10 @@ def test_pancake_sorting(nums, res):
 
 @pytest.mark.parametrize("x, target, ans", [
     (3, 19, 5),
-    (5, 501, 8)
+    (5, 501, 8),
+    (100, 200000000, 7)
 ])
 def test_least_operators_to_express_number(x, target, ans):
     from solution.least_operators_to_express_number import Solution
     assert Solution().least_ops_express_target(x, target) == ans
+    assert Solution().least_ops_express_target_2(x, target) == ans
