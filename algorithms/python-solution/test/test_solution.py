@@ -166,3 +166,13 @@ def test_least_operators_to_express_number(x, target, ans):
     from solution.least_operators_to_express_number import Solution
     assert Solution().least_ops_express_target(x, target) == ans
     assert Solution().least_ops_express_target_2(x, target) == ans
+
+
+@pytest.mark.parametrize("points, area", [
+    ([[1, 2], [2, 1], [1, 0], [0, 1]], 2.00000),
+    ([[0, 1], [2, 1], [1, 1], [1, 0], [2, 0]], 1.00000),
+    ([[0, 3], [1, 2], [3, 1], [1, 3], [2, 1]], 0.00000)
+])
+def test_min_area_rect(points, area):
+    from solution.minimum_area_rectangle_ii import Solution
+    assert Solution().min_area_free_rect(points) == area

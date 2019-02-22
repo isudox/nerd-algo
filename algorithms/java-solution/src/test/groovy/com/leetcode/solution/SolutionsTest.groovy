@@ -329,4 +329,18 @@ class SolutionsTest extends Specification {
         5   | 501       | 8
         100 | 200000000 | 7
     }
+
+    def "minimum-area-rectangle-ii"(int[][] points, double ans) {
+        given:
+        def solution = new MinimumAreaRectangle2()
+
+        expect:
+        solution.minAreaFreeRect(points) == ans
+
+        where:
+        points                                   | ans
+        [[0, 3], [1, 2], [3, 1], [1, 3], [2, 1]] | 0.0
+        [[1, 2], [2, 1], [1, 0], [0, 1]]         | 2.0
+        [[0, 1], [2, 1], [1, 1], [1, 0], [2, 0]] | 1.0
+    }
 }
