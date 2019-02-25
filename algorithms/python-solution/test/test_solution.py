@@ -176,3 +176,24 @@ def test_least_operators_to_express_number(x, target, ans):
 def test_min_area_rect(points, area):
     from solution.minimum_area_rectangle_ii import Solution
     assert Solution().min_area_free_rect(points) == area
+
+
+@pytest.mark.parametrize("li, ans", [
+    ([1, 2, 3, 3], 3),
+    ([2, 1, 2, 5, 3, 2], 2),
+    ([5, 1, 5, 2, 5, 3, 5, 4], 5)
+])
+def test_n_repeated_element_in_size_2n_array(li, ans):
+    from solution.n_repeated_element_in_size_2n_array import Solution
+    assert Solution().repeated_n_times(li) == ans
+    assert Solution().ans(li) == ans
+    assert Solution().ans_2(li) == ans
+
+
+@pytest.mark.parametrize("arr, ans", [
+    ([6, 0, 8, 2, 1, 5], 4),
+    ([9, 8, 1, 0, 1, 9, 4, 0, 4, 1], 7),
+])
+def test_maximum_width_ramp(arr, ans):
+    from solution.maximum_width_ramp import Solution
+    assert Solution().max_width_ramp(arr) == ans
