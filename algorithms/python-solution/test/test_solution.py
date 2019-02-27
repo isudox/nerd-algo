@@ -197,3 +197,54 @@ def test_n_repeated_element_in_size_2n_array(li, ans):
 def test_maximum_width_ramp(arr, ans):
     from solution.maximum_width_ramp import Solution
     assert Solution().max_width_ramp(arr) == ans
+
+
+@pytest.mark.parametrize("arr, ans", [
+    (["cba",
+      "daf",
+      "ghi"], 1),
+    (["zyx",
+      "wvu",
+      "tsr"], 3),
+    (["a",
+      "b"], 0),
+    (["rrjk",
+      "furt",
+      "guzm"], 2)
+])
+def test_delete_columns_to_make_sorted(arr, ans):
+    from solution.delete_columns_to_make_sorted import Solution
+    assert Solution().min_deletion_size(arr) == ans
+    assert Solution().ans(arr) == ans
+
+
+@pytest.mark.parametrize("arr, ans", [
+    (["ca",
+      "bb",
+      "ac"], 1),
+    (["xc",
+      "yb",
+      "za"], 0),
+    (["zyx",
+      "wvu",
+      "tsr"], 3),
+    (["xga",
+      "xfb",
+      "yfa"], 1)
+])
+def test_delete_columns_to_make_sorted_ii(arr, ans):
+    from solution.delete_columns_to_make_sorted_ii import Solution
+    assert Solution().min_deletion_size(arr) == ans
+
+
+@pytest.mark.parametrize("arr, ans", [
+    (["babca",
+      "bbazb"], 3),
+    (["edcba"], 4),
+    (["ghi",
+      "def",
+      "abc"], 0)
+])
+def test_delete_columns_to_make_sorted_iii(arr, ans):
+    from solution.delete_columns_to_make_sorted_iii import Solution
+    # assert Solution().min_deletion_size(arr) == ans
