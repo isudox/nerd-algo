@@ -23,8 +23,8 @@ Output: 1
 Explanation:
 After deleting the first column, A = ["a", "b", "c"].
 Now A is in lexicographic order (ie. A[0] <= A[1] <= A[2]).
-We require at least 1 deletion since initially A was not in lexicographic order,
-so the answer is 1.
+We require at least 1 deletion since initially A was not in lexicographic
+order, so the answer is 1.
 
 Example 2:
 
@@ -52,13 +52,12 @@ from typing import List
 
 class Solution:
     def min_deletion_size(self, a: List[str]) -> int:
-
         def is_sorted(s: List[str]):
             return all(s[i] >= s[i - 1] for i in range(1, len(s)))
 
         ans = 0
-        line, col = len(a), len(a[0])
-        col_str = [''] * line
+        line = len(a)
+        col_str = [""] * line
         for col_list in list(zip(*a)):
             temp = col_str[:]
             for i, char in enumerate(col_list):

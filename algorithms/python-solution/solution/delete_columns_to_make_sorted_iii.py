@@ -53,6 +53,11 @@ from typing import List
 
 class Solution:
     def min_deletion_size(self, a: List[str]) -> int:
-        ans = 0
-        
-        return ans
+        line, col = len(a), len(a[0])
+        # dp[i] means the longest subsequence ends with i-th element.
+        dp = [1] * col
+        for j in range(1, col):
+            for i in range(j):
+                if all(a[k][i] <= a[k][j] for k in range(line)):
+                    dp[j] = max(dp[j], dp[i] + 1)
+        return col - max(dp)
