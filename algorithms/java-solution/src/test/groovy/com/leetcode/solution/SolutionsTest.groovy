@@ -361,11 +361,30 @@ class SolutionsTest extends Specification {
     def "maximum-width-ramp"(int[] arr, int ans) {
         given:
         def solution = new MaximumWidthRamp()
+
         expect:
         solution.maxWidthRamp(arr) == ans
+
         where:
         arr                            | ans
         [6, 0, 8, 2, 1, 5]             | 4
         [9, 8, 1, 0, 1, 9, 4, 0, 4, 1] | 7
+    }
+
+    def "validate-stack-sequences"(int[] pushed, int[] popped, boolean ans) {
+        given:
+        def solution = new ValidateStackSequences()
+
+        expect:
+        solution.validateStackSequences(pushed, popped) == ans
+
+        where:
+        pushed          | popped          | ans
+        []              | []              | true
+        [1, 2]          | [1, 2, 3]       | false
+        [2, 1, 0]       | [1, 2, 0]       | true
+        [1, 2, 3, 4, 5] | [4, 5, 3, 2, 1] | true
+        [1, 2, 3, 4, 5] | [4, 3, 5, 1, 2] | false
+        [2, 3, 0, 1]    | [0, 3, 2, 1]    | true
     }
 }

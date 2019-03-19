@@ -4,7 +4,12 @@ import pytest
 from util.converter import Converter
 
 
-@pytest.mark.parametrize("x, res", [(1, True), (12, False), (333, True), (333, True)])
+@pytest.mark.parametrize("x, res", [
+    (1, True),
+    (12, False),
+    (333, True),
+    (333, True)
+])
 def test_palindrome_number(x, res):
     from solution.palindrome_number import Solution
 
@@ -119,7 +124,8 @@ def test_sorted_squares(a, res):
 
 
 @pytest.mark.parametrize(
-    "a, res", [([2, 1, 2], 5), ([1, 2, 1], 0), ([3, 2, 3, 4], 10), ([3, 6, 2, 3], 8)]
+    "a, res",
+    [([2, 1, 2], 5), ([1, 2, 1], 0), ([3, 2, 3, 4], 10), ([3, 6, 2, 3], 8)]
 )
 def test_largest_perimeter(a, res):
     from solution.largest_perimeter_triangle import Solution
@@ -232,25 +238,39 @@ def test_delete_columns_to_make_sorted(arr, ans):
     assert Solution().ans(arr) == ans
 
 
-@pytest.mark.parametrize(
-    "arr, ans",
-    [
-        (["ca", "bb", "ac"], 1),
-        (["xc", "yb", "za"], 0),
-        (["zyx", "wvu", "tsr"], 3),
-        (["xga", "xfb", "yfa"], 1),
-    ],
-)
+@pytest.mark.parametrize("arr, ans", [
+    (["ca", "bb", "ac"], 1),
+    (["xc", "yb", "za"], 0),
+    (["zyx", "wvu", "tsr"], 3),
+    (["xga", "xfb", "yfa"], 1),
+],
+                         )
 def test_delete_columns_to_make_sorted_ii(arr, ans):
     from solution.delete_columns_to_make_sorted_ii import Solution
 
     assert Solution().min_deletion_size(arr) == ans
 
 
-@pytest.mark.parametrize(
-    "arr, ans", [(["babca", "bbazb"], 3), (["edcba"], 4), (["ghi", "def", "abc"], 0)]
-)
+@pytest.mark.parametrize("arr, ans", [
+    (["babca", "bbazb"], 3),
+    (["edcba"], 4),
+    (["ghi", "def", "abc"], 0)
+])
 def test_delete_columns_to_make_sorted_iii(arr, ans):
     from solution.delete_columns_to_make_sorted_iii import Solution
 
     assert Solution().min_deletion_size(arr) == ans
+
+
+@pytest.mark.parametrize("pushed, popped, ans", [
+    ([], [], True),
+    ([1, 2], [1, 2, 3], False),
+    ([2, 1, 0], [1, 2, 0], True),
+    ([1, 2, 3, 4, 5], [4, 5, 3, 2, 1], True),
+    ([1, 2, 3, 4, 5], [4, 3, 5, 1, 2], False),
+    ([2, 3, 0, 1], [0, 3, 2, 1], True)
+])
+def test_validate_stack_sequences(pushed, popped, ans):
+    from solution.validate_stack_sequences import Solution
+
+    assert Solution().validate_stack_sequences(pushed, popped) == ans
