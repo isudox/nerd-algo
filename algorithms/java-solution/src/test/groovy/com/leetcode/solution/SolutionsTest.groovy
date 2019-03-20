@@ -387,4 +387,19 @@ class SolutionsTest extends Specification {
         [1, 2, 3, 4, 5] | [4, 3, 5, 1, 2] | false
         [2, 3, 0, 1]    | [0, 3, 2, 1]    | true
     }
+
+    def "numbers-with-same-consecutive-differences"(int n, int k, int[] ans) {
+        given:
+        def solution = new NumbersWithSameConsecutiveDifferences()
+
+        expect:
+        solution.numsSameConsecDiff(n, k) == ans
+
+        where:
+        n | k || ans
+        1 | 0 || [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        1 | 9 || [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        3 | 7 || [181, 292, 707, 818, 929]
+        2 | 1 || [12, 10, 23, 21, 34, 32, 45, 43, 56, 54, 67, 65, 78, 76, 89, 87, 98]
+    }
 }
