@@ -273,7 +273,9 @@ def test_delete_columns_to_make_sorted_iii(arr, ans):
 def test_validate_stack_sequences(pushed, popped, ans):
     from solution.validate_stack_sequences import Solution
 
-    assert Solution().validate_stack_sequences(pushed, popped) == ans
+    solution = Solution()
+    assert solution.validate_stack_sequences(pushed, popped) == ans
+    assert solution.ans(pushed, popped) == ans
 
 
 @pytest.mark.parametrize("n, k, expect", [
@@ -281,7 +283,7 @@ def test_validate_stack_sequences(pushed, popped, ans):
     (1, 1, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]),
     (1, 2, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]),
     (1, 3, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]),
-    (1, 5, [5]),
+    (1, 5, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]),
     (3, 7, [181, 292, 707, 818, 929]),
     (2, 1,
      [10, 12, 21, 23, 32, 34, 43, 45, 54, 56, 65, 67, 76, 78, 87, 89, 98]),
@@ -302,3 +304,16 @@ def test_nums_same_consec_diff(n, k, expect):
         if num in expect:
             expect.remove(num)
     assert len(expect) == 0
+
+
+@pytest.mark.parametrize("s, t, ans", [
+    ("cba", "abcd", "cbad"),
+    ("abc", "badef", "abdef"),
+    ("", "abc", "abc"),
+    ("def", "cba", "cba"),
+    ("kqep", "pekeq", "kqeep")
+])
+def test_custom_sort_string(s, t, ans):
+    from solution.custom_sort_string import Solution
+
+    assert Solution().custom_sort_string(s, t) == ans

@@ -4,9 +4,6 @@ os:
 branches:
   only:
   - master
-  - stable
-  - dev
-  - dev/ci
 
 env:
   global:
