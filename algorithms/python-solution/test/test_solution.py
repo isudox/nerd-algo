@@ -317,3 +317,44 @@ def test_custom_sort_string(s, t, ans):
     from solution.custom_sort_string import Solution
 
     assert Solution().custom_sort_string(s, t) == ans
+
+
+@pytest.mark.parametrize("grid, ans", [
+    ([
+         " /",
+         "/ "
+     ], 2),
+    ([
+         " /",
+         "  "
+     ], 1),
+    ([
+         "\\/",
+         "/\\"
+     ], 4),
+    ([
+         "/\\",
+         "\\/"
+     ], 5),
+    ([
+         "//",
+         "/ "
+     ], 3)
+])
+def test_regions_cut_by_slashes(grid, ans):
+    from solution.regions_cut_by_slashes import Solution
+
+    # assert Solution().regions_by_slashes(grid) == ans
+
+
+@pytest.mark.parametrize("nums, ans", [
+    ([2, 1, 2], 1),
+    ([1], 1),
+    ([4, 3, 5, 3, 4], 5)
+])
+def test_single_number(nums, ans):
+    from solution.single_number import Solution
+    solution = Solution()
+
+    assert solution.single_number(nums) == ans
+    assert solution.reduce_func(nums) == ans

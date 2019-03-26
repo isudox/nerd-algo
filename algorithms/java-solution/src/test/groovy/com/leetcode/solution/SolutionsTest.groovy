@@ -419,4 +419,19 @@ class SolutionsTest extends Specification {
         "def"  | "cba"   | "cba"
         "kqep" | "pekeq" | "kqeep"
     }
+
+    def "single-number"(int[] nums, int ans) {
+        given:
+        def solution = new SingleNumber()
+
+        expect:
+        solution.singleNumber(nums) == ans
+        solution.reduce(nums) == ans
+
+        where:
+        nums            | ans
+        [0]             | 0
+        [2, 2, 1]       | 1
+        [4, 1, 2, 1, 2] | 4
+    }
 }
