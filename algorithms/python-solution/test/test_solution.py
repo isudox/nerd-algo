@@ -362,8 +362,8 @@ def test_single_number(nums, ans):
 
 @pytest.mark.parametrize("candidates, target, expect", [
     ([2, 3, 6, 7], 7, [
-        [7],
-        [2, 2, 3]
+        [2, 2, 3],
+        [7]
     ]),
     ([2, 3, 5], 8, [
         [2, 2, 2, 2],
