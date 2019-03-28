@@ -41,25 +41,27 @@ class Solution:
         ans = []
         candidates.sort()
 
-        def backtrack(li: List[int], start: int, store: List[int]):
-            nonlocal target
-            for i in range(start, len(li)):
-                tar = target - sum(store)
-                num = li[i]
-                tar -= num
-                if tar < 0:
-                    store.pop()
+        def backtrack(nums: List[int], start: int, targ: int, store: List[int]):
+            for i in range(start, len(nums)):
+                num = nums[i]
+                targ -= num
+                if targ < 0:
                     break
+
                 store.append(num)
-                if tar == 0:
+                if targ == 0:
                     nonlocal ans
                     ans.append(store.copy())
                     store.pop()
                     break
                 else:
-                    backtrack(li, i, store)
+                    backtrack(nums, i, targ, store)
 
-        backtrack(candidates, 0, [])
+                targ += num
+                if store:
+                    store.pop()
+
+        backtrack(candidates, 0, target, [])
 
         return ans
 
