@@ -434,4 +434,17 @@ class SolutionsTest extends Specification {
         [2, 2, 1]       | 1
         [4, 1, 2, 1, 2] | 4
     }
+
+    def "combination-sum"(int[] candidates, int target, List<List<Integer>> ans) {
+        given:
+        def solution = new CombinationSum()
+
+        expect:
+        solution.combinationSum(candidates, target) == ans
+
+        where:
+        candidates   | target | ans
+        [2, 3, 6, 7] | 7      | [[7], [2, 2, 3]]
+        [2, 3, 5]    | 8      | [[2, 2, 2, 2], [2, 3, 3], [3, 5]]
+    }
 }

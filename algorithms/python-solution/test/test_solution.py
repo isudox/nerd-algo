@@ -342,7 +342,7 @@ def test_custom_sort_string(s, t, ans):
      ], 3)
 ])
 def test_regions_cut_by_slashes(grid, ans):
-    from solution.regions_cut_by_slashes import Solution
+    pass
 
     # assert Solution().regions_by_slashes(grid) == ans
 
@@ -358,3 +358,22 @@ def test_single_number(nums, ans):
 
     assert solution.single_number(nums) == ans
     assert solution.reduce_func(nums) == ans
+
+
+@pytest.mark.parametrize("candidates, target, expect", [
+    ([2, 3, 6, 7], 7, [
+        [7],
+        [2, 2, 3]
+    ]),
+    ([2, 3, 5], 8, [
+        [2, 2, 2, 2],
+        [2, 3, 3],
+        [3, 5]
+    ]),
+    ([3, 4, 5], 1, [])
+])
+def test_combination_sum(candidates, target, expect):
+    from solution.combination_sum import Solution
+    solution = Solution()
+
+    assert solution.combination_sum(candidates, target) == expect
