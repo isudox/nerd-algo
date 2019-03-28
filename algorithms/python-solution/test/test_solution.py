@@ -370,7 +370,8 @@ def test_single_number(nums, ans):
         [2, 3, 3],
         [3, 5]
     ]),
-    ([3, 4, 5], 1, [])
+    ([3, 4, 5], 1, []),
+    ([1, 3], 1, [[1]])
 ])
 def test_combination_sum(candidates, target, expect):
     from solution.combination_sum import Solution

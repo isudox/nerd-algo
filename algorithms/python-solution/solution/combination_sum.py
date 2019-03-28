@@ -41,33 +41,30 @@ class Solution:
         ans = []
         candidates.sort()
 
-        def backtrack(nums: List[int], start: int, targ: int, store: List[int]):
+        def backtrack(nums: List[int], targ: int, start: int, store: List[int]):
             for i in range(start, len(nums)):
                 num = nums[i]
-                targ -= num
-                if targ < 0:
+                if targ < num:
                     break
 
                 store.append(num)
-                if targ == 0:
+                if targ == num:
                     nonlocal ans
-                    ans.append(store.copy())
+                    ans.append(store[:])
                     store.pop()
                     break
-                else:
-                    backtrack(nums, i, targ, store)
 
-                targ += num
-                if store:
-                    store.pop()
+                backtrack(nums, targ - num, i, store)
+                store.pop()
 
-        backtrack(candidates, 0, target, [])
+        backtrack(candidates, target, 0, [])
 
         return ans
 
 
 if __name__ == '__main__':
     solution = Solution()
+    print(solution.combination_sum([1, 2], 1))
     print(solution.combination_sum([1, 2], 2))
     print(solution.combination_sum([2, 3, 6, 7], 7))
     print(solution.combination_sum([2, 3, 5], 8))
