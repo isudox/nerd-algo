@@ -38,11 +38,15 @@ class Solution:
     def combination_sum2(self, candidates: List[int], target: int) \
             -> List[List[int]]:
         ans = []
+        last_pop = None
         candidates.sort()
 
         def backtrack(nums: List[int], targ: int, start: int, store: List[int]):
+            nonlocal last_pop
             for i in range(start, len(nums)):
                 num = nums[i]
+                if num == last_pop:
+                    continue
                 if targ < num:
                     break
 
@@ -54,11 +58,11 @@ class Solution:
                     break
 
                 backtrack(nums, targ - num, i + 1, store)
-                store.pop()
+                last_pop = store.pop()
 
         backtrack(candidates, target, 0, [])
 
-        return [list(x) for x in set(tuple(x) for x in ans)]
+        return ans
 
 
 if __name__ == '__main__':
