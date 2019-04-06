@@ -447,4 +447,32 @@ class SolutionsTest extends Specification {
         [2, 3, 6, 7] | 7      | [[2, 2, 3], [7]]
         [2, 3, 5]    | 8      | [[2, 2, 2, 2], [2, 3, 3], [3, 5]]
     }
+
+    def "combination-sum-2"(int[] candidates, int target, List<List<Integer>> expect) {
+        given:
+        def solution = new CombinationSum2()
+
+        expect:
+        solution.combinationSum2(candidates, target) == expect
+
+        where:
+        candidates             | target | expect
+        [10, 1, 2, 7, 6, 1, 5] | 8      | [[1, 1, 6], [1, 2, 5], [1, 7], [2, 6]]
+        [2, 5, 2, 1, 2]        | 5      | [[1, 2, 2], [5]]
+    }
+
+    def "combination-sum-3"(int k, int n, List<List<Integer>> expect) {
+        given:
+        def solution = new CombinationSum3()
+
+        expect:
+        solution.combinationSum3(k, n) == expect
+
+        where:
+        k | n  || expect
+        2 | 6  || [[1, 5], [2, 4]]
+        3 | 7  || [[1, 2, 4]]
+        3 | 9  || [[1, 2, 6], [1, 3, 5], [2, 3, 4]]
+        5 | 18 || [[1, 2, 3, 4, 8], [1, 2, 3, 5, 7], [1, 2, 4, 5, 6]]
+    }
 }
