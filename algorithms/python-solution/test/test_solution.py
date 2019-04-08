@@ -409,8 +409,19 @@ def test_combination_sum_2(candidates, target, expect):
         [1, 2, 3, 4, 8], [1, 2, 3, 5, 7], [1, 2, 4, 5, 6]
     ])
 ])
-def test_combination_sum_2(n, k, expect):
+def test_combination_sum_3(n, k, expect):
     from solution.combination_sum_iii import Solution
     solution = Solution()
 
     assert solution.combination_sum3(n, k) == expect
+
+
+@pytest.mark.parametrize("nums, target, expect", [
+    ([1, 2, 3], 4, 7),
+    ([4, 2, 1], 32, 39882198)
+])
+def test_combination_sum_4(nums, target, expect):
+    from solution.combination_sum_iv import Solution
+    solution = Solution()
+
+    assert solution.combination_sum4(nums, target) == expect
