@@ -425,3 +425,14 @@ def test_combination_sum_4(nums, target, expect):
     solution = Solution()
 
     assert solution.combination_sum4(nums, target) == expect
+
+
+@pytest.mark.parametrize("nums, expect", [
+    ([-2, 1, -3, 4, -1, 2, 1, -5, 4], 6),
+    ([1, 2, 3, 4, 5], 15)
+])
+def test_maximum_subarray(nums, expect):
+    from solution.maximum_subarray import Solution
+    solution = Solution()
+
+    assert solution.max_sub_array(nums) == expect
