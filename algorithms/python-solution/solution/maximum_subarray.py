@@ -22,6 +22,23 @@ from typing import List
 class Solution:
 
     def max_sub_array(self, nums: List[int]) -> int:
+        """O(n)"""
+        assert nums
+
+        max_sum = nums[0]
+        cur_sum = nums[0]
+        size = len(nums)
+
+        for i in range(1, size):
+            if cur_sum <= 0:
+                cur_sum = nums[i]
+            else:
+                cur_sum += nums[i]
+            max_sum = max(cur_sum, max_sum)
+
+        return max_sum
+
+    def brute_force(self, nums: List[int]) -> int:
         """
         brute force approach which not acceptable, O(n^2) complexity.
         :param nums:
@@ -47,5 +64,8 @@ class Solution:
 
 if __name__ == '__main__':
     solution = Solution()
+    print(solution.brute_force([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
+    print(solution.brute_force([1, 2, 3, 4, 5]))
     print(solution.max_sub_array([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
     print(solution.max_sub_array([1, 2, 3, 4, 5]))
+    print(solution.max_sub_array([-1]))
