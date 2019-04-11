@@ -475,4 +475,14 @@ class SolutionsTest extends Specification {
         3 | 9  || [[1, 2, 6], [1, 3, 5], [2, 3, 4]]
         5 | 18 || [[1, 2, 3, 4, 8], [1, 2, 3, 5, 7], [1, 2, 4, 5, 6]]
     }
+
+    def "maximum-subarray"(int[] nums, int expect) {
+        given:
+        def solution = new MaximumSubarray()
+        expect:
+        solution.maxSubArray(nums) == expect
+        where:
+        nums                            | expect
+        [-2, 1, -3, 4, -1, 2, 1, -5, 4] | 6
+    }
 }
