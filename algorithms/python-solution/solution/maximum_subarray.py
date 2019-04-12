@@ -64,8 +64,8 @@ class Solution:
 
 if __name__ == '__main__':
     solution = Solution()
-    print(solution.brute_force([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
-    print(solution.brute_force([1, 2, 3, 4, 5]))
+    print(solution.test([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
+    print(solution.test([1, 2, 3, 4, 5]))
     print(solution.max_sub_array([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
     print(solution.max_sub_array([1, 2, 3, 4, 5]))
-    print(solution.max_sub_array([-1]))
+    print(solution.test([-1]))

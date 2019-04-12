@@ -20,13 +20,31 @@ package com.leetcode.solution;
  */
 public class MaximumSubarray {
 
+    public int maxSubArray(int[] nums) {
+        int len = nums.length;
+        assert len > 0;
+        int maxSum = nums[0];
+        int curSum = nums[0];
+
+        for (int i = 1; i < len; i++) {
+            if (curSum <= 0) {
+                curSum = nums[i];
+            } else {
+                curSum += nums[i];
+            }
+            maxSum = Math.max(maxSum, curSum);
+        }
+
+        return maxSum;
+    }
+
     /**
      * Brute force approach by for-loop.
      * O(n^2), not acceptable.
      * @param nums
      * @return
      */
-    public int bruteTraversal(int[] nums) {
+    public int bruteForce(int[] nums) {
         int max = nums[0];
         int size = nums.length;
         for (int i = 0; i < size; i++) {

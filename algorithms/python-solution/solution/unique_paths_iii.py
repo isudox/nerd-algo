@@ -49,7 +49,10 @@ class Solution:
             for x, y in d:
                 x += i
                 y += j
-                if 0 <= x < lines and 0 <= y < columns and not visited[x][y] and grid[x][y] != -1:
+                if (0 <= x < lines
+                        and 0 <= y < columns
+                        and not visited[x][y]
+                        and grid[x][y] != -1):
                     if grid[x][y] == 0:
                         visited[x][y] = True
                         backtrack(visited, x, y, zero + 1)
@@ -61,6 +64,6 @@ class Solution:
         return ans
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(Solution().unique_paths_iii(
         [[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 2, -1]]))
