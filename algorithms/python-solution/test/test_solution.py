@@ -499,3 +499,17 @@ def test_maximum_subarray(nums, expect):
     solution = Solution()
 
     assert solution.max_sub_array(nums) == expect
+
+
+@pytest.mark.parametrize("n, expect", [
+    (1, "1"),
+    (2, "11"),
+    (3, "21"),
+    (10, "13211311123113112211"),
+    (15, "311311222113111231131112132112311321322112111312211312111322212311322113212221"),
+])
+def test_count_and_say(n, expect):
+    from solution.count_and_say import Solution
+    solution = Solution()
+
+    assert solution.count_and_say(n) == expect
