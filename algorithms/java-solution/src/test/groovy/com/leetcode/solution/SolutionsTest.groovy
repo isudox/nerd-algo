@@ -483,6 +483,8 @@ class SolutionsTest extends Specification {
         solution.maxSubArray(nums) == expect
         where:
         nums                            | expect
+        [-2]                            | -2
+        [-2, -1]                        | -1
         [-2, 1, -3, 4, -1, 2, 1, -5, 4] | 6
     }
 }
