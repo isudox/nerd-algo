@@ -513,3 +513,15 @@ def test_count_and_say(n, expect):
     solution = Solution()
 
     assert solution.count_and_say(n) == expect
+
+
+@pytest.mark.parametrize("height, expect", [
+    ([], 0),
+    ([3, 2, 1, 2, 1], 1),
+    ([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1], 6)
+])
+def test_trapping_rain_water(height, expect):
+    from solution.trapping_rain_water import Solution
+    solution = Solution()
+
+    assert solution.trap(height) == expect
