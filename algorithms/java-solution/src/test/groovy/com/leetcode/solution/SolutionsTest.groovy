@@ -487,4 +487,15 @@ class SolutionsTest extends Specification {
         [-2, -1]                        | -1
         [-2, 1, -3, 4, -1, 2, 1, -5, 4] | 6
     }
+
+    def "trapping-rain-water"(int[] height, int expect) {
+        given:
+        def solution = new TrappingRainWater()
+        expect:
+        solution.trap(height) == expect
+        where:
+        height                               | expect
+        [3, 2, 1, 2, 1]                      | 1
+        [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1] | 6
+    }
 }
