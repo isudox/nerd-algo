@@ -22,6 +22,7 @@
 | 12 | [Integer to Roman](https://leetcode.com/problems/integer-to-roman) | [Java](algorithms/java-solution/src/main/java/com/leetcode/solution/IntegerToRoman.java) |  | Medium |  |
 | 13 | [Roman to Integer](https://leetcode.com/problems/roman-to-integer) | [Java](algorithms/java-solution/src/main/java/com/leetcode/solution/RomanToInteger.java) |  | Easy |  |
 |42|[Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)|[Java](algorithms/java-solution/src/main/java/com/leetcode/solution/TrappingRainWater.java) [Python](algorithms/python-solution/solution/trapping_rain_water.py)||Hard||
+|51|[N-Queens](https://leetcode.com/problems/n-queens/)|[Python](algorithms/python-solution/solution/n_queens.py)||Hard||
 |53|[Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)|[Java](algorithms/java-solution/src/main/java/com/leetcode/solution/MaximumSubarray.java) [Python](algorithms/python-solution/solution/maximum_subarray.py)||Easy||
 | 982 | [Triples with Bitwise AND Equal To Zero](https://leetcode.com/problems/triples-with-bitwise-and-equal-to-zero) | [Java](algorithms/java-solution/src/main/java/com/leetcode/solution/TriplesWithBitwiseAndEqualToZero.java) [Python](algorithms/python-solution/solution/triples_with_bitwise_and_equal_to_zero.py) | | Hard | |
 | 983 | [Minimum Cost For Tickets](https://leetcode.com/problems/minimum-cost-for-tickets) | [Java](algorithms/java-solution/src/main/java/com/leetcode/solution/MinimumCostForTickets.java) [Python](algorithms/python-solution/solution/minimum_cost_for_tickets.py) | | Medium | |

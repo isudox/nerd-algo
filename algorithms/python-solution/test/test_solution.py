@@ -525,3 +525,101 @@ def test_trapping_rain_water(height, expect):
     solution = Solution()
 
     assert solution.trap(height) == expect
+
+
+@pytest.mark.parametrize("n, expect", [
+    (1, [
+        [
+            "Q"
+        ]
+    ]),
+    (4, [
+        [
+            ".Q..",
+            "...Q",
+            "Q...",
+            "..Q."],
+        [
+            "..Q.",
+            "Q...",
+            "...Q",
+            ".Q.."]
+    ]),
+    (5, [
+        [
+            "Q....",
+            "..Q..",
+            "....Q",
+            ".Q...",
+            "...Q."
+        ],
+        [
+            "Q....",
+            "...Q.",
+            ".Q...",
+            "....Q",
+            "..Q.."
+        ],
+        [
+            ".Q...",
+            "...Q.",
+            "Q....",
+            "..Q..",
+            "....Q"
+        ],
+        [
+            ".Q...",
+            "....Q",
+            "..Q..",
+            "Q....",
+            "...Q."
+        ],
+        [
+            "..Q..",
+            "Q....",
+            "...Q.",
+            ".Q...",
+            "....Q"
+        ],
+        [
+            "..Q..",
+            "....Q",
+            ".Q...",
+            "...Q.",
+            "Q...."
+        ],
+        [
+            "...Q.",
+            "Q....",
+            "..Q..",
+            "....Q",
+            ".Q..."
+        ],
+        [
+            "...Q.",
+            ".Q...",
+            "....Q",
+            "..Q..",
+            "Q...."
+        ],
+        [
+            "....Q",
+            ".Q...",
+            "...Q.",
+            "Q....",
+            "..Q.."
+        ],
+        [
+            "....Q",
+            "..Q..",
+            "Q....",
+            "...Q.",
+            ".Q..."
+        ]
+])
+])
+def test_n_queens(n, expect):
+    from solution.n_queens import Solution
+    solution = Solution()
+
+    assert solution.solve_n_queens(n) == expect
