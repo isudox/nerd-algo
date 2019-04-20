@@ -623,3 +623,21 @@ def test_n_queens(n, expect):
     solution = Solution()
 
     assert solution.solve_n_queens(n) == expect
+
+
+@pytest.mark.parametrize("n, expect", [
+    (1, 1),
+    (2, 0),
+    (3, 0),
+    (4, 2),
+    (5, 10),
+    (6, 4),
+    (7, 40),
+    (8, 92),
+    (9, 352),
+])
+def test_n_queens_ii(n, expect: int):
+    from solution.n_queens_ii import Solution
+    solution = Solution()
+
+    assert solution.total_n_queens(n) == expect
