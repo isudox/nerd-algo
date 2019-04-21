@@ -42,7 +42,7 @@ class Solution:
         def output(pos: int):
             """
             Output the string format of row.
-            :param pos: the position of current row.
+            :param pos: the queen's position in current row.
             :return:
             """
             return "." * pos + "Q" + "." * (n - pos - 1)
@@ -50,8 +50,8 @@ class Solution:
         def validate(row: int, col: int, queens: List[int]) -> bool:
             """
             Validate current pos[row, col] if is safe.
-            :param row: current row.
-            :param col: current column.
+            :param row: current row index.
+            :param col: current column index.
             :param queens: the columns of previous queens.
             :return:
             """

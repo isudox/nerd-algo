@@ -616,7 +616,7 @@ def test_trapping_rain_water(height, expect):
             "...Q.",
             ".Q..."
         ]
-])
+    ])
 ])
 def test_n_queens(n, expect):
     from solution.n_queens import Solution
@@ -641,3 +641,22 @@ def test_n_queens_ii(n, expect: int):
     solution = Solution()
 
     assert solution.total_n_queens(n) == expect
+
+
+@pytest.mark.parametrize("jewels, stones, expect", [
+    ("aA", "aAAbbbb", 3),
+    ("z", "ZZ", 0)
+])
+def test_jewels_and_stones(jewels: str, stones: str, expect: int):
+    from solution.jewels_and_stones import Solution
+    assert Solution().num_jewels_in_stones(jewels, stones) == expect
+
+
+@pytest.mark.parametrize("a, b, c", [
+    ("2", "3", "6"),
+    ("123", "456", "56088"),
+    ("1234567890", "9876543210", "12193263111263526900")
+])
+def test_multiply_strings(a: str, b: str, c: str):
+    from solution.multiply_strings import Solution
+    assert Solution().multiply(a, b) == c
