@@ -26,7 +26,10 @@
 |51|[N-Queens](https://leetcode.com/problems/n-queens/)|[Python](algorithms/python-solution/solution/n_queens.py)||Hard||
 |52|[N-Queens](https://leetcode.com/problems/n-queens-ii/)|[Python](algorithms/python-solution/solution/n_queens_ii.py)||Hard||
 |53|[Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)|[Java](algorithms/java-solution/src/main/java/com/leetcode/solution/MaximumSubarray.java) [Python](algorithms/python-solution/solution/maximum_subarray.py)||Easy||
-|771|[Jewels and Stones](https://leetcode.com/problems/jewels-and-stones/)|[Python](algorithms/python-solution/solution/jewels_and_stones.py) ||Easy| |
+|654|[Maximum Binary Tree](https://leetcode.com/problems/maximum-binary-tree/)|[Python](algorithms/python-solution/solution/maximum_binary_tree.py) ||Medium| |
+|771|[Jewels and Stones](https://leetcode.com/problems/jewels-and-stones/)|[Python](algorithms/python-solution/solution/jewels_and_stones.py)||Easy||
+|807|[Max Increase to Keep City Skyline](https://leetcode.com/problems/max-increase-to-keep-city-skyline/)|[Python](algorithms/python-solution/solution/max_increase_to_keep_city_skyline.py)||Medium||
+|938|[Range Sum of BST](https://leetcode.com/problems/range-sum-of-bst/)|[Python](algorithms/python-solution/solution/range_sum_of_bst.py)||Medium||
 |982|[Triples with Bitwise AND Equal To Zero](https://leetcode.com/problems/triples-with-bitwise-and-equal-to-zero) | [Java](algorithms/java-solution/src/main/java/com/leetcode/solution/TriplesWithBitwiseAndEqualToZero.java) [Python](algorithms/python-solution/solution/triples_with_bitwise_and_equal_to_zero.py) | | Hard | |
 |983|[Minimum Cost For Tickets](https://leetcode.com/problems/minimum-cost-for-tickets) | [Java](algorithms/java-solution/src/main/java/com/leetcode/solution/MinimumCostForTickets.java) [Python](algorithms/python-solution/solution/minimum_cost_for_tickets.py) | | Medium | |
 |984|[String Without AAA or BBB](https://leetcode.com/problems/string-without-aaa-or-bbb) | [Java](algorithms/java-solution/src/main/java/com/leetcode/solution/StringWithout3aOr3b.java) [Python](algorithms/python-solution/solution/string_without_3a3b.py) | | Medium | |
