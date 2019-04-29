@@ -26,6 +26,7 @@
 |51|[N-Queens](https://leetcode.com/problems/n-queens/)|[Python](algorithms/python-solution/solution/n_queens.py)||Hard||
 |52|[N-Queens](https://leetcode.com/problems/n-queens-ii/)|[Python](algorithms/python-solution/solution/n_queens_ii.py)||Hard||
 |53|[Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)|[Java](algorithms/java-solution/src/main/java/com/leetcode/solution/MaximumSubarray.java) [Python](algorithms/python-solution/solution/maximum_subarray.py)||Easy||
+|94|[Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/)|[Python](algorithms/python-solution/solution/binary_tree_inorder_traversal.py)||Medium||
 |654|[Maximum Binary Tree](https://leetcode.com/problems/maximum-binary-tree/)|[Python](algorithms/python-solution/solution/maximum_binary_tree.py) ||Medium| |
 |771|[Jewels and Stones](https://leetcode.com/problems/jewels-and-stones/)|[Python](algorithms/python-solution/solution/jewels_and_stones.py)||Easy||
 |807|[Max Increase to Keep City Skyline](https://leetcode.com/problems/max-increase-to-keep-city-skyline/)|[Python](algorithms/python-solution/solution/max_increase_to_keep_city_skyline.py)||Medium||

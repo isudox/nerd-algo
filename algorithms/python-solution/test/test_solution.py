@@ -506,7 +506,8 @@ def test_maximum_subarray(nums, expect):
     (2, "11"),
     (3, "21"),
     (10, "13211311123113112211"),
-    (15, "311311222113111231131112132112311321322112111312211312111322212311322113212221"),
+    (15,
+     "311311222113111231131112132112311321322112111312211312111322212311322113212221"),
 ])
 def test_count_and_say(n, expect):
     from solution.count_and_say import Solution
@@ -660,3 +661,26 @@ def test_jewels_and_stones(jewels: str, stones: str, expect: int):
 def test_multiply_strings(a: str, b: str, c: str):
     from solution.multiply_strings import Solution
     assert Solution().multiply(a, b) == c
+
+
+@pytest.mark.parametrize("s, expect", [
+    ([], []),
+    (["1"], ["1"]),
+    (["h", "e", "l", "l", "o"], ["o", "l", "l", "e", "h"]),
+    (["H", "a", "n", "n", "a", "h"], ["h", "a", "n", "n", "a", "H"])
+])
+def test_reverse_string(s, expect):
+    from solution.reverse_string import Solution
+    Solution().reverse_string(s)
+    assert s == expect
+
+
+@pytest.mark.parametrize("nums, expect", [
+    ([1, 2, 3, 4], [24, 12, 8, 6]),
+    ([0, 0], [0, 0]),
+    ([1, 0], [0, 1]),
+    ([1, 0, 2], [0, 2, 0]),
+])
+def test_product_of_array_except_self(nums, expect):
+    from solution.product_of_array_except_self import Solution
+    assert Solution().product_except_self(nums) == expect
