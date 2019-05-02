@@ -30,21 +30,21 @@ class Solution:
         :param root:
         :return:
         """
-        if not root:
-            return []
         ans = []
         stack = []
-        cur_node = root
-        while cur_node.left:
-            stack.append(cur_node)
-            cur_node = cur_node.left
-        ans.append(cur_node.val)
-
+        while root or stack:
+            if root:
+                stack.append(root)
+                root = root.left
+            else:
+                root = stack.pop()
+                ans.append(root.val)
+                root = root.right
         return ans
 
     def recursive_inorder_traversal(self, root: TreeNode) -> List[int]:
         """
-        recursively traversal, process left if needed, then val, at last right
+        recursive traversal, process left if needed, then val, at last right
         :param root:
         :return:
         """
