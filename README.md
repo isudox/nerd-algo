@@ -24,8 +24,10 @@
 |42|[Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)|[Java](algorithms/java-solution/src/main/java/com/leetcode/solution/TrappingRainWater.java) [Python](algorithms/python-solution/solution/trapping_rain_water.py)||Hard||
 |43|[Multiply Strings](https://leetcode.com/problems/multiply-strings/)|[Python](algorithms/python-solution/solution/multiply_strings.py)||Medium||
 |51|[N-Queens](https://leetcode.com/problems/n-queens/)|[Python](algorithms/python-solution/solution/n_queens.py)||Hard||
-|52|[N-Queens-II](https://leetcode.com/problems/n-queens-ii/)|[Python](algorithms/python-solution/solution/n_queens_ii.py)||Hard||
+|52|[N-Queens II](https://leetcode.com/problems/n-queens-ii/)|[Python](algorithms/python-solution/solution/n_queens_ii.py)||Hard||
 |53|[Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)|[Java](algorithms/java-solution/src/main/java/com/leetcode/solution/MaximumSubarray.java) [Python](algorithms/python-solution/solution/maximum_subarray.py)||Easy||
+|78|[Subsets](https://leetcode.com/problems/subsets/)|[Python](algorithms/python-solution/solution/subsets.py)||Medium|`Array` `Backtracking`|
+|90|[Subsets II](https://leetcode.com/problems/subsets-ii/)|[Python](algorithms/python-solution/solution/subsets_ii.py)||Medium|`Array` `Backtracking`|
 |94|[Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/)|[Python](algorithms/python-solution/solution/binary_tree_inorder_traversal.py)||Medium||
 |654|[Maximum Binary Tree](https://leetcode.com/problems/maximum-binary-tree/)|[Python](algorithms/python-solution/solution/maximum_binary_tree.py) ||Medium| |
 |771|[Jewels and Stones](https://leetcode.com/problems/jewels-and-stones/)|[Python](algorithms/python-solution/solution/jewels_and_stones.py)||Easy||

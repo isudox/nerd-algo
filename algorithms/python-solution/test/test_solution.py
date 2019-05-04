@@ -684,3 +684,20 @@ def test_reverse_string(s, expect):
 def test_product_of_array_except_self(nums, expect):
     from solution.product_of_array_except_self import Solution
     assert Solution().product_except_self(nums) == expect
+
+
+@pytest.mark.parametrize("nums, sets", [
+    ([1, 2, 3], [
+        [3],
+        [1],
+        [2],
+        [1, 2, 3],
+        [1, 3],
+        [2, 3],
+        [1, 2],
+        []
+    ])
+])
+def test_subsets(nums, sets):
+    from solution.subsets import Solution
+    assert Solution().subsets(nums) == sets
