@@ -19,11 +19,42 @@ Output:
   []
 ]
 """
+import copy
 from typing import List
 
 
 class Solution:
 
     def subsets_with_dup(self, nums: List[int]) -> List[List[int]]:
-        ans = []
+
+        def frequency(collection: List[int], target: int) -> int:
+            res = 0
+            for i in collection:
+                if i == target:
+                    res += 1
+            return res
+
+        if not nums:
+            return [[]]
+        pre_nums = nums[:len(nums) - 1]
+        pre_ans = self.subsets_with_dup(pre_nums)
+        ans = copy.deepcopy(pre_ans)
+        is_dup = nums[-1] in pre_nums
+        for ele in pre_ans:
+            if is_dup:
+                # key tip: if previous list contains N num
+                # and N < frequency of num in previous nums, then abandon it
+                if frequency(ele, nums[-1]) < frequency(pre_ans[-1], nums[-1]):
+                    continue
+            ans.append(ele + [nums[-1]])
         return ans
+
+
+if __name__ == "__main__":
+    solution = Solution()
+    print(solution.subsets_with_dup([]))
+    print(solution.subsets_with_dup([1]))
+    print(solution.subsets_with_dup([1, 2]))
+    print(solution.subsets_with_dup([1, 2, 3]))
+    print(solution.subsets_with_dup([1, 2, 2]))
+    print(solution.subsets_with_dup([2, 2, 2]))

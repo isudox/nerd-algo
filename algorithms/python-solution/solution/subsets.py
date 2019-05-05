@@ -20,9 +20,6 @@ Output:
   [1,2],
   []
 ]
-
-
-
 """
 import copy
 from typing import List
@@ -42,10 +39,10 @@ class Solution:
         if not nums:
             return [[]]
         pre_ans = self.subsets(nums[:len(nums) - 1])
+        # key tip: deep copy and append new num.
         ans = copy.deepcopy(pre_ans)
         for ele in pre_ans:
-            ele.append(nums[-1])
-            ans.append(ele)
+            ans.append(ele + [nums[-1]])
         return ans
 
 

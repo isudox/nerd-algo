@@ -498,4 +498,28 @@ class SolutionsTest extends Specification {
         [3, 2, 1, 2, 1]                      | 1
         [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1] | 6
     }
+
+    def "subsets"(int[] nums, List<List<Integer>> expect) {
+        given:
+        def solution = new Subsets()
+        expect:
+        solution.subsets(nums) == expect
+        where:
+        nums      | expect
+        []        | [[]]
+        [1]       | [[], [1]]
+        [1, 2]    | [[], [1], [2], [1, 2]]
+        [1, 2, 3] | [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+    }
+
+    def "subsets-ii"(int[] nums, List<List<Integer>> expect) {
+        given:
+        def solution = new Subsets2()
+        expect:
+        solution.subsetsWithDup(nums) == expect
+        where:
+        nums      | expect
+        [2, 2, 2] | [[], [2], [2, 2], [2, 2, 2]]
+        [1, 2, 2] | [[], [1], [2], [1, 2], [2, 2], [1, 2, 2]]
+    }
 }

@@ -687,17 +687,18 @@ def test_product_of_array_except_self(nums, expect):
 
 
 @pytest.mark.parametrize("nums, sets", [
-    ([1, 2, 3], [
-        [3],
-        [1],
-        [2],
-        [1, 2, 3],
-        [1, 3],
-        [2, 3],
-        [1, 2],
-        []
-    ])
+    ([1, 2, 3], [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]])
 ])
 def test_subsets(nums, sets):
     from solution.subsets import Solution
     assert Solution().subsets(nums) == sets
+
+
+@pytest.mark.parametrize("nums, sets", [
+    ([2, 2, 2], [[], [2], [2, 2], [2, 2, 2]]),
+    ([1, 2, 2], [[], [1], [2], [1, 2], [2, 2], [1, 2, 2]]),
+    ([1, 2, 3], [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]])
+])
+def test_subsets(nums, sets):
+    from solution.subsets_ii import Solution
+    assert Solution().subsets_with_dup(nums) == sets
