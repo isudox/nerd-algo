@@ -144,13 +144,4 @@ public final class Converter {
     public static ObjectMapper getObjectMapper() {
         return mapper;
     }
-
-    public static void main(String[] args) {
-        int[] array = new int[] {1, 2, 3, 4, 5, 6};
-        ListNode listNode = convertListNode(array);
-        System.out.println(Arrays.toString(array));
-        System.out.println(printListNode(listNode));
-        System.out.println(Arrays.toString(convertArray(listNode)));
-        System.out.println(getSize(listNode));
-    }
 }

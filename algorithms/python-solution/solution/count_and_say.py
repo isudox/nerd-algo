@@ -66,13 +66,3 @@ class Solution:
             ans = say(ans)
 
         return ans
-
-
-if __name__ == "__main__":
-    solution = Solution()
-    print(solution.count_and_say(1))
-    print(solution.count_and_say(2))
-    print(solution.count_and_say(3))
-    print(solution.count_and_say(4))
-    print(solution.count_and_say(15))
-    print(solution.count_and_say(30))

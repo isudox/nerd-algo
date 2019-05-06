@@ -72,9 +72,3 @@ class Solution:
             return root
 
         return backtrack(0, len(preorder) - 1)
-
-
-if __name__ == "__main__":
-    solution = Solution()
-    print(solution.bst_from_preorder([8, 5, 1, 7, 10, 12]))
-    print(solution.bst_from_preorder([4, 2]))

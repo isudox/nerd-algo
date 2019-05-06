@@ -46,12 +46,3 @@ class Solution:
 
         backtrack(n, 0, [])
         return ans
-
-
-if __name__ == '__main__':
-    solution = Solution()
-    print(solution.combination_sum3(3, 3))
-    print(solution.combination_sum3(1, 10))
-    print(solution.combination_sum3(2, 6))
-    print(solution.combination_sum3(3, 7))
-    print(solution.combination_sum3(3, 9))

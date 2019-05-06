@@ -59,8 +59,3 @@ class Solution:
                 ans += t[i]
 
         return ans
-
-
-if __name__ == '__main__':
-    solution = Solution()
-    print(solution.custom_sort_string("cba", "abcd"))

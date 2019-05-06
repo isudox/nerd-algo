@@ -522,4 +522,26 @@ class SolutionsTest extends Specification {
         [2, 2, 2] | [[], [2], [2, 2], [2, 2, 2]]
         [1, 2, 2] | [[], [1], [2], [1, 2], [2, 2], [1, 2, 2]]
     }
+
+    def "first-missing-positive"(int[] nums, int expect) {
+        given:
+        def solution = new FirstMissingPositive()
+        expect:
+        solution.firstMissingPositive(nums) == expect
+        where:
+        nums              | expect
+        [1, 2, 0]         | 3
+        [3, 4, -1, 1]     | 2
+        [7, 8, 9, 11, 12] | 1
+    }
+
+    def "permutations"(int[] nums, List<List<Integer>> expect) {
+        given:
+        def solution = new Permutations()
+        expect:
+        solution.permute(nums) == expect
+        where:
+        nums      | expect
+        [1, 2, 3] | [[3, 2, 1], [2, 3, 1], [2, 1, 3], [3, 1, 2], [1, 3, 2], [1, 2, 3]]
+    }
 }

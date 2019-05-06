@@ -60,11 +60,3 @@ class Solution:
         backtrack(candidates, target, 0, [])
 
         return ans
-
-
-if __name__ == '__main__':
-    solution = Solution()
-    print(solution.combination_sum([1, 2], 1))
-    print(solution.combination_sum([1, 2], 2))
-    print(solution.combination_sum([2, 3, 6, 7], 7))
-    print(solution.combination_sum([2, 3, 5], 8))

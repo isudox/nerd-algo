@@ -43,11 +43,3 @@ class Solution:
             else:
                 ans[i] = product // nums[i]
         return ans
-
-
-if __name__ == "__main__":
-    solution = Solution()
-    print(solution.product_except_self([0, 0]))
-    print(solution.product_except_self([1, 0]))
-    print(solution.product_except_self([9, 0, -2]))
-    print(solution.product_except_self([1, 2, 3, 4]))

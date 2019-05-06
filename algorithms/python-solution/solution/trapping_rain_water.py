@@ -49,11 +49,3 @@ class Solution:
                 left = h
 
         return ans
-
-
-if __name__ == "__main__":
-    solution = Solution()
-    print(solution.trap([2, 1, 0, 1, 3]))
-    print(solution.trap([3, 2, 1, 2, 1]))
-    print(solution.trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]))
-    print(solution.trap([4, 2, 3]))

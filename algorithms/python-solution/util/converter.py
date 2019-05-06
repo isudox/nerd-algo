@@ -26,8 +26,3 @@ class Converter:
             last_node.right = node_list[last * 2 + 2]
 
         return node_list[0]
-
-
-if __name__ == "__main__":
-    converter = Converter()
-    converter.list_to_tree([1, None, 2, 3])

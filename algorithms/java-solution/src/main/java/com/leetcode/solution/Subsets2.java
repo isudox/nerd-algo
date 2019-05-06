@@ -65,13 +65,4 @@ public class Subsets2 {
         }
         return false;
     }
-
-    public static void main(String[] args) {
-        Subsets2 solution = new Subsets2();
-        System.out.println(solution.subsetsWithDup(new int[] {1}));
-        System.out.println(solution.subsetsWithDup(new int[] {1, 2}));
-        System.out.println(solution.subsetsWithDup(new int[] {1, 2, 2}));
-        System.out.println(solution.subsetsWithDup(new int[] {2, 2, 2}));
-        System.out.println(solution.subsetsWithDup(new int[] {4, 4, 4, 1, 4}));
-    }
 }

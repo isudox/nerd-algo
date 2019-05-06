@@ -26,6 +26,7 @@ Note:
 
 
 class Solution:
+
     def unique_paths_iii(self, grid):
         """
         :type grid: List[List[int]]
@@ -62,8 +63,3 @@ class Solution:
 
         backtrack(visited, start_i, start_j, 0)
         return ans
-
-
-if __name__ == "__main__":
-    print(Solution().unique_paths_iii(
-        [[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 2, -1]]))

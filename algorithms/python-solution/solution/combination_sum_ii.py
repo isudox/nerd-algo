@@ -61,11 +61,4 @@ class Solution:
                 last_pop = store.pop()
 
         backtrack(candidates, target, 0, [])
-
         return ans
-
-
-if __name__ == '__main__':
-    solution = Solution()
-    print(solution.combination_sum2([10, 1, 2, 7, 6, 1, 5], 8))
-    print(solution.combination_sum2([2, 5, 2, 1, 2], 5))

@@ -702,3 +702,28 @@ def test_subsets(nums, sets):
 def test_subsets(nums, sets):
     from solution.subsets_ii import Solution
     assert Solution().subsets_with_dup(nums) == sets
+
+
+@pytest.mark.parametrize("nums, expect", [
+    ([1, 2, 0], 3),
+    ([3, 4, -1, 1], 2),
+    ([7, 8, 9, 11, 12], 1)
+])
+def test_first_missing_positive(nums, expect):
+    from solution.first_missing_positive import Solution
+    assert Solution().first_missing_positive(nums) == expect
+
+
+@pytest.mark.parametrize("nums, expect", [
+    ([1, 2, 3], [
+        [3, 2, 1],
+        [2, 3, 1],
+        [2, 1, 3],
+        [3, 1, 2],
+        [1, 3, 2],
+        [1, 2, 3]
+    ])
+])
+def test_permutations(nums, expect):
+    from solution.permutations import Solution
+    assert Solution().permute(nums) == expect

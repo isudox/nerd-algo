@@ -71,16 +71,3 @@ class Solution:
             backtrack(1, [i])
 
         return ans
-
-
-if __name__ == "__main__":
-    solution = Solution()
-    print(solution.total_n_queens(1))
-    print(solution.total_n_queens(2))
-    print(solution.total_n_queens(3))
-    print(solution.total_n_queens(4))
-    print(solution.total_n_queens(5))
-    print(solution.total_n_queens(6))
-    print(solution.total_n_queens(7))
-    print(solution.total_n_queens(8))
-    print(solution.total_n_queens(9))

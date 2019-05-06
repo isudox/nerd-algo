@@ -40,9 +40,3 @@ class Solution:
             if stone in j:
                 ans += 1
         return ans
-
-
-if __name__ == "__main__":
-    solution = Solution()
-    print(solution.num_jewels_in_stones("aA", "aAAbbbb"))
-    print(solution.num_jewels_in_stones("z", "ZZ"))

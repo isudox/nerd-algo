@@ -44,11 +44,3 @@ class Solution:
         for ele in pre_ans:
             ans.append(ele + [nums[-1]])
         return ans
-
-
-if __name__ == "__main__":
-    solution = Solution()
-    print(solution.subsets([]))
-    print(solution.subsets([1]))
-    print(solution.subsets([1, 2]))
-    print(solution.subsets([1, 2, 3]))

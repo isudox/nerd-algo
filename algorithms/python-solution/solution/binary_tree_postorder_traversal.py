@@ -35,11 +35,3 @@ class Solution:
         ans += self.recursive_postorder_traversal(root.right)
         ans.append(root.val)
         return ans
-
-
-if __name__ == "__main__":
-    solution = Solution()
-    root_node = TreeNode(1)
-    root_node.right = TreeNode(2)
-    root_node.right.left = TreeNode(3)
-    print(solution.recursive_postorder_traversal(root_node))

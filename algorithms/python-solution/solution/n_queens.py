@@ -91,15 +91,3 @@ class Solution:
         for i in range(n):
             backtrack(1, [i], [output(i)])
         return ans
-
-
-if __name__ == "__main__":
-    solution = Solution()
-    print(solution.solve_n_queens(1))
-    print(solution.solve_n_queens(2))
-    print(solution.solve_n_queens(3))
-    print(solution.solve_n_queens(4))
-    print(solution.solve_n_queens(5))
-    print(solution.solve_n_queens(6))
-    print(solution.solve_n_queens(7))
-    print(solution.solve_n_queens(8))

@@ -48,13 +48,3 @@ class Solution:
                     continue
             ans.append(ele + [nums[-1]])
         return ans
-
-
-if __name__ == "__main__":
-    solution = Solution()
-    print(solution.subsets_with_dup([]))
-    print(solution.subsets_with_dup([1]))
-    print(solution.subsets_with_dup([1, 2]))
-    print(solution.subsets_with_dup([1, 2, 3]))
-    print(solution.subsets_with_dup([1, 2, 2]))
-    print(solution.subsets_with_dup([2, 2, 2]))

@@ -55,8 +55,3 @@ class Solution:
                     break
                 ans.append(int(value))
         return list(set(ans))
-
-
-if __name__ == '__main__':
-    solution = Solution()
-    assert solution.powerful_integers(2, 3, 10) == [2, 3, 4, 5, 7, 9, 10]

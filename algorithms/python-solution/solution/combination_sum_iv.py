@@ -66,9 +66,3 @@ class Solution:
             ans += count_permutation(i)
 
         return ans
-
-
-if __name__ == '__main__':
-    solution = Solution()
-    print(solution.combination_sum4([1, 2, 3], 4))
-    print(solution.combination_sum4([4, 2, 1], 32))

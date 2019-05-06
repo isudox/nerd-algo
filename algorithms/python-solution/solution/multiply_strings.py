@@ -67,12 +67,3 @@ class Solution:
         if not find_first_non_zero:
             return "0"
         return ans
-
-
-if __name__ == "__main__":
-    solution = Solution()
-    print(solution.multiply("0", "1"))
-    print(solution.multiply("99", "99"))
-    print(solution.multiply("999", "999"))
-    print(solution.multiply("999", "9999"))
-    print(solution.multiply("1234567890", "9876543210"))

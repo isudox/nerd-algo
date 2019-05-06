@@ -37,13 +37,3 @@ class Solution:
             s[right] = temp
             left += 1
             right -= 1
-
-
-if __name__ == "__main__":
-    solution = Solution()
-    s1 = ["h", "e", "l", "l", "o"]
-    s2 = ["H", "a", "n", "n", "a", "h"]
-    solution.reverse_string(s1)
-    solution.reverse_string(s2)
-    print(s1)
-    print(s2)

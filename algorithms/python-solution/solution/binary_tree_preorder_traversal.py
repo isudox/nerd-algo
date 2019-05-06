@@ -34,11 +34,3 @@ class Solution:
         ans += self.recursive_preorder_traversal(root.left)
         ans += self.recursive_preorder_traversal(root.right)
         return ans
-
-
-if __name__ == "__main__":
-    solution = Solution()
-    root_node = TreeNode(1)
-    root_node.right = TreeNode(2)
-    root_node.right.left = TreeNode(3)
-    print(solution.recursive_preorder_traversal(root_node))
