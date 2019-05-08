@@ -727,3 +727,19 @@ def test_first_missing_positive(nums, expect):
 def test_permutations(nums, expect):
     from solution.permutations import Solution
     assert Solution().permute(nums) == expect
+
+
+@pytest.mark.parametrize("nums, expect", [
+    ([1, 2], [
+        [2, 1],
+        [1, 2]
+    ]),
+    ([1, 1, 2], [
+        [2, 1, 1],
+        [1, 2, 1],
+        [1, 1, 2]
+    ])
+])
+def test_permutations_ii(nums, expect):
+    from solution.permutations_ii import Solution
+    assert Solution().permute_unique(nums) == expect

@@ -36,7 +36,7 @@ class Solution:
 
         if not nums:
             return [[]]
-        pre_nums = nums[:len(nums) - 1]
+        pre_nums = nums[:-1]
         pre_ans = self.subsets_with_dup(pre_nums)
         ans = copy.deepcopy(pre_ans)
         is_dup = nums[-1] in pre_nums
