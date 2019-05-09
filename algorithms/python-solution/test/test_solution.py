@@ -742,4 +742,5 @@ def test_permutations(nums, expect):
 ])
 def test_permutations_ii(nums, expect):
     from solution.permutations_ii import Solution
-    assert Solution().permute_unique(nums) == expect
+    solution = Solution()
+    assert solution.permute_unique(nums) == expect

@@ -44,3 +44,20 @@ class Solution:
                         continue
                 ans.append(temp)
         return ans
+
+    def permute_unique_dfs(self, nums: List[int]) -> List[List[int]]:
+        ans = []
+
+        def dfs(permutation: List[int], nums: List[int]):
+            nonlocal ans
+            if not nums:
+                ans.append(permutation)
+            else:
+                used = []
+                for i in range(len(nums)):
+                    if nums[i] not in used:
+                        used.append(nums[i])
+                        dfs(permutation + [nums[i]], nums[:i] + nums[i + 1:])
+
+        dfs([], nums)
+        return ans
