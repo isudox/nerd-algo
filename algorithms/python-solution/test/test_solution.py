@@ -730,17 +730,60 @@ def test_permutations(nums, expect):
 
 
 @pytest.mark.parametrize("nums, expect", [
-    ([1, 2], [
-        [2, 1],
-        [1, 2]
-    ]),
-    ([1, 1, 2], [
-        [2, 1, 1],
-        [1, 2, 1],
-        [1, 1, 2]
-    ])
+    ([1, 2], [[1, 2], [2, 1]]),
+    ([1, 1, 2], [[1, 1, 2], [1, 2, 1], [2, 1, 1]])
 ])
 def test_permutations_ii(nums, expect):
     from solution.permutations_ii import Solution
     solution = Solution()
-    assert solution.permute_unique(nums) == expect
+    assert solution.permute_unique_dfs(nums) == expect
+
+
+@pytest.mark.parametrize("x, n, expect", [
+    (2, 0, 1),
+    (2, 3, 8),
+    (2, -2, 0.25)
+])
+def test_pow_n(x, n, expect):
+    from solution.powx_n import Solution
+    assert Solution().my_pow(x, n) == expect
+
+
+@pytest.mark.parametrize("strs, expect", [
+    (["eat", "tea", "tan", "ate", "nat", "bat"], [
+        ['eat', 'tea', 'ate'],
+        ['tan', 'nat'],
+        ['bat']
+    ]),
+])
+def test_group_anagrams(strs, expect):
+    from solution.group_anagrams import Solution
+    assert Solution().group_anagrams(strs) == expect
+
+
+@pytest.mark.parametrize("matrix, expect", [
+    ([
+         [1, 2, 3],
+         [4, 5, 6],
+         [7, 8, 9]
+     ], [
+         [7, 4, 1],
+         [8, 5, 2],
+         [9, 6, 3]
+     ]),
+    ([
+         [5, 1, 9, 11],
+         [2, 4, 8, 10],
+         [13, 3, 6, 7],
+         [15, 14, 12, 16]
+     ], [
+         [15, 13, 2, 5],
+         [14, 3, 4, 1],
+         [12, 6, 8, 9],
+         [16, 7, 10, 11]
+     ])
+])
+def test_rotate_image(matrix, expect):
+    from solution.rotate_image import Solution
+    Solution().rotate(matrix)
+    assert matrix == expect

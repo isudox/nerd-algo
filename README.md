@@ -29,6 +29,9 @@
 |43|[Multiply Strings](https://leetcode.com/problems/multiply-strings/)|M|[Python](algorithms/python-solution/solution/multiply_strings.py)|[Math](#math), [String](#string)||
 |46|[Permutations](https://leetcode.com/problems/permutations/)|M|[Java](algorithms/java-solution/src/main/java/com/leetcode/solution/Permutations.java) [Python](algorithms/python-solution/solution/permutations.py)|[Backtracking](#backtracking)||
 |47|[Permutations II](https://leetcode.com/problems/permutations-ii/)|M|[Java](algorithms/java-solution/src/main/java/com/leetcode/solution/Permutations2.java) [Python](algorithms/python-solution/solution/permutations_ii.py)|[Backtracking](#backtracking)||
+|48|[Rotate Image](https://leetcode.com/problems/rotate-image/)|M|[Python](algorithms/python-solution/solution/rotate_image.py)|[Array](#array)||
+|49|[Group Anagrams](https://leetcode.com/problems/group-anagrams/)|M|[Python](algorithms/python-solution/solution/group_anagrams.py)|[Hash Table](#hash-table), [String](#string)||
+|50|[Pow(x, n)](https://leetcode.com/problems/powx-n/)|M|[Python](algorithms/python-solution/solution/powx_n.py)|[Math](#math), [Binary Search](#binary-search)||
 |51|[N-Queens](https://leetcode.com/problems/n-queens/)|H|[Python](algorithms/python-solution/solution/n_queens.py)|[Backtracking](#backtracking)||
 |52|[N-Queens II](https://leetcode.com/problems/n-queens-ii/)|H|[Python](algorithms/python-solution/solution/n_queens_ii.py)|[Backtracking](#backtracking)||
 |53|[Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)|E|[Java](algorithms/java-solution/src/main/java/com/leetcode/solution/MaximumSubarray.java) [Python](algorithms/python-solution/solution/maximum_subarray.py)|[Array](#array), [Divide and Conquer](#divide-and-conquer), [DP](#dp)||
