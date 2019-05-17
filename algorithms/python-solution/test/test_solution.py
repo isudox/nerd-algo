@@ -787,3 +787,37 @@ def test_rotate_image(matrix, expect):
     from solution.rotate_image import Solution
     Solution().rotate(matrix)
     assert matrix == expect
+
+
+@pytest.mark.parametrize("nums, expect", [
+    ([0], True),
+    ([2, 0, 0], True),
+    ([2, 3, 1, 1, 4], True),
+    ([3, 2, 1, 0, 4], False),
+    ([4, 2, 6, 1, 0, 6, 4, 3, 2, 1, 0, 1, 1, 0, 8, 1], False)
+])
+def test_jump_game(nums, expect):
+    from solution.jump_game import Solution
+    assert Solution().can_jump(nums) == expect
+
+
+@pytest.mark.parametrize("intervals, expect", [
+    ([[1, 3], [2, 6], [8, 10], [15, 18]], [[1, 6], [8, 10], [15, 18]]),
+    ([[1, 4], [4, 5]], [[1, 5]]),
+    ([[2, 3], [4, 5], [6, 7], [8, 9]], [[2, 3], [4, 5], [6, 7], [8, 9]]),
+    ([[2, 3], [4, 5], [6, 7], [8, 9], [1, 10], [1, 10]], [[1, 10]])
+])
+def test_merge_intervals(intervals, expect):
+    from solution.merge_intervals import Solution
+    assert Solution().merge(intervals) == expect
+
+
+@pytest.mark.parametrize("intervals, new_interval, expect", [
+    ([[1, 3], [6, 9]], [2, 5], [[1, 5], [6, 9]]),
+    ([[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]], [4, 8],
+     [[1, 2], [3, 10], [12, 16]]),
+])
+def test_insert_interval(intervals, new_interval, expect):
+    from solution.insert_interval import Solution
+    solution = Solution()
+    assert solution.insert_2(intervals, new_interval) == expect

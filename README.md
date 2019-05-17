@@ -35,6 +35,8 @@
 |51|[N-Queens](https://leetcode.com/problems/n-queens/)|H|[Python](algorithms/python-solution/solution/n_queens.py)|[Backtracking](#backtracking)||
 |52|[N-Queens II](https://leetcode.com/problems/n-queens-ii/)|H|[Python](algorithms/python-solution/solution/n_queens_ii.py)|[Backtracking](#backtracking)||
 |53|[Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)|E|[Java](algorithms/java-solution/src/main/java/com/leetcode/solution/MaximumSubarray.java) [Python](algorithms/python-solution/solution/maximum_subarray.py)|[Array](#array), [Divide and Conquer](#divide-and-conquer), [DP](#dp)||
+|55|[Jump Game](https://leetcode.com/problems/jump-game/)|M|[Python](algorithms/python-solution/solution/jump_game.py)|||
+|56|[Merge Intervals](https://leetcode.com/problems/merge-intervals/)|M|[Python](algorithms/python-solution/solution/merge_intervals.py)|||
 |68|[Text Justification](https://leetcode.com/problems/text-justification)|H|[Python](algorithms/python-solution/solution/text_justification.py)|[String](#string)||
 |78|[Subsets](https://leetcode.com/problems/subsets/)|M|[Java](algorithms/java-solution/src/main/java/com/leetcode/solution/Subsets.java) [Python](algorithms/python-solution/solution/subsets.py)|[Array](#array), [Backtracking](#backtracking)||
 |90|[Subsets II](https://leetcode.com/problems/subsets-ii/)|M|[Java](algorithms/java-solution/src/main/java/com/leetcode/solution/Subsets2.java) [Python](algorithms/python-solution/solution/subsets_ii.py)|[Array](#array), [Backtracking](#backtracking)||
