@@ -821,3 +821,46 @@ def test_insert_interval(intervals, new_interval, expect):
     from solution.insert_interval import Solution
     solution = Solution()
     assert solution.insert_2(intervals, new_interval) == expect
+
+
+@pytest.mark.parametrize("s, expect", [
+    ("", 0),
+    ("   ", 0),
+    ("hello world", 5),
+    ("hello world   ", 5)
+])
+def test_length_of_last_word(s, expect):
+    from solution.length_of_last_word import Solution
+    solution = Solution()
+    assert solution.length_of_lastWord(s) == expect
+
+
+@pytest.mark.parametrize("matrix, output", [
+    ([[1]], [1]),
+    ([
+         [1, 2, 3],
+         [4, 5, 6],
+         [7, 8, 9]
+     ], [1, 2, 3, 6, 9, 8, 7, 4, 5]),
+    ([
+         [1, 2, 3, 4],
+         [5, 6, 7, 8],
+         [9, 10, 11, 12]
+     ], [1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7])
+])
+def test_spiral_matrix(matrix, output):
+    from solution.spiral_matrix import Solution
+    s = Solution()
+    assert s.spiral_order(matrix) == output
+
+
+@pytest.mark.parametrize("n, matrix", [
+    (1, [[1]]),
+    (2, [[1, 2], [4, 3]]),
+    (3, [[1, 2, 3], [8, 9, 4], [7, 6, 5]]),
+    (4, [[1, 2, 3, 4], [12, 13, 14, 5], [11, 16, 15, 6], [10, 9, 8, 7]])
+])
+def test_spiral_matrix(n, matrix):
+    from solution.spiral_matrix_ii import Solution
+    solution = Solution()
+    assert solution.generate_matrix(n) == matrix
