@@ -35,4 +35,18 @@ Output: 28
 
 class Solution:
     def unique_paths(self, m: int, n: int) -> int:
-        pass
+        # dp[i][j] is the number of ways to reach grid[i][j] from start corner.
+        dp = [[0] * m for _ in range(n)]
+        dp[0] = [1] * m
+        for _ in range(n):
+            dp[_][0] = 1
+        for i in range(1, n):
+            for j in range(1, m):
+                dp[i][j] = dp[i][j - 1] + dp[i - 1][j]
+        return dp[n - 1][m - 1]
+
+
+if __name__ == "__main__":
+    s = Solution()
+    print(s.unique_paths(3, 2))
+    print(s.unique_paths(7, 3))

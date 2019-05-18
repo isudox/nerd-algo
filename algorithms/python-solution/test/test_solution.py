@@ -860,7 +860,49 @@ def test_spiral_matrix(matrix, output):
     (3, [[1, 2, 3], [8, 9, 4], [7, 6, 5]]),
     (4, [[1, 2, 3, 4], [12, 13, 14, 5], [11, 16, 15, 6], [10, 9, 8, 7]])
 ])
-def test_spiral_matrix(n, matrix):
+def test_spiral_matrix_ii(n, matrix):
     from solution.spiral_matrix_ii import Solution
     solution = Solution()
     assert solution.generate_matrix(n) == matrix
+
+
+@pytest.mark.parametrize("m,n, expect", [
+    (3, 2, 3),
+    (7, 3, 28),
+    (9, 9, 12870)
+])
+def test_unique_paths(m, n, expect):
+    from solution.unique_paths import Solution
+    s = Solution()
+    assert s.unique_paths(m, n) == expect
+
+
+@pytest.mark.parametrize("grid, expect", [
+    ([
+         [0, 0, 0],
+         [0, 1, 0],
+         [0, 0, 0]
+     ], 2)
+])
+def test_unique_paths_ii(grid, expect):
+    from solution.unique_paths_ii import Solution
+    s = Solution()
+    assert s.unique_paths_with_obstacles(grid) == expect
+
+
+@pytest.mark.parametrize("grid, expect", [
+    ([
+         [1, 3, 1],
+         [1, 5, 1],
+         [4, 2, 1]
+     ], 7),
+    ([
+         [1, 2, 3, 4],
+         [12, 51, 9, 5],
+         [23, 9, 1, 8]
+     ], 23)
+])
+def test_min_path_sum(grid, expect):
+    from solution.minimum_path_sum import Solution
+    s = Solution()
+    assert s.min_path_sum(grid) == expect
