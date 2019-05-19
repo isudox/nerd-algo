@@ -906,3 +906,25 @@ def test_min_path_sum(grid, expect):
     from solution.minimum_path_sum import Solution
     s = Solution()
     assert s.min_path_sum(grid) == expect
+
+
+@pytest.mark.parametrize("digits, expect", [
+    ([1, 2, 3], [1, 2, 4]),
+    ([0], [1]),
+    ([9, 9, 9], [1, 0, 0, 0]),
+])
+def test_plus_one(digits, expect):
+    from solution.plus_one import Solution
+    s = Solution()
+    assert s.plus_one_2(digits) == expect
+
+
+@pytest.mark.parametrize("n, expect", [
+    (1, 1),
+    (2, 2),
+    (3, 3),
+])
+def test_climb_stairs(n, expect):
+    from solution.climbing_stairs import Solution
+    s = Solution()
+    assert s.climb_stairs(n) == expect
