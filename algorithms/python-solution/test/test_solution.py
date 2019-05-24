@@ -892,3 +892,24 @@ def test_regular_expression_matching(s, p, expect):
     from solution.regular_expression_matching import Solution
     solution = Solution()
     assert solution.is_match(s, p) == expect
+
+
+@pytest.mark.parametrize("word1, word2, expect", [
+    ("horse", "ros", 3),
+    ("intention", "execution", 5)
+])
+def test_edit_distance(word1, word2, expect):
+    from solution.edit_distance import Solution
+    solution = Solution()
+    solution.min_distance(word1, word2) == expect
+
+
+@pytest.mark.parametrize("nums, expect", [
+    ([2, 0, 2, 1, 1, 0], [0, 0, 1, 1, 2, 2]),
+    ([2, 1, 0, 2, 1, 0], [0, 0, 1, 1, 2, 2])
+])
+def test_sort_colors(nums, expect):
+    from solution.sort_colors import Solution
+    solution = Solution()
+    solution.sort_colors_2_pass(nums)
+    assert nums == expect
