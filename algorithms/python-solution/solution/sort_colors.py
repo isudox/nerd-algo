@@ -22,6 +22,17 @@ class Solution:
     def sort_colors_1_pass(self, nums: List[int]) -> None:
         left = 0
         right = len(nums) - 1
+        i = 0
+        while i <= right:
+            if nums[i] == 0:
+                nums[i], nums[left] = nums[left], 0
+                left += 1
+                i += 1
+            elif nums[i] == 2:
+                nums[i], nums[right] = nums[right], 2
+                right -= 1
+            else:
+                i += 1
 
     def sort_colors_2_pass(self, nums: List[int]) -> None:
         store = {0: 0, 1: 0, 2: 0}
@@ -29,5 +40,5 @@ class Solution:
             store[num] += 1
         i = 0
         for k, v in store.items():
-            nums[i:i + v] = [k] * v
+            nums[i: i + v] = [k] * v
             i += v

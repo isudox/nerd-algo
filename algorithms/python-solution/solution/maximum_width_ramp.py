@@ -35,7 +35,7 @@ from typing import List
 class Solution:
     def max_width_ramp(self, a: List[int]) -> int:
         ramp, size = 0, len(a)
-        candidates = [(a[size-1], size-1)]
+        candidates = [(a[size - 1], size - 1)]
         # candidates: i's decreasing, by increasing value of a[i]
         for i in range(size - 2, -1, -1):
             max_j = bisect.bisect(candidates, (a[i],))

@@ -79,7 +79,8 @@ class Solution:
         p_star_idx = -1
         s_temp_idx = -1
         while s_idx < s_len:
-            if p_idx == p_len or (p[p_idx] not in ["?", "*"] and p[p_idx] != s[s_idx]):
+            if p_idx == p_len or (
+                    p[p_idx] not in ["?", "*"] and p[p_idx] != s[s_idx]):
                 if p_star_idx == -1:
                     return False
                 else:

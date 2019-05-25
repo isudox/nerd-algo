@@ -905,11 +905,13 @@ def test_edit_distance(word1, word2, expect):
 
 
 @pytest.mark.parametrize("nums, expect", [
+    ([], []),
+    ([2, 0, 1], [0, 1, 2]),
     ([2, 0, 2, 1, 1, 0], [0, 0, 1, 1, 2, 2]),
     ([2, 1, 0, 2, 1, 0], [0, 0, 1, 1, 2, 2])
 ])
 def test_sort_colors(nums, expect):
     from solution.sort_colors import Solution
     solution = Solution()
-    solution.sort_colors_2_pass(nums)
+    solution.sort_colors_1_pass(nums)
     assert nums == expect

@@ -81,7 +81,6 @@ class Solution:
                 return 1
             return 0
 
-
         cnt = 0
         for i, row in enumerate(grid):
             for j, char in enumerate(row):

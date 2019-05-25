@@ -69,5 +69,6 @@ class Solution:
 
         for i in range(len(grid)):
             for j in range(len(grid[0])):
-                ans += min(left_right_skyline[i], top_bottom_skyline[j]) - grid[i][j]
+                ans += min(left_right_skyline[i],
+                           top_bottom_skyline[j]) - grid[i][j]
         return ans

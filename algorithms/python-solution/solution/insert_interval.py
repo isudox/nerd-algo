@@ -59,9 +59,3 @@ class Solution(object):
             else:
                 ans.append(intervals[i])
         return ans
-
-
-if __name__ == "__main__":
-    solution = Solution()
-    print(solution.insert_2([[1, 3], [6, 9]], [2, 5]))
-    print(solution.insert_2([[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]], [4, 8]))
