@@ -44,9 +44,3 @@ class Solution:
             for j in range(1, m):
                 dp[i][j] = dp[i][j - 1] + dp[i - 1][j]
         return dp[n - 1][m - 1]
-
-
-if __name__ == "__main__":
-    s = Solution()
-    print(s.unique_paths(3, 2))
-    print(s.unique_paths(7, 3))

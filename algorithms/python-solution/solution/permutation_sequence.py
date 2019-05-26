@@ -54,11 +54,3 @@ class Solution:
             return res
 
         return backtrack([_ for _ in range(1, n + 1)], k)
-
-
-if __name__ == "__main__":
-    s = Solution()
-    print(s.get_permutation(3, 3))
-    print(s.get_permutation(3, 1))
-    print(s.get_permutation(4, 9))
-    print(s.get_permutation(9, 1234))

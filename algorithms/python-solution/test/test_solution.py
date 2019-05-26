@@ -901,7 +901,7 @@ def test_regular_expression_matching(s, p, expect):
 def test_edit_distance(word1, word2, expect):
     from solution.edit_distance import Solution
     solution = Solution()
-    solution.min_distance(word1, word2) == expect
+    assert solution.min_distance(word1, word2) == expect
 
 
 @pytest.mark.parametrize("nums, expect", [
@@ -915,3 +915,16 @@ def test_sort_colors(nums, expect):
     solution = Solution()
     solution.sort_colors_1_pass(nums)
     assert nums == expect
+
+
+@pytest.mark.parametrize("s, t, expect", [
+    ("", "", ""),
+    ("A", "A", "A"),
+    ("A", "", ""),
+    ("", "A", ""),
+    ("ADOBECODEBANC", "ABC", "BANC")
+])
+def test_minimum_window_substring(s, t, expect):
+    from solution.minimum_window_substring import Solution
+    solution = Solution()
+    assert solution.min_window(s, t) == expect
