@@ -928,3 +928,26 @@ def test_minimum_window_substring(s, t, expect):
     from solution.minimum_window_substring import Solution
     solution = Solution()
     assert solution.min_window(s, t) == expect
+
+
+@pytest.mark.parametrize("board, word, expect", [
+    ([
+         ["A", "B", "C", "E"],
+         ["S", "F", "C", "S"],
+         ["A", "D", "E", "E"]
+     ], "ABCCED", True),
+    ([
+         ['A', 'B', 'C', 'E'],
+         ['S', 'F', 'C', 'S'],
+         ['A', 'D', 'E', 'E']
+     ], "SEE", True),
+    ([
+         ['A', 'B', 'C', 'E'],
+         ['S', 'F', 'C', 'S'],
+         ['A', 'D', 'E', 'E']
+     ], "ABCB", False)
+])
+def test_word_search(board, word, expect):
+    from solution.word_search import Solution
+    s = Solution()
+    assert s.exist(board, word) == expect
