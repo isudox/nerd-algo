@@ -8,8 +8,8 @@ branches:
 env:
   global:
     - GRADLE_OPTS="-Xms256m -Xmx384m"
-    - JAVA_SOLUTION_PATH=$TRAVIS_BUILD_DIR/algorithms/java-solution
-    - PYTHON_SOLUTION_PATH=$TRAVIS_BUILD_DIR/algorithms/python-solution
+    - JAVA_SOLUTION_PATH=$TRAVIS_BUILD_DIR/java-algorithm
+    - PYTHON_SOLUTION_PATH=$TRAVIS_BUILD_DIR/python-algorithm
 
 matrix:
   include:
