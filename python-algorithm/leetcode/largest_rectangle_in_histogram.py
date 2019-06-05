@@ -32,6 +32,7 @@ from typing import List
 
 class Solution:
     def largest_rectangle_area_1(self, heights: List[int]) -> int:
+        # time complexity: O(N)
         max_area = 0
         stack = []
         i, length = 0, len(heights)
@@ -74,19 +75,15 @@ class Solution:
         return max_area
 
     def brute_force(self, heights: List[int]) -> int:
-        i = length = len(heights)
-        if i == 0:
-            return 0
+        # time complexity: O(N^2)
+        length = len(heights)
         max_area = 0
-        while i > 0:
-            for start in range(0, length - i + 1):
-                cur_area = min(heights[start: start + i]) * i
-                max_area = max(max_area, cur_area)
-            i -= 1
-
+        for i in range(length):
+            left = right = i
+            while left - 1 >= 0 and heights[left - 1] >= heights[i]:
+                left -= 1
+            while right + 1 < length and heights[right + 1] >= heights[i]:
+                right += 1
+            max_area = max(max_area, (right - left + 1) * heights[i])
         return max_area
 
-
-if __name__ == '__main__':
-    s = Solution()
-    print(s.largest_rectangle_area_1([2, 1, 5, 6, 2, 3]))

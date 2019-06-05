@@ -544,4 +544,17 @@ class SolutionsTest extends Specification {
         nums      | expect
         [1, 2, 3] | [[3, 2, 1], [2, 3, 1], [2, 1, 3], [3, 1, 2], [1, 3, 2], [1, 2, 3]]
     }
+
+    def "largest-rectangle-in-histogram"(int[] heights, int result) {
+        given:
+        def solution = new LargestRectangleInHistogram()
+        expect:
+        solution.largestRectangleArea(heights) == result
+        where:
+        heights               | result
+        [2, 1, 5, 6, 2, 3]    | 10
+        [6, 2, 5, 4, 5, 1, 6] | 12
+        [2, 2, 2, 2, 2]       | 10
+        []                    | 0
+    }
 }
