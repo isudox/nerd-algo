@@ -52,6 +52,7 @@ class Solution:
         return max_area
 
     def largest_rectangle_area_2(self, heights: List[int]) -> int:
+        # time complexity: O(N)
         if not heights:
             return 0
         length = len(heights)

@@ -994,3 +994,13 @@ def test_black_white_matrix(matrix, expect):
     from other.black_white_matrix import Solution
     s = Solution()
     assert s.brute_force(matrix) == expect
+
+
+@pytest.mark.parametrize("n, res", [
+    (10, 16796),
+    (19, 1767263190)
+])
+def test_unique_binary_search_trees(n, res):
+    from leetcode.unique_binary_search_trees import Solution
+    solution = Solution()
+    assert solution.num_trees_1(n) == res
