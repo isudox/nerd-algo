@@ -12,7 +12,8 @@ class Converter:
 
         size = len(l)
         last = size // 2 - 1
-        node_list = [TreeNode(l[i]) if l[i] is not None else None for i in range(size)]
+        node_list = [TreeNode(l[i]) if l[i] is not None else None
+                     for i in range(size)]
 
         for i in range(last):
             node = node_list[i]
