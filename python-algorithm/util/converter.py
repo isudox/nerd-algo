@@ -6,7 +6,7 @@ from common.tree_node import TreeNode
 
 class Converter:
     @staticmethod
-    def list_to_tree(l: 'List[int]') -> Optional[TreeNode]:
+    def list_to_tree(l: List[int]) -> Optional[TreeNode]:
         if l is None or l[0] is None:
             return None
 
@@ -27,3 +27,34 @@ class Converter:
             last_node.right = node_list[last * 2 + 2]
 
         return node_list[0]
+
+    @staticmethod
+    def list2tree(l: List[int]) -> Optional[TreeNode]:
+        if not l:
+            return None
+
+        root = TreeNode(int(l[0]))
+        node_queue = [root]
+        front = 0
+        index = 1
+        while index < len(l):
+            node = node_queue[front]
+            front = front + 1
+
+            item = l[index]
+            index = index + 1
+            if item is not None:
+                left_number = int(item)
+                node.left = TreeNode(left_number)
+                node_queue.append(node.left)
+
+            if index >= len(l):
+                break
+
+            item = l[index]
+            index = index + 1
+            if item is not None:
+                right_number = int(item)
+                node.right = TreeNode(right_number)
+                node_queue.append(node.right)
+        return root
