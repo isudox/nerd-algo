@@ -1004,3 +1004,15 @@ def test_unique_binary_search_trees(n, res):
     from leetcode.unique_binary_search_trees import Solution
     solution = Solution()
     assert solution.num_trees_1(n) == res
+
+
+@pytest.mark.parametrize("nodes, expect", [
+    ([1, 2, 2, 3, 4, 4, 3], True),
+    ([1, 2, 2, None, 3, None, 3], False),
+    ([1, 2, 2, 3, None, None, 3], True)
+])
+def test_symmetric_tree(nodes, expect):
+    from leetcode.symmetric_tree import Solution
+    s = Solution()
+    assert s.is_symmetric_recursive(Converter.list2tree(nodes)) == expect
+    assert s.is_symmetric_iterative(Converter.list2tree(nodes)) == expect
