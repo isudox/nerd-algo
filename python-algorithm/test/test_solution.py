@@ -1016,3 +1016,24 @@ def test_symmetric_tree(nodes, expect):
     s = Solution()
     assert s.is_symmetric_recursive(Converter.list2tree(nodes)) == expect
     assert s.is_symmetric_iterative(Converter.list2tree(nodes)) == expect
+
+
+@pytest.mark.parametrize("root, expect", [
+    ([], []),
+    ([3, 9, 20, None, None, 15, 7], [[3], [9, 20], [15, 7]])
+])
+def test_binary_tree_level_order_traversal(root, expect):
+    from leetcode.binary_tree_level_order_traversal import Solution
+    s = Solution()
+    assert s.level_order(Converter.list2tree(root)) == expect
+
+
+@pytest.mark.parametrize("root, expect", [
+    ([3, 9, 20, None, None, 15, 7], 3),
+    ([], 0),
+    ([1, 2], 2)
+])
+def test_maximum_depth_of_binary_tree(root, expect):
+    from leetcode.maximum_depth_of_binary_tree import Solution
+    s = Solution()
+    assert s.max_depth(Converter.list2tree(root)) == expect
