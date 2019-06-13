@@ -22,16 +22,27 @@ from typing import List
 
 class Solution:
     def maximal_rectangle(self, matrix: List[List[str]]) -> int:
+        """
+        Time complexity O(N^2)
+        :param matrix:
+        :return:
+        """
+        if not matrix or not matrix[0]:
+            return 0
         rows, cols = len(matrix), len(matrix[0])
-        dp = [[0] * cols for _ in range(rows)]
-        for _ in range(cols):
-            pass
-        for _ in range(rows):
-            pass
-        for i in range(1, rows):
-            for j in range(1, cols):
-                if matrix[i][j] == 0:
-                    dp[i][j] = max(dp[i][j - 1], dp[i - 1][j])
+        heights = [0] * (cols + 1)
+        max_area = 0
+        for row in range(rows):
+            stack = [-1]
+            for col in range(cols + 1):
+                if col < cols and matrix[row][col] == "1":
+                    heights[col] += 1
                 else:
-                    dp[i][j] = max(dp[i][j - 1], dp[i - 1][j])
-        return dp[rows - 1][cols - 1]
+                    heights[col] = 0
+                while stack and heights[stack[-1]] >= heights[col]:
+                    height = heights[stack.pop()]
+                    width = col - stack[-1] - 1 if stack else col
+                    cur_area = height * width
+                    max_area = max(max_area, cur_area)
+                stack.append(col)
+        return max_area

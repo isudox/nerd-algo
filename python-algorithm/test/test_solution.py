@@ -975,7 +975,7 @@ def test_largest_rectangle_in_histogram(heights, expect):
 def test_maximal_rectangle(matrix, expect):
     from leetcode.maximal_rectangle import Solution
     s = Solution()
-    # assert s.maximal_rectangle(matrix) == expect
+    assert s.maximal_rectangle(matrix) == expect
 
 
 @pytest.mark.parametrize("matrix, expect", [
@@ -1037,3 +1037,13 @@ def test_maximum_depth_of_binary_tree(root, expect):
     from leetcode.maximum_depth_of_binary_tree import Solution
     s = Solution()
     assert s.max_depth(Converter.list2tree(root)) == expect
+
+
+@pytest.mark.parametrize("prices, expect", [
+    ([7, 1, 5, 3, 6, 4], 5),
+    ([7, 6, 4, 3, 1], 0)
+])
+def test_best_time_to_buy_and_sell_stock(prices, expect):
+    from leetcode.best_time_to_buy_and_sell_stock import Solution
+    s = Solution()
+    assert s.max_profit(prices) == expect
