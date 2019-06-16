@@ -1047,3 +1047,25 @@ def test_best_time_to_buy_and_sell_stock(prices, expect):
     from leetcode.best_time_to_buy_and_sell_stock import Solution
     s = Solution()
     assert s.max_profit(prices) == expect
+
+
+@pytest.mark.parametrize("nums, expect", [
+    ([100, 4, 200, 1, 3, 2], 4),
+    ([1, 2, 0, 1], 3)
+])
+def test_longest_consecutive_sequence(nums, expect):
+    from leetcode.longest_consecutive_sequence import Solution
+    s = Solution()
+    assert s.longest_consecutive_1(nums) == expect
+    assert s.longest_consecutive_2(nums) == expect
+    assert s.longest_consecutive_3(nums) == expect
+
+
+@pytest.mark.parametrize("tree, expect", [
+    ([1, 2, 3], 6),
+    ([-10, 9, 20, None, None, 15, 7], 42)
+])
+def test_binary_tree_maximum_path_sum(tree, expect):
+    from leetcode.binary_tree_maximum_path_sum import Solution
+    s = Solution()
+    assert s.max_path_sum(Converter.list2tree(tree)) == expect

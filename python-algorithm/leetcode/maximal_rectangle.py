@@ -33,7 +33,7 @@ class Solution:
         heights = [0] * (cols + 1)
         max_area = 0
         for row in range(rows):
-            stack = [-1]
+            stack = []
             for col in range(cols + 1):
                 if col < cols and matrix[row][col] == "1":
                     heights[col] += 1
