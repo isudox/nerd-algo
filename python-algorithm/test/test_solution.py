@@ -1069,3 +1069,17 @@ def test_binary_tree_maximum_path_sum(tree, expect):
     from leetcode.binary_tree_maximum_path_sum import Solution
     s = Solution()
     assert s.max_path_sum(Converter.list2tree(tree)) == expect
+
+
+@pytest.mark.parametrize("string, word_dict, expect", [
+    ("leetcode", ["leet", "code"], True),
+    ("applepenapple", ["apple", "pen"], True),
+    ("catsandog", ["cats", "dog", "sand", "and", "cat"], False),
+    ("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", ["a", "aa", "aaa", "aaaa"], True),
+    ("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab", ["a", "aa", "aaa", "aaaa"], False),
+])
+def test_word_break(string, word_dict, expect):
+    from leetcode.word_break import Solution
+    s = Solution()
+    assert s.word_break_1(string, word_dict) == expect
+    assert s.word_break_2(string, word_dict) == expect
