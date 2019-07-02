@@ -44,7 +44,7 @@ class Solution(object):
             return False
 
         p1, p2 = head, head
-        while p1 and p2:
+        while p2:
             p1 = p1.next
             p2 = p2.next
             if p2:

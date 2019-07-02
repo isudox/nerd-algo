@@ -41,5 +41,49 @@ from common.list_node import ListNode
 
 
 class Solution(object):
-    def detect_cycle(self, head: ListNode) -> ListNode:
-        return None
+    def detect_cycle_1(self, head: ListNode) -> ListNode:
+        """
+        Use extra space to record node.
+        :param head:
+        :return:
+        """
+        if not head:
+            return None
+        checked = {}
+        p = ListNode(0)
+        p.next = head
+        while p:
+            p = p.next
+            if not p:
+                return None
+            if p in checked:
+                return p
+            checked[p] = 1
+
+    def detect_cycle_2(self, head: ListNode) -> ListNode:
+        if not head:
+            return None
+        p1, p2 = head, head
+        cycle_len = 0
+        meet_times = 0
+
+        while p2:
+            if meet_times == 1:
+                cycle_len += 1
+            p1 = p1.next
+            p2 = p2.next
+            if not p2 or not p2.next:
+                return None
+            p2 = p2.next
+            if p1 == p2:
+                meet_times += 1
+            if meet_times == 2:
+                break
+        while head:
+            entry = head
+            for i in range(cycle_len):
+                entry = entry.next
+            if entry == head:
+                return entry
+            else:
+                head = head.next
