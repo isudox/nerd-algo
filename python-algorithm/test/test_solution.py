@@ -1083,3 +1083,11 @@ def test_word_break(string, word_dict, expect):
     s = Solution()
     assert s.word_break_1(string, word_dict) == expect
     assert s.word_break_2(string, word_dict) == expect
+
+
+@pytest.mark.parametrize("head, expect", [
+    ([1, 2], False)
+])
+def test_linked_list_cycle(head, expect):
+    from leetcode.linked_list_cycle import Solution
+    s = Solution()

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from typing import List, Optional
 
+from common.list_node import ListNode
 from common.tree_node import TreeNode
 
 
@@ -58,3 +59,11 @@ class Converter:
                 node.right = TreeNode(right_number)
                 node_queue.append(node.right)
         return root
+
+    @staticmethod
+    def list2node(l: List[int]) -> ListNode:
+        node = None
+        for ele in l:
+            node = ListNode(ele)
+
+        return node
