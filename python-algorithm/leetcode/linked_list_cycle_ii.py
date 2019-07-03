@@ -37,11 +37,13 @@ Explanation: There is no cycle in the linked list.
 Follow-up:
 Can you solve it without using extra space?
 """
+from typing import Optional
+
 from common.list_node import ListNode
 
 
 class Solution(object):
-    def detect_cycle_1(self, head: ListNode) -> ListNode:
+    def detect_cycle_1(self, head: ListNode) -> Optional[ListNode]:
         """
         Use extra space to record node.
         :param head:
@@ -60,7 +62,12 @@ class Solution(object):
                 return p
             checked[p] = 1
 
-    def detect_cycle_2(self, head: ListNode) -> ListNode:
+    def detect_cycle_2(self, head: ListNode) -> Optional[ListNode]:
+        """
+        Without using extra space
+        :param head:
+        :return:
+        """
         if not head:
             return None
         p1, p2 = head, head
@@ -87,3 +94,27 @@ class Solution(object):
                 return entry
             else:
                 head = head.next
+
+    def detect_cycle_3(self, head: ListNode) -> Optional[ListNode]:
+        """
+        Good method of using math
+        :param head:
+        :return:
+        """
+        if not head:
+            return None
+        p1 = p2 = head
+        while p2:
+            p1 = p1.next
+            p2 = p2.next
+            if not p2 or not p2.next:
+                return None
+            p2 = p2.next
+            if p1 == p2:
+                break
+        if p2 == head:
+            return head
+        while p2 != head:
+            head = head.next
+            p2 = p2.next
+        return head
