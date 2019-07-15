@@ -1091,3 +1091,46 @@ def test_word_break(string, word_dict, expect):
 def test_linked_list_cycle(head, expect):
     from leetcode.linked_list_cycle import Solution
     s = Solution()
+
+
+def test_min_stack():
+    from leetcode.min_stack import MinStack
+    min_stack = MinStack()
+    min_stack.push(-2)
+    min_stack.push(0)
+    min_stack.push(-3)
+    assert min_stack.get_min() == -3
+    min_stack.pop()
+    assert min_stack.top() == 0
+    assert min_stack.get_min() == -2
+
+
+@pytest.mark.parametrize("grid, expect", [
+    ([
+         ['1', '1', '1', '1', '0'],
+         ['1', '1', '0', '1', '0'],
+         ['1', '1', '0', '0', '0'],
+         ['0', '0', '0', '0', '0'],
+     ], 1),
+    ([
+         ['1', '1', '0', '0', '0'],
+         ['1', '1', '0', '0', '0'],
+         ['0', '0', '1', '0', '0'],
+         ['0', '0', '0', '1', '1'],
+     ], 3)
+])
+def test_number_of_islands(grid, expect):
+    from leetcode.number_of_islands import Solution
+    s = Solution()
+    # assert s.num_islands(grid) == expect
+
+
+def test_lru_cache():
+    from leetcode.lru_cache import LRUCache
+    cache = LRUCache(2)
+    cache.put(1, 1)
+    cache.put(2, 2)
+    assert cache.get(1) == 1
+    cache.put(3, 3)
+    assert cache.get(2) == -1
+    assert cache.get(3) == 3
