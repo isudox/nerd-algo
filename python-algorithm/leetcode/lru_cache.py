@@ -32,7 +32,7 @@ cache.get(4);       // returns 4
 """
 
 
-class LRUCache:
+class LRUCache1:
     def __init__(self, capacity: int):
         self.capacity = capacity
         self.map = {}
@@ -62,11 +62,80 @@ class LRUCache:
             self.map[key] = value
 
 
-if __name__ == "__main__":
-    cache = LRUCache(2)
-    cache.put(1, 1)
-    cache.put(2, 2)
-    print(cache.get(1))
-    cache.put(3, 3)
-    print(cache.get(2))
-    print(cache.get(3))
+class LRUCache2:
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.keys = []
+        self.map = {}
+
+    def get(self, key: int) -> int:
+        if key not in self.keys:
+            return -1
+        self._visit(key)
+        return self.map[key]
+
+    def put(self, key: int, value: int) -> None:
+        if key not in self.map:
+            if len(self.keys) == self.capacity:
+                self._evict()
+        self.map[key] = value
+        self._visit(key)
+
+    def _evict(self) -> None:
+        evicted_key = self.keys[0]
+        del self.map[evicted_key]
+        self.keys = self.keys[1:]
+
+    def _visit(self, key: int) -> None:
+        if key in self.keys:
+            self.keys.remove(key)
+        self.keys.append(key)
+
+
+class LRUCache3:
+    class LinkedMap:
+        def __init__(self, key, value):
+            self.key = key
+            self.value = value
+            self.prev = None
+            self.next = None
+
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.map = {}
+        self.head = self.LinkedMap(0, -1)
+        self.tail = self.LinkedMap(0, -1)
+        self.head.next = self.tail
+        self.tail.prev = self.head
+
+    def get(self, key):
+        if key not in self.map:
+            return -1
+        target = self.map[key]
+        self._remove(target)
+        self._add(target)
+        return target.value
+
+    def put(self, key, value):
+        if key not in self.map:
+            if len(self.map) == self.capacity:
+                del self.map[self.head.next.key]
+                self._remove(self.head.next)
+        else:
+            self._remove(self.map[key])
+        target = self.LinkedMap(key, value)
+        self._add(target)
+        self.map[key] = target
+
+    def _remove(self, node):
+        p = node.prev
+        n = node.next
+        p.next = n
+        n.prev = p
+
+    def _add(self, node):
+        p = self.tail.prev
+        p.next = node
+        self.tail.prev = node
+        node.prev = p
+        node.next = self.tail

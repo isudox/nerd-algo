@@ -1126,8 +1126,8 @@ def test_number_of_islands(grid, expect):
 
 
 def test_lru_cache():
-    from leetcode.lru_cache import LRUCache
-    cache = LRUCache(2)
+    from leetcode.lru_cache import LRUCache3
+    cache = LRUCache3(2)
     cache.put(1, 1)
     cache.put(2, 2)
     assert cache.get(1) == 1
