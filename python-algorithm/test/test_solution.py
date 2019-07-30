@@ -1076,7 +1076,7 @@ def test_binary_tree_maximum_path_sum(tree, expect):
     ("applepenapple", ["apple", "pen"], True),
     ("catsandog", ["cats", "dog", "sand", "and", "cat"], False),
     ("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", ["a", "aa", "aaa", "aaaa"], True),
-    ("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab", ["a", "aa", "aaa", "aaaa"], False),
+    ("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab", ["a", "aa", "aaa", "aaaa"], False)
 ])
 def test_word_break(string, word_dict, expect):
     from leetcode.word_break import Solution
@@ -1122,7 +1122,7 @@ def test_min_stack():
 def test_number_of_islands(grid, expect):
     from leetcode.number_of_islands import Solution
     s = Solution()
-    # assert s.num_islands(grid) == expect
+    assert s.num_islands(grid) == expect
 
 
 def test_lru_cache():
