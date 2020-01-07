@@ -42,23 +42,25 @@ public class TargetSum {
      * Time Complexity: O(2^n)
      * Space Complexity: O(n)
      */
-    public int findTargetSumWays(int[] nums, int s) {
+    public int findTargetSumWays1(int[] nums, int s) {
         int length = nums.length;
-        if (length == 0)
-            return s == 0 ? 1 : 0;
-
+        if (length == 0) return s == 0 ? 1 : 0;
         int[] nextArr = Arrays.copyOfRange(nums, 1, length);
-        return findTargetSumWays(nextArr, s - nums[0]) + findTargetSumWays(nextArr, s + nums[0]);
+        return findTargetSumWays1(nextArr, s - nums[0]) + findTargetSumWays1(nextArr, s + nums[0]);
     }
 
+    private int ways = 0;
     public int findTargetSumWays2(int[] nums, int s) {
-        int length = nums.length;
-        int[][] store = new int[length][2001];
-        for (int[] row : store) {
-            Arrays.fill(row, Integer.MIN_VALUE);
-        }
-
-        return 0;
+        recurse(nums, 0, 0, s);
+        return ways;
     }
 
+    private void recurse(int[] nums, int idx, int sum, int s) {
+        if (idx == nums.length) {
+            if (sum == s) ways++;
+            return;
+        }
+        recurse(nums, idx + 1, sum + nums[idx], s);
+        recurse(nums, idx + 1, sum - nums[idx], s);
+    }
 }
