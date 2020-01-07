@@ -344,7 +344,7 @@ class SolutionsTest extends Specification {
         [[0, 1], [2, 1], [1, 1], [1, 0], [2, 0]] | 1.0
     }
 
-    def "n-repeated-element-in-size-2n-array"(int[] arr, int ans) {
+    def "961-n-repeated-element-in-size-2n-array"(int[] arr, int ans) {
         given:
         def solution = new NRepeatedElementInSize2NArray()
 
@@ -358,7 +358,7 @@ class SolutionsTest extends Specification {
         [5, 1, 5, 2, 5, 3, 5, 4] | 5
     }
 
-    def "maximum-width-ramp"(int[] arr, int ans) {
+    def "946-maximum-width-ramp"(int[] arr, int ans) {
         given:
         def solution = new MaximumWidthRamp()
 
@@ -371,7 +371,7 @@ class SolutionsTest extends Specification {
         [9, 8, 1, 0, 1, 9, 4, 0, 4, 1] | 7
     }
 
-    def "validate-stack-sequences"(int[] pushed, int[] popped, boolean ans) {
+    def "946-validate-stack-sequences"(int[] pushed, int[] popped, boolean ans) {
         given:
         def solution = new ValidateStackSequences()
 
@@ -389,7 +389,7 @@ class SolutionsTest extends Specification {
         [2, 3, 0, 1]    | [0, 3, 2, 1]    | true
     }
 
-    def "numbers-with-same-consecutive-differences"(int n, int k, int[] ans) {
+    def "967-numbers-with-same-consecutive-differences"(int n, int k, int[] ans) {
         given:
         def solution = new NumbersWithSameConsecutiveDifferences()
 
@@ -404,7 +404,7 @@ class SolutionsTest extends Specification {
         2 | 1 || [12, 10, 23, 21, 34, 32, 45, 43, 56, 54, 67, 65, 78, 76, 89, 87, 98]
     }
 
-    def "custom-sort-string"(String s, String t, String ans) {
+    def "791-custom-sort-string"(String s, String t, String ans) {
         given:
         def solution = new CustomSortString()
 
@@ -420,7 +420,7 @@ class SolutionsTest extends Specification {
         "kqep" | "pekeq" | "kqeep"
     }
 
-    def "single-number"(int[] nums, int ans) {
+    def "136-single-number"(int[] nums, int ans) {
         given:
         def solution = new SingleNumber()
 
@@ -435,7 +435,7 @@ class SolutionsTest extends Specification {
         [4, 1, 2, 1, 2] | 4
     }
 
-    def "combination-sum"(int[] candidates, int target, List<List<Integer>> ans) {
+    def "39-combination-sum"(int[] candidates, int target, List<List<Integer>> ans) {
         given:
         def solution = new CombinationSum()
 
@@ -448,7 +448,7 @@ class SolutionsTest extends Specification {
         [2, 3, 5]    | 8      | [[2, 2, 2, 2], [2, 3, 3], [3, 5]]
     }
 
-    def "combination-sum-2"(int[] candidates, int target, List<List<Integer>> expect) {
+    def "40-combination-sum-2"(int[] candidates, int target, List<List<Integer>> expect) {
         given:
         def solution = new CombinationSum2()
 
@@ -461,7 +461,7 @@ class SolutionsTest extends Specification {
         [2, 5, 2, 1, 2]        | 5      | [[1, 2, 2], [5]]
     }
 
-    def "combination-sum-3"(int k, int n, List<List<Integer>> expect) {
+    def "216-combination-sum-3"(int k, int n, List<List<Integer>> expect) {
         given:
         def solution = new CombinationSum3()
 
@@ -476,7 +476,7 @@ class SolutionsTest extends Specification {
         5 | 18 || [[1, 2, 3, 4, 8], [1, 2, 3, 5, 7], [1, 2, 4, 5, 6]]
     }
 
-    def "maximum-subarray"(int[] nums, int expect) {
+    def "53-maximum-subarray"(int[] nums, int expect) {
         given:
         def solution = new MaximumSubarray()
         expect:
@@ -488,7 +488,7 @@ class SolutionsTest extends Specification {
         [-2, 1, -3, 4, -1, 2, 1, -5, 4] | 6
     }
 
-    def "trapping-rain-water"(int[] height, int expect) {
+    def "42-trapping-rain-water"(int[] height, int expect) {
         given:
         def solution = new TrappingRainWater()
         expect:
@@ -499,7 +499,7 @@ class SolutionsTest extends Specification {
         [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1] | 6
     }
 
-    def "subsets"(int[] nums, List<List<Integer>> expect) {
+    def "78-subsets"(int[] nums, List<List<Integer>> expect) {
         given:
         def solution = new Subsets()
         expect:
@@ -512,7 +512,7 @@ class SolutionsTest extends Specification {
         [1, 2, 3] | [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
     }
 
-    def "subsets-ii"(int[] nums, List<List<Integer>> expect) {
+    def "90-subsets-ii"(int[] nums, List<List<Integer>> expect) {
         given:
         def solution = new Subsets2()
         expect:
@@ -523,7 +523,7 @@ class SolutionsTest extends Specification {
         [1, 2, 2] | [[], [1], [2], [1, 2], [2, 2], [1, 2, 2]]
     }
 
-    def "first-missing-positive"(int[] nums, int expect) {
+    def "41-first-missing-positive"(int[] nums, int expect) {
         given:
         def solution = new FirstMissingPositive()
         expect:
@@ -535,7 +535,7 @@ class SolutionsTest extends Specification {
         [7, 8, 9, 11, 12] | 1
     }
 
-    def "permutations"(int[] nums, List<List<Integer>> expect) {
+    def "46-permutations"(int[] nums, List<List<Integer>> expect) {
         given:
         def solution = new Permutations()
         expect:
@@ -545,7 +545,7 @@ class SolutionsTest extends Specification {
         [1, 2, 3] | [[3, 2, 1], [2, 3, 1], [2, 1, 3], [3, 1, 2], [1, 3, 2], [1, 2, 3]]
     }
 
-    def "largest-rectangle-in-histogram"(int[] heights, int result) {
+    def "84-largest-rectangle-in-histogram"(int[] heights, int result) {
         given:
         def solution = new LargestRectangleInHistogram()
         expect:
@@ -556,5 +556,17 @@ class SolutionsTest extends Specification {
         [6, 2, 5, 4, 5, 1, 6] | 12
         [2, 2, 2, 2, 2]       | 10
         []                    | 0
+    }
+
+    def "494-target-sum"(int[] nums, int s, int expect) {
+        given:
+        def solution = new TargetSum()
+        expect:
+        solution.findTargetSumWays(nums, s) == expect
+        where:
+        nums                                                                         | s  | expect
+        [1, 1, 1, 1, 1]                                                              | 3  | 5
+        [27, 22, 39, 22, 40, 32, 44, 45, 46, 8, 8, 21, 27, 8, 11, 29, 16, 15, 41, 0] | 10 | 0
+        [19, 32, 36, 7, 37, 10, 44, 21, 40, 39, 39, 18, 5, 34, 3, 40, 33, 2, 46, 46] | 29 | 5715
     }
 }

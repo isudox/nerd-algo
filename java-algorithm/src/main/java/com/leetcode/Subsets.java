@@ -2,6 +2,7 @@ package com.leetcode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -32,7 +33,7 @@ public class Subsets {
 
     public List<List<Integer>> subsets(int[] nums) {
         int len = nums.length;
-        List<List<Integer>> list = Arrays.asList(new ArrayList<>());
+        List<List<Integer>> list = Collections.singletonList(new ArrayList<>());
         if (len == 0) {
             return list;
         }

@@ -1136,12 +1136,14 @@ def test_lru_cache():
     assert cache.get(3) == 3
 
 
-@pytest.mark.parametrize("nums, s, expect", [
+@pytest.mark.parametrize("nums, target, expect", [
     ([1, 1, 1, 1, 1], 3, 5),
     ([1, 0], 1, 2),
-    ([19, 32, 36, 7, 37, 10, 44, 21, 40, 39, 39, 18, 5, 34, 3, 40, 33, 2, 46, 46], 29, 5715)
+    ([19, 32, 36, 7, 37, 10, 44, 21, 40, 39, 39, 18, 5, 34, 3, 40, 33, 2, 46, 46], 29, 5715),
+    ([27, 22, 39, 22, 40, 32, 44, 45, 46, 8, 8, 21, 27, 8, 11, 29, 16, 15, 41, 0], 10, 0)
 ])
-def test_target_sum(nums, s, expect):
+def test_target_sum(nums, target, expect):
     from leetcode.target_sum import Solution
     solution = Solution()
-    assert solution.find_target_sum_ways(nums, s) == expect
+    assert solution.dfs(nums, target) == expect
+    assert solution.brute_force(nums, target) == expect
