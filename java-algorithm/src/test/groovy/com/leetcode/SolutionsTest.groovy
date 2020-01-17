@@ -327,6 +327,7 @@ class SolutionsTest extends Specification {
         expect:
         solution.findTargetSumWays1(nums, s) == expect
         solution.findTargetSumWays2(nums, s) == expect
+        solution.findTargetSumWays3(nums, s) == expect
         where:
         nums                                                                         | s  | expect
         [1, 1, 1, 1, 1]                                                              | 3  | 5

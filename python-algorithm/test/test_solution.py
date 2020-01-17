@@ -1145,5 +1145,6 @@ def test_lru_cache():
 def test_target_sum(nums, target, expect):
     from leetcode.target_sum import Solution
     solution = Solution()
+    assert solution.find_target_sum_ways(nums, target) == expect
     assert solution.dfs(nums, target) == expect
     assert solution.brute_force(nums, target) == expect

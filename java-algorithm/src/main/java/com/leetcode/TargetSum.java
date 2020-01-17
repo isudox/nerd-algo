@@ -63,4 +63,34 @@ public class TargetSum {
         recurse(nums, idx + 1, sum + nums[idx], s);
         recurse(nums, idx + 1, sum - nums[idx], s);
     }
+
+    public int findTargetSumWays3(int[] nums, int s) {
+        // there're 2001 numbers between [-1000, 1000]
+        int[][] store = new int[nums.length][2001];
+        for (int[] row : store) {
+            Arrays.fill(row, Integer.MIN_VALUE);
+        }
+        return recurse2(nums, 0, 0, s, store);
+    }
+
+    private int recurse2(int[] nums, int idx, int sum, int s, int[][] store) {
+        if (idx == nums.length) {
+            return sum == s ? 1 : 0;
+        }
+        if (store[idx][sum + 1000] != Integer.MIN_VALUE) {
+            return store[idx][sum + 1000];
+        }
+        int ways = recurse2(nums, idx + 1, sum + nums[idx], s, store) +
+                recurse2(nums, idx + 1, sum - nums[idx], s, store);
+        store[idx][sum + 1000] = ways;
+        return ways;
+    }
+
+    public int findTargetSumWays4(int[] nums, int s) {
+        int length = nums.length;
+        // dp[i][j] represents the total ways to sum j by nums[0:i].
+        int[][] dp = new int[length][2001];
+        return dp[length - 1][s + 1000];
+    }
+
 }

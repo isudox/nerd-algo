@@ -63,3 +63,17 @@ class Solution:
         ways += self.dfs(nums[1:], s - nums[0])
         ways += self.dfs(nums[1:], s + nums[0])
         return ways
+
+    def find_target_sum_ways(self, nums: List[int], s: int) -> int:
+        # assume dp[i][j] as the total ways of nums[0:i] to sum j.
+        # dp[i][j] = dp[i - 1][j - nums[i]] + dp[i - 1][j + nums[i]]
+        length = len(nums)
+        dp = [[0] * 2001 for _ in range(length)]
+        dp[0][1000 + nums[0]] += 1
+        dp[0][1000 - nums[0]] += 1
+        for i in range(1, length):
+            for j in range(-1000, 1001):
+                if dp[i - 1][1000 + j] > 0:
+                    dp[i][1000 + j + nums[i]] += dp[i - 1][1000 + j]
+                    dp[i][1000 + j - nums[i]] += dp[i - 1][1000 + j]
+        return dp[length - 1][1000 + s] if abs(s) <= 1000 else 0
