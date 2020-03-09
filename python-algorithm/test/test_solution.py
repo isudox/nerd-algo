@@ -1148,3 +1148,14 @@ def test_target_sum(nums, target, expect):
     assert solution.find_target_sum_ways(nums, target) == expect
     assert solution.dfs(nums, target) == expect
     assert solution.brute_force(nums, target) == expect
+
+
+@pytest.mark.parametrize("p, q, expect", [
+    ([1, 2, 3], [1, 2, 3], True),
+    ([1, 2], [1, None, 2], False),
+    ([1, 2, 1], [1, 1, 2], False)
+])
+def test_same_tree(p, q, expect):
+    from leetcode.same_tree import Solution
+    solution = Solution()
+    assert solution.is_same_tree(Converter.list2tree(p), Converter.list2tree(q)) == expect
