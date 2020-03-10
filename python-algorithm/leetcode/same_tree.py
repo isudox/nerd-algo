@@ -39,7 +39,6 @@ Output: false
 from typing import List
 
 from common.tree_node import TreeNode
-from util.converter import Converter
 
 
 class Solution:

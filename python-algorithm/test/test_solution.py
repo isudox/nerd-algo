@@ -1159,3 +1159,12 @@ def test_same_tree(p, q, expect):
     from leetcode.same_tree import Solution
     solution = Solution()
     assert solution.is_same_tree(Converter.list2tree(p), Converter.list2tree(q)) == expect
+
+
+@pytest.mark.parametrize("ele, expect", [
+    ([1, 3, None, None, 2], [3, 1, None, None, 2]),
+])
+def test_recover_binary_tree(ele, expect):
+    from leetcode.recover_binary_search_tree import Solution
+    solution = Solution()
+    solution.recover_tree(Converter.list2tree(ele))
