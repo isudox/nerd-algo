@@ -32,36 +32,30 @@ class Solution:
                            (dp[i - 1][j] and s1[i - 1] == s3[i + j - 1])
         return dp[s1_len][s2_len]
 
-    def is_interleave_2(self, s1: str, s2: str, s3: str) -> bool:
-        def dfs(s1_idx, s2_idx, s3_idx) -> bool:
+    def is_interleave_1(self, s1: str, s2: str, s3: str) -> bool:
+        def dfs(s1_idx, s2_idx, s3_idx, store) -> bool:
             if s1_idx < s1_len and s2_idx < s2_len and s3_idx < s3_len:
+                if store[s1_idx][s2_idx] is not None:
+                    return store[s1_idx][s2_idx]
+                store[s1_idx][s2_idx] = False
                 if s3[s3_idx] == s1[s1_idx]:
-                    if [s3_idx, s1_idx] not in store_1:
-                        if dfs(s1_idx + 1, s2_idx, s3_idx + 1):
-                            return True
-                        else:
-                            store_1.append([s3_idx, s1_idx])
+                    if dfs(s1_idx + 1, s2_idx, s3_idx + 1, store):
+                        store[s1_idx][s2_idx] = True
                 if s3[s3_idx] == s2[s2_idx]:
-                    if [s3_idx, s2_idx] not in store_2:
-                        if dfs(s1_idx, s2_idx + 1, s3_idx + 1):
-                            return True
-                        else:
-                            store_2.append([s3_idx, s2_idx])
-                return dfs(s1_idx, s2_idx, s3_idx + 1)
+                    if dfs(s1_idx, s2_idx + 1, s3_idx + 1, store):
+                        store[s1_idx][s2_idx] = True
+                return store[s1_idx][s2_idx]
             elif s1_idx == s1_len:
                 return s2[s2_idx:] == s3[s3_idx:]
             elif s2_idx == s2_len:
                 return s1[s1_idx:] == s3[s3_idx:]
-            return False
 
-        store_1, store_2 = [], []
         s1_len, s2_len, s3_len = len(s1), len(s2), len(s3)
         if s1_len + s2_len != s3_len:
             return False
-        res = dfs(0, 0, 0)
-        return res
+        return dfs(0, 0, 0, [[None] * s2_len for _ in range(s1_len)])
 
-    def is_interleave_1(self, s1: str, s2: str, s3: str) -> bool:
+    def is_interleave_2(self, s1: str, s2: str, s3: str) -> bool:
         def dfs(s1_idx, s2_idx, s3_idx) -> bool:
             if s1_idx < s1_len and s2_idx < s2_len and s3_idx < s3_len:
                 if s3[s3_idx] == s1[s1_idx]:

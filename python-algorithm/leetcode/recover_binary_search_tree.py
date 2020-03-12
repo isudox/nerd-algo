@@ -71,14 +71,14 @@ class Solution:
             ret.extend(ldr(node.right))
             return ret
 
-        def swap(node: TreeNode) -> None:
+        def recover(node: TreeNode) -> None:
             if node:
                 if node.val == swap_nums[0]:
                     node.val = swap_nums[1]
                 elif node.val == swap_nums[1]:
                     node.val = swap_nums[0]
-                swap(node.left)
-                swap(node.right)
+                recover(node.left)
+                recover(node.right)
 
         nums = ldr(root)
         sorted_nums = sorted(nums)
@@ -86,4 +86,20 @@ class Solution:
             if nums[i] != sorted_nums[i]:
                 swap_nums.append(nums[i])
 
-        swap(root)
+        recover(root)
+
+    def recover_tree_2(self, root: TreeNode) -> None:
+        def ldr(node: TreeNode, nums: List[int], nodes: List[TreeNode]) -> None:
+            if not node:
+                return
+            ldr(node.left, nums, nodes)
+            nums.append(node.val)
+            nodes.append(node)
+            ldr(node.right, nums, nodes)
+
+        num_list = []
+        node_list = []
+        ldr(root, num_list, node_list)
+        num_list.sort()
+        for i in range(len(num_list)):
+            node_list[i].val = num_list[i]
