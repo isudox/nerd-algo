@@ -45,15 +45,18 @@ class SolutionsTest extends Specification {
         Converter.convertArray(expected) == Converter.convertArray(res2)
     }
 
-    def "3. Longest Substring Without Repeating Characters"() {
+    def "3. Longest Substring Without Repeating Characters"(String s, int len) {
         given:
         def solution = new LongestSubstringWithoutRepeatingCharacters()
 
-        when:
-        def res = solution.lengthOfLongestSubstring("pwwkew")
+        expect:
+        solution.lengthOfLongestSubstring(s) == len
 
-        then:
-        res == 3
+        where:
+        s          | len
+        "abcabcbb" | 3
+        "bbbbb"    | 1
+        "pwwkew"   | 3
     }
 
     def "23. Merge k Sorted Lists"() {
