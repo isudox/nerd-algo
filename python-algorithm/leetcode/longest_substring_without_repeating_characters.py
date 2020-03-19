@@ -83,3 +83,32 @@ class Solution:
             store.clear()
 
         return max_len
+
+    def length_of_longest_substring_4(self, s: str) -> int:
+        store = []
+        max_len = 0
+        i, j, n = 0, 0, len(s)
+        while i < n and j < n:
+            if s[j] not in store:
+                store.append(s[j])
+                j += 1
+                max_len = max(max_len, j - i)
+            else:
+                store.remove(s[i])
+                i += 1
+        return max_len
+
+    def length_of_longest_substring_5(self, s: str) -> int:
+        store = {}
+        i, j, n, max_len = 0, 0, len(s), 0
+        while i < n and j < n:
+            if s[j] not in store:
+                store[s[j]] = j
+                j += 1
+                max_len = max(max_len, j - i)
+            else:
+                temp = store[s[j]] + 1
+                for k in range(i, temp):
+                    store.pop(s[k])
+                i = temp
+        return max_len

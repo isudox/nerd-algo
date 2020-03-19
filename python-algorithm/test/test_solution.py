@@ -5,10 +5,10 @@ from util.converter import Converter
 
 
 @pytest.mark.parametrize("s, expect", [
-    # ("", 0),
-    # (" ", 1),
-    # ("bbbbb", 1),
-    # ("abcabcbb", 3),
+    ("", 0),
+    (" ", 1),
+    ("bbbbb", 1),
+    ("abcabcbb", 3),
     ("pwwkew", 3)
 ])
 def test_length_of_longest_substring(s: str, expect: int):
@@ -17,6 +17,8 @@ def test_length_of_longest_substring(s: str, expect: int):
     assert solution.length_of_longest_substring_1(s) == expect
     assert solution.length_of_longest_substring_2(s) == expect
     assert solution.length_of_longest_substring_3(s) == expect
+    assert solution.length_of_longest_substring_4(s) == expect
+    assert solution.length_of_longest_substring_5(s) == expect
 
     
 @pytest.mark.parametrize("x, res", [
