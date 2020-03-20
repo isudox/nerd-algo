@@ -1,5 +1,13 @@
 package com.leetcode;
 
+/**
+ * 963. Minimum Area Rectangle II
+ * Given a set of points in the xy-plane, determine the minimum area of any
+ * rectangle formed from these points, with sides not necessarily parallel to
+ * the x and y axes.
+ *
+ * If there isn't any rectangle, return 0.
+ */
 public class MinimumAreaRectangle2 {
 
     public double minAreaFreeRect(int[][] points) {
