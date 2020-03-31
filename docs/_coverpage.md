@@ -1,13 +1,8 @@
-🤓
-:100:
-
 # nerd-algorithm
 
-> A magical documentation site generator.
+Powered by
 
-* Simple and lightweight (~12kb gzipped)
-* Multiple themes
-* Not build static html files
+[![JetBrains](assets/jetbrains.svg)](https://www.jetbrains.com/?from=nerd-algorithm)
 
 [GitHub](https://github.com/isudox/nerd-algorithm/)
 [Get Started](#quick-start)

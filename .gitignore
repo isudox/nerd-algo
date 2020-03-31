@@ -73,4 +73,4 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-
+.DS_Store
