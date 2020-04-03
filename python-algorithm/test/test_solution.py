@@ -30,6 +30,19 @@ def test_median_of_two_sorted_arrays(nums1, nums2, expect):
     assert Solution().find_median_sorted_arrays(nums1, nums2) == expect
 
 
+@pytest.mark.parametrize("str, expect", [
+    ("42", 42),
+    ('   -42', -42),
+    ("4193 with words", 4193),
+    ("words and 987", 0),
+    ("-91283472332", -2147483648)
+])
+def test_string_to_integer(str, expect):
+    from leetcode.string_to_integer import Solution
+    solution = Solution()
+    assert solution.my_atoi(str) == expect
+
+
 @pytest.mark.parametrize("x, res", [
     (1, True),
     (12, False),
@@ -2190,3 +2203,16 @@ def test_daily_temperatures(t, expect):
 def test_surface_area_of_3d_shapes(grid, expect):
     from leetcode.surface_area_of_3d_shapes import Solution
     assert Solution().surface_area(grid) == expect
+
+
+@pytest.mark.parametrize("board, expect", [
+    ([[0, 1, 0], [0, 0, 1], [1, 1, 1], [0, 0, 0]],
+     [[0, 0, 0], [1, 0, 1], [0, 1, 1], [0, 1, 0]]),
+    ([[1, 0, 1, 1, 0], [1, 0, 1, 1, 0], [1, 0, 1, 1, 0], [1, 0, 1, 1, 0]],
+     [[0, 0, 1, 1, 0], [1, 0, 0, 0, 1], [1, 0, 0, 0, 1], [0, 0, 1, 1, 0]]),
+])
+def test_game_of_life(board, expect):
+    from leetcode.game_of_life import Solution
+    solution = Solution()
+    solution.game_of_life(board)
+    assert board == expect
