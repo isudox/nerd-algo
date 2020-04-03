@@ -21,6 +21,28 @@ def test_length_of_longest_substring(s: str, expect: int):
     assert solution.length_of_longest_substring_5(s) == expect
 
 
+@pytest.mark.parametrize("nums1, nums2, expect", [
+    ([1, 3], [2], 2.0),
+    ([1, 2], [3, 4], 2.5)
+])
+def test_median_of_two_sorted_arrays(nums1, nums2, expect):
+    from leetcode.median_of_two_sorted_arrays import Solution
+    assert Solution().find_median_sorted_arrays(nums1, nums2) == expect
+
+
+@pytest.mark.parametrize("str, expect", [
+    ("42", 42),
+    ('   -42', -42),
+    ("4193 with words", 4193),
+    ("words and 987", 0),
+    ("-91283472332", -2147483648)
+])
+def test_string_to_integer(str, expect):
+    from leetcode.string_to_integer import Solution
+    solution = Solution()
+    assert solution.my_atoi(str) == expect
+
+
 @pytest.mark.parametrize("x, res", [
     (1, True),
     (12, False),
@@ -2169,3 +2191,28 @@ def test_interleaving_string(s1, s2, s3, expect):
 def test_daily_temperatures(t, expect):
     from leetcode.daily_temperatures import Solution
     assert Solution().daily_temperatures(t) == expect
+
+
+@pytest.mark.parametrize("grid, expect", [
+    ([[2]], 10),
+    ([[1, 2], [3, 4]], 34),
+    ([[1, 0], [0, 2]], 16),
+    ([[1, 1, 1], [1, 0, 1], [1, 1, 1]], 32),
+    ([[2, 2, 2], [2, 1, 2], [2, 2, 2]], 46)
+])
+def test_surface_area_of_3d_shapes(grid, expect):
+    from leetcode.surface_area_of_3d_shapes import Solution
+    assert Solution().surface_area(grid) == expect
+
+
+@pytest.mark.parametrize("board, expect", [
+    ([[0, 1, 0], [0, 0, 1], [1, 1, 1], [0, 0, 0]],
+     [[0, 0, 0], [1, 0, 1], [0, 1, 1], [0, 1, 0]]),
+    ([[1, 0, 1, 1, 0], [1, 0, 1, 1, 0], [1, 0, 1, 1, 0], [1, 0, 1, 1, 0]],
+     [[0, 0, 1, 1, 0], [1, 0, 0, 0, 1], [1, 0, 0, 0, 1], [0, 0, 1, 1, 0]]),
+])
+def test_game_of_life(board, expect):
+    from leetcode.game_of_life import Solution
+    solution = Solution()
+    solution.game_of_life(board)
+    assert board == expect
