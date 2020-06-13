@@ -257,6 +257,17 @@ class SolutionsTest extends Specification {
         [-2, 1, -3, 4, -1, 2, 1, -5, 4] | 6
     }
 
+    def "70. Climbing Stairs"(int n, int expect) {
+        given:
+        def solution = new ClimbingStairs()
+        expect:
+        solution.climbStairs(n) == expect
+        where:
+        n  | expect
+        3  | 3
+        10 | 89
+    }
+
     def "78. Subsets"(int[] nums, List<List<Integer>> expect) {
         given:
         def solution = new Subsets()

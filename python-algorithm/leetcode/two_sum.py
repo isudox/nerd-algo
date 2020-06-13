@@ -14,14 +14,15 @@ Given nums = [2, 7, 11, 15], target = 9,
 Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
 """
+from typing import List
 
 
 class Solution(object):
 
-    def two_sum(self, nums, target):
+    def two_sum(self, nums: List[int], target: int) -> List[int]:
         d = {}
         for i in range(len(nums)):
             x = nums[i]
             if target - x in d:
-                return d[target - x], i
+                return [d[target - x], i]
             d[x] = i
