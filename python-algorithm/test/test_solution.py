@@ -2250,3 +2250,14 @@ def test_lcof(num, expect):
     from other.leetcode_cn.lcof import Solution
     solution = Solution()
     assert solution.translate_num(num) == expect
+
+
+@pytest.mark.parametrize("arr, target, expect", [
+    ([4, 9, 3], 10, 3),
+    ([2, 3, 5], 10, 5),
+    ([60864, 25176, 27249, 21296, 20204], 56803, 11361)
+])
+def test_sum_of_mutated_array_closest_to_target(arr, target, expect):
+    from leetcode.sum_of_mutated_array_closest_to_target import Solution
+    sol = Solution()
+    assert sol.find_best_value(arr, target) == expect
