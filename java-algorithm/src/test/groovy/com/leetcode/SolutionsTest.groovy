@@ -320,6 +320,18 @@ class SolutionsTest extends Specification {
         [4, 1, 2, 1, 2] | 4
     }
 
+    def "206. Reverse Linked List"(int[] input, int[] output) {
+        given:
+        def sol = new ReverseLinkedList()
+        expect:
+        ListNode node = sol.reverseList(Converter.convertListNode(input))
+        Converter.convertArray(node) == output
+        where:
+        input           | output
+        [1, 2, 3, 4, 5] | [5, 4, 3, 2, 1]
+        [1]             | [1]
+    }
+
     def "216. Combination Sum III"(int k, int n, List<List<Integer>> expect) {
         given:
         def solution = new CombinationSum3()
