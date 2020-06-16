@@ -48,6 +48,35 @@ class Solution:
         return max_area
 
     def maximal_square1(self, matrix: List[List[str]]) -> int:
+        """
+        dp.
+        :param matrix:
+        :return:
+        """
+        if not matrix or not matrix[0]:
+            return 0
+        rows, cols, max_len = len(matrix), len(matrix[0]), 0
+        # dp[i][j] is the side length of square which lower-right corner is matrix[i][j]
+        # dp[i][j] = min(dp[i-1][j-1], dp[i-1][j], dp[i][j-1]) + 1
+        dp = [[0] * cols for _ in range(rows)]
+        for i in range(rows):
+            dp[i][0] = 1 if matrix[i][0] == '1' else 0
+            if dp[i][0] == 1:
+                max_len = 1
+        for j in range(cols):
+            dp[0][j] = 1 if matrix[0][j] == '1' else 0
+            if dp[0][j] == 1:
+                max_len = 1
+        for i in range(1, rows):
+            for j in range(1, cols):
+                if matrix[i][j] == '0':
+                    dp[i][j] = 0
+                else:
+                    dp[i][j] = min(dp[i - 1][j - 1], dp[i - 1][j], dp[i][j - 1]) + 1
+                    max_len = max(max_len, dp[i][j])
+        return max_len * max_len
+
+    def maximal_square2(self, matrix: List[List[str]]) -> int:
         if not matrix or not matrix[0]:
             return 0
         rows, cols = len(matrix), len(matrix[0])
