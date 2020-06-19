@@ -2261,3 +2261,12 @@ def test_sum_of_mutated_array_closest_to_target(arr, target, expect):
     from leetcode.sum_of_mutated_array_closest_to_target import Solution
     sol = Solution()
     assert sol.find_best_value(arr, target) == expect
+
+@pytest.mark.parametrize("arr, expect", [
+    ([8, 1, 5, 2, 6], 11),
+    ([1, 2, 3], 4)
+])
+def test_best_sightseeing_pair(arr, expect):
+    from leetcode.best_sightseeing_pair import Solution
+    sol = Solution()
+    assert sol.max_score_sightseeing_pair(arr) == expect
