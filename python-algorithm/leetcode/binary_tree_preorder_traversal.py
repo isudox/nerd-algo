@@ -18,14 +18,24 @@ Output: [1,2,3]
 Follow up: Recursive solution is trivial, could you do it iteratively?
 """
 from typing import List
-
 from common.tree_node import TreeNode
 
 
 class Solution:
 
     def iterative_preorder_traversal(self, root: TreeNode) -> List[int]:
-        pass
+        if not root:
+            return []
+        ans = []
+        s = [root]  # FILO stack
+        while s:
+            node = s.pop()
+            ans.append(node.val)
+            if node.right:
+                s.append(node.right)
+            if node.left:
+                s.append(node.left)
+        return ans
 
     def recursive_preorder_traversal(self, root: TreeNode) -> List[int]:
         if not root:
