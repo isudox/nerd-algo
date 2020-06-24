@@ -9,19 +9,14 @@ integers. You may assume that each input would have exactly one solution.
 Example:
 
   Given array nums = [-1, 2, 1, -4], and target = 1.
-  
   The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
 """
 import sys
+from typing import List
 
 
-class Solution(object):
-    def three_sum_closest(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: int
-        """
+class Solution:
+    def three_sum_closest(self, nums: List[int], target: int) -> int:
         res, diff = sys.maxsize, sys.maxsize
         count = len(nums)
         nums.sort()
@@ -45,3 +40,21 @@ class Solution(object):
                     while j < k and nums[j] == nums[j - 1]:
                         j += 1
         return res
+
+    def three_sum_closest_1(self, nums: List[int], target: int) -> int:
+        nums.sort()
+        n = len(nums)
+        ans = sum(nums[:3])
+        for i in range(n - 2):
+            j, k = i + 1, n - 1
+            while j < k:
+                cur = nums[i] + nums[j] + nums[k]
+                if cur == target:
+                    return cur
+                if cur > target:
+                    k -= 1
+                else:
+                    j += 1
+                if abs(target - cur) < abs(target - ans):
+                    ans = cur
+        return ans
