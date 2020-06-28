@@ -24,9 +24,8 @@ from typing import List
 
 class Solution:
     def reconstruct_queue(self, people: List[List[int]]) -> List[List[int]]:
-        people.sort(reverse=True)
-        # [[7, 1], [7, 0], [6, 1], [5, 2], [5, 0], [4, 4]]
-        ans = [people[0]]
-        for i in range(1, len(people)):
-            if people[i][]
+        people.sort(key=lambda x: (-x[0], x[1]))
+        ans = []
+        for p in people:
+            ans.insert(p[1], p)
         return ans
