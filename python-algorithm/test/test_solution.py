@@ -1352,3 +1352,24 @@ def test_best_sightseeing_pair(arr, expect):
     from leetcode.best_sightseeing_pair import Solution
     sol = Solution()
     assert sol.max_score_sightseeing_pair(arr) == expect
+
+
+@pytest.mark.parametrize("tasks, n, ans", [
+    (["A", "A", "A", "B", "B", "B"], 2, 8),
+    (["A", "A", "A", "B", "B", "B"], 0, 6),
+    (["A", "A", "A", "A", "A", "A", "B", "C", "D", "E", "F", "G"], 2, 16)
+])
+def test_621_task_scheduler(tasks, n, ans):
+    from leetcode.task_scheduler import Solution
+    sol = Solution()
+    assert sol.least_interval(tasks, n) == ans
+
+
+@pytest.mark.parametrize("s, ans", [
+    ("abc", 3),
+    ("a" * 1000, 500500),
+])
+def test_647_palindromic_substrings(s, ans):
+    from leetcode.palindromic_substrings import Solution
+    sol = Solution()
+    assert sol.count_substrings(s) == ans
