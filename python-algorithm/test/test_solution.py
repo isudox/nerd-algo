@@ -1373,3 +1373,12 @@ def test_647_palindromic_substrings(s, ans):
     from leetcode.palindromic_substrings import Solution
     sol = Solution()
     assert sol.count_substrings(s) == ans
+
+
+@pytest.mark.parametrize("a, b, ans", [
+    ([1, 2, 3, 2, 1], [3, 2, 1, 4, 7], 3),
+    ([0] * 1000, [0] * 1000, 1000)
+])
+def test_718_maximum_length_of_repeated_subarray(a, b, ans):
+    from leetcode.problem_718 import Solution
+    assert Solution().find_length(a, b) == ans
