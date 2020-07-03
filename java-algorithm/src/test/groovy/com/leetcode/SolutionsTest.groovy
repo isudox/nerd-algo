@@ -29,7 +29,7 @@ class SolutionsTest extends Specification {
 
     def "2. Add Two Numbers"() {
         given:
-        def solution = new AddTwoNumbers()
+        def solution = new Problem2()
         def arr1 = [2, 4, 3] as int[]
         def arr2 = [5, 6, 4] as int[]
         def l1 = Converter.convertListNode(arr1)

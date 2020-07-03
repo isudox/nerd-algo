@@ -165,7 +165,7 @@ def test_unique_paths_3(grid, res):
     [(2, 3, 10, [2, 3, 4, 5, 7, 9, 10]), (3, 5, 15, [2, 4, 6, 8, 10, 14])],
 )
 def test_powerful_integers(x, y, bound, res):
-    from leetcode.powerful_integers import Solution
+    from leetcode.problem_970 import Solution
 
     assert Solution().powerful_integers(x, y, bound) == res
 
@@ -206,8 +206,8 @@ def test_subarray_sums_divisible_by_k(arr, k, res):
     ("1010", "1011", "10101"),
     ("100", "110010", "110110")
 ])
-def test_add_binary(a: str, b: str, result: str):
-    from leetcode.add_binary import Solution
+def test_67_add_binary(a: str, b: str, result: str):
+    from leetcode.problem_67 import Solution
     assert Solution().add_binary(a, b) == result
 
 
@@ -342,7 +342,7 @@ def test_delete_columns_to_make_sorted_iii(arr, ans):
     ([2, 3, 0, 1], [0, 3, 2, 1], True)
 ])
 def test_validate_stack_sequences(pushed, popped, ans):
-    from leetcode.validate_stack_sequences import Solution
+    from leetcode.problem_946 import Solution
 
     solution = Solution()
     assert solution.validate_stack_sequences(pushed, popped) == ans
@@ -690,7 +690,7 @@ def test_reverse_string(s, expect):
     ([1, 0, 2], [0, 2, 0]),
 ])
 def test_product_of_array_except_self(nums, expect):
-    from leetcode.product_of_array_except_self import Solution
+    from leetcode.problem_238 import Solution
     assert Solution().product_except_self(nums) == expect
 
 
@@ -733,7 +733,7 @@ def test_first_missing_positive(nums, expect):
     ])
 ])
 def test_permutations(nums, expect):
-    from leetcode.permutations import Solution
+    from leetcode.problem_46 import Solution
     assert Solution().permute(nums) == expect
 
 
@@ -742,7 +742,7 @@ def test_permutations(nums, expect):
     ([1, 1, 2], [[1, 1, 2], [1, 2, 1], [2, 1, 1]])
 ])
 def test_permutations_ii(nums, expect):
-    from leetcode.permutations_ii import Solution
+    from leetcode.problem_47 import Solution
     solution = Solution()
     assert solution.permute_unique_dfs(nums) == expect
 
@@ -753,7 +753,7 @@ def test_permutations_ii(nums, expect):
     (2, -2, 0.25)
 ])
 def test_pow_n(x, n, expect):
-    from leetcode.powx_n import Solution
+    from leetcode.problem_50 import Solution
     assert Solution().my_pow(x, n) == expect
 
 
@@ -930,7 +930,7 @@ def test_min_path_sum(grid, expect):
     ([9, 9, 9], [1, 0, 0, 0]),
 ])
 def test_plus_one(digits, expect):
-    from leetcode.plus_one import Solution
+    from leetcode.problem_66 import Solution
     s = Solution()
     assert s.plus_one_2(digits) == expect
 
@@ -954,7 +954,7 @@ def test_climb_stairs(n, expect):
     ("acdcb", "a*c?b", False),
 ])
 def test_wildcard_matching(s, p, expect):
-    from leetcode.wildcard_matching import Solution
+    from leetcode.problem_44 import Solution
     solution = Solution()
     assert solution.is_match(s, p) == expect
 
@@ -1027,7 +1027,7 @@ def test_minimum_window_substring(s, t, expect):
      ], "ABCB", False)
 ])
 def test_word_search(board, word, expect):
-    from leetcode.word_search import Solution
+    from leetcode.problem_79 import Solution
     s = Solution()
     assert s.exist(board, word) == expect
 
@@ -1102,7 +1102,7 @@ def test_symmetric_tree(nodes, expect):
     ([3, 9, 20, None, None, 15, 7], [[3], [9, 20], [15, 7]])
 ])
 def test_binary_tree_level_order_traversal(root, expect):
-    from leetcode.binary_tree_level_order_traversal import Solution
+    from leetcode.problem_102 import Solution
     s = Solution()
     assert s.level_order(Converter.list2tree(root)) == expect
 
@@ -1123,7 +1123,7 @@ def test_maximum_depth_of_binary_tree(root, expect):
     ([7, 6, 4, 3, 1], 0)
 ])
 def test_best_time_to_buy_and_sell_stock(prices, expect):
-    from leetcode.best_time_to_buy_and_sell_stock import Solution
+    from leetcode.problem_121 import Solution
     s = Solution()
     assert s.max_profit(prices) == expect
 
@@ -1145,7 +1145,7 @@ def test_longest_consecutive_sequence(nums, expect):
     ([-10, 9, 20, None, None, 15, 7], 42)
 ])
 def test_binary_tree_maximum_path_sum(tree, expect):
-    from leetcode.binary_tree_maximum_path_sum import Solution
+    from leetcode.problem_124 import Solution
     s = Solution()
     # assert s.max_path_sum(Converter.list2tree(tree)) == expect
 
@@ -1158,7 +1158,7 @@ def test_binary_tree_maximum_path_sum(tree, expect):
     ("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab", ["a", "aa", "aaa", "aaaa"], False)
 ])
 def test_word_break(string, word_dict, expect):
-    from leetcode.word_break import Solution
+    from leetcode.problem_139 import Solution
     s = Solution()
     assert s.word_break_1(string, word_dict) == expect
     assert s.word_break_2(string, word_dict) == expect
@@ -1349,7 +1349,7 @@ def test_sum_of_mutated_array_closest_to_target(arr, target, expect):
     ([1, 2, 3], 4)
 ])
 def test_best_sightseeing_pair(arr, expect):
-    from leetcode.best_sightseeing_pair import Solution
+    from leetcode.problem_1014 import Solution
     sol = Solution()
     assert sol.max_score_sightseeing_pair(arr) == expect
 
@@ -1381,4 +1381,4 @@ def test_647_palindromic_substrings(s, ans):
 ])
 def test_718_maximum_length_of_repeated_subarray(a, b, ans):
     from leetcode.problem_718 import Solution
-    assert Solution().find_length(a, b) == ans
+    assert Solution().find_length_1(a, b) == ans

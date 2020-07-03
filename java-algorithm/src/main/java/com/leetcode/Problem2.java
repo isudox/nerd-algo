@@ -20,7 +20,7 @@ import java.math.BigInteger;
  *     Explanation: 342 + 465 = 807.
  * </pre>
  */
-public class AddTwoNumbers {
+public class Problem2 {
 
     /**
      * The nerd approach with the big help of {@link BigInteger}.
