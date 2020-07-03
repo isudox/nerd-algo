@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from typing import List
 import pytest
-from util.converter import Converter
+from common.converter import Converter
 
 
 @pytest.mark.parametrize("s, expect", [
@@ -26,7 +26,7 @@ def test_length_of_longest_substring(s: str, expect: int):
     ([1, 2], [3, 4], 2.5)
 ])
 def test_median_of_two_sorted_arrays(nums1, nums2, expect):
-    from leetcode.median_of_two_sorted_arrays import Solution
+    pass
     # assert Solution().find_median_sorted_arrays(nums1, nums2) == expect
 
 
@@ -50,7 +50,7 @@ def test_string_to_integer(str, expect):
     (333, True)
 ])
 def test_palindrome_number(x, res):
-    from leetcode.palindrome_number import Solution
+    from leetcode.problem_9 import Solution
 
     assert Solution().is_palindrome(x) == res
 
@@ -75,7 +75,7 @@ def test_str_without_3a3b(a, b, res):
 ],
                          )
 def test_minimum_cost_for_tickets(days, costs, res):
-    from leetcode.minimum_cost_for_tickets import Solution
+    from leetcode.problem_983 import Solution
 
     assert Solution().min_cost_tickets(days, costs) == res
 
@@ -243,7 +243,7 @@ def test_k_closest_points_to_origin(points, k, res):
     "nums, res", [([3, 2, 4, 1], [3, 4, 2, 3, 2]), ([1, 2, 3], [])]
 )
 def test_pancake_sorting(nums, res):
-    from leetcode.pancake_sorting import Solution
+    from leetcode.problem_969 import Solution
 
     assert Solution().pancake_sort(nums) == res
 
@@ -267,7 +267,7 @@ def test_least_operators_to_express_number(x, target, ans):
     ],
 )
 def test_min_area_rect(points, area):
-    from leetcode.minimum_area_rectangle_ii import Solution
+    from leetcode.problem_963 import Solution
 
     assert Solution().min_area_free_rect(points) == area
 
@@ -276,7 +276,7 @@ def test_min_area_rect(points, area):
     ([1, 2, 3, 3], 3), ([2, 1, 2, 5, 3, 2], 2), ([5, 1, 5, 2, 5, 3, 5, 4], 5)
 ])
 def test_n_repeated_element_in_size_2n_array(li, ans):
-    from leetcode.n_repeated_element_in_size_2n_array import Solution
+    from leetcode.problem_961 import Solution
     s = Solution()
 
     assert s.repeated_n_times(li) == ans
@@ -367,7 +367,7 @@ def test_validate_stack_sequences(pushed, popped, ans):
       9898])
 ])
 def test_nums_same_consec_diff(n, k, expect):
-    from leetcode.numbers_with_same_consecutive_differences import Solution
+    from leetcode.problem_967 import Solution
 
     ans = Solution().nums_same_consec_diff(n, k)
     assert len(ans) == len(expect)
@@ -385,7 +385,7 @@ def test_nums_same_consec_diff(n, k, expect):
     ("kqep", "pekeq", "kqeep")
 ])
 def test_custom_sort_string(s, t, ans):
-    from leetcode.custom_sort_string import Solution
+    from leetcode.problem_791 import Solution
 
     assert Solution().custom_sort_string(s, t) == ans
 
@@ -424,7 +424,7 @@ def test_regions_cut_by_slashes(grid, ans):
     ([4, 3, 5, 3, 4], 5)
 ])
 def test_single_number(nums, ans):
-    from leetcode.single_number import Solution
+    from leetcode.problem_136 import Solution
     solution = Solution()
 
     assert solution.single_number(nums) == ans
@@ -445,7 +445,7 @@ def test_single_number(nums, ans):
     ([1, 3], 1, [[1]])
 ])
 def test_combination_sum(candidates, target, expect):
-    from leetcode.combination_sum import Solution
+    from leetcode.problem_39 import Solution
     solution = Solution()
 
     assert solution.combination_sum(candidates, target) == expect
@@ -460,7 +460,7 @@ def test_combination_sum(candidates, target, expect):
     ]),
 ])
 def test_combination_sum_2(candidates, target, expect):
-    from leetcode.combination_sum_ii import Solution
+    from leetcode.problem_40 import Solution
     solution = Solution()
 
     assert solution.combination_sum2(candidates, target) == expect
@@ -481,7 +481,7 @@ def test_combination_sum_2(candidates, target, expect):
     ])
 ])
 def test_combination_sum_3(n, k, expect):
-    from leetcode.combination_sum_iii import Solution
+    from leetcode.problem_216 import Solution
     solution = Solution()
 
     assert solution.combination_sum3(n, k) == expect
@@ -492,7 +492,7 @@ def test_combination_sum_3(n, k, expect):
     # ([4, 2, 1], 32, 39882198)
 ])
 def test_combination_sum_4(nums, target, expect):
-    from leetcode.combination_sum_iv import Solution
+    from leetcode.problem_377 import Solution
     solution = Solution()
 
     assert solution.combination_sum4(nums, target) == expect
@@ -518,7 +518,7 @@ def test_maximum_subarray(nums, expect):
     (10, "13211311123113112211")
 ])
 def test_count_and_say(n, expect):
-    from leetcode.count_and_say import Solution
+    from leetcode.problem_38 import Solution
     solution = Solution()
 
     assert solution.count_and_say(n) == expect
@@ -628,7 +628,7 @@ def test_trapping_rain_water(height, expect):
     ])
 ])
 def test_n_queens(n, expect):
-    from leetcode.n_queens import Solution
+    from leetcode.problem_51 import Solution
     solution = Solution()
 
     assert solution.solve_n_queens(n) == expect
@@ -646,7 +646,7 @@ def test_n_queens(n, expect):
     (9, 352),
 ])
 def test_n_queens_ii(n, expect: int):
-    from leetcode.n_queens_ii import Solution
+    from leetcode.problem_52 import Solution
     solution = Solution()
 
     assert solution.total_n_queens(n) == expect
@@ -667,7 +667,7 @@ def test_jewels_and_stones(jewels: str, stones: str, expect: int):
     ("1234567890", "9876543210", "12193263111263526900")
 ])
 def test_multiply_strings(a: str, b: str, c: str):
-    from leetcode.multiply_strings import Solution
+    from leetcode.problem_43 import Solution
     assert Solution().multiply(a, b) == c
 
 
@@ -678,7 +678,7 @@ def test_multiply_strings(a: str, b: str, c: str):
     (["H", "a", "n", "n", "a", "h"], ["h", "a", "n", "n", "a", "H"])
 ])
 def test_reverse_string(s, expect):
-    from leetcode.reverse_string import Solution
+    from leetcode.problem_344 import Solution
     Solution().reverse_string(s)
     assert s == expect
 
@@ -792,7 +792,7 @@ def test_group_anagrams(strs, expect):
      ])
 ])
 def test_rotate_image(matrix, expect):
-    from leetcode.rotate_image import Solution
+    from leetcode.problem_48 import Solution
     Solution().rotate(matrix)
     assert matrix == expect
 
@@ -865,7 +865,7 @@ def test_length_of_last_word(s, expect):
      ], [1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7])
 ])
 def test_spiral_matrix(matrix, output):
-    from leetcode.spiral_matrix import Solution
+    from leetcode.problem_54 import Solution
     s = Solution()
     assert s.spiral_order(matrix) == output
 
@@ -877,7 +877,7 @@ def test_spiral_matrix(matrix, output):
     (4, [[1, 2, 3, 4], [12, 13, 14, 5], [11, 16, 15, 6], [10, 9, 8, 7]])
 ])
 def test_spiral_matrix_ii(n, matrix):
-    from leetcode.spiral_matrix_ii import Solution
+    from leetcode.problem_59 import Solution
     solution = Solution()
     assert solution.generate_matrix(n) == matrix
 
@@ -919,7 +919,7 @@ def test_unique_paths_ii(grid, expect):
      ], 23)
 ])
 def test_min_path_sum(grid, expect):
-    from leetcode.minimum_path_sum import Solution
+    from leetcode.problem_64 import Solution
     s = Solution()
     assert s.min_path_sum(grid) == expect
 
@@ -941,7 +941,7 @@ def test_plus_one(digits, expect):
     (3, 3),
 ])
 def test_climb_stairs(n, expect):
-    from leetcode.climbing_stairs import Solution
+    from leetcode.problem_70 import Solution
     s = Solution()
     assert s.climb_stairs(n) == expect
 
@@ -968,7 +968,7 @@ def test_wildcard_matching(s, p, expect):
     ("ab", ".*c", False)
 ])
 def test_regular_expression_matching(s, p, expect):
-    from leetcode.regular_expression_matching import Solution
+    from leetcode.problem_10 import Solution
     solution = Solution()
     assert solution.is_match(s, p) == expect
 
@@ -990,7 +990,7 @@ def test_edit_distance(word1, word2, expect):
     ([2, 1, 0, 2, 1, 0], [0, 0, 1, 1, 2, 2])
 ])
 def test_sort_colors(nums, expect):
-    from leetcode.sort_colors import Solution
+    from leetcode.problem_75 import Solution
     solution = Solution()
     solution.sort_colors_1_pass(nums)
     assert nums == expect
@@ -1004,7 +1004,7 @@ def test_sort_colors(nums, expect):
     ("ADOBECODEBANC", "ABC", "BANC")
 ])
 def test_minimum_window_substring(s, t, expect):
-    from leetcode.minimum_window_substring import Solution
+    from leetcode.problem_76 import Solution
     solution = Solution()
     assert solution.min_window(s, t) == expect
 
@@ -1173,7 +1173,7 @@ def test_linked_list_cycle(head, expect):
 
 
 def test_min_stack():
-    from leetcode.min_stack import MinStack
+    from leetcode.problem_155 import MinStack
     min_stack = MinStack()
     min_stack.push(-2)
     min_stack.push(0)
@@ -1199,13 +1199,13 @@ def test_min_stack():
      ], 3)
 ])
 def test_number_of_islands(grid, expect):
-    from leetcode.number_of_islands import Solution
+    from leetcode.problem_200 import Solution
     s = Solution()
     assert s.num_islands(grid) == expect
 
 
 def test_lru_cache():
-    from leetcode.lru_cache import LRUCache1, LRUCache2, LRUCache3
+    from leetcode.lru_cache import LRUCache3
     cache = LRUCache3(2)
     cache.put(1, 1)
     cache.put(2, 2)
@@ -1252,7 +1252,7 @@ def test_target_sum(nums, target, expect):
     ([1, 2, 1], [1, 1, 2], False)
 ])
 def test_same_tree(p, q, expect):
-    from leetcode.same_tree import Solution
+    from leetcode.problem_100 import Solution
     solution = Solution()
     assert solution.is_same_tree(Converter.list2tree(p),
                                  Converter.list2tree(q)) == expect
@@ -1293,7 +1293,7 @@ def test_interleaving_string(s1, s2, s3, expect):
     ([73, 74, 75, 71, 69, 72, 76, 73], [1, 1, 4, 2, 1, 1, 0, 0]),
 ])
 def test_daily_temperatures(t, expect):
-    from leetcode.daily_temperatures import Solution
+    from leetcode.problem_739 import Solution
     assert Solution().daily_temperatures(t) == expect
 
 
@@ -1354,6 +1354,20 @@ def test_best_sightseeing_pair(arr, expect):
     assert sol.max_score_sightseeing_pair(arr) == expect
 
 
+@pytest.mark.parametrize("s, ans", [
+    ("(()", 2),
+    (")()())", 4),
+    ("()(()", 2),
+    ("(()))())(", 4),
+    ("()())(((()))", 6)
+])
+def test_32_longest_valid_parentheses(s, ans):
+    from leetcode.problem_32 import Solution
+    sol = Solution()
+    assert sol.longest_valid_parentheses(s) == ans
+    assert sol.longest_valid_parentheses_2(s) == ans
+
+
 @pytest.mark.parametrize("matrix, k, ans", [
     ([[1, 5, 9], [10, 11, 13], [12, 13, 15]], 8, 13),
     ([[1, 1, 3, 8, 13], [4, 4, 4, 8, 18], [9, 14, 18, 19, 20],
@@ -1380,7 +1394,7 @@ def test_621_task_scheduler(tasks, n, ans):
     ("a" * 1000, 500500),
 ])
 def test_647_palindromic_substrings(s, ans):
-    from leetcode.palindromic_substrings import Solution
+    from leetcode.problem_647 import Solution
     sol = Solution()
     assert sol.count_substrings(s) == ans
 

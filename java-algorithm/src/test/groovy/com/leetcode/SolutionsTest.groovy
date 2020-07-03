@@ -1,5 +1,8 @@
 package com.leetcode
 
+import com.common.Converter
+import com.common.ListNode
+import com.common.TreeNode
 import spock.lang.Specification
 
 /**
@@ -13,7 +16,7 @@ class SolutionsTest extends Specification {
 
     def "1. Two Sum"(int[] nums, int target, int[] result) {
         given:
-        def solution = new TwoSum()
+        def solution = new Problem1()
 
         expect:
         solution.twoSum1(nums, target) == result
@@ -47,7 +50,7 @@ class SolutionsTest extends Specification {
 
     def "3. Longest Substring Without Repeating Characters"(String s, int len) {
         given:
-        def solution = new LongestSubstringWithoutRepeatingCharacters()
+        def solution = new Problem3()
 
         expect:
         solution.lengthOfLongestSubstring(s) == len
@@ -61,7 +64,7 @@ class SolutionsTest extends Specification {
 
     def "23. Merge k Sorted Lists"() {
         given:
-        def solution = new MergeKSortedLists()
+        def solution = new Problem23()
         def i1 = [1, 4, 5] as int[]
         def i2 = [1, 3, 4] as int[]
         int[] i3 = [2, 6]
@@ -78,7 +81,7 @@ class SolutionsTest extends Specification {
 
     def "25. Reverse Nodes in k-Group"(int[] nums, int k, int[] res) {
         given:
-        def solution = new ReverseNodesInKGroup()
+        def solution = new Problem25()
         def node = Converter.convertListNode(nums)
 
         expect:
@@ -94,10 +97,11 @@ class SolutionsTest extends Specification {
 
     def "32. Longest Valid Parentheses"(String s, int len) {
         given:
-        def solution = new LongestValidParentheses()
+        def solution = new Problem32()
 
         expect:
         solution.longestValidParentheses(s) == len
+        solution.longestValidParentheses2(s) == len
 
         where:
         s           | len
@@ -107,12 +111,13 @@ class SolutionsTest extends Specification {
         "(()()"     | 4
         "(()()(()"  | 4
         ")()())"    | 4
+        "(()))())(" | 4
         "()(()))))" | 6
     }
 
     def "33. Search in Rotated Sorted Array"(int[] nums, int target, int res) {
         given:
-        def solution = new SearchInRotatedSortedArray()
+        def solution = new Problem33()
 
         expect:
         solution.search1(nums, target) == res
@@ -129,7 +134,7 @@ class SolutionsTest extends Specification {
 
     def "34. Find First and Last Position of Element in Sorted Array"(int[] nums, int target, int[] res) {
         given:
-        def solution = new FindFirstAndLastPositionOfElementInSortedArray()
+        def solution = new Problem34()
 
         expect:
         solution.searchRange(nums, target) == res
@@ -142,7 +147,7 @@ class SolutionsTest extends Specification {
 
     def "35. Search Insert Position"(int[] nums, int target, int res) {
         given:
-        def solution = new SearchInsertPosition()
+        def solution = new Problem35()
 
         expect:
         solution.searchInsert(nums, target) == res
@@ -159,7 +164,7 @@ class SolutionsTest extends Specification {
 
     def "36. Valid Sudoku"(char[][] board, boolean res) {
         given:
-        def solution = new ValidSudoku()
+        def solution = new Problem36()
 
         expect:
         res == solution.isValidSudoku(board)
@@ -188,7 +193,7 @@ class SolutionsTest extends Specification {
 
     def "39. Combination Sum"(int[] candidates, int target, List<List<Integer>> ans) {
         given:
-        def solution = new CombinationSum()
+        def solution = new Problem39()
 
         expect:
         solution.combinationSum(candidates, target) == ans
@@ -201,7 +206,7 @@ class SolutionsTest extends Specification {
 
     def "40. Combination Sum II"(int[] candidates, int target, List<List<Integer>> expect) {
         given:
-        def solution = new CombinationSum2()
+        def solution = new Problem40()
 
         expect:
         solution.combinationSum2(candidates, target) == expect
@@ -214,7 +219,7 @@ class SolutionsTest extends Specification {
 
     def "41. First Missing Positive"(int[] nums, int expect) {
         given:
-        def solution = new FirstMissingPositive()
+        def solution = new Problem41()
         expect:
         solution.firstMissingPositive(nums) == expect
         where:
@@ -226,7 +231,7 @@ class SolutionsTest extends Specification {
 
     def "42. Trapping Rain Water"(int[] height, int expect) {
         given:
-        def solution = new TrappingRainWater()
+        def solution = new Problem42()
         expect:
         solution.trap(height) == expect
         where:
@@ -247,7 +252,7 @@ class SolutionsTest extends Specification {
 
     def "53. Maximum Subarray"(int[] nums, int expect) {
         given:
-        def solution = new MaximumSubarray()
+        def solution = new Problem53()
         expect:
         solution.maxSubArray(nums) == expect
         where:
@@ -259,7 +264,7 @@ class SolutionsTest extends Specification {
 
     def "70. Climbing Stairs"(int n, int expect) {
         given:
-        def solution = new ClimbingStairs()
+        def solution = new Problem70()
         expect:
         solution.climbStairs(n) == expect
         where:
@@ -270,7 +275,7 @@ class SolutionsTest extends Specification {
 
     def "78. Subsets"(int[] nums, List<List<Integer>> expect) {
         given:
-        def solution = new Subsets()
+        def solution = new Problem78()
         expect:
         solution.subsets(nums) == expect
         where:
@@ -283,7 +288,7 @@ class SolutionsTest extends Specification {
 
     def "84. Largest Rectangle in Histogram"(int[] heights, int result) {
         given:
-        def solution = new LargestRectangleInHistogram()
+        def solution = new Problem84()
         expect:
         solution.largestRectangleArea(heights) == result
         where:
@@ -296,7 +301,7 @@ class SolutionsTest extends Specification {
 
     def "90. Subsets II"(int[] nums, List<List<Integer>> expect) {
         given:
-        def solution = new Subsets2()
+        def solution = new Problem90()
         expect:
         solution.subsetsWithDup(nums) == expect
         where:
@@ -307,7 +312,7 @@ class SolutionsTest extends Specification {
 
     def "136. Single Number"(int[] nums, int ans) {
         given:
-        def solution = new SingleNumber()
+        def solution = new Problem136()
 
         expect:
         solution.singleNumber(nums) == ans
@@ -322,7 +327,7 @@ class SolutionsTest extends Specification {
 
     def "206. Reverse Linked List"(int[] input, int[] output) {
         given:
-        def sol = new ReverseLinkedList()
+        def sol = new Problem206()
         expect:
         ListNode node = sol.reverseList(Converter.convertListNode(input))
         Converter.convertArray(node) == output
@@ -334,7 +339,7 @@ class SolutionsTest extends Specification {
 
     def "216. Combination Sum III"(int k, int n, List<List<Integer>> expect) {
         given:
-        def solution = new CombinationSum3()
+        def solution = new Problem216()
 
         expect:
         solution.combinationSum3(k, n) == expect
@@ -349,7 +354,7 @@ class SolutionsTest extends Specification {
 
     def "494. Target Sum"(int[] nums, int s, int expect) {
         given:
-        def solution = new TargetSum()
+        def solution = new Problem494()
         expect:
         solution.findTargetSumWays1(nums, s) == expect
         solution.findTargetSumWays2(nums, s) == expect
@@ -363,7 +368,7 @@ class SolutionsTest extends Specification {
 
     def "791. Custom Sort String"(String s, String t, String ans) {
         given:
-        def solution = new CustomSortString()
+        def solution = new Problem791()
 
         expect:
         solution.customSortString(s, t) == ans
@@ -379,7 +384,7 @@ class SolutionsTest extends Specification {
 
     def "946. Validate Stack Sequences"(int[] pushed, int[] popped, boolean ans) {
         given:
-        def solution = new ValidateStackSequences()
+        def solution = new Problem946()
 
         expect:
         solution.validateStackSequences(pushed, popped) == ans
@@ -397,7 +402,7 @@ class SolutionsTest extends Specification {
 
     def "961. N-Repeated Element in Size 2N Array"(int[] arr, int ans) {
         given:
-        def solution = new NRepeatedElementInSize2NArray()
+        def solution = new Problem961()
 
         expect:
         solution.repeatedNTimes(arr) == ans
@@ -411,7 +416,7 @@ class SolutionsTest extends Specification {
 
     def "962. Maximum Width Ramp"(int[] arr, int ans) {
         given:
-        def solution = new MaximumWidthRamp()
+        def solution = new Problem962()
 
         expect:
         solution.maxWidthRamp(arr) == ans
@@ -424,7 +429,7 @@ class SolutionsTest extends Specification {
 
     def "963. Minimum Area Rectangle II"(int[][] points, double ans) {
         given:
-        def solution = new MinimumAreaRectangle2()
+        def solution = new Problem963()
 
         expect:
         solution.minAreaFreeRect(points) == ans
@@ -438,7 +443,7 @@ class SolutionsTest extends Specification {
 
     def "964. Least Operators to Express Number"(int x, int target, int ans) {
         given:
-        def solution = new LeastOperatorsToExpressNumber()
+        def solution = new Problem964()
 
         expect:
         solution.leastOpsExpressTarget(x, target) == ans
@@ -452,7 +457,7 @@ class SolutionsTest extends Specification {
 
     def "967. Numbers With Same Consecutive Differences"(int n, int k, int[] ans) {
         given:
-        def solution = new NumbersWithSameConsecutiveDifferences()
+        def solution = new Problem967()
 
         expect:
         solution.numsSameConsecDiff(n, k) == ans
@@ -467,7 +472,7 @@ class SolutionsTest extends Specification {
 
     def "969. Pancake Sorting"(int[] nums, Integer[] res) {
         given:
-        def solution = new PancakeSorting()
+        def solution = new Problem969()
 
         expect:
         Converter.collToArr(solution.pancakeSort(nums)) == res
@@ -480,7 +485,7 @@ class SolutionsTest extends Specification {
 
     def "974. Subarray Sums Divisible by K"(int[] A, int K, int res) {
         given:
-        def solution = new SubarraySumsDivisibleByK()
+        def solution = new Problem974()
 
         expect:
         solution.subarraysDivByK(A, K) == res
@@ -493,7 +498,7 @@ class SolutionsTest extends Specification {
 
     def "976. Largest Perimeter Triangle"(int[] A, int res) {
         given:
-        def solution = new LargestPerimeterTriangle()
+        def solution = new Problem976()
 
         expect:
         solution.largestPerimeter(A) == res
@@ -508,7 +513,7 @@ class SolutionsTest extends Specification {
 
     def "977. Squares of a Sorted Array"(int[] A, int[] res) {
         given:
-        def solution = new SquaresOfSortedArray()
+        def solution = new Problem977()
 
         expect:
         solution.sortedSquares2(A) == res
@@ -521,7 +526,7 @@ class SolutionsTest extends Specification {
 
     def "979. Distribute Coins in Binary Tree"(TreeNode root, int res) {
         given:
-        def solution = new DistributeCoinsInBinaryTree()
+        def solution = new Problem979()
 
         expect:
         solution.distributeCoins(root) == res
@@ -533,7 +538,7 @@ class SolutionsTest extends Specification {
 
     def "980. Unique Paths III"(int[][] grid, int res) {
         given:
-        def solution = new UniquePaths3()
+        def solution = new Problem980()
 
         expect:
         solution.uniquePathsIII(grid) == res
@@ -547,7 +552,7 @@ class SolutionsTest extends Specification {
 
     def "982. Triples with Bitwise AND Equal To Zero"(int[] nums, int res) {
         given:
-        def solution = new TriplesWithBitwiseAndEqualToZero()
+        def solution = new Problem982()
 
         expect:
         solution.countTriplets(nums) == res
@@ -559,7 +564,7 @@ class SolutionsTest extends Specification {
 
     def "983. Minimum Cost For Tickets"(int[] days, int[] costs, int res) {
         given:
-        def solution = new MinimumCostForTickets()
+        def solution = new Problem983()
 
         expect:
         solution.mincostTickets(days, costs) == res
@@ -572,7 +577,7 @@ class SolutionsTest extends Specification {
 
     def "984. String Without AAA or BBB"(int A, int B, String res) {
         given:
-        def solution = new StringWithout3aOr3b()
+        def solution = new Problem984()
 
         expect:
         solution.strWithout3a3b(A, B) == res
@@ -586,7 +591,7 @@ class SolutionsTest extends Specification {
 
     def "1014. Best Sightseeing Pair"(int[] arr, int result) {
         given:
-        def sol = new BestSightseeingPair()
+        def sol = new Problem1014()
 
         expect:
         sol.maxScoreSightseeingPair(arr) == result

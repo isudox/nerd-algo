@@ -1,5 +1,7 @@
 package com.leetcode;
 
+import com.common.ListNode;
+
 import java.math.BigInteger;
 
 /**

@@ -30,7 +30,7 @@ class Solution:
         """
         recursive
         time complexity: O(N)
-        space complexity: O(1)
+        space complexity: O(lgN)
         """
 
         def recur(start: int, end: int) -> TreeNode:
