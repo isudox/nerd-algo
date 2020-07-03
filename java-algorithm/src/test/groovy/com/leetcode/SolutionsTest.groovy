@@ -237,7 +237,7 @@ class SolutionsTest extends Specification {
 
     def "46. Permutations"(int[] nums, List<List<Integer>> expect) {
         given:
-        def solution = new Permutations()
+        def solution = new Problem46()
         expect:
         solution.permute(nums) == expect
         where:

@@ -48,7 +48,7 @@ package com.leetcode;
  * }
  * </pre>
  */
-public class RemoveDuplicatesFromSortedArray {
+public class Problem26 {
 
     public int removeDuplicates(int[] nums) {
         int count = nums.length;
