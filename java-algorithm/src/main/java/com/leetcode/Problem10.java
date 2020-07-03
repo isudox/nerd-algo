@@ -58,7 +58,7 @@ package com.leetcode;
  * p = "mis*is*p*."
  * Output: false
  */
-public class RegularExpressionMatching {
+public class Problem10 {
 
     public boolean isMatch(String s, String p) {
         int lenS = s.length(), lenP = p.length();

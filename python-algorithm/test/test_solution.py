@@ -1354,6 +1354,16 @@ def test_best_sightseeing_pair(arr, expect):
     assert sol.max_score_sightseeing_pair(arr) == expect
 
 
+@pytest.mark.parametrize("matrix, k, ans", [
+    ([[1, 5, 9], [10, 11, 13], [12, 13, 15]], 8, 13),
+    ([[1, 1, 3, 8, 13], [4, 4, 4, 8, 18], [9, 14, 18, 19, 20],
+      [14, 19, 23, 25, 25], [18, 21, 26, 28, 29]], 13, 18)
+])
+def test_378_kth_smallest_element_in_a_sorted_matrix(matrix, k, ans):
+    from leetcode.problem_378 import Solution
+    assert Solution().kth_smallest_2(matrix, k) == ans
+
+
 @pytest.mark.parametrize("tasks, n, ans", [
     (["A", "A", "A", "B", "B", "B"], 2, 8),
     (["A", "A", "A", "B", "B", "B"], 0, 6),

@@ -23,7 +23,7 @@ import java.util.List;
  *   [3,2,1]
  * ]
  */
-public class Permutations {
+public class Problem46 {
 
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> permutations = new ArrayList<>();

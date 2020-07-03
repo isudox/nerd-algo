@@ -20,7 +20,7 @@ import java.util.List;
  *   [2,1,1]
  * ]
  */
-public class Permutations2 {
+public class Problem47 {
 
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> permutations = new ArrayList<>();
