@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """971. Flip Binary Tree To Match Preorder Traversal
 https://leetcode.com/problems/flip-binary-tree-to-match-preorder-traversal/
 Given a binary tree with N nodes, each node has a different value from

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """68. Text Justification
 https://leetcode.com/problems/text-justification
 

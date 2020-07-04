@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """494. Target Sum
 https://leetcode.com/problems/target-sum/
 

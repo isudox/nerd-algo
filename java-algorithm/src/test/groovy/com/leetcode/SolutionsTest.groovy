@@ -325,6 +325,18 @@ class SolutionsTest extends Specification {
         [4, 1, 2, 1, 2] | 4
     }
 
+    def "152. Maximum Product Subarray"(int[] nums, int ans) {
+        given:
+        def sol = new Problem152()
+        expect:
+        sol.maxProduct(nums) == ans
+        where:
+        nums          | ans
+        [0, 2]        | 2
+        [2, 3, -2, 4] | 6
+        [-2, 0, -1]   | 0
+    }
+
     def "206. Reverse Linked List"(int[] input, int[] output) {
         given:
         def sol = new Problem206()
