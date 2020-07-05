@@ -957,6 +957,7 @@ def test_wildcard_matching(s, p, expect):
     from leetcode.problem_44 import Solution
     solution = Solution()
     assert solution.is_match(s, p) == expect
+    assert solution.is_match_2(s, p) == expect
 
 
 @pytest.mark.parametrize("s, p, expect", [

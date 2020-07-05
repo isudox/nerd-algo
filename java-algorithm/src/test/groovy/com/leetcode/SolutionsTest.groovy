@@ -240,6 +240,20 @@ class SolutionsTest extends Specification {
         [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1] | 6
     }
 
+    def "44. Wildcard Matching"(String s, String p, boolean ans) {
+        given:
+        def sol = new Problem44()
+        expect:
+        sol.isMatch(s, p) == ans
+        where:
+        s       | p       | ans
+        "acdcb" | "a*c?b" | false
+        "adceb" | "*a*b"  | true
+        "cb"    | "?a"    | false
+        "aa"    | "*"     | true
+        "aa"    | "a"     | false
+    }
+
     def "46. Permutations"(int[] nums, List<List<Integer>> expect) {
         given:
         def solution = new Problem46()
