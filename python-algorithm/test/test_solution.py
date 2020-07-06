@@ -1392,6 +1392,20 @@ def test_378_kth_smallest_element_in_a_sorted_matrix(matrix, k, ans):
     assert Solution().kth_smallest_2(matrix, k) == ans
 
 
+@pytest.mark.parametrize("nums, ans", [
+    ([2, 6, 4, 8, 10, 9, 15], 5),
+    ([1, 2, 3, 4], 0),
+    ([2, 6, 4], 2),
+    ([1], 0),
+    ([5, 3, 9, 1, 7, 3, 2, 5], 8),
+    ([1, 3, 5, 2], 3)
+])
+def test_581(nums, ans):
+    from leetcode.problem_581 import Solution
+    sol = Solution()
+    assert sol.find_unsorted_subarray(nums) == ans
+
+
 @pytest.mark.parametrize("tasks, n, ans", [
     (["A", "A", "A", "B", "B", "B"], 2, 8),
     (["A", "A", "A", "B", "B", "B"], 0, 6),
