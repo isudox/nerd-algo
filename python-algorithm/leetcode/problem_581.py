@@ -36,15 +36,6 @@ class Solution:
                 end = i
             else:
                 cur_max = nums[i]
-        while start >= 1 and nums[-1] < nums[start - 1]:
-            start -= 1
-        if start == -1 and end == -1:
+        if start == -1:
             return 0
         return end - start + 1
-
-
-if __name__ == '__main__':
-    sol = Solution()
-    print(sol.find_unsorted_subarray([1, 3, 5, 2]))  # 3
-    print(sol.find_unsorted_subarray([1, 3, 5, 7]))  # 0
-    print(sol.find_unsorted_subarray([2, 3, 3, 2, 4]))  # 3

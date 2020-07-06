@@ -276,6 +276,22 @@ class SolutionsTest extends Specification {
         [-2, 1, -3, 4, -1, 2, 1, -5, 4] | 6
     }
 
+    def "63. Unique Paths II"(int[][] grid, int ans) {
+        given:
+        def sol = new Problem63()
+        expect:
+        sol.uniquePathsWithObstacles(grid) == ans
+        where:
+        grid        | ans
+        [[1]]       | 0
+        [[0, 0, 0],
+         [0, 1, 0],
+         [0, 0, 0]] | 2
+        [[0, 0, 0],
+         [0, 0, 0],
+         [0, 0, 0]] | 6
+    }
+
     def "70. Climbing Stairs"(int n, int expect) {
         given:
         def solution = new Problem70()
@@ -390,6 +406,21 @@ class SolutionsTest extends Specification {
         [1, 1, 1, 1, 1]                                                              | 3  | 5
         [27, 22, 39, 22, 40, 32, 44, 45, 46, 8, 8, 21, 27, 8, 11, 29, 16, 15, 41, 0] | 10 | 0
         [19, 32, 36, 7, 37, 10, 44, 21, 40, 39, 39, 18, 5, 34, 3, 40, 33, 2, 46, 46] | 29 | 5715
+    }
+
+    def "581. Shortest Unsorted Continuous Subarray"(int[] nums, int ans) {
+        given:
+        def sol = new Problem581()
+        expect:
+        sol.findUnsortedSubarray(nums) == ans
+        where:
+        nums                     | ans
+        [2, 6, 4, 8, 10, 9, 15]  | 5
+        [1, 2, 3, 4]             | 0
+        [2, 6, 4]                | 2
+        [1]                      | 0
+        [5, 3, 9, 1, 7, 3, 2, 5] | 8
+        [1, 3, 5, 2]             | 3
     }
 
     def "791. Custom Sort String"(String s, String t, String ans) {
