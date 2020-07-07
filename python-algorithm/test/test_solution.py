@@ -1392,6 +1392,17 @@ def test_378_kth_smallest_element_in_a_sorted_matrix(matrix, k, ans):
     assert Solution().kth_smallest_2(matrix, k) == ans
 
 
+@pytest.mark.parametrize("s, p, ans", [
+    ("aa", "bb", []),
+    ("abab", "ab", [0, 1, 2]),
+    ("cbaebabacd", "abc", [0, 6])
+])
+def test_438(s: str, p: str, ans: List[int]):
+    from leetcode.problem_438 import Solution
+    sol = Solution()
+    assert sol.find_anagrams(s, p) == ans
+
+
 @pytest.mark.parametrize("nums, ans", [
     ([2, 6, 4, 8, 10, 9, 15], 5),
     ([1, 2, 3, 4], 0),
