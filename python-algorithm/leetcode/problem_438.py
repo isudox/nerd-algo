@@ -62,8 +62,9 @@ class Solution:
                         break
                     else:
                         temp[s[j]] = temp[s[j]] + 1 if s[j] in temp else 1
-                if temp and temp == store:
+                if j - i + 1 == m and temp == store:
                     ans.append(i)
+            
             i += 1
             found_start = False
             temp.clear()

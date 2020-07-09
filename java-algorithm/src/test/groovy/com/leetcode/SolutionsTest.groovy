@@ -408,6 +408,17 @@ class SolutionsTest extends Specification {
         [19, 32, 36, 7, 37, 10, 44, 21, 40, 39, 39, 18, 5, 34, 3, 40, 33, 2, 46, 46] | 29 | 5715
     }
 
+    def "560. Subarray Sum Equals K"(int[] nums, int k, int ans) {
+        given:
+        def sol = new Problem560()
+        expect:
+        sol.subarraySum(nums, k) == ans
+        where:
+        nums        | k | ans
+        [1, 1, 1]   | 2 | 2
+        [1] * 20000 | 1 | 20000
+    }
+
     def "581. Shortest Unsorted Continuous Subarray"(int[] nums, int ans) {
         given:
         def sol = new Problem581()

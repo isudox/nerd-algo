@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from typing import List
 import pytest
 from common.converter import Converter
