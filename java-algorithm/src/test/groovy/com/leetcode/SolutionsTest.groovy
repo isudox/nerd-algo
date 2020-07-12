@@ -394,6 +394,16 @@ class SolutionsTest extends Specification {
         5 | 18 || [[1, 2, 3, 4, 8], [1, 2, 3, 5, 7], [1, 2, 4, 5, 6]]
     }
 
+    def "315. Count of Smaller Numbers After Self"(int[] nums, int[] ans) {
+        given:
+        def sol = new Problem315()
+        expect:
+        Converter.collToArr(sol.countSmaller(nums)) == ans
+        where:
+        nums         | ans
+        [5, 2, 6, 1] | [2, 1, 1, 0]
+    }
+
     def "494. Target Sum"(int[] nums, int s, int expect) {
         given:
         def solution = new Problem494()

@@ -1381,6 +1381,28 @@ def test_152_maximum_product_subarray(nums, ans):
     assert sol.max_product_3(nums) == ans
 
 
+@pytest.mark.parametrize("prices, ans", [
+    ([1, 2, 3, 0, 2], 3)
+])
+def test_309(prices: List[int], ans):
+    from leetcode.problem_309 import Solution
+    sol = Solution()
+    assert sol.max_profit(prices) == ans
+
+
+@pytest.mark.timeout(1)
+@pytest.mark.parametrize("nums, ans", [
+    ([2, 0, 1], [2, 0, 0]),
+    ([5, 2, 6, 1], [2, 1, 1, 0]),
+    ([(10000 - x) for x in range(10000)], [(9999 - x) for x in range(10000)]),
+    ([x for x in range(10000)], [0 for x in range(10000)])
+])
+def test_315(nums: List[int], ans):
+    from leetcode.problem_315 import Solution
+    sol = Solution()
+    assert sol.count_smaller_1(nums) == ans
+
+
 @pytest.mark.parametrize("matrix, k, ans", [
     ([[1, 5, 9], [10, 11, 13], [12, 13, 15]], 8, 13),
     ([[1, 1, 3, 8, 13], [4, 4, 4, 8, 18], [9, 14, 18, 19, 20],
