@@ -404,6 +404,18 @@ class SolutionsTest extends Specification {
         [5, 2, 6, 1] | [2, 1, 1, 0]
     }
 
+    def "350. Intersection of Two Arrays II"(int[] nums1, int[] nums2, int[] ans) {
+        given:
+        def sol = new Problem350()
+        expect:
+        sol.intersect(nums1, nums2) == ans
+        sol.intersect1(nums1, nums2) == ans
+        where:
+        nums1        | nums2  | ans
+        [2, 1]       | [1, 2] | [1, 2]
+        [1, 2, 2, 1] | [2, 2] | [2, 2]
+    }
+
     def "494. Target Sum"(int[] nums, int s, int expect) {
         given:
         def solution = new Problem494()

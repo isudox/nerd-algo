@@ -1403,6 +1403,17 @@ def test_315(nums: List[int], ans):
     assert sol.count_smaller_1(nums) == ans
 
 
+@pytest.mark.parametrize("nums1, nums2, ans", [
+    ([2, 1], [1, 2], [1, 2]),
+    ([1, 2, 2, 1], [2, 2], [2, 2]),
+])
+def test_350(nums1: List[int], nums2: List[int], ans: List[int]):
+    from leetcode.problem_350 import Solution
+    sol = Solution()
+    assert sol.intersect(nums1, nums2) == ans
+    assert sol.intersect_1(nums1, nums2) == ans
+
+
 @pytest.mark.parametrize("matrix, k, ans", [
     ([[1, 5, 9], [10, 11, 13], [12, 13, 15]], 8, 13),
     ([[1, 1, 3, 8, 13], [4, 4, 4, 8, 18], [9, 14, 18, 19, 20],
