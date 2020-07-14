@@ -1368,6 +1368,21 @@ def test_32_longest_valid_parentheses(s, ans):
     assert sol.longest_valid_parentheses_2(s) == ans
 
 
+@pytest.mark.parametrize("triangle, ans", [
+    ([
+         [2],
+         [3, 4],
+         [6, 5, 7],
+         [4, 1, 8, 3]
+     ], 11)
+])
+def test_120(triangle: List[List[int]], ans: int):
+    from leetcode.problem_120 import Solution
+    sol = Solution()
+    assert sol.minimum_total(triangle) == ans
+    assert sol.minimum_total_1(triangle) == ans
+
+
 @pytest.mark.parametrize("nums, ans", [
     ([0, 2], 2),
     ([2, 3, -2, 4], 6),
