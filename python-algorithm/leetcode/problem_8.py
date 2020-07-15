@@ -66,13 +66,13 @@ class Solution:
         result = 0
         for c in str:
             if not start:
-                if c is ' ':
+                if c == ' ':
                     continue
-                if c is '-':
+                if c == '-':
                     start = True
                     is_neg = True
                     continue
-                if c is '+':
+                if c == '+':
                     start = True
                     continue
                 if '0' <= c <= '9':

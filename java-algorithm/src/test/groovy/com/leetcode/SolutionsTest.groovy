@@ -340,6 +340,19 @@ class SolutionsTest extends Specification {
         [1, 2, 2] | [[], [1], [2], [1, 2], [2, 2], [1, 2, 2]]
     }
 
+    def "96. Unique Binary Search Trees"(int n, int ans) {
+        given:
+        def sol = new Problem96()
+        expect:
+        sol.numTrees(n) == ans
+        sol.numTrees2(n) == ans
+        where:
+        n | ans
+        3 | 5
+        4 | 14
+        5 | 42
+    }
+
     def "136. Single Number"(int[] nums, int ans) {
         given:
         def solution = new Problem136()
