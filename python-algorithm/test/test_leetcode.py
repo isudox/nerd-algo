@@ -1492,3 +1492,17 @@ def test_647_palindromic_substrings(s, ans):
 def test_718_maximum_length_of_repeated_subarray(a, b, ans):
     from leetcode.problem_718 import Solution
     assert Solution().find_length_1(a, b) == ans
+
+
+@pytest.mark.parametrize("graph, ans", [
+    ([[1, 3], [0, 2], [1, 3], [0, 2]], True),
+    ([[1, 2, 3], [0, 2], [0, 1, 3], [0, 2]], False),
+    ([[4], [], [4], [4], [0, 2, 3]], True),
+    ([[], [2, 4, 6], [1, 4, 8, 9], [7, 8], [1, 2, 8, 9], [6, 9], [1, 5, 7, 8, 9], [3, 6, 9],
+      [2, 3, 4, 6, 9], [2, 4, 5, 6, 7, 8]], False),
+    ([[2,4],[2,3,4],[0,1],[1],[0,1],[7],[9],[5],[],[6],[12,14],[],[10],[],[10],[19],[18],[],[16],[15],[23],[23],[],[20,21],[],[],[27],[26],[],[],[34],[33,34],[],[31],[30,31],[38,39],[37,38,39],[36],[35,36],[35,36],[43],[],[],[40],[],[49],[47,48,49],[46,48,49],[46,47,49],[45,46,47,48]], False)
+])
+def test_785(graph: List[List[int]], ans: bool):
+    from leetcode.problem_785 import Solution
+    sol = Solution()
+    assert sol.is_bipartite(graph) == ans

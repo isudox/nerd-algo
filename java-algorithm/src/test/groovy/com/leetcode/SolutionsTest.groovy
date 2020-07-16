@@ -469,6 +469,18 @@ class SolutionsTest extends Specification {
         [1, 3, 5, 2]             | 3
     }
 
+    def "785. Is Graph Bipartite"(int[][] graph, boolean ans) {
+        given:
+        def sol = new Problem785()
+        expect:
+        sol.isBipartite(graph) == ans
+        where:
+        graph                                  | ans
+        [[]]                                   | true
+        [[1, 3], [0, 2], [1, 3], [0, 2]]       | true
+        [[1, 2, 3], [0, 2], [0, 1, 3], [0, 2]] | false
+    }
+
     def "791. Custom Sort String"(String s, String t, String ans) {
         given:
         def solution = new Problem791()
