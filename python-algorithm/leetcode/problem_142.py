@@ -42,7 +42,7 @@ from typing import Optional
 from common.list_node import ListNode
 
 
-class Solution(object):
+class Solution:
     def detect_cycle_1(self, head: ListNode) -> Optional[ListNode]:
         """
         Use extra space to record node.

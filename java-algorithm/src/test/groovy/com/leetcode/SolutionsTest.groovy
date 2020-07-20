@@ -380,6 +380,16 @@ class SolutionsTest extends Specification {
         [-2, 0, -1]   | 0
     }
 
+    def "167. Two Sum II - Input array is sorted"(int[] nums, int target, int[] ans) {
+        given:
+        def sol = new Problem167()
+        expect:
+        sol.twoSum(nums, target) == ans
+        where:
+        nums           | target | ans
+        [2, 7, 11, 15] | 9      | [1, 2]
+    }
+
     def "206. Reverse Linked List"(int[] input, int[] output) {
         given:
         def sol = new Problem206()
@@ -405,6 +415,17 @@ class SolutionsTest extends Specification {
         3 | 7  || [[1, 2, 4]]
         3 | 9  || [[1, 2, 6], [1, 3, 5], [2, 3, 4]]
         5 | 18 || [[1, 2, 3, 4, 8], [1, 2, 3, 5, 7], [1, 2, 4, 5, 6]]
+    }
+
+    def "312. Burst Balloons"(int[] nums, int ans) {
+        given:
+        def sol = new Problem312()
+        expect:
+        sol.maxCoins(nums) == ans
+        where:
+        nums         | ans
+        [3, 1, 5, 8] | 167
+        [1, 3, 5, 8] | 160
     }
 
     def "315. Count of Smaller Numbers After Self"(int[] nums, int[] ans) {

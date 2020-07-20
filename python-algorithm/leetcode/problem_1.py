@@ -17,7 +17,7 @@ return [0, 1].
 from typing import List
 
 
-class Solution(object):
+class Solution:
 
     def two_sum(self, nums: List[int], target: int) -> List[int]:
         d = {}

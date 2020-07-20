@@ -44,7 +44,7 @@ Note:
 """
 
 
-class Solution(object):
+class Solution:
     def spellchecker(self, wordlist, queries):
         """
         :type wordlist: List[str]

@@ -22,7 +22,7 @@ Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
 from typing import List
 
 
-class Solution(object):
+class Solution:
     def insert_1(self, intervals, new_interval):
         pass
 

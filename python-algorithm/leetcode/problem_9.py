@@ -26,7 +26,7 @@ Coud you solve it without converting the integer to a string?
 """
 
 
-class Solution(object):
+class Solution:
     def is_palindrome(self, x):
         """
         :type x: int

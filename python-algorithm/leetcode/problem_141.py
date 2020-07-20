@@ -38,7 +38,7 @@ Can you solve it using O(1) (i.e. constant) memory?
 from common.list_node import ListNode
 
 
-class Solution(object):
+class Solution:
     def has_cycle(self, head: ListNode) -> bool:
         if not head or not head.next:
             return False
