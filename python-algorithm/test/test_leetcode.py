@@ -1396,6 +1396,26 @@ def test_152_maximum_product_subarray(nums, ans):
     assert sol.max_product_3(nums) == ans
 
 
+@pytest.mark.parametrize("nums, ans", [
+    ([3,4,5,1,2], 1),
+    ([4,5,6,7,0,1,2], 0)
+])
+def test_153(nums: List[int], ans: int):
+    from leetcode.problem_153 import Solution
+    sol = Solution()
+    assert sol.find_min(nums) == ans
+
+
+@pytest.mark.parametrize("nums, ans", [
+    ([1,3,5], 1),
+    ([2,2,2,0,1], 0)
+])
+def test_154(nums: List[int], ans: int):
+    from leetcode.problem_154 import Solution
+    sol = Solution()
+    assert sol.find_min(nums) == ans
+
+
 @pytest.mark.parametrize("nums, target, ans", [
     ([2, 7, 11, 15], 9, [1, 2]),
 ])
