@@ -8,7 +8,7 @@ import spock.lang.Specification
 /**
  * Test algorithms with incomplete cases by Spock.
  */
-class SolutionsTest extends Specification {
+class LeetCodeTest extends Specification {
 
     void setup() {}
 
@@ -290,6 +290,18 @@ class SolutionsTest extends Specification {
         [[0, 0, 0],
          [0, 0, 0],
          [0, 0, 0]] | 6
+    }
+
+    def "64. Minimum Path Sum"(int[][] grid, int ans) {
+        given:
+        def sol = new Problem64()
+        expect:
+        sol.findPathSum(grid) == ans
+        where:
+        grid        | ans
+        [[1, 3, 1],
+         [1, 5, 1],
+         [4, 2, 1]] | 7
     }
 
     def "70. Climbing Stairs"(int n, int expect) {

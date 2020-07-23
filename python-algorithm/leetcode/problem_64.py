@@ -24,11 +24,12 @@ class Solution:
     def min_path_sum(self, grid: List[List[int]]) -> int:
         rows, cols = len(grid), len(grid[0])
         dp = [[0] * cols for _ in range(rows)]
-        dp[0] = grid[0]
-        for _ in range(cols):
-            dp[0][_] = grid[0][_] + (dp[0][_ - 1] if _ else 0)
-        for _ in range(rows):
-            dp[_][0] = grid[_][0] + (dp[_ - 1][0] if _ else 0)
+        # dp[i][j] means min sum from grid[0][0] to grid[i][j].
+        dp[0][0] = grid[0][0]
+        for i in range(1, cols):
+            dp[0][i] = grid[0][i] + dp[0][i - 1]
+        for i in range(1, rows):
+            dp[i][0] = grid[i][0] + dp[i - 1][0]
         for i in range(1, rows):
             for j in range(1, cols):
                 dp[i][j] = min(dp[i][j - 1], dp[i - 1][j]) + grid[i][j]
