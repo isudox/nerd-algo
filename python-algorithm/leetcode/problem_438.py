@@ -13,7 +13,6 @@ Example 1:
 
 Input:
 s: "cbaebabacd" p: "abc"
-
 Output:
 [0, 6]
 
@@ -25,7 +24,6 @@ Example 2:
 
 Input:
 s: "abab" p: "ab"
-
 Output:
 [0, 1, 2]
 

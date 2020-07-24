@@ -1397,8 +1397,8 @@ def test_152_maximum_product_subarray(nums, ans):
 
 
 @pytest.mark.parametrize("nums, ans", [
-    ([3,4,5,1,2], 1),
-    ([4,5,6,7,0,1,2], 0)
+    ([3, 4, 5, 1, 2], 1),
+    ([4, 5, 6, 7, 0, 1, 2], 0)
 ])
 def test_153(nums: List[int], ans: int):
     from leetcode.problem_153 import Solution
@@ -1407,8 +1407,8 @@ def test_153(nums: List[int], ans: int):
 
 
 @pytest.mark.parametrize("nums, ans", [
-    ([1,3,5], 1),
-    ([2,2,2,0,1], 0)
+    ([1, 3, 5], 1),
+    ([2, 2, 2, 0, 1], 0)
 ])
 def test_154(nums: List[int], ans: int):
     from leetcode.problem_154 import Solution
