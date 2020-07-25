@@ -1479,6 +1479,16 @@ def test_378_kth_smallest_element_in_a_sorted_matrix(matrix, k, ans):
     assert Solution().kth_smallest_2(matrix, k) == ans
 
 
+@pytest.mark.parametrize("nums, n, ans", [
+    ([7, 2, 5, 10, 8], 1, 32),
+    ([7, 2, 5, 10, 8], 2, 18)
+])
+def test_410(nums: List[int], n: int, ans: int):
+    from leetcode.problem_410 import Solution
+    sol = Solution()
+    assert sol.split_array(nums, n) == ans
+
+
 @pytest.mark.parametrize("s, p, ans", [
     ("aa", "bb", []),
     ("abab", "ab", [0, 1, 2]),
