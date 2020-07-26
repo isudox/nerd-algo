@@ -1458,6 +1458,26 @@ def test_315(nums: List[int], ans):
     assert sol.count_smaller_1(nums) == ans
 
 
+@pytest.mark.parametrize("matrix, ans", [
+    ([
+         [9, 9, 4],
+         [6, 6, 8],
+         [2, 1, 1]
+     ], 4),
+    ([
+         [3, 4, 5],
+         [3, 2, 6],
+         [2, 2, 1]
+     ], 4),
+    ([], 0),
+    ([[]], 0)
+])
+def test_329(matrix: List[List[int]], ans):
+    from leetcode.problem_329 import Solution
+    sol = Solution()
+    assert sol.longest_increasing_path(matrix) == ans
+
+
 @pytest.mark.parametrize("nums1, nums2, ans", [
     ([2, 1], [1, 2], [1, 2]),
     ([1, 2, 2, 1], [2, 2], [2, 2]),
