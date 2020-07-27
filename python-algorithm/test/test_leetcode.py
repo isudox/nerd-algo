@@ -10,7 +10,7 @@ from common.converter import Converter
     ("abcabcbb", 3),
     ("pwwkew", 3)
 ])
-def test_length_of_longest_substring(s: str, expect: int):
+def test_3(s: str, expect: int):
     from leetcode.problem_3 import Solution
     solution = Solution()
     assert solution.length_of_longest_substring_1(s) == expect
@@ -36,7 +36,7 @@ def test_median_of_two_sorted_arrays(nums1, nums2, expect):
     ("words and 987", 0),
     ("-91283472332", -2147483648)
 ])
-def test_string_to_integer(str, expect):
+def test_8(str, expect):
     from leetcode.problem_8 import Solution
     solution = Solution()
     assert solution.my_atoi(str) == expect
@@ -48,10 +48,10 @@ def test_string_to_integer(str, expect):
     (333, True),
     (333, True)
 ])
-def test_palindrome_number(x, res):
+def test_9(x, res):
     from leetcode.problem_9 import Solution
-
-    assert Solution().is_palindrome(x) == res
+    sol = Solution()
+    assert sol.is_palindrome(x) == res
 
 
 @pytest.mark.parametrize("nums, target, res", [([-1, 2, 1, -4], 1, 2)])
@@ -811,7 +811,7 @@ def test_jump_game(nums, expect):
 @pytest.mark.parametrize("nums, expect", [
     ([2, 3, 1, 1, 4], 2)
 ])
-def test_jump_game(nums, expect):
+def test_45(nums, expect):
     from leetcode.problem_45 import Solution
     assert Solution().jump(nums) == expect
 
@@ -1167,9 +1167,9 @@ def test_word_break(string, word_dict, expect):
 @pytest.mark.parametrize("head, expect", [
     ([1, 2], False)
 ])
-def test_linked_list_cycle(head, expect):
+def test_141(head, expect):
     from leetcode.problem_141 import Solution
-    s = Solution()
+    sol = Solution()
 
 
 def test_min_stack():
@@ -1204,7 +1204,7 @@ def test_number_of_islands(grid, expect):
     assert s.num_islands(grid) == expect
 
 
-def test_lru_cache():
+def test_146():
     from leetcode.problem_146 import LRUCache3
     cache = LRUCache3(2)
     cache.put(1, 1)
@@ -1215,7 +1215,7 @@ def test_lru_cache():
     assert cache.get(3) == 3
 
 
-def test_lfu_cache():
+def test_460():
     from leetcode.problem_460 import LFUCache
     cache = LFUCache(2)
     cache.put(1, 1)
@@ -1264,7 +1264,7 @@ def test_same_tree(p, q, expect):
     ("00", 0, ["0+0", "0-0", "0*0"]),
     ("123", 6, ["1+2+3", "1*2*3"])
 ])
-def test_expression_add_operators(num: str, target: int, expect: List[str]):
+def test_282(num: str, target: int, expect: List[str]):
     from leetcode.problem_282 import Solution
     solution = Solution()
     # assert solution.add_operators(num, target) == expect
@@ -1497,6 +1497,19 @@ def test_350(nums1: List[int], nums2: List[int], ans: List[int]):
 def test_378_kth_smallest_element_in_a_sorted_matrix(matrix, k, ans):
     from leetcode.problem_378 import Solution
     assert Solution().kth_smallest_2(matrix, k) == ans
+
+
+@pytest.mark.parametrize("s, t, ans", [
+    ('abc', 'acebxcd', True),
+    ("axc", "ahbgdc", False),
+    ("", "ahbgdc", True),
+    ("a", "", False)
+])
+def test_392(s, t, ans):
+    from leetcode.problem_392 import Solution
+    sol = Solution()
+    assert sol.is_subsequence(s, t) == ans
+    assert sol.is_subsequence_2(s, t) == ans
 
 
 @pytest.mark.parametrize("nums, n, ans", [
