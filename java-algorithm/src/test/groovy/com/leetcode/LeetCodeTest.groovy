@@ -429,6 +429,21 @@ class LeetCodeTest extends Specification {
         5 | 18 || [[1, 2, 3, 4, 8], [1, 2, 3, 5, 7], [1, 2, 4, 5, 6]]
     }
 
+    def "279. Perfect Squares"(int n, int ans) {
+        given:
+        def sol = new Problem279()
+        expect:
+        sol.numSquares(n) == ans
+        sol.numSquares2(n) == ans
+        where:
+        n      | ans
+        1      | 1
+        12     | 3
+        13     | 2
+        9999   | 4
+        999999 | 4
+    }
+
     def "312. Burst Balloons"(int[] nums, int ans) {
         given:
         def sol = new Problem312()
@@ -450,6 +465,23 @@ class LeetCodeTest extends Specification {
         [5, 2, 6, 1] | [2, 1, 1, 0]
     }
 
+    def "329. Longest Increasing Path in a Matrix"(int[][] matrix, int ans) {
+        given:
+        def sol = new Problem329()
+        expect:
+        sol.longestIncreasingPath(matrix) == ans
+        where:
+        matrix      | ans
+        [[9, 9, 4],
+         [6, 6, 8],
+         [2, 1, 1]] | 4
+        [[3, 4, 5],
+         [3, 2, 6],
+         [2, 2, 1]] | 4
+        []          | 0
+        [[]]        | 0
+    }
+
     def "350. Intersection of Two Arrays II"(int[] nums1, int[] nums2, int[] ans) {
         given:
         def sol = new Problem350()
@@ -460,6 +492,18 @@ class LeetCodeTest extends Specification {
         nums1        | nums2  | ans
         [2, 1]       | [1, 2] | [1, 2]
         [1, 2, 2, 1] | [2, 2] | [2, 2]
+    }
+
+    def "392. Is Subsequence"(String s, String t, boolean ans) {
+        given:
+        def sol = new Problem392()
+        expect:
+        sol.isSubsequence(s, t) == ans
+        where:
+        s     | t        | ans
+        "abc" | "ahbgdc" | true
+        "axc" | "ahbgdc" | false
+        "acb" | "ahbgdc" | false
     }
 
     def "494. Target Sum"(int[] nums, int s, int expect) {

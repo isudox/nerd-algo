@@ -1425,6 +1425,19 @@ def test_167(nums, target, ans):
     assert sol.two_sum(nums, target) == ans
 
 
+@pytest.mark.timeout(1)
+@pytest.mark.parametrize("n, ans", [
+    (12, 3),
+    (13, 2),
+    (44, 3)
+])
+def test_279(n, ans):
+    from leetcode.problem_279 import Solution
+    sol = Solution()
+    assert sol.num_squares_2(n) == ans
+    assert sol.num_squares_3(n) == ans
+
+
 @pytest.mark.parametrize("prices, ans", [
     ([1, 2, 3, 0, 2], 3)
 ])
@@ -1502,6 +1515,7 @@ def test_378_kth_smallest_element_in_a_sorted_matrix(matrix, k, ans):
 @pytest.mark.parametrize("s, t, ans", [
     ('abc', 'acebxcd', True),
     ("axc", "ahbgdc", False),
+    ("acb", "ahbgdc", False),
     ("", "ahbgdc", True),
     ("a", "", False)
 ])

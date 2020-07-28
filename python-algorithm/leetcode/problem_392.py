@@ -1,4 +1,6 @@
-"""
+"""392. Is Subsequence
+https://leetcode-cn.com/problems/is-subsequence/
+
 Given a string s and a string t, check if s is subsequence of t.
 
 A subsequence of a string is a new string which is formed from the original
