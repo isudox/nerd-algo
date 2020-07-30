@@ -1491,6 +1491,16 @@ def test_329(matrix: List[List[int]], ans):
     assert sol.longest_increasing_path(matrix) == ans
 
 
+@pytest.mark.parametrize("n, ans", [
+    (2, 1),
+    (10, 36)
+])
+def test_343(n: int, ans: int):
+    from leetcode.problem_343 import Solution
+    sol = Solution()
+    assert sol.integer_break(n) == ans
+
+
 @pytest.mark.parametrize("nums1, nums2, ans", [
     ([2, 1], [1, 2], [1, 2]),
     ([1, 2, 2, 1], [2, 2], [2, 2]),

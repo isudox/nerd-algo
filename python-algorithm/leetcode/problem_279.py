@@ -7,7 +7,7 @@ Given a positive integer n, find the least number of perfect square numbers
 Example 1:
 
 Input: n = 12
-Output: 3 
+Output: 3
 Explanation: 12 = 4 + 4 + 4.
 Example 2:
 
