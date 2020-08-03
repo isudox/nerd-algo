@@ -1603,6 +1603,16 @@ def test_621_task_scheduler(tasks, n, ans):
     assert sol.least_interval(tasks, n) == ans
 
 
+@pytest.mark.parametrize("nums, ans", [
+    ([[4, 10, 15, 24, 26], [0, 9, 12, 20], [5, 18, 22, 30]], [20, 24]),
+])
+def test_632(nums: List[List[int]], ans: List[int]):
+    from leetcode.problem_632 import Solution
+    sol = Solution()
+    assert sol.smallest_range(nums) == ans
+    assert sol.smallest_range_2(nums) == ans
+
+
 @pytest.mark.parametrize("s, ans", [
     ("abc", 3),
     ("a" * 1000, 500500),
