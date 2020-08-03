@@ -1425,6 +1425,27 @@ def test_167(nums, target, ans):
     assert sol.two_sum(nums, target) == ans
 
 
+@pytest.mark.parametrize("nums, ans", [
+    ([1, 2, 3, 1], 4),
+    ([2, 1, 1, 2], 4),
+    ([2, 7, 9, 3, 1], 12)
+])
+def test_198(nums: List[int], ans: int):
+    from leetcode.problem_198 import Solution
+    sol = Solution()
+    assert sol.rob(nums) == ans
+
+
+@pytest.mark.parametrize("num_courses, prerequisites, ans", [
+    (2, [[1, 0]], True),
+    (2, [[1, 0], [0, 1]], False)
+])
+def test_207(num_courses: int, prerequisites: List[List[int]], ans: bool):
+    from leetcode.problem_207 import Solution
+    sol = Solution()
+    assert sol.can_finish(num_courses, prerequisites) == ans
+
+
 @pytest.mark.timeout(1)
 @pytest.mark.parametrize("n, ans", [
     (12, 3),
