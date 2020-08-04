@@ -1425,6 +1425,18 @@ def test_167(nums, target, ans):
     assert sol.two_sum(nums, target) == ans
 
 
+@pytest.mark.parametrize("num_courses, prerequisites, ans", [
+    (2, [], True),
+    (2, [[1, 0]], True),
+    (3, [[1, 0]], True),
+    (2, [[1, 0], [0, 1]], False)
+])
+def test_207(num_courses: int, prerequisites: List[List[int]], ans: bool):
+    from leetcode.problem_207 import Solution
+    sol = Solution()
+    assert sol.can_finish(num_courses, prerequisites) == ans
+
+
 @pytest.mark.timeout(1)
 @pytest.mark.parametrize("n, ans", [
     (12, 3),
@@ -1544,6 +1556,19 @@ def test_410(nums: List[int], n: int, ans: int):
     from leetcode.problem_410 import Solution
     sol = Solution()
     assert sol.split_array(nums, n) == ans
+
+
+@pytest.mark.parametrize("num1, num2, ans", [
+    ("0", "0", "0"),
+    ("1", "9" * 5000, "1" + "0" * 5000),
+    ("98", "9", "107"),
+])
+def test_415(num1: str, num2: str, ans: str):
+    from leetcode.problem_415 import Solution
+    sol = Solution()
+    assert sol.add_strings(num1, num2) == ans
+    assert sol.add_strings_2(num1, num2) == ans
+    assert sol.add_strings_3(num1, num2) == ans
 
 
 @pytest.mark.parametrize("s, p, ans", [
