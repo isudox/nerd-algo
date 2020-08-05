@@ -1448,6 +1448,18 @@ def test_207(num_courses: int, prerequisites: List[List[int]], ans: bool):
     assert sol.can_finish(num_courses, prerequisites) == ans
 
 
+@pytest.mark.parametrize("nums, ans", [
+    ([], 0),
+    ([0], 0),
+    ([2, 3, 2], 3),
+    ([1, 2, 3, 1], 4)
+])
+def test_213(nums: List[int], ans: int):
+    from leetcode.problem_213 import Solution
+    sol = Solution()
+    assert sol.rob(nums) == ans
+
+
 @pytest.mark.timeout(1)
 @pytest.mark.parametrize("n, ans", [
     (12, 3),
