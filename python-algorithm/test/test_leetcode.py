@@ -1075,6 +1075,16 @@ def test_black_white_matrix(matrix, expect):
     assert s.brute_force(matrix) == expect
 
 
+@pytest.mark.parametrize("s, ans", [
+    ("25525511135", ["255.255.11.135", "255.255.111.35"]),
+    ("010010", ["0.10.0.10", "0.100.1.0"])
+])
+def test_93(s: str, ans: List[str]):
+    from leetcode.problem_93 import Solution
+    sol = Solution()
+    assert sol.restore_ip_addresses(s) == ans
+
+
 @pytest.mark.parametrize("n, res", [
     (10, 16796),
     (19, 1767263190)
@@ -1524,6 +1534,16 @@ def test_329(matrix: List[List[int]], ans):
     from leetcode.problem_329 import Solution
     sol = Solution()
     assert sol.longest_increasing_path(matrix) == ans
+
+
+@pytest.mark.parametrize("words, ans", [
+    (["abcd", "dcba", "lls", "s", "sssll"], [[0, 1], [1, 0], [3, 2], [2, 4]]),
+    (["bat", "tab", "cat"], [[0, 1], [1, 0]])
+])
+def test_336(words: List[str], ans: List[List[int]]):
+    from leetcode.problem_336 import Solution
+    sol = Solution()
+    assert sol.palindrome_pairs(words) == ans
 
 
 @pytest.mark.parametrize("n, ans", [
