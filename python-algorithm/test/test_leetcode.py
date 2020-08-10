@@ -1670,6 +1670,17 @@ def test_647_palindromic_substrings(s, ans):
     assert sol.count_substrings(s) == ans
 
 
+@pytest.mark.parametrize("s, ans", [
+    ("00110011", 6),
+    ("10101", 4),
+    ("", 1)
+])
+def test_696(s: str, ans: int):
+    from leetcode.problem_696 import Solution
+    sol = Solution()
+    assert sol.count_binary_substrings(s) == ans
+
+
 @pytest.mark.parametrize("a, b, ans", [
     ([1, 2, 3, 2, 1], [3, 2, 1, 4, 7], 3),
     ([0] * 1000, [0] * 1000, 1000)
