@@ -1138,6 +1138,16 @@ def test_best_time_to_buy_and_sell_stock(prices, expect):
     assert s.max_profit(prices) == expect
 
 
+@pytest.mark.parametrize("tree, expect", [
+    ([1, 2, 3], 6),
+    ([-10, 9, 20, None, None, 15, 7], 42)
+])
+def test_binary_tree_maximum_path_sum(tree, expect):
+    from leetcode.problem_124 import Solution
+    s = Solution()
+    # assert s.max_path_sum(Converter.list2tree(tree)) == expect
+
+
 @pytest.mark.parametrize("nums, expect", [
     ([100, 4, 200, 1, 3, 2], 4),
     ([1, 2, 0, 1], 3)
@@ -1150,14 +1160,51 @@ def test_longest_consecutive_sequence(nums, expect):
     assert s.longest_consecutive_3(nums) == expect
 
 
-@pytest.mark.parametrize("tree, expect", [
-    ([1, 2, 3], 6),
-    ([-10, 9, 20, None, None, 15, 7], 42)
+@pytest.mark.parametrize("board, ans", [
+    ([
+         ["X", "X", "X", "X"],
+         ["X", "O", "O", "X"],
+         ["X", "X", "O", "X"],
+         ["X", "O", "X", "X"]],
+     [
+         ['X', 'X', 'X', 'X'],
+         ['X', 'X', 'X', 'X'],
+         ['X', 'X', 'X', 'X'],
+         ['X', 'O', 'X', 'X']]),
+    ([
+         ["X", "O", "X"],
+         ["X", "O", "X"],
+         ["X", "O", "X"]],
+     [
+         ["X", "O", "X"],
+         ["X", "O", "X"],
+         ["X", "O", "X"]]),
+    ([
+         ["O", "O", "O"],
+         ["O", "O", "O"],
+         ["O", "O", "O"]],
+     [
+         ["O", "O", "O"],
+         ["O", "O", "O"],
+         ["O", "O", "O"]]),
+    ([
+         ["O", "X", "X", "O", "X"],
+         ["X", "O", "O", "X", "O"],
+         ["X", "O", "X", "O", "X"],
+         ["O", "X", "O", "O", "O"],
+         ["X", "X", "O", "X", "O"]],
+     [
+         ["O", "X", "X", "O", "X"],
+         ["X", "X", "X", "X", "O"],
+         ["X", "X", "X", "O", "X"],
+         ["O", "X", "O", "O", "O"],
+         ["X", "X", "O", "X", "O"]])
 ])
-def test_binary_tree_maximum_path_sum(tree, expect):
-    from leetcode.problem_124 import Solution
-    s = Solution()
-    # assert s.max_path_sum(Converter.list2tree(tree)) == expect
+def test_130(board: List[List[str]], ans):
+    from leetcode.problem_130 import Solution
+    sol = Solution()
+    sol.solve(board)
+    assert board == ans
 
 
 @pytest.mark.parametrize("string, word_dict, expect", [
