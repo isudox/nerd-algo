@@ -59,6 +59,7 @@ class Solution:
             p = p.next
         return store[head]
 
+
 class Node:
     def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
         self.val = int(x)

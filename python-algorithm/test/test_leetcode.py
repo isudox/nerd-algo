@@ -1272,6 +1272,23 @@ def test_146():
     assert cache.get(3) == 3
 
 
+@pytest.mark.parametrize("board, words, ans", [
+    ([
+         ['o', 'a', 'a', 'n'],
+         ['e', 't', 'a', 'e'],
+         ['i', 'h', 'k', 'r'],
+         ['i', 'f', 'l', 'v']
+     ], ["oath", "pea", "eat", "rain"], ["oath", "eat"]),
+    ([["a", "b"], ["a", "a"]],
+     ["aba", "baa", "bab", "aaab", "aaa", "aaaa", "aaba"],
+     ['aba', 'baa', 'aaab', 'aaa', 'aaba'])
+])
+def test_212(board: List[List[str]], words: List[str], ans: List[str]):
+    from leetcode.problem_212 import Solution
+    sol = Solution()
+    assert sol.find_words(board, words) == ans
+
+
 def test_460():
     from leetcode.problem_460 import LFUCache
     cache = LFUCache(2)

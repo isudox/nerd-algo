@@ -9,7 +9,6 @@ letter cell may not be used more than once.
 
 Example:
 
-
 board =
 [
 ⁠ ['A','B','C','E'],
