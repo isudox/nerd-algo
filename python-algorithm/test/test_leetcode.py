@@ -20,6 +20,19 @@ def test_3(s: str, expect: int):
     assert solution.length_of_longest_substring_5(s) == expect
 
 
+@pytest.mark.parametrize("s, ans", [
+    ("", True),
+    ("[", False),
+    ("()", True),
+    ("()[]{}", True),
+    ("([)]", False),
+])
+def test_20(s: str, ans: bool):
+    from leetcode.problem_20 import Solution
+    sol = Solution()
+    assert sol.is_valid(s) == ans
+
+
 @pytest.mark.parametrize("nums1, nums2, expect", [
     ([1, 3], [2], 2.0),
     ([1, 2], [3, 4], 2.5)
@@ -29,17 +42,17 @@ def test_median_of_two_sorted_arrays(nums1, nums2, expect):
     # assert Solution().find_median_sorted_arrays(nums1, nums2) == expect
 
 
-@pytest.mark.parametrize("str, expect", [
+@pytest.mark.parametrize("s, ans", [
     ("42", 42),
-    ('   -42', -42),
+    ("   -42", -42),
     ("4193 with words", 4193),
     ("words and 987", 0),
     ("-91283472332", -2147483648)
 ])
-def test_8(str, expect):
+def test_8(s: str, ans: int):
     from leetcode.problem_8 import Solution
     solution = Solution()
-    assert solution.my_atoi(str) == expect
+    assert solution.my_atoi(s) == ans
 
 
 @pytest.mark.parametrize("x, res", [

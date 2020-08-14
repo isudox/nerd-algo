@@ -28,9 +28,19 @@ The values of words are distinct.
 """
 from typing import List
 
+from common.trie_node import TrieNode
+
 
 class Solution:
     def find_words(self, board: List[List[str]], words: List[str]) -> List[str]:
+        trie_node = TrieNode(None)
+        for word in words:
+            trie_node.add(word)
+        ans = []
+
+        return ans
+
+    def find_words_2(self, board: List[List[str]], words: List[str]) -> List[str]:
         def validate(w: str) -> bool:
             if w[0] not in pos:
                 return False

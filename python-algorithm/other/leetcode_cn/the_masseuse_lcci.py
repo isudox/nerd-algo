@@ -24,10 +24,6 @@ https://leetcode-cn.com/problems/the-masseuse-lcci/
 输入： [2,1,4,5,3,1,1,3]
 输出： 12
 解释： 选择 1 号预约、 3 号预约、 5 号预约和 8 号预约，总时长 = 2 + 4 + 3 + 3 = 12。
-
-来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/the-masseuse-lcci
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
 from typing import List
 
