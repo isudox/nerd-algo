@@ -24,7 +24,6 @@ n is a 32-bit signed integer, within the range [−2^31, 2^31 − 1]
 
 
 class Solution:
-
     def my_pow(self, x: float, n: int) -> float:
         if x == 1:
             return 1.0

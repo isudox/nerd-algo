@@ -9,7 +9,6 @@ from + and - as its new symbol.
 Find out how many ways to assign symbols to make sum of integers equal to
 target S.
 
-
 Example 1:
 
 Input: nums is [1, 1, 1, 1, 1], S is 3.
@@ -24,7 +23,6 @@ Explanation:
 
 There are 5 ways to assign symbols to make the sum of nums be target 3.
 
-
 Note:
 
 The length of the given array is positive and will not exceed 20.
@@ -36,7 +34,6 @@ from typing import List
 
 class Solution:
     def brute_force(self, nums: List[int], s: int) -> int:
-
         def dfs(idx: int, target: int):
             max_sum = sum(nums[idx:])
             if target > max_sum or target < -max_sum:

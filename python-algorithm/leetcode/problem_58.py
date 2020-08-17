@@ -17,7 +17,7 @@ Output: 5
 
 
 class Solution:
-    def length_of_lastWord(self, s: str) -> int:
+    def length_of_last_word(self, s: str) -> int:
         index = len(s) - 1
         while index >= 0 and s[index] == " ":
             index -= 1

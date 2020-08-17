@@ -1,7 +1,6 @@
 """70. Climbing Stairs
 https://leetcode.com/problems/climbing-stairs/
 
-
 You are climbing a stair case. It takes n steps to reach to the top.
 
 Each time you can either climb 1 or 2 steps.
@@ -16,7 +15,6 @@ Output: 2
 Explanation: There are two ways to climb to the top.
 1. 1 step + 1 step
 2. 2 steps
-
 
 Example 2:
 

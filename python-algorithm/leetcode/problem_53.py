@@ -19,7 +19,6 @@ from typing import List
 
 
 class Solution:
-
     def max_sub_array(self, nums: List[int]) -> int:
         """O(n)"""
         assert nums

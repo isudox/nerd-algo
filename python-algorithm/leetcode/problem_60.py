@@ -19,12 +19,10 @@ Note:
 Given n will be between 1 and 9 inclusive.
 Given k will be between 1 and n! inclusive.
 
-
 Example 1:
 
 Input: n = 3, k = 3
 Output: "213"
-
 
 Example 2:
 

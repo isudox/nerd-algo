@@ -14,7 +14,6 @@ Output:
   [2,1,1]
 ]
 
-
 []: []
 [1]: [1]
 [1,2]: [1, 2], [2, 1]
@@ -26,7 +25,6 @@ from typing import List
 
 
 class Solution:
-
     def permute_unique_dfs(self, nums: List[int]) -> List[List[int]]:
         ans = []
 

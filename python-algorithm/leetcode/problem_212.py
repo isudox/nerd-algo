@@ -28,15 +28,29 @@ The values of words are distinct.
 """
 from typing import List
 
-from common.trie_node import TrieNode
+from leetcode.problem_208 import Trie, TrieNode
 
 
 class Solution:
     def find_words(self, board: List[List[str]], words: List[str]) -> List[str]:
-        trie_node = TrieNode(None)
+        # TODO
+        def check(x: int, y: int, word: str, node: TrieNode) -> bool:
+            if board[x][y] in node.children:
+                words.append(board[x][y])
+
+        trie = Trie()
         for word in words:
-            trie_node.add(word)
+            trie.insert(word)
+        if not board or not board[0]:
+            return []
+        rows, cols = len(board), len(board[0])
+        memo = [[False] * cols for _ in range(rows)]
+        dirs = [[0, 1], [1, 0], [0, -1], [-1, 0]]
         ans = []
+        for i in range(rows):
+            for j in range(cols):
+                c = board[i][j]
+                memo[i][j] = True
 
         return ans
 
@@ -57,7 +71,7 @@ class Solution:
             memo[x][y] = True
             for d in [[0, 1], [0, -1], [1, 0], [-1, 0]]:
                 if 0 <= x + d[0] < rows and 0 <= y + d[1] < cols and not \
-                memo[x + d[0]][y + d[1]]:
+                    memo[x + d[0]][y + d[1]]:
                     if board[x + d[0]][y + d[1]] == w[i]:
                         memo[x + d[0]][y + d[1]] = True
                         if not dfs(w, i + 1, x + d[0], y + d[1], memo):

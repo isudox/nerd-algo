@@ -14,7 +14,6 @@ Example 2:
 Input: a = "1010", b = "1011"
 Output: "10101"
 
-
 Constraints:
 
 Each string consists only of '0' or '1' characters.

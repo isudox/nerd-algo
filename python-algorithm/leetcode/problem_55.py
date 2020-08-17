@@ -8,7 +8,6 @@ Each element in the array represents your maximum jump length at that position.
 
 Determine if you are able to reach the last index.
 
-
 Example 1:
 
 Input: [2,3,1,1,4]
@@ -27,7 +26,6 @@ from typing import List
 
 
 class Solution:
-
     def can_jump(self, nums: List[int]) -> bool:
         def indexes_of(lst, item):
             return [i for i, x in enumerate(lst) if x == item]

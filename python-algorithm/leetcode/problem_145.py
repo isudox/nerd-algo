@@ -1,7 +1,6 @@
 """145. Binary Tree Postorder Traversal
 https://leetcode.com/problems/binary-tree-postorder-traversal/
 
-
 Given a binary tree, return the post-order traversal of its nodes' values.
 
 Example:

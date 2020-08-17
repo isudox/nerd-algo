@@ -34,7 +34,6 @@ from common.tree_node import TreeNode
 
 
 class Codec:
-
     def serialize(self, root: TreeNode) -> str:
         if not root:
             return '[]'

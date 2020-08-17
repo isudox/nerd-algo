@@ -1,7 +1,6 @@
 """460. LFU Cache
 https://leetcode.com/problems/lfu-cache/
 
-
 Design and implement a data structure for Least Frequently Used (LFU) cache.
 It should support the following operations: get and put.
 
@@ -16,7 +15,6 @@ the least recently used key would be evicted.
 Note that the number of times an item is used is the number of calls to the get
 and put functions for that item since it was inserted. This number is set to
 zero when the item is removed.
-
 
 Follow up:
 Could you do both operations in O(1) time complexity?

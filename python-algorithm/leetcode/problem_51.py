@@ -14,7 +14,6 @@ respectively.
 
 Example:
 
-
 Input: 4
 Output: [
 ⁠[".Q..",  // Solution 1
@@ -34,9 +33,7 @@ from typing import List
 
 
 class Solution:
-
     def solve_n_queens(self, n: int) -> List[List[str]]:
-
         ans = []
 
         def output(pos: int):

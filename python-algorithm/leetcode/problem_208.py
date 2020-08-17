@@ -39,6 +39,7 @@ class Trie:
                 node = node.children[char]
             else:
                 node.children[char] = TrieNode()
+                node = node.children[char]
         node.end = True
 
     def search(self, word: str) -> bool:
@@ -69,10 +70,4 @@ class Trie:
 class TrieNode:
     def __init__(self):
         self.end = False
-        self.children = {}
-
-
-if __name__ == '__main__':
-    trie = Trie()
-    trie.insert("apple")
-    print(trie.search("apple"))
+        self.children = collections.defaultdict(TrieNode)

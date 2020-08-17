@@ -1,5 +1,5 @@
 """156. Binary Tree Upside Down
-https://leetcode-cn.com/problems/binary-tree-upside-down
+https://leetcode.com/problems/binary-tree-upside-down
 
 Given a binary tree where all the right nodes are either leaf nodes with
 a sibling (a left node that shares the same parent node) or empty,
@@ -23,10 +23,6 @@ Output: return the root of the binary tree [4,5,2,#,#,3,1]
  5   2
     / \
    3   1
-
-来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/binary-tree-upside-down
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
 from common.tree_node import TreeNode
 

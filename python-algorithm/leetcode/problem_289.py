@@ -34,6 +34,7 @@ Output:
   [0,1,1],
   [0,1,0]
 ]
+
 Follow up:
 
 Could you solve it in-place? Remember that the board needs to be updated at the same time:

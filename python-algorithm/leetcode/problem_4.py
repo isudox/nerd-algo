@@ -55,8 +55,3 @@ class Solution:
 
         return (get_k_th(0, len(list1) - 1, 0, len(list2) - 1, middle_l) +
                 get_k_th(0, len(list1), 0, len(list2) - 1, middle_r)) / 2
-
-
-if __name__ == '__main__':
-    solution = Solution()
-    print(solution.find_median_sorted_arrays([1, 2], [3, 4]))

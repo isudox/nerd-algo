@@ -10,9 +10,7 @@ You have the following 3 operations permitted on a word:
 - Delete a character
 - Replace a character
 
-
 Example 1:
-
 
 Input: word1 = "horse", word2 = "ros"
 Output: 3
@@ -21,9 +19,7 @@ horse -> rorse (replace 'h' with 'r')
 rorse -> rose (remove 'r')
 rose -> ros (remove 'e')
 
-
 Example 2:
-
 
 Input: word1 = "intention", word2 = "execution"
 Output: 5

@@ -29,10 +29,16 @@ Example 5:
 
     Input: num = "3456237490", target = 9191
     Output: []
+
+Constraints:
+
+0 <= num.length <= 10
+num only contain digits.
 """
 from typing import List
 
 """
+Hints:
 Note that a number can contain multiple digits.
 Since the question asks us to find all of the valid expressions, we need a way 
 to iterate over all of them. (Hint: Recursion!)

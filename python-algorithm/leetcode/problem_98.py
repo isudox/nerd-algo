@@ -11,9 +11,7 @@ the node's key.
 the node's key.
 - Both the left and right subtrees must also be binary search trees.
 
-
 Example 1:
-
 
 ⁠   2
 ⁠  / \
@@ -22,9 +20,7 @@ Example 1:
 Input: [2,1,3]
 Output: true
 
-
 Example 2:
-
 
 ⁠   5
 ⁠  / \

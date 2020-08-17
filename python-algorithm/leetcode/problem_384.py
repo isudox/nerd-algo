@@ -50,13 +50,6 @@ class Solution:
                     break
         return new_nums
 
-
-if __name__ == '__main__':
-    s = Solution([-6, 10, 184])
-    print(s.shuffle())
-    print(s.reset())
-    print(s.shuffle())
-
 # Your Solution object will be instantiated and called as such:
 # obj = Solution(nums)
 # param_1 = obj.reset()

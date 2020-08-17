@@ -11,7 +11,6 @@ Output: 4
 Explanation: The longest increasing subsequence is [2,3,7,101],
 therefore the length is 4.
 
-
 Note:
 
 There may be more than one LIS combination, it is only necessary for you
@@ -24,6 +23,7 @@ from typing import List
 
 class Solution:
     def length_of_lis(self, nums: List[int]) -> int:
+        # TODO
         result = 0
 
         def test(minimum: int, index: int, pre_len: int) -> int:

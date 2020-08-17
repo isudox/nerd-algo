@@ -10,7 +10,6 @@ Write an algorithm to reconstruct the queue.
 Note:
 The number of people is less than 1,100.
 
-
 Example
 
 Input:

@@ -6,7 +6,6 @@ trees) that store values 1 ... n.
 
 Example:
 
-
 Input: 3
 Output:
 [
