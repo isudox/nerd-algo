@@ -33,10 +33,24 @@ from leetcode.problem_208 import Trie, TrieNode
 
 class Solution:
     def find_words(self, board: List[List[str]], words: List[str]) -> List[str]:
-        # TODO
-        def check(x: int, y: int, word: str, node: TrieNode) -> bool:
-            if board[x][y] in node.children:
-                words.append(board[x][y])
+        def backtrack(x: int, y: int, cur_word: str, node: TrieNode) -> bool:
+            c = board[x][y]
+            if c not in node.children:
+                return False
+            memo[x][y] = True
+            cur_word += board[x][y]
+            if cur_word in words and cur_word not in ans:
+                ans.append(cur_word)
+            found = False
+            for (move_x, move_y) in [[0, 1], [1, 0], [0, -1], [-1, 0]]:
+                next_x, next_y = x + move_x, y + move_y
+                if 0 <= next_x < rows and 0 <= next_y < cols and not \
+                memo[next_x][next_y]:
+                    found = found or backtrack(next_x, next_y, cur_word,
+                                               node.children[c])
+            if not found:
+                memo[x][y] = False
+            return found
 
         trie = Trie()
         for word in words:
@@ -45,12 +59,12 @@ class Solution:
             return []
         rows, cols = len(board), len(board[0])
         memo = [[False] * cols for _ in range(rows)]
-        dirs = [[0, 1], [1, 0], [0, -1], [-1, 0]]
         ans = []
         for i in range(rows):
             for j in range(cols):
                 c = board[i][j]
-                memo[i][j] = True
+                if c in trie.root.children:
+                    backtrack(i, j, '', trie.root)
 
         return ans
 
@@ -98,10 +112,3 @@ class Solution:
                 ans.append(word)
 
         return ans
-
-
-if __name__ == '__main__':
-    sol = Solution()
-    board = [["a", "b"], ["a", "a"]]
-    words = ["aba", "baa", "bab", "aaab", "aaa", "aaaa", "aaba"]
-    print(sol.find_words(board, words))

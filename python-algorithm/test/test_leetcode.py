@@ -1676,13 +1676,12 @@ def test_binary_tree_maximum_path_sum(tree, expect):
      ], ["oath", "pea", "eat", "rain"], ["oath", "eat"]),
     ([["a", "b"], ["a", "a"]],
      ["aba", "baa", "bab", "aaab", "aaa", "aaaa", "aaba"],
-     ['aba', 'baa', 'aaab', 'aaa', 'aaba'])
+     ['aba', 'aaa', 'aaab', 'baa', 'aaba'])
 ])
 def test_212(board: List[List[str]], words: List[str], ans: List[str]):
     from leetcode.problem_212 import Solution
     sol = Solution()
     assert sol.find_words(board, words) == ans
-    assert sol.find_words_2(board, words) == ans
 
 
 @pytest.mark.parametrize("num, target, expect", [
