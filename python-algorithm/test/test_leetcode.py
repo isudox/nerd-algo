@@ -1220,6 +1220,20 @@ def test_438(s: str, p: str, ans: List[int]):
     assert sol.find_anagrams(s, p) == ans
 
 
+@pytest.mark.parametrize("s, ans", [
+    ("abab", True),
+    ("aaa", True),
+    ("aba", False),
+    ("abcabcabcabc", True),
+    ("abcde" * 100 + "abc", False)
+])
+def test_459(s: str, ans: bool):
+    from leetcode.problem_459 import Solution
+    sol = Solution()
+    assert sol.repeated_substring_pattern(s) == ans
+    assert sol.repeated_substring_pattern_1(s) == ans
+
+
 def test_460():
     from leetcode.problem_460 import LFUCache
     cache = LFUCache(2)
