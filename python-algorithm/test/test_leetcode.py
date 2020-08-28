@@ -1279,6 +1279,16 @@ def test_581(nums, ans):
     assert sol.find_unsorted_subarray(nums) == ans
 
 
+@pytest.mark.parametrize("moves, ans", [
+    ("UD", True),
+    ("LL", False)
+])
+def test_657(moves: str, ans: bool):
+    from leetcode.problem_657 import Solution
+    sol = Solution()
+    assert sol.judge_circle_2(moves) == ans
+
+
 @pytest.mark.parametrize("nums1, nums2, expect", [
     ([1, 3], [2], 2.0),
     ([1, 2], [3, 4], 2.5)
