@@ -994,6 +994,16 @@ def test_213(nums: List[int], ans: int):
     assert sol.rob(nums) == ans
 
 
+@pytest.mark.parametrize("s, ans", [
+    ("aacecaaa", "aaacecaaa"),
+    ("abcd", "dcbabcd"),
+])
+def test_214(s: str, ans: str):
+    from leetcode.problem_214 import Solution
+    sol = Solution()
+    assert sol.shortest_palindrome(s) == ans
+
+
 @pytest.mark.parametrize("n, k, expect", [
     (2, 6, [
         [1, 5], [2, 4]
