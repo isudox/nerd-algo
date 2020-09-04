@@ -1026,6 +1026,38 @@ def test_238(nums, expect):
     assert sol.product_except_self(nums) == expect
 
 
+@pytest.mark.parametrize("nums, k, ans", [
+    ([1, 3, -1, -3, 5, 3, 6, 7], 3, [3, 3, 5, 5, 6, 7])
+])
+def test_239(nums: List[int], k: int, ans: List[int]):
+    from leetcode.problem_239 import Solution
+    sol = Solution()
+    assert sol.max_sliding_window(nums, k) == ans
+
+
+@pytest.mark.parametrize("matrix, target, ans", [
+    ([[1, 2]], 3, False),
+    ([
+        [1,   4,  7, 11, 15],
+        [2,   5,  8, 12, 19],
+        [3,   6,  9, 16, 22],
+        [10, 13, 14, 17, 24],
+        [18, 21, 23, 26, 30]
+    ], 5, True),
+    ([
+        [1,   4,  7, 11, 15],
+        [2,   5,  8, 12, 19],
+        [3,   6,  9, 16, 22],
+        [10, 13, 14, 17, 24],
+        [18, 21, 23, 26, 30]
+    ], 20, False)
+])
+def test_240(matrix: List[List[int]], target: int, ans: bool):
+    from leetcode.problem_240 import Solution
+    sol = Solution()
+    assert sol.search_matrix(matrix, target) == ans
+
+
 @pytest.mark.timeout(1)
 @pytest.mark.parametrize("n, ans", [
     (12, 3),
@@ -1289,6 +1321,18 @@ def test_657(moves: str, ans: bool):
     assert sol.judge_circle_2(moves) == ans
 
 
+@pytest.mark.parametrize("rooms, ans", [
+    ([[1, 3], [3, 0, 1], [2], [0]], False),
+    ([[1], [2], [3], []], True)
+])
+def test_841(rooms: List[List[int]], ans: bool):
+    from leetcode.problem_841 import Solution
+    sol = Solution()
+    assert sol.can_visit_all_rooms(rooms) == ans
+    assert sol.can_visit_all_rooms_1(rooms) == ans
+    assert sol.can_visit_all_rooms_2(rooms) == ans
+
+
 @pytest.mark.parametrize("nums1, nums2, expect", [
     ([1, 3], [2], 2.0),
     ([1, 2], [3, 4], 2.5)
@@ -1299,10 +1343,10 @@ def test_median_of_two_sorted_arrays(nums1, nums2, expect):
 
 
 @pytest.mark.parametrize("a, b, res", [(1, 1, "ab"), (1, 4, "bbabb")])
-def test_str_without_3a3b(a, b, res):
+def test_984(a, b, res):
     from leetcode.problem_984 import Solution
-
-    assert Solution().str_without_3a3b(a, b) == res
+    sol = Solution()
+    assert sol.str_without_3a3b(a, b) == res
 
 
 @pytest.mark.parametrize("days, costs, res", [
