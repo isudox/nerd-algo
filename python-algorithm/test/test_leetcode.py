@@ -594,6 +594,16 @@ def test_76(s, t, expect):
     assert solution.min_window(s, t) == expect
 
 
+@pytest.mark.parametrize("n, k, ans", [
+    (4, 2, [[1, 2], [1, 3], [1, 4], [2, 3], [2, 4], [3, 4]]),
+    (5, 3, [[1,2,3],[1,2,4],[1,2,5],[1,3,4],[1,3,5],[1,4,5],[2,3,4],[2,3,5],[2,4,5],[3,4,5]])
+])
+def test_77(n: int, k: int, ans: List[List[int]]):
+    from leetcode.problem_77 import Solution
+    sol = Solution()
+    assert sol.combine(n, k) == ans
+
+
 @pytest.mark.parametrize("nums, sets", [
     ([1, 2, 3], [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]])
 ])
@@ -1048,19 +1058,19 @@ def test_239(nums: List[int], k: int, ans: List[int]):
 @pytest.mark.parametrize("matrix, target, ans", [
     ([[1, 2]], 3, False),
     ([
-        [1,   4,  7, 11, 15],
-        [2,   5,  8, 12, 19],
-        [3,   6,  9, 16, 22],
-        [10, 13, 14, 17, 24],
-        [18, 21, 23, 26, 30]
-    ], 5, True),
+         [1, 4, 7, 11, 15],
+         [2, 5, 8, 12, 19],
+         [3, 6, 9, 16, 22],
+         [10, 13, 14, 17, 24],
+         [18, 21, 23, 26, 30]
+     ], 5, True),
     ([
-        [1,   4,  7, 11, 15],
-        [2,   5,  8, 12, 19],
-        [3,   6,  9, 16, 22],
-        [10, 13, 14, 17, 24],
-        [18, 21, 23, 26, 30]
-    ], 20, False)
+         [1, 4, 7, 11, 15],
+         [2, 5, 8, 12, 19],
+         [3, 6, 9, 16, 22],
+         [10, 13, 14, 17, 24],
+         [18, 21, 23, 26, 30]
+     ], 20, False)
 ])
 def test_240(matrix: List[List[int]], target: int, ans: bool):
     from leetcode.problem_240 import Solution
