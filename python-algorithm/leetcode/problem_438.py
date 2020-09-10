@@ -37,42 +37,27 @@ from typing import List
 
 class Solution:
     def find_anagrams(self, s: str, p: str) -> List[int]:
-        ans = []
-        n, m = len(s), len(p)
-        if n < m:
+        ns, np = len(s), len(p)
+        if ns < np:
             return []
-        store, temp = {}, {}
-        for c in p:
-            store[c] = store[c] + 1 if c in store else 1
-        found_start = False
-        i = 0
-        while i <= n - m:
-            if s[i] not in store:
-                i += 1
-                continue
-            if not found_start:
-                found_start = True
-                for j in range(i, i + m):
-                    if s[j] not in store:
-                        found_start = False
-                        i = j + 1
-                        temp.clear()
-                        break
-                    else:
-                        temp[s[j]] = temp[s[j]] + 1 if s[j] in temp else 1
-                if j - i + 1 == m and temp == store:
-                    ans.append(i)
-            
+        ans = []
+        store = {}
+        temp = {}
+        for i in range(np):
+            store[p[i]] = (store[p[i]] + 1) if p[i] in store else 1
+            temp[s[i]] = (temp[s[i]] + 1) if s[i] in temp else 1
+        i, j = 0, np - 1
+        while j < ns:
+            if store == temp:
+                ans.append(i)
+            if j == ns - 1:
+                break
+            if temp[s[i]] == 1:
+                del temp[s[i]]
+            else:
+                temp[s[i]] = temp[s[i]] - 1
+            temp[s[j + 1]] = (temp[s[j + 1]] + 1) if s[j + 1] in temp else 1
             i += 1
-            found_start = False
-            temp.clear()
+            j += 1
+
         return ans
-
-
-if __name__ == "__main__":
-    sol = Solution()
-    a = "a" * 21
-    b = "a" * 10
-    print(len(a))
-    print(len(b))
-    print(sol.find_anagrams(a, b))

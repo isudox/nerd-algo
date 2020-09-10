@@ -33,7 +33,7 @@ from typing import List
 
 
 class Solution:
-    def combine(self, n: int, k: int) -> List[List[int]]:
+    def combine_1(self, n: int, k: int) -> List[List[int]]:
         ans = [[_] for _ in range(1, n - k + 2)]
         for i in range(2, k + 1):
             temp = []
@@ -43,4 +43,19 @@ class Solution:
                     new_comb.append(j)
                     temp.append(new_comb)
             ans = temp
+        return ans
+
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        """
+        combine(n, k) = (combine(n-1, k-1) + n) + combine(n-1, k)
+        """
+        if k == 1:
+            return [[_] for _ in range(1, n + 1)]
+        if n == k:
+            return [[_ for _ in range(1, n + 1)]]
+        ans = self.combine(n - 1, k - 1)
+        for comb in ans:
+            comb.append(n)
+        if n > k:
+            ans.extend(self.combine(n - 1, k))
         return ans
