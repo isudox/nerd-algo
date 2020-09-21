@@ -22,3 +22,32 @@ def test_xun_bao(maze: List[str], ans: int):
     from other.leetcode_cn.xun_bao import Solution
     sol = Solution()
     #assert sol.minimal_steps(maze) == ans
+
+
+@pytest.mark.parametrize("num, expect", [
+    (12258, 5),
+    (25, 2),
+    (506, 1),
+])
+def test_lcof(num, expect):
+    from other.leetcode_cn.lcof import Solution
+    solution = Solution()
+    assert solution.translate_num(num) == expect
+
+
+@pytest.mark.parametrize("matrix, expect", [
+    ([
+         [1, 2, 3],
+         [4, 5, 6],
+         [7, 8, 9]
+     ], 7),
+    ([
+         [1, 1, 1],
+         [1, 1, 1],
+         [1, 1, 1]
+     ], 4)
+])
+def test_black_white_matrix(matrix, expect):
+    from other.black_white_matrix import Solution
+    s = Solution()
+    assert s.brute_force(matrix) == expect

@@ -23,14 +23,10 @@ from typing import List
 
 class Solution:
     def combination_sum3(self, k: int, n: int) -> List[List[int]]:
-        candidates = list(range(1, 10))
-        ans = []
-
-        def backtrack(target, start, store: List[int]):
-            for i in range(start, 9):
-                if target < candidates[i]:
+        def backtrack(target: int, start: int, store: List[int]):
+            for i in range(start, 10):
+                if target < i:
                     break
-
                 if len(store) == k - 1:
                     if target < 10:
                         store.append(target)
@@ -38,10 +34,10 @@ class Solution:
                         ans.append(store[:])
                         store.pop()
                     break
-
-                store.append(candidates[i])
-                backtrack(target - candidates[i], i + 1, store)
+                store.append(i)
+                backtrack(target - i, i + 1, store)
                 store.pop()
 
-        backtrack(n, 0, [])
+        ans = []
+        backtrack(n, 1, [])
         return ans

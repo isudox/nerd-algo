@@ -444,6 +444,16 @@ class LeetCodeTest extends Specification {
         999999 | 4
     }
 
+    def "300. Longest Increasing Subsequence"(int[] nums, int ans) {
+        given:
+        def sol = new Problem300()
+        expect:
+        sol.lengthOfLIS(nums) == ans
+        where:
+        nums                         | ans
+        [10, 9, 2, 5, 3, 7, 101, 18] | 4
+    }
+
     def "312. Burst Balloons"(int[] nums, int ans) {
         given:
         def sol = new Problem312()

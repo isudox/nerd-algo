@@ -23,14 +23,26 @@ from typing import List
 
 class Solution:
     def length_of_lis(self, nums: List[int]) -> int:
-        # TODO
-        result = 0
+        if not nums:
+            return 0
+        n = len(nums)
+        ans = 1
+        for i in range(n):
+            temp = 1
+            last = nums[i]
+            for j in range(i + 1, n):
+                if nums[j] > last:
+                    temp += 1
+                    ans = max(ans, temp)
+                    last = nums[j]
+        return ans
 
-        def test(minimum: int, index: int, pre_len: int) -> int:
-            nonlocal result
-            for i in range(index, len(nums)):
-                if nums[i] > minimum:
-                    result = max(result, test(nums[i], i + 1, pre_len + 1))
-            return result
 
-        return test(0)
+if __name__ == '__main__':
+    sol = Solution()
+    print(sol.length_of_lis([3, 5, 6, 2, 5, 4, 19, 5, 6, 7, 12]))  # 6
+    print(sol.length_of_lis([10, 9, 2, 5, 3, 4]))  # 3
+    print(sol.length_of_lis([10, 9, 2, 5, 3, 7, 101, 18]))
+    print(sol.length_of_lis([1, 1, 1]))
+    print(sol.length_of_lis([1, 6, 3, 3, 7, 9, 1, 5, 3, 8]))
+    print(sol.length_of_lis([]))

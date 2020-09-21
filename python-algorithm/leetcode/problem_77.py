@@ -59,3 +59,20 @@ class Solution:
         if n > k:
             ans.extend(self.combine(n - 1, k))
         return ans
+
+    def combine_2(self, n: int, k: int) -> List[List[int]]:
+        def backtrack(start: int, comb: List[int]):
+            for x in range(start, n + 1):
+                # avoid unnecessary processing.
+                if n - x + 1 < k - len(comb):
+                    return
+                temp = comb[:]
+                temp.append(x)
+                if len(temp) == k:
+                    ans.append(temp)
+                else:
+                    backtrack(x + 1, temp)
+
+        ans = []
+        backtrack(1, [])
+        return ans

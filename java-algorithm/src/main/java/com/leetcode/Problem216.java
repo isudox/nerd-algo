@@ -15,10 +15,12 @@ import java.util.List;
  *
  * All numbers will be positive integers.
  * The solution set must not contain duplicate combinations.
+ *
  * Example 1:
  *
  * Input: k = 3, n = 7
  * Output: [[1,2,4]]
+ *
  * Example 2:
  *
  * Input: k = 3, n = 9
@@ -27,34 +29,30 @@ import java.util.List;
 public class Problem216 {
 
     public List<List<Integer>> combinationSum3(int k, int n) {
-        int[] candidates = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
         List<List<Integer>> ans = new ArrayList<>();
-        backtrack(candidates, k, n, 0, new ArrayList<>(), ans);
+        backtrack(k, n, 1, new ArrayList<>(), ans);
         return ans;
     }
 
-    private void backtrack(int[] candidates,
-                           int k,
+    private void backtrack(int k,
                            int target,
                            int start,
-                           List<Integer> list,
+                           List<Integer> candidate,
                            List<List<Integer>> ans) {
-        for (int i = start; i < 9; i++) {
-            int num = candidates[i];
-            if (target < num) {
+        for (int i = start; i <= 9; i++) {
+            if (target < i)
                 break;
-            }
-            if (list.size() == k - 1) {
+            if (candidate.size() == k - 1) {
                 if (target < 10) {
-                    list.add(target);
-                    ans.add(new ArrayList<>(list));
-                    list.remove(list.size() - 1);
+                    candidate.add(target);
+                    ans.add(new ArrayList<>(candidate));
+                    candidate.remove(candidate.size() - 1);
                 }
                 break;
             }
-            list.add(num);
-            backtrack(candidates, k, target - num, i + 1, list, ans);
-            list.remove(list.size() - 1);
+            candidate.add(i);
+            backtrack(k, target - i, i + 1, candidate, ans);
+            candidate.remove(candidate.size() - 1);
         }
     }
 }

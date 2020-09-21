@@ -13,12 +13,6 @@ Output:
   [1,2,1],
   [2,1,1]
 ]
-
-[]: []
-[1]: [1]
-[1,2]: [1, 2], [2, 1]
-[1,2,1]: [1,1,2], [1,2,1], [2,1,1]
-1,1,2,1,1
 """
 import copy
 from typing import List
@@ -26,8 +20,6 @@ from typing import List
 
 class Solution:
     def permute_unique_dfs(self, nums: List[int]) -> List[List[int]]:
-        ans = []
-
         def dfs(permutation: List[int], nums: List[int]):
             nonlocal ans
             if not nums:
@@ -39,6 +31,7 @@ class Solution:
                         used.append(nums[i])
                         dfs(permutation + [nums[i]], nums[:i] + nums[i + 1:])
 
+        ans = []
         dfs([], nums)
         return ans
 

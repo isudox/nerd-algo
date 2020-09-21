@@ -103,6 +103,33 @@ def test_32(s, ans):
     assert sol.longest_valid_parentheses_2(s) == ans
 
 
+@pytest.mark.parametrize("board, ans", [
+    ([["5", "3", ".", ".", "7", ".", ".", ".", "."],
+      ["6", ".", ".", "1", "9", "5", ".", ".", "."],
+      [".", "9", "8", ".", ".", ".", ".", "6", "."],
+      ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
+      ["4", ".", ".", "8", ".", "3", ".", ".", "1"],
+      ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
+      [".", "6", ".", ".", ".", ".", "2", "8", "."],
+      [".", ".", ".", "4", "1", "9", ".", ".", "5"],
+      [".", ".", ".", ".", "8", ".", ".", "7", "9"]],
+     [["5", "3", "4", "6", "7", "8", "9", "1", "2"],
+      ["6", "7", "2", "1", "9", "5", "3", "4", "8"],
+      ["1", "9", "8", "3", "4", "2", "5", "6", "7"],
+      ["8", "5", "9", "7", "6", "1", "4", "2", "3"],
+      ["4", "2", "6", "8", "5", "3", "7", "9", "1"],
+      ["7", "1", "3", "9", "2", "4", "8", "5", "6"],
+      ["9", "6", "1", "5", "3", "7", "2", "8", "4"],
+      ["2", "8", "7", "4", "1", "9", "6", "3", "5"],
+      ["3", "4", "5", "2", "8", "6", "1", "7", "9"]])
+])
+def test_37(board: List[List[str]], ans: List[List[str]]):
+    from leetcode.problem_37 import Solution
+    sol = Solution()
+    sol.solve_sudoku(board)
+    assert board == ans
+
+
 @pytest.mark.parametrize("n, expect", [
     (1, "1"),
     (2, "11"),
@@ -545,6 +572,20 @@ def test_67(a: str, b: str, result: str):
     from leetcode.problem_67 import Solution
     sol = Solution()
     assert sol.add_binary(a, b) == result
+
+
+@pytest.mark.parametrize("x, expect", [
+    (0, 0),
+    (1, 1),
+    (4, 2),
+    (8, 2),
+    (101, 10),
+    (9999999999999999, 99999999)
+])
+def test_69(x, expect):
+    from leetcode.problem_69 import Solution
+    sol = Solution()
+    assert sol.my_sqrt_1(x) == expect
 
 
 @pytest.mark.parametrize("n, expect", [
@@ -1399,19 +1440,6 @@ def test_time_based_key_value_store():
     assert time_map.get("name", 1000) == "isudox"
 
 
-@pytest.mark.parametrize("x, expect", [
-    (0, 0),
-    (1, 1),
-    (4, 2),
-    (8, 2),
-    (101, 10),
-    (9999999999999999, 99999999)
-])
-def test_sqrtx(x, expect):
-    from leetcode.problem_69 import Solution
-    assert Solution().my_sqrt_1(x) == expect
-
-
 @pytest.mark.parametrize(
     "li, res",
     [
@@ -1424,17 +1452,40 @@ def test_sqrtx(x, expect):
         ([100], 1),
     ],
 )
-def test_longest_turbulent_subarray(li, res):
+def test_978(li, res):
     from leetcode.problem_978 import Solution
-
-    assert Solution().max_turbulence_size(li) == res
+    sol = Solution()
+    assert sol.max_turbulence_size(li) == res
 
 
 @pytest.mark.parametrize("nums, res", [([2, 1, 3], 12)])
-def test_triples_with_bitwise_and_equal_to_zero(nums, res):
+def test_982(nums, res):
     from leetcode.problem_982 import Solution
+    sol = Solution()
+    assert sol.count_triplets(nums) == res
 
-    assert Solution().count_triplets(nums) == res
+
+@pytest.mark.parametrize(
+    "x, y, bound, res",
+    [(2, 3, 10, [2, 3, 4, 5, 7, 9, 10]), (3, 5, 15, [2, 4, 6, 8, 10, 14])],
+)
+def test_970(x, y, bound, res):
+    from leetcode.problem_970 import Solution
+    sol = Solution()
+    assert sol.powerful_integers(x, y, bound) == res
+
+
+@pytest.mark.parametrize(
+    "a, res",
+    [
+        ([-4, -1, 0, 3, 10], [0, 1, 9, 16, 100]),
+        ([-7, -3, 2, 3, 11], [4, 9, 9, 49, 121]),
+    ],
+)
+def test_977(a, res):
+    from leetcode.problem_977 import Solution
+    sol = Solution()
+    assert sol.sorted_squares(a) == res
 
 
 @pytest.mark.parametrize(
@@ -1445,47 +1496,24 @@ def test_triples_with_bitwise_and_equal_to_zero(nums, res):
         ([[0, 1], [2, 0]], 0),
     ],
 )
-def test_unique_paths_3(grid, res):
+def test_980(grid, res):
     from leetcode.problem_980 import Solution
-
-    assert Solution().unique_paths_iii(grid) == res
-
-
-@pytest.mark.parametrize(
-    "x, y, bound, res",
-    [(2, 3, 10, [2, 3, 4, 5, 7, 9, 10]), (3, 5, 15, [2, 4, 6, 8, 10, 14])],
-)
-def test_powerful_integers(x, y, bound, res):
-    from leetcode.problem_970 import Solution
-
-    assert Solution().powerful_integers(x, y, bound) == res
-
-
-@pytest.mark.parametrize(
-    "a, res",
-    [
-        ([-4, -1, 0, 3, 10], [0, 1, 9, 16, 100]),
-        ([-7, -3, 2, 3, 11], [4, 9, 9, 49, 121]),
-    ],
-)
-def test_sorted_squares(a, res):
-    from leetcode.problem_977 import Solution
-
-    assert Solution().sorted_squares(a) == res
+    sol = Solution()
+    assert sol.unique_paths_iii(grid) == res
 
 
 @pytest.mark.parametrize(
     "a, res",
     [([2, 1, 2], 5), ([1, 2, 1], 0), ([3, 2, 3, 4], 10), ([3, 6, 2, 3], 8)]
 )
-def test_largest_perimeter(a, res):
+def test_976(a, res):
     from leetcode.problem_976 import Solution
-
-    assert Solution().largest_perimeter(a) == res
+    sol = Solution()
+    assert sol.largest_perimeter(a) == res
 
 
 @pytest.mark.parametrize("arr, k, res", [([4, 5, 0, -2, -3, 1], 5, 7)])
-def test_subarray_sums_divisible_by_k(arr, k, res):
+def test_974(arr, k, res):
     from leetcode.problem_974 import Solution
 
     assert Solution().subarrays_div_by_k(arr, k) == res
@@ -1500,10 +1528,10 @@ def test_subarray_sums_divisible_by_k(arr, k, res):
         ("0.12", "0.12(1)", False),
     ],
 )
-def test_equal_rational_numbers(s, t, res):
+def test_972(s, t, res):
     from leetcode.problem_972 import Solution
-
-    assert Solution().is_rational_equal(s, t) == res
+    sol = Solution()
+    assert sol.is_rational_equal(s, t) == res
 
 
 @pytest.mark.parametrize(
@@ -1513,29 +1541,19 @@ def test_equal_rational_numbers(s, t, res):
         ([[3, 3], [5, -1], [-2, 4]], 2, [[3, 3], [-2, 4]]),
     ],
 )
-def test_k_closest_points_to_origin(points, k, res):
+def test_973(points, k, res):
     from leetcode.problem_973 import Solution
-
-    assert Solution().k_closest_2(points, k) == res
+    sol = Solution()
+    assert sol.k_closest_2(points, k) == res
 
 
 @pytest.mark.parametrize(
     "nums, res", [([3, 2, 4, 1], [3, 4, 2, 3, 2]), ([1, 2, 3], [])]
 )
-def test_pancake_sorting(nums, res):
+def test_969(nums, res):
     from leetcode.problem_969 import Solution
 
     assert Solution().pancake_sort(nums) == res
-
-
-@pytest.mark.parametrize(
-    "x, target, ans", [(3, 19, 5), (5, 501, 8), (100, 200000000, 7)]
-)
-def test_least_operators_to_express_number(x, target, ans):
-    from leetcode.problem_964 import Solution
-
-    assert Solution().least_ops_express_target(x, target) == ans
-    assert Solution().least_ops_express_target_2(x, target) == ans
 
 
 @pytest.mark.parametrize(
@@ -1546,16 +1564,26 @@ def test_least_operators_to_express_number(x, target, ans):
         ([[0, 3], [1, 2], [3, 1], [1, 3], [2, 1]], 0.00000),
     ],
 )
-def test_min_area_rect(points, area):
+def test_963(points, area):
     from leetcode.problem_963 import Solution
+    sol = Solution()
+    assert sol.min_area_free_rect(points) == area
 
-    assert Solution().min_area_free_rect(points) == area
+
+@pytest.mark.parametrize(
+    "x, target, ans", [(3, 19, 5), (5, 501, 8), (100, 200000000, 7)]
+)
+def test_964(x, target, ans):
+    from leetcode.problem_964 import Solution
+
+    assert Solution().least_ops_express_target(x, target) == ans
+    assert Solution().least_ops_express_target_2(x, target) == ans
 
 
 @pytest.mark.parametrize("li, ans", [
     ([1, 2, 3, 3], 3), ([2, 1, 2, 5, 3, 2], 2), ([5, 1, 5, 2, 5, 3, 5, 4], 5)
 ])
-def test_n_repeated_element_in_size_2n_array(li, ans):
+def test_961(li, ans):
     from leetcode.problem_961 import Solution
     s = Solution()
 
@@ -1567,7 +1595,7 @@ def test_n_repeated_element_in_size_2n_array(li, ans):
 @pytest.mark.parametrize(
     "arr, ans", [([6, 0, 8, 2, 1, 5], 4), ([9, 8, 1, 0, 1, 9, 4, 0, 4, 1], 7)]
 )
-def test_maximum_width_ramp(arr, ans):
+def test_962(arr, ans):
     from leetcode.problem_962 import Solution
 
     assert Solution().max_width_ramp(arr) == ans
@@ -1582,7 +1610,7 @@ def test_maximum_width_ramp(arr, ans):
         (["rrjk", "furt", "guzm"], 2),
     ],
 )
-def test_delete_columns_to_make_sorted(arr, ans):
+def test_944(arr, ans):
     from leetcode.problem_944 import Solution
 
     assert Solution().min_deletion_size(arr) == ans
@@ -1596,7 +1624,7 @@ def test_delete_columns_to_make_sorted(arr, ans):
     (["xga", "xfb", "yfa"], 1),
 ],
                          )
-def test_delete_columns_to_make_sorted_ii(arr, ans):
+def test_955(arr, ans):
     from leetcode.problem_955 import Solution
 
     assert Solution().min_deletion_size(arr) == ans
@@ -1607,7 +1635,7 @@ def test_delete_columns_to_make_sorted_ii(arr, ans):
     (["edcba"], 4),
     (["ghi", "def", "abc"], 0)
 ])
-def test_delete_columns_to_make_sorted_iii(arr, ans):
+def test_960(arr, ans):
     from leetcode.problem_960 import Solution
 
     assert Solution().min_deletion_size(arr) == ans
@@ -1621,7 +1649,7 @@ def test_delete_columns_to_make_sorted_iii(arr, ans):
     ([1, 2, 3, 4, 5], [4, 3, 5, 1, 2], False),
     ([2, 3, 0, 1], [0, 3, 2, 1], True)
 ])
-def test_validate_stack_sequences(pushed, popped, ans):
+def test_946(pushed, popped, ans):
     from leetcode.problem_946 import Solution
 
     solution = Solution()
@@ -1646,7 +1674,7 @@ def test_validate_stack_sequences(pushed, popped, ans):
       7678, 7876, 7878, 7898, 8765, 8767, 8787, 8789, 8987, 8989, 9876, 9878,
       9898])
 ])
-def test_nums_same_consec_diff(n, k, expect):
+def test_967(n, k, expect):
     from leetcode.problem_967 import Solution
 
     ans = Solution().nums_same_consec_diff(n, k)
@@ -1664,7 +1692,7 @@ def test_nums_same_consec_diff(n, k, expect):
     ("def", "cba", "cba"),
     ("kqep", "pekeq", "kqeep")
 ])
-def test_custom_sort_string(s, t, ans):
+def test_791(s, t, ans):
     from leetcode.problem_791 import Solution
 
     assert Solution().custom_sort_string(s, t) == ans
@@ -1712,7 +1740,7 @@ def test_377(nums, target, expect):
     ("aA", "aAAbbbb", 3),
     ("z", "ZZ", 0)
 ])
-def test_jewels_and_stones(jewels: str, stones: str, expect: int):
+def test_771(jewels: str, stones: str, expect: int):
     from leetcode.problem_771 import Solution
     assert Solution().num_jewels_in_stones(jewels, stones) == expect
 
@@ -1727,29 +1755,11 @@ def test_43(a: str, b: str, c: str):
     assert Solution().multiply(a, b) == c
 
 
-@pytest.mark.parametrize("matrix, expect", [
-    ([
-         [1, 2, 3],
-         [4, 5, 6],
-         [7, 8, 9]
-     ], 7),
-    ([
-         [1, 1, 1],
-         [1, 1, 1],
-         [1, 1, 1]
-     ], 4)
-])
-def test_black_white_matrix(matrix, expect):
-    from other.black_white_matrix import Solution
-    s = Solution()
-    assert s.brute_force(matrix) == expect
-
-
 @pytest.mark.parametrize("tree, expect", [
     ([1, 2, 3], 6),
     ([-10, 9, 20, None, None, 15, 7], 42)
 ])
-def test_binary_tree_maximum_path_sum(tree, expect):
+def test_124(tree, expect):
     from leetcode.problem_124 import Solution
     sol = Solution()
     # TODO
@@ -1789,9 +1799,10 @@ def test_282(num: str, target: int, expect: List[str]):
 @pytest.mark.parametrize("t, expect", [
     ([73, 74, 75, 71, 69, 72, 76, 73], [1, 1, 4, 2, 1, 1, 0, 0]),
 ])
-def test_daily_temperatures(t, expect):
+def test_739(t, expect):
     from leetcode.problem_739 import Solution
-    assert Solution().daily_temperatures(t) == expect
+    sol = Solution()
+    assert sol.aily_temperatures(t) == expect
 
 
 @pytest.mark.parametrize("grid, expect", [
@@ -1801,20 +1812,9 @@ def test_daily_temperatures(t, expect):
     ([[1, 1, 1], [1, 0, 1], [1, 1, 1]], 32),
     ([[2, 2, 2], [2, 1, 2], [2, 2, 2]], 46)
 ])
-def test_surface_area_of_3d_shapes(grid, expect):
+def test_892(grid, expect):
     from leetcode.problem_892 import Solution
     assert Solution().surface_area(grid) == expect
-
-
-@pytest.mark.parametrize("num, expect", [
-    (12258, 5),
-    (25, 2),
-    (506, 1),
-])
-def test_lcof(num, expect):
-    from other.leetcode_cn.lcof import Solution
-    solution = Solution()
-    assert solution.translate_num(num) == expect
 
 
 @pytest.mark.parametrize("arr, target, expect", [
@@ -1822,7 +1822,7 @@ def test_lcof(num, expect):
     ([2, 3, 5], 10, 5),
     ([60864, 25176, 27249, 21296, 20204], 56803, 11361)
 ])
-def test_sum_of_mutated_array_closest_to_target(arr, target, expect):
+def test_1300(arr, target, expect):
     from leetcode.problem_1300 import Solution
     sol = Solution()
     assert sol.find_best_value(arr, target) == expect
@@ -1832,7 +1832,7 @@ def test_sum_of_mutated_array_closest_to_target(arr, target, expect):
     ([8, 1, 5, 2, 6], 11),
     ([1, 2, 3], 4)
 ])
-def test_best_sightseeing_pair(arr, expect):
+def test_1014(arr, expect):
     from leetcode.problem_1014 import Solution
     sol = Solution()
     assert sol.max_score_sightseeing_pair(arr) == expect
@@ -1843,7 +1843,7 @@ def test_best_sightseeing_pair(arr, expect):
     (["A", "A", "A", "B", "B", "B"], 0, 6),
     (["A", "A", "A", "A", "A", "A", "B", "C", "D", "E", "F", "G"], 2, 16)
 ])
-def test_621_task_scheduler(tasks, n, ans):
+def test_621(tasks, n, ans):
     from leetcode.problem_621 import Solution
     sol = Solution()
     assert sol.least_interval(tasks, n) == ans
@@ -1863,7 +1863,7 @@ def test_632(nums: List[List[int]], ans: List[int]):
     ("abc", 3),
     ("a" * 1000, 500500),
 ])
-def test_647_palindromic_substrings(s, ans):
+def test_647(s, ans):
     from leetcode.problem_647 import Solution
     sol = Solution()
     assert sol.count_substrings(s) == ans
