@@ -49,17 +49,22 @@ class Solution:
     def backspace_compare(self, s: str, t: str) -> bool:
         def process(text: str) -> List[str]:
             stack = []
-            for i in range(len(text)):
-                if text[i] != '#':
-                    stack.append(text[i])
-                else:
-                    if stack:
-                        stack.pop(-1)
+            for c in text:
+                if c != '#':
+                    stack.append(c)
+                elif stack:
+                    stack.pop(-1)
             return stack
 
         return process(s) == process(t)
 
-
-if __name__ == '__main__':
-    sol = Solution()
-    print(sol.backspace_compare("ab##", "c#d#"))
+    def backspace_compare_2(self, s: str, t: str) -> bool:
+        len_s, len_t = len(s), len(t)
+        i, j = 0, 0
+        while i < len_s and j < len_t:
+            if s[i] == t[j]:
+                i += 1
+                j += 1
+            elif s[i] == '#':
+                pass
+        return True
