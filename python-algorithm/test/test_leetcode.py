@@ -1145,6 +1145,16 @@ def test_283(nums: List[int], ans: List[int]):
     assert nums == ans
 
 
+@pytest.mark.parametrize("nums, ans", [
+    ([10, 9, 2, 5, 3, 7, 101, 18], 4),
+    ([10, 9, 2, 5, 3, 4], 3)
+])
+def test_300(nums: List[int], ans: int):
+    from leetcode.problem_300 import Solution
+    sol = Solution()
+    assert sol.length_of_lis(nums) == ans
+
+
 @pytest.mark.parametrize("prices, ans", [
     ([1, 2, 3, 0, 2], 3)
 ])

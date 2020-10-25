@@ -23,26 +23,27 @@ from typing import List
 
 class Solution:
     def length_of_lis(self, nums: List[int]) -> int:
-        if not nums:
-            return 0
+        ans = 0
         n = len(nums)
-        ans = 1
-        for i in range(n):
-            temp = 1
-            last = nums[i]
-            for j in range(i + 1, n):
-                if nums[j] > last:
-                    temp += 1
-                    ans = max(ans, temp)
-                    last = nums[j]
+        if n < 2:
+            return n
+        for i in range(n - 1):
+            cur = 1
+            prev = i
+            j = i + 1
+            while j < n:
+                if nums[j] > nums[prev]:
+                    prev = j
+                    cur += 1
+                j += 1
+            ans = max(ans, cur)
         return ans
 
 
 if __name__ == '__main__':
     sol = Solution()
-    print(sol.length_of_lis([3, 5, 6, 2, 5, 4, 19, 5, 6, 7, 12]))  # 6
-    print(sol.length_of_lis([10, 9, 2, 5, 3, 4]))  # 3
+    print(sol.length_of_lis([10, 9, 2, 5, 3, 4]))
     print(sol.length_of_lis([10, 9, 2, 5, 3, 7, 101, 18]))
-    print(sol.length_of_lis([1, 1, 1]))
-    print(sol.length_of_lis([1, 6, 3, 3, 7, 9, 1, 5, 3, 8]))
+    print(sol.length_of_lis([1, 1]))
+    print(sol.length_of_lis([1]))
     print(sol.length_of_lis([]))
