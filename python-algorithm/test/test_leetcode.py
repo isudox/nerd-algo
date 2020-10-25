@@ -1146,6 +1146,7 @@ def test_283(nums: List[int], ans: List[int]):
 
 
 @pytest.mark.parametrize("nums, ans", [
+    ([3, 5, 6, 2, 5, 4, 19, 5, 6, 7, 12], 6),
     ([10, 9, 2, 5, 3, 7, 101, 18], 4),
     ([10, 9, 2, 5, 3, 4], 3)
 ])
