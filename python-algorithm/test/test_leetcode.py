@@ -1154,6 +1154,7 @@ def test_300(nums: List[int], ans: int):
     from leetcode.problem_300 import Solution
     sol = Solution()
     assert sol.length_of_lis(nums) == ans
+    assert sol.length_of_lis_1(nums) == ans
 
 
 @pytest.mark.parametrize("prices, ans", [
@@ -1354,6 +1355,17 @@ def test_460():
     assert cache.get(4) == 4
 
 
+@pytest.mark.parametrize('grid, ans', [
+    ([[0, 1, 0, 0], [1, 1, 1, 0], [0, 1, 0, 0], [1, 1, 0, 0]], 16),
+    ([[1]], 4),
+    ([[1, 0]], 4)
+])
+def test_463(grid, ans):
+    from leetcode.problem_463 import Solution
+    sol = Solution()
+    assert sol.island_perimeter(grid) == ans
+
+
 @pytest.mark.parametrize("nums, target, expect", [
     ([1, 1, 1, 1, 1], 3, 5),
     ([1, 0], 1, 2),
@@ -1427,25 +1439,24 @@ def test_984(a, b, res):
     ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 30, 31], [2, 7, 15], 17),
 ],
                          )
-def test_minimum_cost_for_tickets(days, costs, res):
+def test_983(days, costs, res):
     from leetcode.problem_983 import Solution
-
-    assert Solution().min_cost_tickets(days, costs) == res
+    sol = Solution()
+    assert sol.min_cost_tickets(days, costs) == res
 
 
 @pytest.mark.parametrize(
     "root, res",
     [([3, 0, 0], 2), ([0, 3, 0], 3), ([1, 0, 2], 2), ([1, 0, 0, None, 3], 4)],
 )
-def test_distribute_coins_in_binary_tree(root, res):
+def test_979(root, res):
     from leetcode.problem_979 import Solution
+    sol = Solution()
+    assert sol.distribute_coins(Converter.list_to_tree(root)) == res
 
-    assert Solution().distribute_coins(Converter.list_to_tree(root)) == res
 
-
-def test_time_based_key_value_store():
+def test_981():
     from leetcode.problem_981 import TimeMap
-
     time_map = TimeMap()
     time_map.set("name", "isudox", 1000)
     assert time_map.get("name", 1000) == "isudox"
@@ -1922,3 +1933,25 @@ def test_785(graph: List[List[int]], ans: bool):
     from leetcode.problem_785 import Solution
     sol = Solution()
     assert sol.is_bipartite(graph) == ans
+
+
+@pytest.mark.parametrize("arr, ans", [
+    ([1, 2, 2, 1, 1, 3], True),
+    ([1, 2], False),
+    ([-3, 0, 1, -3, 1, 1, 1, -3, 10, 0], True),
+])
+def test_1207(arr: List[int], ans: bool):
+    from leetcode.problem_1207 import Solution
+    sol = Solution()
+    assert sol.unique_occurrences(arr) == ans
+
+
+@pytest.mark.parametrize("nums, ans", [
+    ([8, 1, 2, 2, 3], [4, 0, 1, 1, 3]),
+    ([6, 5, 4, 8], [2, 1, 0, 3]),
+    ([7, 7, 7, 7], [0, 0, 0, 0])
+])
+def test_1365(nums: List[int], ans: List[int]):
+    from leetcode.problem_1365 import Solution
+    sol = Solution()
+    assert sol.smaller_numbers_than_current(nums) == ans

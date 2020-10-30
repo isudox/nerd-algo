@@ -19,11 +19,23 @@ package com.leetcode;
  * There may be more than one LIS combination, it is only necessary for you
  * to return the length.
  * Your algorithm should run in O(n^2) complexity.
+ *
  * Follow up: Could you improve it to O(n log n) time complexity?
  */
 public class Problem300 {
     public int lengthOfLIS(int[] nums) {
-
-        return 0;
+        int n = nums.length;
+        int[] dp = new int[n];  // dp[i] = max length of LIS which last num is nums[i]
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            dp[i] = 1;
+            for (int j = 0; j < i; j++) {
+                if (nums[j] < nums[i]) {
+                    dp[i] = Math.max(dp[i], dp[j] + 1);
+                }
+            }
+            ans = Math.max(ans, dp[i]);
+        }
+        return ans;
     }
 }

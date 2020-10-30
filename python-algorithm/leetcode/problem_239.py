@@ -30,15 +30,28 @@ Constraints:
     -10^4 <= nums[i] <= 10^4
     1 <= k <= nums.length
 """
-import collections
 from typing import List
 
 
 class Solution:
     def max_sliding_window(self, nums: List[int], k: int) -> List[int]:
         ans = []
-        queue = collections.deque(maxlen=k)
-        n = len(nums)
-        for i in range(n - k):
-            pass
         return ans
+
+
+class MaxHeap:
+    def __init__(self, arr: List[int] = None):
+        self.arr = arr
+        self._heapify()
+
+    def add(self, val: int):
+        pass
+
+    def remove(self, val: int):
+        pass
+
+    def _heapify(self):
+        pass
+
+    def top(self):
+        return self.arr[0]

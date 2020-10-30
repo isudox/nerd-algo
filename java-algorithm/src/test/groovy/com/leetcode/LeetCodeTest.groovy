@@ -804,4 +804,16 @@ class LeetCodeTest extends Specification {
         [5, 3, 1]       | 7
         [8, 1, 5, 2, 6] | 11
     }
+
+    def "1207. Unique Number of Occurrences"(int[] arr, boolean ans) {
+        given:
+        def sol = new Problem1207()
+        expect:
+        sol.uniqueOccurrences(arr) == ans
+        where:
+        arr                                | ans
+        [1, 2, 2, 1, 1, 3]                 | true
+        [1, 2]                             | false
+        [-3, 0, 1, -3, 1, 1, 1, -3, 10, 0] | true
+    }
 }

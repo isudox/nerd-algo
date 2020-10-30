@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from typing import List, Optional
 
 from common.list_node import ListNode

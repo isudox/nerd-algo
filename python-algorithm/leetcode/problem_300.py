@@ -21,7 +21,6 @@ Follow up: Could you improve it to O(n log n) time complexity?
 from typing import List
 
 
-# [3, 5, 6, 2, 5, 4, 19, 5, 6, 7, 12]
 class Solution:
     def length_of_lis(self, nums: List[int]) -> int:
         def process(start: int) -> int:
@@ -48,12 +47,14 @@ class Solution:
             ans = max(ans, process(x))
         return ans
 
-
-if __name__ == '__main__':
-    sol = Solution()
-    print(sol.length_of_lis([3, 5, 6, 2, 5, 4, 19, 5, 6, 7, 12]))
-    print(sol.length_of_lis([10, 9, 2, 5, 3, 4]))
-    print(sol.length_of_lis([10, 9, 2, 5, 3, 7, 101, 18]))
-    print(sol.length_of_lis([1, 1]))
-    print(sol.length_of_lis([1]))
-    print(sol.length_of_lis([]))
+    def length_of_lis_1(self, nums: List[int]) -> int:
+        # dp[i] means the max length of LIS which last num is nums[i]
+        n = len(nums)
+        dp = [1] * n
+        ans = 0
+        for i in range(n):
+            for j in range(i):
+                if nums[j] < nums[i]:
+                    dp[i] = max(dp[i], dp[j] + 1)
+            ans = max(ans, dp[i])
+        return ans
