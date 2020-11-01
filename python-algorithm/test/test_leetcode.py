@@ -906,6 +906,18 @@ def test_139(string, word_dict, expect):
     assert sol.word_break_2(string, word_dict) == expect
 
 
+@pytest.mark.parametrize('s, word_dict, ans', [
+    ('apple', ['apple'], ['apple']),
+    ("catsanddog", ["cat", "cats", "and", "sand", "dog"], ['cat sand dog', 'cats and dog']),
+    ("pineapplepenapple", ["apple", "pen", "applepen", "pine", "pineapple"],
+     ["pine apple pen apple", "pine applepen apple", "pineapple pen apple"])
+])
+def test_140(s: str, word_dict: List[str], ans: List[str]):
+    from leetcode.problem_140 import Solution
+    sol = Solution()
+    assert sol.word_break(s, word_dict) == ans
+
+
 @pytest.mark.parametrize("head, expect", [
     ([1, 2], False)
 ])
