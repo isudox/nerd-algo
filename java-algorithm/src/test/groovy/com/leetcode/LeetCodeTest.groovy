@@ -584,6 +584,21 @@ class LeetCodeTest extends Specification {
         "kqep" | "pekeq" | "kqeep"
     }
 
+    def "941. Valid Mountain Array"(int[] nums, boolean ans) {
+        given:
+        def sol = new Problem941()
+        expect:
+        sol.validMountainArray(nums) == ans
+        sol.validMountainArray1(nums) == ans
+        where:
+        nums|ans
+        [1, 2]       | false
+        [1, 2, 3]    | false
+        [3, 2, 1]    | false
+        [3, 5, 5]    | false
+        [0, 3, 2, 1] | true
+    }
+
     def "946. Validate Stack Sequences"(int[] pushed, int[] popped, boolean ans) {
         given:
         def solution = new Problem946()
