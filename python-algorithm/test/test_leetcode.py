@@ -1215,6 +1215,15 @@ def test_315(nums: List[int], ans):
     assert sol.count_smaller_1(nums) == ans
 
 
+@pytest.mark.parametrize("nums, lower, upper, ans", [
+    ([-2,5,-1], -2, 2, 3),
+])
+def test_327(nums: List[int], lower: int, upper: int, ans: int):
+    from leetcode.problem_327 import Solution
+    sol = Solution()
+    assert sol.count_range_sum(nums, lower, upper) == ans
+
+
 @pytest.mark.parametrize("matrix, ans", [
     ([
          [9, 9, 4],
