@@ -482,7 +482,7 @@ def test_56(intervals, expect):
 def test_57(intervals, new_interval, expect):
     from leetcode.problem_57 import Solution
     solution = Solution()
-    assert solution.insert_2(intervals, new_interval) == expect
+    assert solution.insert(intervals, new_interval) == expect
 
 
 @pytest.mark.parametrize("s, expect", [
@@ -819,6 +819,18 @@ def test_121(prices, expect):
     from leetcode.problem_121 import Solution
     sol = Solution()
     assert sol.max_profit(prices) == expect
+
+
+@pytest.mark.timeout(1)
+@pytest.mark.parametrize("begin_word, end_word, word_list, ans", [
+    ("hot", "dog", ["hot", "dog"], 0),
+    ('hit', 'cog', ["hot", "dot", "dog", "lot", "log"], 0),
+    ('hit', 'cog', ["hot", "dot", "dog", "lot", "log", "cog"], 5)
+])
+def test_127(begin_word: str, end_word: str, word_list: List[str], ans: int):
+    from leetcode.problem_127 import Solution
+    sol = Solution()
+    assert sol.ladder_length(begin_word, end_word, word_list) == ans
 
 
 @pytest.mark.parametrize("nums, expect", [
@@ -1970,6 +1982,17 @@ def test_1207(arr: List[int], ans: bool):
     from leetcode.problem_1207 import Solution
     sol = Solution()
     assert sol.unique_occurrences(arr) == ans
+
+
+@pytest.mark.parametrize("arr, ans", [
+    ([0, 1, 2, 3, 4, 5, 6, 7, 8], [0, 1, 2, 4, 8, 3, 5, 6, 7]),
+    ([1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1], [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]),
+    ([10000, 10000], [10000, 10000])
+])
+def test_1356(arr: List[int], ans: List[int]):
+    from leetcode.problem_1356 import Solution
+    sol = Solution()
+    assert sol.sort_by_bits(arr) == ans
 
 
 @pytest.mark.parametrize("nums, ans", [

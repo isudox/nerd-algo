@@ -17,34 +17,47 @@ Example 2:
 Input: intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]
 Output: [[1,2],[3,10],[12,16]]
 Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
+
+Example 3:
+
+Input: intervals = [], newInterval = [5,7]
+Output: [[5,7]]
+
+Example 4:
+
+Input: intervals = [[1,5]], newInterval = [2,3]
+Output: [[1,5]]
+
+Example 5:
+
+Input: intervals = [[1,5]], newInterval = [2,7]
+Output: [[1,7]]
+
+Constraints:
+
+    0 <= intervals.length <= 104
+    intervals[i].length == 2
+    0 <= intervals[i][0] <= intervals[i][1] <= 105
+    intervals is sorted by intervals[i][0] in ascending order.
+    newInterval.length == 2
+    0 <= newInterval[0] <= newInterval[1] <= 105
+
 """
 from typing import List
 
 
 class Solution:
-    def insert_1(self, intervals, new_interval):
-        pass
+    def insert(self, intervals: List[List[int]], new_interval: List[int]) -> List[List[int]]:
+        def sort_list(arr: List[List[int]]):
+            return sorted(arr, key=lambda x: x[0])
 
-    def insert_2(self, intervals, new_interval):
-        """
-        :type intervals: List[List[int]]
-        :type new_interval: List[int]
-        :rtype: List[List[int]]
-        """
+        def is_overlap(arr1: List[int], arr2: List[int]):
+            return arr1[1] >= arr2[0] and arr1[0] <= arr2[1]
 
-        def sort_list(lst: List[List[int]]):
-            return sorted(lst, key=lambda x: x[0])
-
-        def is_overlap(l1: List[int], l2: List[int]):
-            if l1[1] < l2[0] or l1[0] > l2[1]:
-                return False
-            return True
-
-        def merge_list(l1: List[int], l2: List[int]):
-            left = min(l1[0], l1[1], l2[0], l2[1])
-            right = max(l1[0], l1[1], l2[0], l2[1])
-            l1[0] = left
-            l1[1] = right
+        def merge_list(arr1: List[int], arr2: List[int]):
+            left = min(arr1[0], arr1[1], arr2[0], arr2[1])
+            right = max(arr1[0], arr1[1], arr2[0], arr2[1])
+            arr1[0], arr1[1] = left, right
 
         if not new_interval:
             return intervals
