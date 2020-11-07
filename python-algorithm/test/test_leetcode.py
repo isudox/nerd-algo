@@ -1448,6 +1448,20 @@ def test_median_of_two_sorted_arrays(nums1, nums2, expect):
     # assert Solution().find_median_sorted_arrays(nums1, nums2) == expect
 
 
+@pytest.mark.parametrize("nums, ans", [
+    ([1, 2], False),
+    ([1, 2, 3], False),
+    ([3, 2, 1], False),
+    ([3, 5, 5], False),
+    ([0, 3, 2, 1], True)
+])
+def test_941(nums: List[int], ans: bool):
+    from leetcode.problem_941 import Solution
+    sol = Solution()
+    assert sol.valid_mountain_array(nums) == ans
+    assert sol.valid_mountain_array_1(nums) == ans
+
+
 @pytest.mark.parametrize("a, b, res", [(1, 1, "ab"), (1, 4, "bbabb")])
 def test_984(a, b, res):
     from leetcode.problem_984 import Solution
