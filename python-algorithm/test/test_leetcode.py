@@ -821,6 +821,17 @@ def test_121(prices, expect):
     assert sol.max_profit(prices) == expect
 
 
+@pytest.mark.parametrize('prices, ans', [
+    ([7, 1, 5, 3, 6, 4], 7),
+    ([1, 2, 3, 4, 5], 4),
+    ([7, 6, 4, 3, 1], 0)
+])
+def test_122(prices: List[int], ans: int):
+    from leetcode.problem_122 import Solution
+    sol = Solution()
+    assert sol.max_profit(prices) == ans
+
+
 @pytest.mark.timeout(1)
 @pytest.mark.parametrize("begin_word, end_word, word_list, ans", [
     ("hot", "dog", ["hot", "dog"], 0),
@@ -831,6 +842,7 @@ def test_127(begin_word: str, end_word: str, word_list: List[str], ans: int):
     from leetcode.problem_127 import Solution
     sol = Solution()
     assert sol.ladder_length(begin_word, end_word, word_list) == ans
+    assert sol.ladder_length_2(begin_word, end_word, word_list) == ans
 
 
 @pytest.mark.parametrize("nums, expect", [
