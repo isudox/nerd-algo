@@ -34,25 +34,20 @@ from typing import List
 
 
 class Solution:
-    def k_closest(self, points, k):
-        """
-        :type points: List[List[int]]
-        :type k: int
-        :rtype: List[List[int]]
-        """
-        hashmap = {}
+    def k_closest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        store = {}
         for point in points:
             distance = point[0] ** 2 + point[1] ** 2
-            if not hashmap.get(distance):
-                hashmap[distance] = [point]
+            if distance in store:
+                store[distance].append(point)
             else:
-                hashmap[distance] = hashmap[distance].append(point)
+                store[distance] = [point]
         ans = []
-        distances = sorted(hashmap.keys())
+        distances = sorted(store.keys())
         for distance in distances:
-            for point in hashmap[distance]:
+            for point in store[distance]:
                 if k == 0:
-                    break
+                    return ans
                 ans.append(point)
                 k -= 1
         return ans

@@ -1615,16 +1615,15 @@ def test_972(s, t, res):
     assert sol.is_rational_equal(s, t) == res
 
 
-@pytest.mark.parametrize(
-    "points, k, res",
-    [
-        ([[1, 3], [-2, 2]], 1, [[-2, 2]]),
-        ([[3, 3], [5, -1], [-2, 4]], 2, [[3, 3], [-2, 4]]),
-    ],
-)
+@pytest.mark.parametrize("points, k, res", [
+    ([[1, 3], [-2, 2]], 1, [[-2, 2]]),
+    ([[3, 3], [5, -1], [-2, 4]], 2, [[3, 3], [-2, 4]]),
+    ([[0, 1], [1, 0]], 2, [[0, 1], [1, 0]])
+])
 def test_973(points, k, res):
     from leetcode.problem_973 import Solution
     sol = Solution()
+    assert sol.k_closest(points, k) == res
     assert sol.k_closest_2(points, k) == res
 
 

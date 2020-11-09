@@ -713,6 +713,18 @@ class LeetCodeTest extends Specification {
         [1, 2, 3]    | []
     }
 
+    def "973. K Closest Points to Origin"(int[][] points, int k, int[][] ans) {
+        given:
+        def sol = new Problem973()
+        expect:
+        sol.kClosest(points, k) == ans
+        where:
+        points                     | k | ans
+        [[1, 3], [-2, 2]]          | 1 | [[-2, 2]]
+        [[0, 1], [1, 0]]           | 2 | [[0, 1], [1, 0]]
+        [[3, 3], [5, -1], [-2, 4]] | 2 | [[3, 3], [-2, 4]]
+    }
+
     def "974. Subarray Sums Divisible by K"(int[] A, int K, int res) {
         given:
         def solution = new Problem974()
