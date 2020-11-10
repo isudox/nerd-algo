@@ -89,6 +89,21 @@ def test_20(s: str, ans: bool):
     assert sol.is_valid(s) == ans
 
 
+@pytest.mark.parametrize("nums, ans", [
+    ([1, 2, 3], [1, 3, 2]),
+    ([1, 3, 2], [2, 1, 3]),
+    ([3, 2, 1], [1, 2, 3]),
+    ([1, 1, 5], [1, 5, 1]),
+    ([5, 1, 1], [1, 1, 5]),
+    ([1], [1])
+])
+def test_31(nums: List[int], ans: List[int]):
+    from leetcode.problem_31 import Solution
+    sol = Solution()
+    sol.next_permutation(nums)
+    assert nums == ans
+
+
 @pytest.mark.parametrize("s, ans", [
     ("(()", 2),
     (")()())", 4),
@@ -830,6 +845,21 @@ def test_122(prices: List[int], ans: int):
     from leetcode.problem_122 import Solution
     sol = Solution()
     assert sol.max_profit(prices) == ans
+
+
+# @pytest.mark.timeout(1)
+@pytest.mark.parametrize("begin_word, end_word, word_list, ans", [
+    ('hit', 'cog', ["hot", "dot", "dog", "lot", "log", "cog"],
+     [
+         ["hit", "hot", "dot", "dog", "cog"],
+         ["hit", "hot", "lot", "log", "cog"]
+     ]),
+    ('hit', 'cog', ["hot", "dot", "dog", "lot", "log"], [])
+])
+def test_126(begin_word: str, end_word: str, word_list: List[str], ans: List[List[str]]):
+    from leetcode.problem_126 import Solution
+    sol = Solution()
+    assert sol.find_ladders(begin_word, end_word, word_list) == ans
 
 
 @pytest.mark.timeout(1)
