@@ -46,14 +46,14 @@ class Solution:
         while i > 0 and nums[i] <= nums[i - 1]:
             i -= 1
         if i == 0:
-            nums.sort(reverse=False)
+            nums.sort()
             return
-        gt_idx, gt_val = -1, 200
-        for j in range(i, n):
-            if nums[i - 1] < nums[j] < gt_val:
-                gt_val = nums[j]
-                gt_idx = j
-        nums[i - 1], nums[gt_idx] = nums[gt_idx], nums[i - 1]
-        split_nums = sorted(nums[i:])
-        for k in range(n - i):
-            nums[k + i] = split_nums[k]
+        for j in range(n - 1, i - 1, -1):
+            if nums[i - 1] < nums[j]:
+                nums[i - 1], nums[j] = nums[j], nums[i - 1]
+                break
+        l, r = i, n - 1
+        while l < r:
+            nums[l], nums[r] = nums[r], nums[l]
+            l += 1
+            r -= 1

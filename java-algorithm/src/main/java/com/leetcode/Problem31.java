@@ -1,7 +1,7 @@
 package com.leetcode;
 
 /**
- * 31. Next Permutation *
+ * 31. Next Permutation
  * https://leetcode.com/problems/next-permutation/
  *
  * Implement next permutation, which rearranges numbers into the
@@ -40,5 +40,23 @@ public class Problem31 {
 
     private void reverse(int[] nums, int i, int j) {
         while (i < j) swap(nums, i++, j--);
+    }
+
+    public void nextPermutation2(int[] nums) {
+        int n = nums.length;
+        if (n < 2) return;
+        int i = n - 1;
+        while (i > 0 && nums[i - 1] >= nums[i]) i--;
+        if (i == 0) {
+            reverse(nums, 0, n - 1);
+            return;
+        }
+        for (int j = n - 1; j >= i; j--) {
+            if (nums[i - 1] < nums[j]) {
+                swap(nums, i - 1, j);
+                break;
+            }
+        }
+        reverse(nums, i, n - 1);
     }
 }

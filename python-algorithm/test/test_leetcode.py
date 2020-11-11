@@ -1457,6 +1457,20 @@ def test_494(nums, target, expect):
     assert solution.brute_force(nums, target) == expect
 
 
+@pytest.mark.parametrize('ring, key, ans', [
+    ('godding', 'gd', 4),
+    ("bcaeea", "ae", 4),
+    ('iotfo', 'fioot', 11),
+    ('abcad', 'bad', 6),
+    ("godding", "godding", 13),
+    ("caotmcaataijjxi", "oatjiioicitatajtijciocjcaaxaaatmctxamacaamjjx", 137)
+])
+def test_514(ring: str, key: str, ans: int):
+    from leetcode.problem_514 import Solution
+    sol = Solution()
+    assert sol.find_rotate_steps(ring, key) == ans
+
+
 @pytest.mark.parametrize("nums, ans", [
     ([2, 6, 4, 8, 10, 9, 15], 5),
     ([1, 2, 3, 4], 0),

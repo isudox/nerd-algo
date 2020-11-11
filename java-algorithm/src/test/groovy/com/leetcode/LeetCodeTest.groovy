@@ -4,6 +4,7 @@ import com.common.Converter
 import com.common.ListNode
 import com.common.TreeNode
 import spock.lang.Specification
+
 /**
  * Test algorithms with incomplete cases by Spock.
  */
@@ -92,6 +93,22 @@ class LeetCodeTest extends Specification {
         [1, 2, 3, 4, 5] as int[] | 1 | [1, 2, 3, 4, 5] as int[]
         [1, 2, 3, 4, 5] as int[] | 2 | [2, 1, 4, 3, 5] as int[]
         [1, 2, 3, 4, 5] as int[] | 3 | [3, 2, 1, 4, 5] as int[]
+    }
+
+    def "31. Next Permutation"(int[] nums, int[] ans) {
+        given:
+        def sol = new Problem31()
+        expect:
+        sol.nextPermutation(nums)
+        assert nums == ans
+        where:
+        nums      | ans
+        [1, 2, 3] | [1, 3, 2]
+        [1, 3, 2] | [2, 1, 3]
+        [3, 2, 1] | [1, 2, 3]
+        [5, 1, 1] | [1, 1, 5]
+        [1, 1, 5] | [1, 5, 1]
+        [1]       | [1]
     }
 
     def "32. Longest Valid Parentheses"(String s, int len) {
