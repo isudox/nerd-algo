@@ -1516,6 +1516,17 @@ def test_median_of_two_sorted_arrays(nums1, nums2, expect):
     # assert Solution().find_median_sorted_arrays(nums1, nums2) == expect
 
 
+@pytest.mark.parametrize('nums, ans', [
+    ([2, 3, 1, 1, 4, 0, 0, 4, 3, 3], [2, 3, 0, 1, 4, 1, 0, 3, 4, 3]),
+    ([4, 2, 5, 7], [4, 5, 2, 7])
+])
+def test_922(nums: List[int], ans: List[int]):
+    from leetcode.problem_922 import Solution
+    sol = Solution()
+    sol.sort_array_by_parity_ii_2(nums)
+    assert nums == ans
+
+
 @pytest.mark.parametrize("nums, ans", [
     ([1, 2], False),
     ([1, 2, 3], False),
