@@ -546,6 +546,16 @@ class LeetCodeTest extends Specification {
         "acb" | "ahbgdc" | false
     }
 
+    def "406. Queue Reconstruction by Height"(int[][] people, int[][] ans) {
+        given:
+        def sol = new Problem406()
+        expect:
+        sol.reconstructQueue(people) == ans
+        where:
+        people                                           | ans
+        [[7, 0], [4, 4], [7, 1], [5, 0], [6, 1], [5, 2]] | [[5, 0], [7, 0], [5, 2], [6, 1], [4, 4], [7, 1]]
+    }
+
     def "494. Target Sum"(int[] nums, int s, int expect) {
         given:
         def solution = new Problem494()
