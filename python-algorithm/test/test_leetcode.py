@@ -934,6 +934,18 @@ def test_130(board: List[List[str]], ans):
     assert board == ans
 
 
+@pytest.mark.parametrize('gas, cost, ans', [
+    ([1, 2, 3, 4, 5], [3, 4, 5, 1, 2], 3),
+    ([2, 3, 4], [3, 4, 3], -1),
+    ([2], [2], 0)
+])
+def test_134(gas: List[int], cost: List[int], ans: int):
+    from leetcode.problem_134 import Solution
+    sol = Solution()
+    assert sol.can_complete_circuit(gas, cost) == ans
+    assert sol.can_complete_circuit_2(gas, cost) == ans
+
+
 @pytest.mark.parametrize("nums, ans", [
     ([2, 1, 2], 1),
     ([1], 1),
