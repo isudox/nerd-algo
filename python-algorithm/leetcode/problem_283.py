@@ -19,9 +19,6 @@ from typing import List
 
 class Solution:
     def move_zeroes(self, nums: List[int]) -> None:
-        """
-        Do not return anything, modify nums in-place instead.
-        """
         n = len(nums)
         for i in range(n):
             if nums[i] != 0:
@@ -32,3 +29,22 @@ class Solution:
             if j < n:
                 nums[i] = nums[j]
                 nums[j] = 0
+
+    def move_zeroes_2(self, nums: List[int]) -> None:
+        store = [[] for _ in range(2)]
+        for i in range(len(nums)):
+            store[0].append(i) if nums[i] == 0 else store[1].append(i)
+        i, j = 0, len(nums) - 1
+        for idx in store[1]:
+            nums[i] = nums[idx]
+            i += 1
+        for idx in store[0]:
+            nums[j] = 0
+            j -= 1
+
+
+if __name__ == '__main__':
+    sol = Solution()
+    arr = [0, 1, 0, 3, 12]
+    sol.move_zeroes_2(arr)
+    print(arr)
