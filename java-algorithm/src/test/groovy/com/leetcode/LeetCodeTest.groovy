@@ -481,7 +481,7 @@ class LeetCodeTest extends Specification {
         expect:
         nums == ans
         where:
-        nums | ans
+        nums             | ans
         [0, 1, 0, 3, 12] | [1, 3, 12, 0, 0]
         [0, 0, 1, 3, 12] | [1, 3, 12, 0, 0]
     }
@@ -566,6 +566,21 @@ class LeetCodeTest extends Specification {
         where:
         people                                           | ans
         [[7, 0], [4, 4], [7, 1], [5, 0], [6, 1], [5, 2]] | [[5, 0], [7, 0], [5, 2], [6, 1], [4, 4], [7, 1]]
+    }
+
+    def "452. Minimum Number of Arrows to Burst Balloons"(int[][] points, int ans) {
+        given:
+        def sol = new Problem452()
+        expect:
+        sol.findMinArrowShots(points) == ans
+        where:
+        points                              | ans
+        [[10, 16], [2, 8], [1, 6], [7, 12]] | 2
+        [[1, 2], [3, 4], [5, 6], [7, 8]]    | 4
+        [[1, 2], [2, 3], [3, 4], [4, 5]]    | 2
+        []                                  | 0
+        [[1, 2]]                            | 1
+        [[2, 3], [2, 3]]                    | 1
     }
 
     def "494. Target Sum"(int[] nums, int s, int expect) {
