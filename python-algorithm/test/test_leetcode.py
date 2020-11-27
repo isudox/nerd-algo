@@ -866,7 +866,8 @@ def test_124(tree, expect):
      ]),
     ('hit', 'cog', ["hot", "dot", "dog", "lot", "log"], [])
 ])
-def test_126(begin_word: str, end_word: str, word_list: List[str], ans: List[List[str]]):
+def test_126(begin_word: str, end_word: str, word_list: List[str],
+             ans: List[List[str]]):
     from leetcode.problem_126 import Solution
     sol = Solution()
     assert sol.find_ladders(begin_word, end_word, word_list) == ans
@@ -984,7 +985,8 @@ def test_139(string, word_dict, expect):
 
 @pytest.mark.parametrize('s, word_dict, ans', [
     ('apple', ['apple'], ['apple']),
-    ("catsanddog", ["cat", "cats", "and", "sand", "dog"], ['cat sand dog', 'cats and dog']),
+    ("catsanddog", ["cat", "cats", "and", "sand", "dog"],
+     ['cat sand dog', 'cats and dog']),
     ("pineapplepenapple", ["apple", "pen", "applepen", "pine", "pineapple"],
      ["pine apple pen apple", "pine applepen apple", "pineapple pen apple"])
 ])
@@ -1057,6 +1059,20 @@ def test_155():
     min_stack.pop()
     assert min_stack.top() == 0
     assert min_stack.get_min() == -2
+
+
+@pytest.mark.parametrize('nums, ans', [
+    ([3, 6, 9, 1], 3),
+    ([1, 6, 3, 4, 5, 2], 1),
+    ([15252, 16764, 27963, 7817, 26155, 20757, 3478, 22602, 20404, 6739, 16790,
+      10588, 16521, 6644, 20880, 15632, 27078, 25463, 20124, 15728, 30042,
+      16604, 17223, 4388, 23646, 32683, 23688, 12439, 30630, 3895, 7926, 22101,
+      32406, 21540, 31799, 3768, 26679, 21799, 23740], 2901)
+])
+def test_164(nums: List[int], ans: int):
+    from leetcode.problem_164 import Solution
+    sol = Solution()
+    assert sol.maximum_gap(nums) == ans
 
 
 @pytest.mark.parametrize("nums, target, ans", [
@@ -1461,6 +1477,15 @@ def test_438(s: str, p: str, ans: List[int]):
     from leetcode.problem_438 import Solution
     sol = Solution()
     assert sol.find_anagrams(s, p) == ans
+
+
+@pytest.mark.parametrize('a, b, c, d, ans', [
+    ([1, 2], [-2, -1], [-1, 2], [0, 2], 2),
+])
+def test_454(a: List[int], b: List[int], c: List[int], d: List[int], ans: int):
+    from leetcode.problem_454 import Solution
+    sol = Solution()
+    assert sol.four_sum_count(a, b, c, d) == ans
 
 
 @pytest.mark.parametrize("s, ans", [
@@ -2034,7 +2059,8 @@ def test_1300(arr, target, expect):
 
 @pytest.mark.parametrize("arr, ans", [
     ([0, 1, 2, 3, 4, 5, 6, 7, 8], [0, 1, 2, 4, 8, 3, 5, 6, 7]),
-    ([1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1], [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]),
+    ([1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1],
+     [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]),
     ([10000, 10000], [10000, 10000])
 ])
 def test_1356(arr: List[int], ans: List[int]):
