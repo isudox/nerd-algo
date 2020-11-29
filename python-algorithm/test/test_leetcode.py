@@ -1528,6 +1528,15 @@ def test_463(grid, ans):
     assert sol.island_perimeter(grid) == ans
 
 
+@pytest.mark.parametrize('nums, ans', [
+    ([1, 3, 2, 3, 1], 2)
+])
+def test_493(nums: List[int], ans: int):
+    from leetcode.problem_493 import Solution
+    sol = Solution()
+    assert sol.reverse_pairs(nums) == ans
+
+
 @pytest.mark.parametrize("nums, target, expect", [
     ([1, 1, 1, 1, 1], 3, 5),
     ([1, 0], 1, 2),
