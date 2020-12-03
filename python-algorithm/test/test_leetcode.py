@@ -1336,6 +1336,17 @@ def test_315(nums: List[int], ans):
     assert sol.count_smaller_1(nums) == ans
 
 
+@pytest.mark.parametrize('nums1, nums2, k, ans', [
+    ([3, 4, 6, 5], [9, 1, 2, 5, 8, 3], 5, [9, 8, 6, 5, 3]),
+    ([6, 7], [6, 0, 4], 5, [6, 7, 6, 0, 4]),
+    ([3, 9], [8, 9], 3, [9, 8, 9])
+])
+def test_321(nums1: List[int], nums2: List[int], k: int, ans: List[int]):
+    from leetcode.problem_321 import Solution
+    sol = Solution()
+    assert sol.max_number(nums1, nums2, k) == ans
+
+
 @pytest.mark.parametrize("nums, lower, upper, ans", [
     ([-2, 5, -1], -2, 2, 3),
 ])
