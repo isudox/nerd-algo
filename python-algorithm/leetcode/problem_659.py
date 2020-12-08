@@ -31,8 +31,3 @@ class Solution:
                     else:
                         return False
         return True
-
-
-if __name__ == '__main__':
-    sol = Solution()
-    print(sol.is_possible([1, 2, 3, 3, 4, 4, 5, 5]))  # true

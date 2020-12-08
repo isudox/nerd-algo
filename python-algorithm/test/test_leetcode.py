@@ -1721,6 +1721,21 @@ def test_841(rooms: List[List[int]], ans: bool):
     assert sol.can_visit_all_rooms_2(rooms) == ans
 
 
+@pytest.mark.parametrize('s, ans', [
+    ("123456579", [123, 456, 579]),
+    ("11235813", [1, 1, 2, 3, 5, 8, 13]),
+    ("112358130", []),
+    ("0123", []),
+    ("1101111", [11, 0, 11, 11]),
+    ("0000", [0, 0, 0, 0]),
+    ("539834657215398346785398346991079669377161950407626991734534318677529701785098211336528511", [])
+])
+def test_842(s: str, ans: List[int]):
+    from leetcode.problem_842 import Solution
+    sol = Solution()
+    assert sol.split_into_fibonacci(s) == ans
+
+
 @pytest.mark.parametrize("grid, expect", [
     ([[2]], 10),
     ([[1, 2], [3, 4]], 34),
