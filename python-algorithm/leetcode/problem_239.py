@@ -31,11 +31,13 @@ Constraints:
     1 <= k <= nums.length
 """
 from typing import List
+from collections import deque
 
 
 class Solution:
     def max_sliding_window(self, nums: List[int], k: int) -> List[int]:
         ans = []
+        queue = deque()
         return ans
 
 

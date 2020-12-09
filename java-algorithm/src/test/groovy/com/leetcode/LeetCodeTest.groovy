@@ -292,6 +292,18 @@ class LeetCodeTest extends Specification {
         [-2, 1, -3, 4, -1, 2, 1, -5, 4] | 6
     }
 
+    def "62. Unique Paths"(int m, int n, int ans) {
+        given:
+        def sol = new Problem62()
+        expect:
+        sol.uniquePaths(m, n) == ans
+        where:
+        m | n | ans
+        7 | 3 | 28
+        3 | 2 | 3
+        9 | 9 | 12870
+    }
+
     def "63. Unique Paths II"(int[][] grid, int ans) {
         given:
         def sol = new Problem63()
