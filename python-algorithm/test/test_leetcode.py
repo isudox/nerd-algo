@@ -1736,6 +1736,18 @@ def test_842(s: str, ans: List[int]):
     assert sol.split_into_fibonacci(s) == ans
 
 
+@pytest.mark.parametrize('bills, ans', [
+    ([5, 5, 5, 10, 20], True),
+    ([5, 5, 10], True),
+    ([10, 10], False),
+    ([5, 5, 10, 10, 20], False)
+])
+def test_860(bills: List[int], ans: bool):
+    from leetcode.problem_860 import Solution
+    sol = Solution()
+    assert sol.lemonade_change(bills) == ans
+
+
 @pytest.mark.parametrize("grid, expect", [
     ([[2]], 10),
     ([[1, 2], [3, 4]], 34),
