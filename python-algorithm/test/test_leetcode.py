@@ -1623,6 +1623,18 @@ def test_647(s, ans):
     assert sol.count_substrings(s) == ans
 
 
+@pytest.mark.parametrize('senate, ans', [
+    ('RD', 'Radiant'),
+    ('RDD', 'Dire'),
+    ('DRRDRDRDRDDRDRDR', 'Radiant'),
+    ('RRDRDDRRRDDRDRRDRDRRDDRRDRDRRDD', 'Radiant'),
+])
+def test_649(senate: str, ans: str):
+    from leetcode.problem_649 import Solution
+    sol = Solution()
+    assert sol.predict_party_victory(senate) == ans
+
+
 @pytest.mark.parametrize("moves, ans", [
     ("UD", True),
     ("LL", False)

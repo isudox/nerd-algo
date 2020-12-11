@@ -635,6 +635,19 @@ class LeetCodeTest extends Specification {
         [1, 3, 5, 2]             | 3
     }
 
+    def "649. Dota2 Senate"(String senate, String ans) {
+        given:
+        def sol = new Problem649()
+        expect:
+        sol.predictPartyVictory(senate) == ans
+        where:
+        senate                            | ans
+        "RD"                              | "Radiant"
+        "RDD"                             | "Dire"
+        "DRRDRDRDRDDRDRDR"                | "Radiant"
+        "RRDRDDRRRDDRDRRDRDRRDDRRDRDRRDD" | "Radiant"
+    }
+
     def "785. Is Graph Bipartite"(int[][] graph, boolean ans) {
         given:
         def sol = new Problem785()
