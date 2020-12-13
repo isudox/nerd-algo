@@ -28,9 +28,7 @@ public class Problem649 {
     }
 
     private void disable(List<Integer> list, int start, boolean[] disabled) {
-        int idx = Collections.binarySearch(list, start);
-        if (idx > 0) idx += 1;
-        else idx = 0;
+        int idx = Math.abs(Collections.binarySearch(list, start) + 1);
         for (int i = idx; i < list.size(); i++) {
             int pos = list.get(i);
             if (!disabled[pos]) {
@@ -51,7 +49,7 @@ public class Problem649 {
 
     public static void main(String[] args) {
         Problem649 sol = new Problem649();
-        System.out.println(Collections.binarySearch(Collections.singletonList(0), 100));
+        System.out.println(Collections.binarySearch(Arrays.asList(1, 3, 5, 7), 6));
         System.out.println(sol.predictPartyVictory("RDD"));
     }
 }

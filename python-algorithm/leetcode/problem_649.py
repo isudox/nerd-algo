@@ -34,3 +34,17 @@ class Solution:
                     return 'Dire'
                 if not d_list:
                     return 'Radiant'
+
+    def predict_party_victory_2(self, senate: str) -> str:
+        n = len(senate)
+        r_list, d_list = [], []
+        for i in range(n):
+            (r_list if senate[i] == 'R' else d_list).append(i)
+        while r_list and d_list:
+            if r_list[0] < d_list[0]:
+                r_list.append(r_list[0] + n)
+            else:
+                d_list.append(d_list[0] + n)
+            del r_list[0]
+            del d_list[0]
+        return 'Radiant' if r_list else 'Dire'

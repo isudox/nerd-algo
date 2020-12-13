@@ -1633,6 +1633,7 @@ def test_649(senate: str, ans: str):
     from leetcode.problem_649 import Solution
     sol = Solution()
     assert sol.predict_party_victory(senate) == ans
+    assert sol.predict_party_victory_2(senate) == ans
 
 
 @pytest.mark.parametrize("moves, ans", [
