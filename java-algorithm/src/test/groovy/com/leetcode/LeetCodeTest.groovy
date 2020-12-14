@@ -280,6 +280,16 @@ class LeetCodeTest extends Specification {
         [1, 2, 3] | [[3, 2, 1], [2, 3, 1], [2, 1, 3], [3, 1, 2], [1, 3, 2], [1, 2, 3]]
     }
 
+    def "49. Group Anagrams"(String[] strs, List<List<String>> ans) {
+        given:
+        def sol = new Problem49()
+        expect:
+        sol.groupAnagrams(strs) == ans
+        where:
+        strs                                       | ans
+        ["eat", "tea", "tan", "ate", "nat", "bat"] | [["bat"], ["tan", "nat"], ["eat", "tea", "ate"]]
+    }
+
     def "53. Maximum Subarray"(int[] nums, int expect) {
         given:
         def solution = new Problem53()
