@@ -1291,6 +1291,18 @@ def test_289(board, expect):
     assert board == expect
 
 
+@pytest.mark.parametrize('pattern, s, ans', [
+    ("abba", "dog dog dog dog", False),
+    ("abba", "dog cat cat dog", True),
+    ("abba", "dog cat cat fish", False),
+    ("aaaa", "dog cat cat dog", False)
+])
+def test_290(pattern: str, s: str, ans: bool):
+    from leetcode.problem_290 import Solution
+    sol = Solution()
+    assert sol.word_pattern(pattern, s) == ans
+
+
 @pytest.mark.parametrize("nums, ans", [
     ([3, 5, 6, 2, 5, 4, 19, 5, 6, 7, 12], 6),
     ([10, 9, 2, 5, 3, 7, 101, 18], 4),
@@ -1664,6 +1676,20 @@ def test_696(s: str, ans: int):
 def test_718(a, b, ans):
     from leetcode.problem_718 import Solution
     assert Solution().find_length_1(a, b) == ans
+
+
+@pytest.mark.parametrize('n, ans', [
+    (10, 9),
+    (2, 2),
+    (123, 123),
+    (332, 299),
+    (12645, 12599),
+    (321, 299)
+])
+def test_738(n: int, ans: int):
+    from leetcode.problem_738 import Solution
+    sol = Solution()
+    assert sol.monotone_increasing_digits(n) == ans
 
 
 @pytest.mark.timeout(2)
