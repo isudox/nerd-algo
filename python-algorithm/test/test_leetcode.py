@@ -1669,6 +1669,16 @@ def test_696(s: str, ans: int):
     assert sol.count_binary_substrings(s) == ans
 
 
+@pytest.mark.parametrize('prices, fee, ans', [
+    ([1, 3, 2, 8, 4, 9], 2, 8),
+    ([1, 3, 9], 1, 7)
+])
+def test_714(prices: List[int], fee: int, ans: int):
+    from leetcode.problem_714 import Solution
+    sol = Solution()
+    assert sol.max_profit(prices, fee) == ans
+
+
 @pytest.mark.parametrize("a, b, ans", [
     ([1, 2, 3, 2, 1], [3, 2, 1, 4, 7], 3),
     ([0] * 1000, [0] * 1000, 1000)
