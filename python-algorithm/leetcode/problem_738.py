@@ -27,8 +27,8 @@ class Solution:
     def monotone_increasing_digits(self, n: int) -> int:
         """
         greedy.
-        time complexity:
-        space complexity:
+        time complexity: O(N)
+        space complexity: O(N)
         """
         str_num = str(n)
         size = len(str_num)
@@ -36,4 +36,3 @@ class Solution:
             if str_num[i] < str_num[i - 1]:
                 str_num = str_num[:i - 1] + str(int(str_num[i - 1]) - 1) + '9' * (size - i)
         return int(str_num)
-

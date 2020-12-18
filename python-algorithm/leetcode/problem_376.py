@@ -43,9 +43,19 @@ from typing import List
 class Solution:
     def wiggle_max_length(self, nums: List[int]) -> int:
         n = len(nums)
-        if n < 3:
+        if n < 2:
             return n
-        ans = 0
-        for i in range(n):
-            pass
+        idx = 1
+        while idx < n and nums[idx] == nums[0]:
+            idx += 1
+        if idx == n:
+            return 1
+        ans = 2
+        need_lt = True if nums[0] < nums[idx] else False
+        prev = nums[idx]
+        for i in range(idx, n):
+            if (need_lt and nums[i] < prev) or (not need_lt and nums[i] > prev):
+                ans += 1
+                need_lt = not need_lt
+            prev = nums[i]
         return ans
