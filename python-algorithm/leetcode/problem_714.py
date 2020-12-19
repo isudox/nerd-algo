@@ -22,16 +22,8 @@ from typing import List
 
 class Solution:
     def max_profit(self, prices: List[int], fee: int) -> int:
-        n = len(prices)
-        # dp[k][0] means no stocks, dp[k][1] means has stocks.
-        dp = [[0, 0] for _ in range(n)]
-        dp[0] = [0, -prices[0]]
-        for i in range(1, n):
-            dp[i][0] = max(dp[i - 1][0], dp[i - 1][1] + prices[i] - fee)
-            dp[i][1] = max(dp[i - 1][0] - prices[i], dp[i - 1][1])
-        return max(dp[n - 1])
-
-
-if __name__ == '__main__':
-    sol = Solution()
-    print(sol.max_profit([1, 3, 9], 1))  # 7
+        ans = [0, -prices[0]]
+        for i in range(1, len(prices)):
+            ans = [max(ans[0], ans[1] + prices[i] - fee),
+                   max(ans[0] - prices[i], ans[1])]
+        return ans[0]

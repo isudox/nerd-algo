@@ -1454,6 +1454,18 @@ def test_378(matrix, k, ans):
     assert sol.kth_smallest_2(matrix, k) == ans
 
 
+@pytest.mark.parametrize('s, t, ans', [
+    ("abcd", "abcde", "e"),
+    ("", "a", "a"),
+    ("aa", "aaa", "a"),
+    ("ae", "aea", "a")
+])
+def test_389(s: str, t: str, ans: str):
+    from leetcode.problem_389 import Solution
+    sol = Solution()
+    assert sol.find_the_difference(s, t) == ans
+
+
 @pytest.mark.parametrize("s, t, ans", [
     ('abc', 'acebxcd', True),
     ("axc", "ahbgdc", False),
