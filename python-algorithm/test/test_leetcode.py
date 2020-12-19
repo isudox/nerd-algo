@@ -1398,6 +1398,18 @@ def test_336(words: List[str], ans: List[List[int]]):
     assert sol.palindrome_pairs(words) == ans
 
 
+@pytest.mark.parametrize('num, ans', [
+    (0, [0]),
+    (1, [0, 1]),
+    (2, [0, 1, 1]),
+    (5, [0, 1, 1, 2, 1, 2])
+])
+def test_338(num: int, ans: List[int]):
+    from leetcode.problem_338 import Solution
+    sol = Solution()
+    assert sol.count_bits(num) == ans
+
+
 @pytest.mark.parametrize("n, ans", [
     (2, 1),
     (10, 36)
@@ -1430,6 +1442,21 @@ def test_350(nums1: List[int], nums2: List[int], ans: List[int]):
     sol = Solution()
     assert sol.intersect(nums1, nums2) == ans
     assert sol.intersect_1(nums1, nums2) == ans
+
+
+@pytest.mark.parametrize('nums, ans', [
+    ([], 0),
+    ([1], 1),
+    ([1, 2], 2),
+    ([1, 1, 1], 1),
+    ([1, 7, 4, 9, 2, 5], 6),
+    ([1, 17, 5, 10, 13, 15, 10, 5, 16, 8], 7),
+    ([1, 2, 3, 4, 5, 6, 7, 8, 9], 2)
+])
+def test_376(nums: List[int], ans: int):
+    from leetcode.problem_376 import Solution
+    sol = Solution()
+    assert sol.wiggle_max_length(nums) == ans
 
 
 @pytest.mark.timeout(1)
@@ -1789,7 +1816,9 @@ def test_841(rooms: List[List[int]], ans: bool):
     ("0123", []),
     ("1101111", [11, 0, 11, 11]),
     ("0000", [0, 0, 0, 0]),
-    ("539834657215398346785398346991079669377161950407626991734534318677529701785098211336528511", [])
+    (
+    "539834657215398346785398346991079669377161950407626991734534318677529701785098211336528511",
+    [])
 ])
 def test_842(s: str, ans: List[int]):
     from leetcode.problem_842 import Solution
