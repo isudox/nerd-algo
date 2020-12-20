@@ -37,7 +37,7 @@ Output:
 """
 from typing import List
 
-# TODO
+
 class Solution:
     def max_number(self, nums1: List[int], nums2: List[int], k: int) -> List[int]:
         def max_from_list(nums: List[int], k: int) -> List[int]:
@@ -56,9 +56,21 @@ class Solution:
 
             return max_list
 
-        maximum = 0
+        def merge_lists(list1: List[int], list2: List[int], k: int) -> List[int]:
+            ret = [0] * k
+            x, y, z = 0, 0, 0
+            while z < k:
+                ret[z] = 0
+                z += 1
+            return ret
 
-        return []
+        maximum = 0
+        n, m = len(nums1), len(nums2)
+        ans = [0] * k
+        i = max(0, k - m)
+        while i <= k and i <= n:
+            pass
+        return ans
 
 
 if __name__ == '__main__':
