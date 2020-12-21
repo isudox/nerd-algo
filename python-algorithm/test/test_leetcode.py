@@ -1751,6 +1751,19 @@ def test_739(t, expect):
     assert sol.daily_temperatures(t) == expect
 
 
+@pytest.mark.parametrize('cost, ans', [
+    ([1, 100, 1, 1, 1, 100, 1, 1, 100, 1], 6),
+    ([10, 15, 20], 15),
+    ([2, 1], 1),
+    ([0, 0, 0, 1], 0)
+])
+def test_746(cost: List[int], ans: int):
+    from leetcode.problem_746 import Solution
+    sol = Solution()
+    assert sol.min_cost_climbing_stairs(cost) == ans
+    assert sol.min_cost_climbing_stairs_2(cost) == ans
+
+
 @pytest.mark.parametrize("jewels, stones, expect", [
     ("aA", "aAAbbbb", 3),
     ("z", "ZZ", 0)
@@ -1816,9 +1829,7 @@ def test_841(rooms: List[List[int]], ans: bool):
     ("0123", []),
     ("1101111", [11, 0, 11, 11]),
     ("0000", [0, 0, 0, 0]),
-    (
-    "539834657215398346785398346991079669377161950407626991734534318677529701785098211336528511",
-    [])
+    ("539834657215398346785398346991079669377161950407626991734534318677529701785098211336528511", [])
 ])
 def test_842(s: str, ans: List[int]):
     from leetcode.problem_842 import Solution
