@@ -39,40 +39,58 @@ from typing import List
 
 
 class Solution:
+    def get_max_seq(self, nums: List[int], k: int) -> List[int]:
+        """monotonic stack"""
+        stack = [0] * k
+        top = -1
+        remain = len(nums) - k
+        for i, num in enumerate(nums):
+            while top >= 0 and stack[top] < num and remain > 0:
+                top -= 1
+                remain -= 1
+            if top < k - 1:
+                top += 1
+                stack[top] = num
+            else:
+                remain -= 1
+        return stack
+
+    def merge(self, arr1: List[int], arr2: List[int]) -> List[int]:
+        x, y = len(arr1), len(arr2)
+        if x == 0:
+            return arr2
+        if y == 0:
+            return arr1
+        merged_len = x + y
+        merged = list()
+        index1 = index2 = 0
+        for _ in range(merged_len):
+            if self.compare(arr1, index1, arr2, index2) > 0:
+                merged.append(arr1[index1])
+                index1 += 1
+            else:
+                merged.append(arr2[index2])
+                index2 += 1
+        return merged
+
+    def compare(self, arr1: List[int], index1: int, arr2: List[int], index2: int) -> int:
+        x, y = len(arr1), len(arr2)
+        while index1 < x and index2 < y:
+            difference = arr1[index1] - arr2[index2]
+            if difference != 0:
+                return difference
+            index1 += 1
+            index2 += 1
+        return (x - index1) - (y - index2)
+
     def max_number(self, nums1: List[int], nums2: List[int], k: int) -> List[int]:
-        def max_from_list(nums: List[int], k: int) -> List[int]:
-            n = len(nums)
-            if k >= n:
-                return nums
-            max_list = [nums[0]]
-            dropped = 0
-            for i in range(1, n):
-                if nums[i] <= max_list[-1]:
-                    max_list.append(i)
-                else:
-                    cur_len = len(max_list)
-                    for j in range(cur_len - 1, n - k - dropped, -1):
-                        pass
-
-            return max_list
-
-        def merge_lists(list1: List[int], list2: List[int], k: int) -> List[int]:
-            ret = [0] * k
-            x, y, z = 0, 0, 0
-            while z < k:
-                ret[z] = 0
-                z += 1
-            return ret
-
-        maximum = 0
-        n, m = len(nums1), len(nums2)
+        m, n = len(nums1), len(nums2)
         ans = [0] * k
-        i = max(0, k - m)
-        while i <= k and i <= n:
-            pass
+        start, end = max(0, k - n), min(k, m)
+        for i in range(start, end + 1):
+            seq1 = self.get_max_seq(nums1, i)
+            seq2 = self.get_max_seq(nums2, k - i)
+            merged_seq = self.merge(seq1, seq2)
+            if self.compare(merged_seq, 0, ans, 0) > 0:
+                ans = merged_seq
         return ans
-
-
-if __name__ == '__main__':
-    sol = Solution()
-    print(sol.max_number([3, 4, 6, 5], [9, 1, 2, 5, 8, 3], 5))
