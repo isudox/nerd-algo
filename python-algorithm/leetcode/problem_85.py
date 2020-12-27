@@ -8,10 +8,10 @@ Example:
 
 Input:
 [
-⁠ ["1","0","1","0","0"],
-⁠ ["1","0","1","1","1"],
-⁠ ["1","1","1","1","1"],
-⁠ ["1","0","0","1","0"]
+ ["1","0","1","0","0"],
+ ["1","0","1","1","1"],
+ ["1","1","1","1","1"],
+ ["1","0","0","1","0"]
 ]
 Output: 6
 """
@@ -22,8 +22,6 @@ class Solution:
     def maximal_rectangle(self, matrix: List[List[str]]) -> int:
         """
         Time complexity O(N^2)
-        :param matrix:
-        :return:
         """
         if not matrix or not matrix[0]:
             return 0
