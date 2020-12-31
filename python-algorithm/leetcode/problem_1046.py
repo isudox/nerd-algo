@@ -41,7 +41,6 @@ class Solution:
             if n == 1:
                 return stones[0]
             diff = stones.pop() - stones.pop()
-            stones.pop
             if diff > 0:
                 idx = bisect.bisect_left(stones, diff)
                 stones.insert(idx, diff)

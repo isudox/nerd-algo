@@ -1530,6 +1530,19 @@ def test_415(num1: str, num2: str, ans: str):
     assert sol.add_strings_3(num1, num2) == ans
 
 
+@pytest.mark.parametrize('intervals, ans', [
+    ([], 0),
+    ([[1, 2]], 0),
+    ([[1, 2], [2, 3]], 0),
+    ([[1, 2], [2, 3], [3, 4], [1, 3]], 1),
+    ([[1, 2], [1, 2], [1, 2]], 2),
+])
+def test_435(intervals: List[List[int]], ans: int):
+    from leetcode.problem_435 import Solution
+    sol = Solution()
+    assert sol.erase_overlap_intervals(intervals) == ans
+
+
 @pytest.mark.parametrize("s, p, ans", [
     ("aa", "bb", []),
     ("abab", "ab", [0, 1, 2]),
