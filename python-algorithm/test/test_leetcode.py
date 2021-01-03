@@ -1656,6 +1656,16 @@ def test_581(nums, ans):
     assert sol.find_unsorted_subarray(nums) == ans
 
 
+@pytest.mark.parametrize('flowerbed, n, ans', [
+    ([1, 0, 0, 0, 1], 1, True),
+    ([1, 0, 0, 0, 1], 2, False)
+])
+def test_605(flowerbed: List[int], n: int, ans: bool):
+    from leetcode.problem_605 import Solution
+    sol = Solution()
+    assert sol.can_place_flowers(flowerbed, n) == ans
+
+
 @pytest.mark.parametrize("tasks, n, ans", [
     (["A", "A", "A", "B", "B", "B"], 2, 8),
     (["A", "A", "A", "B", "B", "B"], 0, 6),
