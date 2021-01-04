@@ -1359,6 +1359,20 @@ def test_321(nums1: List[int], nums2: List[int], k: int, ans: List[int]):
     assert sol.max_number(nums1, nums2, k) == ans
 
 
+@pytest.mark.parametrize('coins, amount, ans', [
+    ([1, 2, 5], 11, 3),
+    ([2], 3, -1),
+    ([1], 1, 1),
+    ([1], 2, 2),
+    ([1, 3, 4], 6, 2),
+    ([1, 2, 3], 0, 0)
+])
+def test_322(coins: List[int], amount: int, ans: int):
+    from leetcode.problem_322 import Solution
+    sol = Solution()
+    assert sol.coin_change(coins, amount) == ans
+
+
 @pytest.mark.parametrize("nums, lower, upper, ans", [
     ([-2, 5, -1], -2, 2, 3),
 ])
