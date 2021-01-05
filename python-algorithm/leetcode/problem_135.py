@@ -44,5 +44,3 @@ class Solution:
         for i in range(n):
             ans += max(candies_left[i], candies_right[i])
         return ans
-
-
