@@ -1544,6 +1544,16 @@ def test_415(num1: str, num2: str, ans: str):
     assert sol.add_strings_3(num1, num2) == ans
 
 
+@pytest.mark.parametrize('nums, ans', [
+    ([1,5,11,5], True),
+    ([1,2,3,5], False)
+])
+def test_416(nums: List[int], ans: bool):
+    from leetcode.problem_416 import Solution
+    sol = Solution()
+    assert sol.can_partition(nums) == ans
+
+
 @pytest.mark.parametrize('intervals, ans', [
     ([], 0),
     ([[1, 2]], 0),
