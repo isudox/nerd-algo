@@ -1521,6 +1521,18 @@ def test_392(s, t, ans):
     assert sol.is_subsequence_2(s, t) == ans
 
 
+@pytest.mark.parametrize('s, ans', [
+    ("3[a]2[bc]", "aaabcbc"),
+    ("3[a2[c]]", "accaccacc"),
+    ("2[abc]3[cd]ef", "abcabccdcdcdef"),
+    ("abc3[cd]xyz", "abccdcdcdxyz")
+])
+def test_394(s: str, ans: str):
+    from leetcode.problem_394 import Solution
+    sol = Solution()
+    assert sol.decode_string(s) == ans
+
+
 @pytest.mark.parametrize("nums, n, ans", [
     ([7, 2, 5, 10, 8], 1, 32),
     ([7, 2, 5, 10, 8], 2, 18)
@@ -1545,8 +1557,8 @@ def test_415(num1: str, num2: str, ans: str):
 
 
 @pytest.mark.parametrize('nums, ans', [
-    ([1,5,11,5], True),
-    ([1,2,3,5], False)
+    ([1, 5, 11, 5], True),
+    ([1, 2, 3, 5], False)
 ])
 def test_416(nums: List[int], ans: bool):
     from leetcode.problem_416 import Solution
@@ -1664,6 +1676,16 @@ def test_514(ring: str, key: str, ans: int):
     from leetcode.problem_514 import Solution
     sol = Solution()
     assert sol.find_rotate_steps(ring, key) == ans
+
+
+@pytest.mark.parametrize('is_connected, ans', [
+    ([[1, 1, 0], [1, 1, 0], [0, 0, 1]], 2),
+    ([[1, 0, 0], [0, 1, 0], [0, 0, 1]], 3)
+])
+def test_547(is_connected: List[List[int]], ans: int):
+    from leetcode.problem_547 import Solution
+    sol = Solution()
+    assert sol.find_circle_num(is_connected) == ans
 
 
 @pytest.mark.parametrize("nums, ans", [

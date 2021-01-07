@@ -30,36 +30,38 @@ Example 4:
 
 Input: s = "abc3[cd]xyz"
 Output: "abccdcdcdxyz"
+
+Constraints:
+
+    1 <= s.length <= 30
+    s consists of lowercase English letters, digits, and square brackets '[]'.
+    s is guaranteed to be a valid input.
+    All the integers in s are in the range [1, 300].
 """
 
 
 class Solution:
     def decode_string(self, s: str) -> str:
-        ans = ''
-        k = 0
-        stack = []
-        cur_str = ''
-        found_bracket = False
-        for i in range(len(s)):
-            if not found_bracket and s[i].isalpha():
-                ans += s[i]
-            elif found_bracket and s[i].isalpha():
-                cur_str += s[i]
-            elif s[i].isnumeric():
-                k = k * 10 + int(s[i])
-            elif s[i] == '[':
-                found_bracket = True
-            elif s[i] == ']':
-                found_bracket = False
-                ans += cur_str * k
-                k = 0
-                cur_str = ''
+        char_stack, num_stack = [], []
+        i, n = 0, len(s)
+        while i < n:
+            if s[i].isnumeric():
+                cur = int(s[i])
+                while i + 1 < n and s[i + 1].isnumeric():
+                    i += 1
+                    cur = cur * 10 + int(s[i])
+                num_stack.append(cur)
             else:
-                cur_str += s[i]
-        ans += cur_str
-        return ans
-
-
-if __name__ == '__main__':
-    sol = Solution()
-    print(sol.decode_string("3[a2[c]]"))  # "accaccacc"
+                if s[i] == ']':
+                    cur = ''
+                    while char_stack:
+                        if char_stack[-1].isalpha():
+                            cur = char_stack.pop() + cur
+                        elif char_stack[-1] == '[':
+                            char_stack.pop()  # pop '['
+                            char_stack.append(cur * num_stack.pop())
+                            break
+                else:
+                    char_stack.append(s[i])
+            i += 1
+        return ''.join(char_stack)

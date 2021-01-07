@@ -21,6 +21,8 @@ Constraints:
 
 1 <= nums.length <= 200
 1 <= nums[i] <= 100
+We can figure out what target each subset must sum to. Then, let's recursively search,
+where at each call to our function, we choose which of k subsets the next value will join.
 """
 from typing import List
 
@@ -31,5 +33,9 @@ class Solution:
         target = summary // 2
         if summary != 2 * target:
             return False
-        
+        nums.sort(reverse=True)
+        group1, group2 = [nums[0]], []
+        n = len(nums)
+        for i in range(1, n):
+            pass
         return False

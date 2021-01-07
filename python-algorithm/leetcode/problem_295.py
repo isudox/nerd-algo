@@ -27,22 +27,21 @@ Follow up:
 If all integer numbers from the stream are between 0 and 100, how would you optimize it?
 If 99% of all integer numbers from the stream are between 0 and 100, how would you optimize it?
 """
+import bisect
 
 
 class MedianFinder:
 
     def __init__(self):
-        """
-        initialize your data structure here.
-        """
+        self.store = []
+        self.size = 0
 
     def add_num(self, num: int) -> None:
-        pass
+        bisect.insort_left(self.store, num)
+        self.size += 1
 
     def find_median(self) -> float:
-        pass
-
-# Your MedianFinder object will be instantiated and called as such:
-# obj = MedianFinder()
-# obj.addNum(num)
-# param_2 = obj.findMedian()
+        if self.size % 2 == 1:
+            return self.store[self.size // 2]
+        else:
+            return (self.store[self.size // 2] + self.store[self.size // 2 - 1]) / 2
