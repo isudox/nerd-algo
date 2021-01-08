@@ -1084,6 +1084,19 @@ def test_167(nums, target, ans):
     assert sol.two_sum(nums, target) == ans
 
 
+@pytest.mark.parametrize('nums, k, ans', [
+    ([1, 2, 3, 4, 5, 6, 7], 3, [5, 6, 7, 1, 2, 3, 4]),
+    ([1, 2, 3, 4], 2, [3, 4, 1, 2]),
+    ([1, 2, 3, 4, 5, 6], 2, [5, 6, 1, 2, 3, 4]),
+    ([1, 2, 3, 4, 5, 6], 4, [3, 4, 5, 6, 1, 2])
+])
+def test_189(nums: List[int], k: int, ans: List[int]):
+    from leetcode.problem_189 import Solution
+    sol = Solution()
+    sol.rotate_5(nums, k)
+    assert nums == ans
+
+
 @pytest.mark.parametrize("nums, ans", [
     ([1, 2, 3, 1], 4),
     ([2, 1, 1, 2], 4),
