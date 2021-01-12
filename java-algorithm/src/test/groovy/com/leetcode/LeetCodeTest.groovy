@@ -934,6 +934,18 @@ class LeetCodeTest extends Specification {
         [8, 1, 5, 2, 6] | 11
     }
 
+    def "1202. Smallest String With Swaps"(String s, List<List<Integer>> pairs, String ans) {
+        given:
+        def sol = new Problem1202()
+        expect:
+        sol.smallestStringWithSwaps(s, pairs) == ans
+        where:
+        s      | pairs                    | ans
+        "dcab" | [[0, 3], [1, 2]]         | "bacd"
+        "dcab" | [[0, 3], [1, 2], [0, 2]] | "abcd"
+        "cba"  | [[0, 1], [1, 2]]         | "abc"
+    }
+
     def "1207. Unique Number of Occurrences"(int[] arr, boolean ans) {
         given:
         def sol = new Problem1207()
