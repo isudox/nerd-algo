@@ -22,25 +22,24 @@ Explanation:
     |   |
     4 - 3
 """
-import collections
 from typing import List
 
 
 class Solution:
     def find_redundant_connection(self, edges: List[List[int]]) -> List[int]:
-        def dfs(point: int, redundant: List[List[int]]):
-            if not visited[point]:
-                visited[point] = True
-                for next_point in graph[point]:
-                    if not visited[next_point]:
-                        dfs(next_point, redundant)
-                    else:
-                        redundant.append([point, next_point])
+        def find(point: int) -> int:
+            if parent[point] != point:
+                parent[point] = find(parent[point])
+            return parent[point]
+
+        def union(p1: int, p2: int):
+            parent[find(p1)] = find(parent[p2])
 
         n = len(edges)
-        visited = [False] * (n + 1)
-        graph = collections.defaultdict(set)
+        parent = [_ for _ in range(n + 1)]
         for edge in edges:
-            graph[edge[0]].add(edge[1])
-        dfs(1, [])
+            if find(edge[0]) != find(edge[1]):
+                union(edge[0], edge[1])
+            else:
+                return edge
         return []
