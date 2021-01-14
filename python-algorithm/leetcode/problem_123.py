@@ -44,8 +44,17 @@ class Solution:
         days = len(prices)
         if days < 2:
             return 0
-        dp = [[[None, None] for _ in range(3)]] * days
-        dp[0][0] = [-prices[0], 0]
+        first_buy = -prices[0]
+        first_sell = 0
+        second_buy = -prices[0]
+        second_sell = 0
         for i in range(1, days):
-            dp[i][0] = dp[i - 1][0]
-        return dp[-1]
+            first_buy_2 = max(first_buy, -prices[i])
+            first_sell_2 = max(first_buy + prices[i], first_sell)
+            second_buy_2 = max(second_buy, first_sell - prices[i])
+            second_sell_2 = max(second_sell, second_buy + prices[i])
+            first_buy = first_buy_2
+            first_sell = first_sell_2
+            second_buy = second_buy_2
+            second_sell = second_sell_2
+        return second_sell
