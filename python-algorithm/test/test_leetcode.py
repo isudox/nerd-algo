@@ -1779,6 +1779,16 @@ def test_657(moves: str, ans: bool):
     assert sol.judge_circle_2(moves) == ans
 
 
+@pytest.mark.parametrize('edges, ans', [
+    ([[1, 2], [1, 3], [2, 3]], [2, 3]),
+    ([[1, 2], [2, 3], [3, 4], [1, 4], [1, 5]], [1, 4])
+])
+def test_684(edges: List[List[int]], ans: List[int]):
+    from leetcode.problem_684 import Solution
+    sol = Solution()
+    assert sol.find_redundant_connection(edges) == ans
+
+
 @pytest.mark.parametrize("s, ans", [
     ("00110011", 6),
     ("10101", 4),
@@ -1807,6 +1817,21 @@ def test_714(prices: List[int], fee: int, ans: int):
 def test_718(a, b, ans):
     from leetcode.problem_718 import Solution
     assert Solution().find_length_1(a, b) == ans
+
+
+@pytest.mark.parametrize('accounts, ans', [
+    ([["John", "johnsmith@mail.com", "john00@mail.com"],
+      ["John", "johnnybravo@mail.com"],
+      ["John", "johnsmith@mail.com", "john_newyork@mail.com"],
+      ["Mary", "mary@mail.com"]],
+     [["John", 'john00@mail.com', 'john_newyork@mail.com', 'johnsmith@mail.com'],
+      ["John", "johnnybravo@mail.com"],
+      ["Mary", "mary@mail.com"]])
+])
+def test_721(accounts: List[List[str]], ans: List[List[str]]):
+    from leetcode.problem_721 import Solution
+    sol = Solution()
+    assert sol.accounts_merge(accounts) == ans
 
 
 @pytest.mark.parametrize('n, ans', [
