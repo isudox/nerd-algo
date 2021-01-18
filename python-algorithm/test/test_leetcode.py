@@ -2021,6 +2021,17 @@ def test_946(pushed, popped, ans):
     assert solution.ans(pushed, popped) == ans
 
 
+@pytest.mark.parametrize('stones, ans', [
+    ([[0, 0], [0, 1], [1, 0], [1, 2], [2, 1], [2, 2]], 5),
+    ([[0, 0], [0, 2], [1, 1], [2, 0], [2, 2]], 3),
+    ([[0, 0]], 0)
+])
+def test_947(stones: List[List[int]], ans: int):
+    from leetcode.problem_947 import Solution
+    sol = Solution()
+    assert sol.remove_stones(stones) == ans
+
+
 @pytest.mark.parametrize("arr, ans", [
     (["ca", "bb", "ac"], 1),
     (["xc", "yb", "za"], 0),
