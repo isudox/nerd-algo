@@ -2353,3 +2353,16 @@ def test_1370(s: str, ans: str):
     from leetcode.problem_1370 import Solution
     sol = Solution()
     assert sol.sort_string(s) == ans
+
+
+@pytest.mark.parametrize('points, ans', [
+    ([[0, 0], [2, 2], [3, 10], [5, 2], [7, 0]], 20),
+    ([[3, 12], [-2, 5], [-4, 1]], 18),
+    ([[0, 0], [1, 1], [1, 0], [-1, 1]], 4),
+    ([[-1000000, -1000000], [1000000, 1000000]], 4000000),
+    ([[1, 3]], 0)
+])
+def test_1584(points: List[List[int]], ans: int):
+    from leetcode.problem_1584 import Solution
+    sol = Solution()
+    assert sol.min_cost_connect_points(points) == ans
