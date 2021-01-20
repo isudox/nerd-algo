@@ -16,7 +16,7 @@ class Solution:
 
         n = len(stones)
         parent = list(range(n))
-        row_map = col_map = dict()
+        row_map, col_map = dict(), dict()
         for i in range(n):
             row, col = stones[i][0], stones[i][1]
             if row not in row_map:

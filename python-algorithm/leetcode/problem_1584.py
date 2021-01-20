@@ -16,8 +16,15 @@ Constraints:
     1 <= points.length <= 1000
     -10^6 <= xi, yi <= 10^6
     All pairs (xi, yi) are distinct.
+
+    int x = find(i), y = find(j);    //先找到两个根节点
+    if (rank[x] <= rank[y])
+        fa[x] = y;
+    else
+        fa[y] = x;
+    if (rank[x] == rank[y] && x != y)
+        rank[y]++;
 """
-import collections
 from typing import List
 
 
@@ -29,23 +36,30 @@ class Solution:
             return uf[x]
 
         def union(a: int, b: int):
-            uf[find(a)] = find(b)
+            fa, fb = find(a), find(b)
+            if rank[fa] <= rank[fb]:
+                uf[fa] = fb
+            else:
+                uf[fb] = fa
+            if rank[fa] == rank[fb]:
+                rank[fb] += 1
 
         n = len(points)
         if n == 1:
             return 0
-        edges = collections.defaultdict()
+        edges = list()
         for i in range(n - 1):
             for j in range(i + 1, n):
-                edges[tuple([i, j])] = abs(points[j][0] - points[i][0]) + \
-                                       abs(points[j][1] - points[i][1])
-        edges = dict(sorted(edges.items(), key=lambda e: e[1]))
+                weight = abs(points[j][0] - points[i][0]) + \
+                         abs(points[j][1] - points[i][1])
+                edges.append((weight, i, j))
+        edges.sort(key=lambda e: e[0])
         ans, count = 0, 0
-        uf = list(range(n))
-        for k, v in edges.items():
-            if find(k[0]) != find(k[1]):
-                ans += v
-                union(k[0], k[1])
+        uf, rank = list(range(n)), [1] * n
+        for w, i, j in edges:
+            if find(i) != find(j):
+                ans += w
+                union(i, j)
                 count += 1
                 if count == n - 1:
                     break

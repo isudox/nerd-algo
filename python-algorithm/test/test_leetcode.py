@@ -2038,6 +2038,7 @@ def test_946(pushed, popped, ans):
 @pytest.mark.parametrize('stones, ans', [
     ([[0, 0], [0, 1], [1, 0], [1, 2], [2, 1], [2, 2]], 5),
     ([[0, 0], [0, 2], [1, 1], [2, 0], [2, 2]], 3),
+    ([[0, 1], [1, 0]], 0),
     ([[0, 0]], 0)
 ])
 def test_947(stones: List[List[int]], ans: int):
