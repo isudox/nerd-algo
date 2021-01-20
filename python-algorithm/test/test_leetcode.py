@@ -1736,6 +1736,20 @@ def test_621(tasks, n, ans):
     assert sol.least_interval(tasks, n) == ans
 
 
+@pytest.mark.parametrize('nums, ans', [
+    ([1, 2, 3], 6),
+    ([1, 2, 3, 4], 24),
+    ([-1, -2, -3], -6),
+    ([-10, -9, -8, 1, 2, 3], 270),
+    ([-100, -98, -1, 2, 3, 4], 39200)
+])
+def test_628(nums: List[int], ans: int):
+    from leetcode.problem_628 import Solution
+    sol = Solution()
+    assert sol.maximum_product(nums) == ans
+    assert sol.maximum_product_2(nums) == ans
+
+
 @pytest.mark.parametrize("nums, ans", [
     ([[4, 10, 15, 24, 26], [0, 9, 12, 20], [5, 18, 22, 30]], [20, 24]),
 ])
