@@ -87,23 +87,31 @@ class Solution:
                 uf[x] = find(uf[x])
             return uf[x]
 
-        rows, cols = len(grid), len(grid[0])
+        def get_pos(x: int, y: int) -> int:
+            return (rows + 1) * x + y
+
+        rows = cols = len(grid)
         n = (rows + 1) ** 2
         uf, rank = list(range(n)), [1] * n
-        ans = 0
-        for i in range(n):
-            union(0, i)
+        first_pos, last_pos = get_pos(0, 0), get_pos(rows, rows)
+        for i in range(rows + 1):
+            union(get_pos(0, i), first_pos)
+            union(get_pos(i, 0), first_pos)
+            union(get_pos(rows, i), last_pos)
+            union(get_pos(i, rows), last_pos)
+        ans = 1
         for i in range(rows):
-            j = 0
-            while j < cols:
-                cur = grid[i][j]
-                if cur == '/':
-                    j += 1
-                    union((rows + 1) * i + j + 1, (rows + 1) * (i + 1) + j)
-                elif cur == ' ':
-                    j += 1
-                elif cur == '\\':
-                    j += 2
-                    union((rows + 1) * i + j, (rows + 1) * (i + 1) + j + 1)
-
+            for j in range(cols):
+                char = grid[i][j]
+                if char != ' ':
+                    if char == '/':
+                        upper_point = get_pos(i, j + 1)
+                        down_point = get_pos(i + 1, j)
+                    else:
+                        upper_point = get_pos(i, j)
+                        down_point = get_pos(i + 1, j + 1)
+                    if find(upper_point) == find(down_point):
+                        ans += 1
+                    else:
+                        union(upper_point, down_point)
         return ans

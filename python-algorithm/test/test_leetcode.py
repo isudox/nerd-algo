@@ -2377,7 +2377,7 @@ def test_1370(s: str, ans: str):
 def test_1489(n: int, edges: List[List[int]], ans: List[List[int]]):
     from leetcode.problem_1489 import Solution
     sol = Solution()
-    assert sol.findCriticalAndPseudoCriticalEdges(n, edges) == ans
+    assert sol.find_critical_and_pseudo_critical_edges(n, edges) == ans
 
 
 @pytest.mark.parametrize('points, ans', [
