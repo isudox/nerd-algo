@@ -72,18 +72,38 @@ Note:
 """
 from typing import List
 
-# TODO
+
 class Solution:
     def regions_by_slashes(self, grid: List[str]) -> int:
-        n = len(grid)
-        if n == 1:
-            if grid[0]:
-                return 1
-            return 0
+        def union(x: int, y: int):
+            fx, fy = find(x), find(y)
+            if rank[fx] < rank[fy]:
+                fx, fy = fy, fx
+            uf[fy] = fx
+            rank[fx] += rank[fy]
 
-        cnt = 0
-        for i, row in enumerate(grid):
-            for j, char in enumerate(row):
-                pass
+        def find(x: int) -> int:
+            if uf[x] != x:
+                uf[x] = find(uf[x])
+            return uf[x]
 
-        return cnt
+        rows, cols = len(grid), len(grid[0])
+        n = (rows + 1) ** 2
+        uf, rank = list(range(n)), [1] * n
+        ans = 0
+        for i in range(n):
+            union(0, i)
+        for i in range(rows):
+            j = 0
+            while j < cols:
+                cur = grid[i][j]
+                if cur == '/':
+                    j += 1
+                    union((rows + 1) * i + j + 1, (rows + 1) * (i + 1) + j)
+                elif cur == ' ':
+                    j += 1
+                elif cur == '\\':
+                    j += 2
+                    union((rows + 1) * i + j, (rows + 1) * (i + 1) + j + 1)
+
+        return ans

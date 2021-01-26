@@ -2370,6 +2370,16 @@ def test_1370(s: str, ans: str):
     assert sol.sort_string(s) == ans
 
 
+@pytest.mark.parametrize('n, edges, ans', [
+    (5, [[0,1,1],[1,2,1],[2,3,2],[0,3,2],[0,4,3],[3,4,3],[1,4,6]], [[0,1],[2,3,4,5]]),
+    (4, [[0,1,1],[1,2,1],[2,3,1],[0,3,1]], [[],[0,1,2,3]]),
+])
+def test_1489(n: int, edges: List[List[int]], ans: List[List[int]]):
+    from leetcode.problem_1489 import Solution
+    sol = Solution()
+    assert sol.findCriticalAndPseudoCriticalEdges(n, edges) == ans
+
+
 @pytest.mark.parametrize('points, ans', [
     ([[0, 0], [2, 2], [3, 10], [5, 2], [7, 0]], 20),
     ([[3, 12], [-2, 5], [-4, 1]], 18),
