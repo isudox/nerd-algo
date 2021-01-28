@@ -86,8 +86,3 @@ class Solution:
         else:
             a = [0] * (len_k - len_a) + a
         return helper(a, list_k)
-
-
-if __name__ == '__main__':
-    sol = Solution()
-    print(sol.add_to_array_form_2([0], 123))

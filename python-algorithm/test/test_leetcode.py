@@ -2380,6 +2380,17 @@ def test_1489(n: int, edges: List[List[int]], ans: List[List[int]]):
     assert sol.find_critical_and_pseudo_critical_edges(n, edges) == ans
 
 
+@pytest.mark.parametrize('n, edges, ans', [
+    (4, [[3, 1, 2], [3, 2, 3], [1, 1, 3], [1, 2, 4], [1, 1, 2], [2, 3, 4]], 2),
+    (4, [[3, 1, 2], [3, 2, 3], [1, 1, 4], [2, 1, 4]], 0),
+    (4, [[3, 2, 3], [1, 1, 2], [2, 3, 4]], -1)
+])
+def test_1579(n: int, edges: List[List[int]], ans: int):
+    from leetcode.problem_1579 import Solution
+    sol = Solution()
+    assert sol.max_num_edges_to_remove(n, edges) == ans
+
+
 @pytest.mark.parametrize('points, ans', [
     ([[0, 0], [2, 2], [3, 10], [5, 2], [7, 0]], 20),
     ([[3, 12], [-2, 5], [-4, 1]], 18),
