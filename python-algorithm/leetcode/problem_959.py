@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """959. Regions Cut By Slashes
 https://leetcode.com/problems/regions-cut-by-slashes/
 
@@ -106,12 +105,12 @@ class Solution:
                 if char != ' ':
                     if char == '/':
                         upper_point = get_pos(i, j + 1)
-                        down_point = get_pos(i + 1, j)
+                        lower_point = get_pos(i + 1, j)
                     else:
                         upper_point = get_pos(i, j)
-                        down_point = get_pos(i + 1, j + 1)
-                    if find(upper_point) == find(down_point):
+                        lower_point = get_pos(i + 1, j + 1)
+                    if find(upper_point) == find(lower_point):
                         ans += 1
                     else:
-                        union(upper_point, down_point)
+                        union(upper_point, lower_point)
         return ans

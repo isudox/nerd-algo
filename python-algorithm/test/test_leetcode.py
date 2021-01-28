@@ -2389,6 +2389,7 @@ def test_1579(n: int, edges: List[List[int]], ans: int):
     from leetcode.problem_1579 import Solution
     sol = Solution()
     assert sol.max_num_edges_to_remove(n, edges) == ans
+    assert sol.max_num_edges_to_remove_2(n, edges) == ans
 
 
 @pytest.mark.parametrize('points, ans', [
@@ -2402,3 +2403,14 @@ def test_1584(points: List[List[int]], ans: int):
     from leetcode.problem_1584 import Solution
     sol = Solution()
     assert sol.min_cost_connect_points(points) == ans
+
+
+@pytest.mark.parametrize('heights, ans', [
+    ([[1, 2, 1, 1, 1], [1, 2, 1, 2, 1], [1, 2, 1, 2, 1], [1, 2, 1, 2, 1], [1, 1, 1, 2, 1]], 0),
+    ([[1, 2, 3], [3, 8, 4], [5, 3, 5]], 1),
+    ([[1, 2, 2], [3, 8, 2], [5, 3, 5]], 2)
+])
+def test_1631(heights: List[List[int]], ans: int):
+    from leetcode.problem_1631 import Solution
+    sol = Solution()
+    assert sol.minimum_effort_path(heights) == ans

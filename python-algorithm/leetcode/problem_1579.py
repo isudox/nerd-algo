@@ -44,29 +44,62 @@ class Solution:
 
         uf_1, rank_1 = list(range(n + 1)), [1] * (n + 1)
         uf_2, rank_2 = list(range(n + 1)), [1] * (n + 1)
-        required = set()
-        edge_cnt = len(edges)
-        for i, edge in enumerate(edges):
-            if edge[0] == 3:
-                if find(uf_1, edge[1]) != find(uf_1, edge[2]):
-                    union(uf_1, rank_1, edge[1], edge[2])
-                    required.add(i)
-                if find(uf_2, edge[1]) != find(uf_2, edge[2]):
-                    union(uf_2, rank_2, edge[1], edge[2])
-                    required.add(i)
-        for i, edge in enumerate(edges):
-            if edge[0] == 1:
-                if find(uf_1, edge[1]) != find(uf_1, edge[2]):
-                    union(uf_1, rank_1, edge[1], edge[2])
-                    required.add(i)
-        for i, edge in enumerate(edges):
-            if edge[0] == 2:
-                if find(uf_2, edge[1]) != find(uf_2, edge[2]):
-                    union(uf_2, rank_2, edge[1], edge[2])
-                    required.add(i)
-        if len(required) < n - 1:
+        required = 0
+        for t, u, v in edges:
+            need = False
+            if t == 3:
+                if find(uf_1, u) != find(uf_1, v):
+                    union(uf_1, rank_1, u, v)
+                    need = True
+                if find(uf_2, u) != find(uf_2, v):
+                    union(uf_2, rank_2, u, v)
+                    need = True
+                if need:
+                    required += 1
+        for t, u, v in edges:
+            if t == 1 and find(uf_1, u) != find(uf_1, v):
+                union(uf_1, rank_1, u, v)
+                required += 1
+            elif t == 2 and find(uf_2, u) != find(uf_2, v):
+                union(uf_2, rank_2, u, v)
+                required += 1
+        if required < n - 1:
             return -1
         for i in range(1, n + 1):
             if find(uf_1, i) != find(uf_1, 1) or find(uf_2, i) != find(uf_2, 1):
                 return -1
-        return edge_cnt - len(required)
+        return len(edges) - required
+
+    def max_num_edges_to_remove_2(self, n: int, edges: List[List[int]]) -> int:
+        def find(uf: List[int], x: int) -> int:
+            if uf[x] != x:
+                uf[x] = find(uf, uf[x])
+            return uf[x]
+
+        def union(uf: List[int], rank: List[int], x: int, y: int) -> int:
+            fx, fy = find(uf, x), find(uf, y)
+            if fx == fy:
+                return 0
+            if rank[fx] < rank[fy]:
+                fx, fy = fy, fx
+            uf[fy] = fx
+            rank[fx] += rank[fy]
+            return 1
+
+        uf_1, rank_1 = list(range(n + 1)), [1] * (n + 1)
+        uf_2, rank_2 = list(range(n + 1)), [1] * (n + 1)
+        required = 0
+        for t, u, v in edges:
+            if t == 3 and union(uf_1, rank_1, u, v) + union(uf_2, rank_2, u, v) > 0:
+                required += 1
+        for t, u, v in edges:
+            if t == 1 and union(uf_1, rank_1, u, v):
+                required += 1
+            if t == 2 and union(uf_2, rank_2, u, v):
+                required += 1
+        if required < n - 1:
+            return -1
+        for i in range(1, n + 1):
+            if find(uf_1, i) != find(uf_1, 1) or find(uf_2, i) != find(uf_2, 1):
+                return -1
+        return len(edges) - required
