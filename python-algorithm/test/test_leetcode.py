@@ -1895,6 +1895,18 @@ def test_771(jewels: str, stones: str, expect: int):
     assert sol.num_jewels_in_stones(jewels, stones) == expect
 
 
+@pytest.mark.parametrize('grid, ans', [
+    ([[0, 2], [1, 3]], 3),
+    ([[3, 2], [0, 1]], 3),
+    ([[10, 12, 4, 6], [9, 11, 3, 5], [1, 7, 13, 8], [2, 0, 15, 14]], 14),
+    ([[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]], 16)
+])
+def test_778(grid: List[List[int]], ans: int):
+    from leetcode.problem_778 import Solution
+    sol = Solution()
+    assert sol.swim_in_water(grid) == ans
+
+
 @pytest.mark.parametrize("graph, ans", [
     ([[1, 3], [0, 2], [1, 3], [0, 2]], True),
     ([[1, 2, 3], [0, 2], [0, 1, 3], [0, 2]], False),
