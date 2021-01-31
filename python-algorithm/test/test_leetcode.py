@@ -1943,6 +1943,17 @@ def test_791(s, t, ans):
     assert sol.custom_sort_string(s, t) == ans
 
 
+@pytest.mark.parametrize('strs, ans', [
+    (["tars", "rats", "arts", "star"], 2),
+    (["omv", "ovm"], 1),
+    (["omv"], 1),
+])
+def test_839(strs: List[str], ans: int):
+    from leetcode.problem_839 import Solution
+    sol = Solution()
+    assert sol.num_similar_groups(strs) == ans
+
+
 @pytest.mark.parametrize("rooms, ans", [
     ([[1, 3], [3, 0, 1], [2], [0]], False),
     ([[1], [2], [3], []], True)
