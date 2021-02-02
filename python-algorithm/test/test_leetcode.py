@@ -1579,6 +1579,19 @@ def test_416(nums: List[int], ans: bool):
     assert sol.can_partition(nums) == ans
 
 
+@pytest.mark.parametrize('s, k, ans', [
+    ("ABB", 2, 3),
+    ("ABAB", 2, 4),
+    ("BAAAB", 2, 5),
+    ("AABABBA", 1, 4),
+    ("ABBBBABB", 1, 7)
+])
+def test_424(s: str, k: int, ans: int):
+    from leetcode.problem_424 import Solution
+    sol = Solution()
+    assert sol.character_replacement(s, k) == ans
+
+
 @pytest.mark.parametrize('intervals, ans', [
     ([], 0),
     ([[1, 2]], 0),
