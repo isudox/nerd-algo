@@ -2350,6 +2350,19 @@ def test_1207(arr: List[int], ans: bool):
     assert sol.unique_occurrences(arr) == ans
 
 
+@pytest.mark.parametrize('s, t, max_cost, ans', [
+    ("abcd", "bcdf", 3, 3),
+    ("abcd", "cdef", 3, 1),
+    ("krpgjbjjznpzdfy", "nxargkbydxmsgby", 14, 4)
+])
+def test_1208(s: str, t: str, max_cost: int, ans: int):
+    from leetcode.problem_1208 import Solution
+    sol = Solution()
+    assert sol.equal_substring(s, t, max_cost) == ans
+    assert sol.equal_substring_2(s, t, max_cost) == ans
+    assert sol.equal_substring_3(s, t, max_cost) == ans
+
+
 @pytest.mark.parametrize("arr, target, expect", [
     ([4, 9, 3], 10, 3),
     ([2, 3, 5], 10, 5),
