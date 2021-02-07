@@ -2285,7 +2285,7 @@ def test_977(a, res):
 def test_978(li, res):
     from leetcode.problem_978 import Solution
     sol = Solution()
-    assert sol.max_turbulence_size(li) == res
+    assert sol.max_turbulence_size_2(li) == res
 
 
 @pytest.mark.parametrize("root, res", [
@@ -2428,8 +2428,9 @@ def test_1370(s: str, ans: str):
 def test_1423(card_points: List[int], k: int, ans: int):
     from leetcode.problem_1423 import Solution
     sol = Solution()
-    assert sol.max_score_2(card_points, k) == ans
     assert sol.max_score(card_points, k) == ans
+    assert sol.max_score_2(card_points, k) == ans
+    assert sol.max_score_3(card_points, k) == ans
 
 
 @pytest.mark.parametrize('n, edges, ans', [

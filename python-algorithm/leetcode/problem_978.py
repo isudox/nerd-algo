@@ -43,16 +43,43 @@ class Solution:
             if c == 0:
                 start = i
             elif i == size - 1 \
-                    or c * ((a[i] > a[i + 1]) - (a[i] < a[i + 1])) != -1:
+                or c * ((a[i] > a[i + 1]) - (a[i] < a[i + 1])) != -1:
                 max_count = max(max_count, i - start + 1)
                 start = i
         return max_count
 
+    def max_turbulence_size_2(self, arr: 'List[int]') -> 'int':
+        def get_start(index: int) -> int:
+            while index + 1 < n and arr[index] == arr[index + 1]:
+                index += 1
+            return index
+
+        n = len(arr)
+        ans = 1
+        i = get_start(0)
+        j = i + 1
+        if j == n:
+            return 1
+        flag = arr[j] - arr[i] > 0
+        while j < n:
+            if j == n - 1:
+                ans = max(ans, j - i + 1)
+                break
+            elif (flag and arr[j + 1] < arr[j]) or (not flag and arr[j + 1] > arr[j]):
+                j += 1
+                flag = not flag
+            else:
+                ans = max(ans, j - i + 1)
+                i = get_start(j)
+                j = i + 1
+                if j == n:
+                    break
+                flag = arr[j] - arr[i] > 0
+        return ans
+
     def max_turbulence_size_time_limit(self, a: 'List[int]') -> 'int':
         """
         Non-Acceptable Approach, Time Limit Exceeded
-        :param a:
-        :return:
         """
         size = len(a)
         if size < 2:
@@ -81,3 +108,8 @@ class Solution:
                 j += 1
             i += 1
         return max_count
+
+
+if __name__ == '__main__':
+    sol = Solution()
+    print(sol.max_turbulence_size_2([1, 5, 3]))

@@ -34,3 +34,15 @@ class Solution:
             if cur > ans:
                 ans = cur
         return ans
+
+    def max_score_3(self, card_points: List[int], k: int) -> int:
+        n = len(card_points)
+        i, j = 0, n - k - 1
+        cur = minimum = sum(card_points[: n - k])
+        while j < n - 1:
+            cur += card_points[j + 1] - card_points[i]
+            i += 1
+            j += 1
+            if cur < minimum:
+                minimum = cur
+        return sum(card_points) - minimum
