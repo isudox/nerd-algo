@@ -1714,6 +1714,20 @@ def test_547(is_connected: List[List[int]], ans: int):
     assert sol.find_circle_num(is_connected) == ans
 
 
+@pytest.mark.parametrize('s1, s2, ans', [
+    ("abc", "agcabg", True),
+    ("ab", "eidbaooo", True),
+    ("ab", "eidboaoo", False),
+])
+def test_567(s1: str, s2: str, ans: bool):
+    from leetcode.problem_567 import Solution
+    sol = Solution()
+    assert sol.check_inclusion(s1, s2) == ans
+    assert sol.check_inclusion_2(s1, s2) == ans
+    assert sol.check_inclusion_3(s1, s2) == ans
+    assert sol.check_inclusion_4(s1, s2) == ans
+
+
 @pytest.mark.parametrize("nums, ans", [
     ([2, 6, 4, 8, 10, 9, 15], 5),
     ([1, 2, 3, 4], 0),
@@ -2340,6 +2354,17 @@ def test_984(a, b, res):
     from leetcode.problem_984 import Solution
     sol = Solution()
     assert sol.str_without_3a3b(a, b) == res
+
+
+@pytest.mark.parametrize('a, k, ans', [
+    ([1, 2, 1, 2], 2, 6),
+    ([1, 2, 1, 2, 3], 2, 7),
+    ([1, 2, 1, 3, 4], 3, 3)
+])
+def test_992(a: List[int], k: int, ans: int):
+    from leetcode.problem_992 import Solution
+    sol = Solution()
+    assert sol.subarrays_with_k_distinct(a, k) == ans
 
 
 @pytest.mark.parametrize("arr, expect", [
