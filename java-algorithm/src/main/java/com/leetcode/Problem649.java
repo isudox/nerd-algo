@@ -1,7 +1,6 @@
 package com.leetcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -45,11 +44,5 @@ public class Problem649 {
                 return;
             }
         }
-    }
-
-    public static void main(String[] args) {
-        Problem649 sol = new Problem649();
-        System.out.println(Collections.binarySearch(Arrays.asList(1, 3, 5, 7), 6));
-        System.out.println(sol.predictPartyVictory("RDD"));
     }
 }

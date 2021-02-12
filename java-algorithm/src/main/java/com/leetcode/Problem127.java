@@ -74,12 +74,4 @@ public class Problem127 {
         return 0;
     }
 
-    public static void main(String[] args) {
-        Problem127 sol = new Problem127();
-        // 5
-        System.out.println(sol.ladderLength("hit", "cog", new ArrayList<>(Arrays.asList("hot", "dot", "dog", "lot", "log", "cog"))));
-        System.out.println(sol.ladderLength("hit", "cog", new ArrayList<>(Arrays.asList("hot", "dog"))));
-        System.out.println(sol.ladderLength("talk", "tail", new ArrayList<>(Arrays.asList("talk", "tons", "fall", "tail", "gale", "hall", "negs"))));
-
-    }
 }
