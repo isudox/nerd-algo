@@ -1912,6 +1912,16 @@ def test_746(cost: List[int], ans: int):
     assert sol.min_cost_climbing_stairs_2(cost) == ans
 
 
+@pytest.mark.parametrize('row, ans', [
+    ([0, 2, 1, 3], 1),
+    ([3, 2, 0, 1], 0)
+])
+def test_765(row: List[int], ans: int):
+    from leetcode.problem_765 import Solution
+    sol = Solution()
+    assert sol.min_swaps_couples(row) == ans
+
+
 @pytest.mark.parametrize("jewels, stones, expect", [
     ("aA", "aAAbbbb", 3),
     ("z", "ZZ", 0)
