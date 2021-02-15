@@ -1666,6 +1666,17 @@ def test_463(grid, ans):
 
 
 @pytest.mark.parametrize('nums, ans', [
+    ([1], 1),
+    ([1, 1, 0, 1, 1, 1], 3)
+])
+def test_485(nums: List[int], ans: int):
+    from leetcode.problem_485 import Solution
+    sol = Solution()
+    assert sol.find_max_consecutive_ones(nums) == ans
+    assert sol.find_max_consecutive_ones_2(nums) == ans
+
+
+@pytest.mark.parametrize('nums, ans', [
     ([1, 3, 2, 3, 1], 2)
 ])
 def test_493(nums: List[int], ans: int):
