@@ -2388,6 +2388,28 @@ def test_992(a: List[int], k: int, ans: int):
     assert sol.subarrays_with_k_distinct(a, k) == ans
 
 
+@pytest.mark.parametrize('a, k, ans', [
+    ([0, 1, 0], 1, 2),
+    ([1, 1, 0], 2, -1),
+    ([1, 0, 1, 1, 0], 3, 2),
+    ([0, 0, 0, 1, 0, 1, 1, 0], 3, 3)
+])
+def test_995(a: List[int], k: int, ans: int):
+    from leetcode.problem_995 import Solution
+    sol = Solution()
+    assert sol.min_k_bit_flips(a, k) == ans
+
+
+@pytest.mark.parametrize("a, k, ans", [
+    ([1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0], 2, 6),
+    ([0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1], 3, 10)
+])
+def test_1004(a: List[int], k: int, ans: int):
+    from leetcode.problem_1004 import Solution
+    sol = Solution()
+    assert sol.longest_ones(a, k) == ans
+
+
 @pytest.mark.parametrize("arr, expect", [
     ([8, 1, 5, 2, 6], 11),
     ([1, 2, 3], 4)

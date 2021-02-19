@@ -40,7 +40,6 @@ It is guaranteed that there will be at least k elements in the array when you
 search for the kth element.
 """
 from typing import List
-from queue import PriorityQueue
 import bisect
 import heapq
 
