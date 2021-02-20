@@ -3,6 +3,15 @@ import pytest
 from common.converter import Converter
 
 
+@pytest.mark.parametrize('nums, target, ans', [
+    ([2, 7, 11, 15], 9, [0, 1])
+])
+def test_1(nums: List[int], target: int, ans: int):
+    from leetcode.problem_1 import Solution
+    sol = Solution()
+    assert sol.two_sum(nums, target) == ans
+
+
 @pytest.mark.parametrize("s, expect", [
     ("", 0),
     (" ", 1),
@@ -1850,6 +1859,16 @@ def test_696(s: str, ans: int):
     from leetcode.problem_696 import Solution
     sol = Solution()
     assert sol.count_binary_substrings(s) == ans
+
+
+@pytest.mark.parametrize('nums, ans', [
+    ([1, 2, 2, 3, 1], 2),
+    ([1, 2, 2, 3, 1, 4, 2], 6)
+])
+def test_697(nums: List[int], ans: int):
+    from leetcode.problem_697 import Solution
+    sol = Solution()
+    assert sol.find_shortest_sub_array(nums) == ans
 
 
 @pytest.mark.parametrize('prices, fee, ans', [

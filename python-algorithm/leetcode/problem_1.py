@@ -4,7 +4,7 @@ https://leetcode.com/problems/two-sum/
 Given an array of integers, return indices of the two numbers such that
 they add up to a specific target.
 
-You may assume that each input would have exactly one solution, 
+You may assume that each input would have exactly one solution,
 and you may not use the same element twice.
 
 Example:
@@ -18,11 +18,9 @@ from typing import List
 
 
 class Solution:
-
     def two_sum(self, nums: List[int], target: int) -> List[int]:
-        d = {}
-        for i in range(len(nums)):
-            x = nums[i]
-            if target - x in d:
-                return [d[target - x], i]
-            d[x] = i
+        store = dict()
+        for i, num in enumerate(nums):
+            if target - num in store:
+                return [store[target - num], i]
+            store[num] = i
