@@ -25,33 +25,33 @@ from typing import List
 
 class Solution:
     def find_median_sorted_arrays(self, nums1: List[int], nums2: List[int]) -> float:
-        len1, len2 = len(nums1), len(nums2)
-        middle_l = (len1 + len2 + 1) // 2
-        middle_r = (len1 + len2 + 2) // 2
-        (list1, list2) = (nums1, nums2) if len1 < len2 else (nums2, nums1)
-
-        def get_k_th(l1: int, r1: int, l2: int, r2: int, k: int) -> int:
-            """
-            get the Kth element of the merged array of list1[l1:r1] and list2[l2:r2].
-            :param l1: left index of list1.
-            :param r1: right index of list2.
-            :param l2: left index of list2.
-            :param r2: right index of list2.
-            :param k: k th.
-            :return: the Kth number.
-            """
-            size1 = r1 - l1 + 1
-            size2 = r2 - l2 + 1
-            if size1 == 0:
-                return list2[l2 + k - 1]
-            if k == 1:
-                return min(list1[l1], list2[l2])
-            i = l1 + min(size1, k // 2) - 1
-            j = l2 + min(size2, k // 2) - 1
-            if list1[i] > list2[j]:
-                return get_k_th(l1, r1, j + 1, r2, k - (j - l2 + 1))
+        n, m = len(nums1), len(nums2)
+        x, y = divmod(n + m, 2)
+        is_odd = True if y == 1 else False
+        mid_l = mid_r = x
+        if not is_odd:
+            mid_l = mid_r - 1
+        i = j = 0
+        counter = -1
+        ans = 0
+        while i < n or j < m:
+            if i == n and j < m:
+                smaller = nums2[j]
+                j += 1
+            elif i < n and j == m:
+                smaller = nums1[i]
+                i += 1
+            elif nums1[i] <= nums2[j]:
+                smaller = nums1[i]
+                i += 1
             else:
-                return get_k_th(i + 1, r1, l2, r2, k - (i - l1 + 1))
-
-        return (get_k_th(0, len(list1) - 1, 0, len(list2) - 1, middle_l) +
-                get_k_th(0, len(list1), 0, len(list2) - 1, middle_r)) / 2
+                smaller = nums2[j]
+                j += 1
+            counter += 1
+            if counter == mid_l:
+                if is_odd:
+                    return smaller
+                else:
+                    ans = smaller
+            if counter == mid_r:
+                return (ans + smaller) / 2

@@ -29,6 +29,18 @@ def test_3(s: str, expect: int):
     assert solution.length_of_longest_substring_5(s) == expect
 
 
+@pytest.mark.parametrize("nums1, nums2, ans", [
+    ([1, 3], [2], 2.0),
+    ([1, 2], [3, 4], 2.5),
+    ([], [1], 1.0),
+    ([2], [], 2.0)
+])
+def test_4(nums1: List[int], nums2: List[int], ans: float):
+    from leetcode.problem_4 import Solution
+    sol = Solution()
+    assert sol.find_median_sorted_arrays(nums1, nums2) == ans
+
+
 @pytest.mark.parametrize("s, ans", [
     ("42", 42),
     ("   -42", -42),
@@ -632,6 +644,20 @@ def test_72(word1, word2, expect):
     from leetcode.problem_72 import Solution
     solution = Solution()
     assert solution.min_distance(word1, word2) == expect
+
+
+@pytest.mark.parametrize('matrix, ans', [
+    ([[1, 1, 1], [1, 0, 1], [1, 1, 1]], [[1, 0, 1], [0, 0, 0], [1, 0, 1]]),
+    ([[0, 1, 2, 0], [3, 4, 5, 2], [1, 3, 1, 5]],
+     [[0, 0, 0, 0], [0, 4, 5, 0], [0, 3, 1, 0]]),
+    ([[0, 1, 2, 0], [3, 4, 5, 2], [1, 3, 1, 5]],
+     [[0, 0, 0, 0], [0, 4, 5, 0], [0, 3, 1, 0]])
+])
+def test_73(matrix: List[List[int]], ans: List[List[int]]):
+    from leetcode.problem_73 import Solution
+    sol = Solution()
+    sol.set_zeroes_2(matrix)
+    assert matrix == ans
 
 
 @pytest.mark.parametrize("nums, expect", [
