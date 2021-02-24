@@ -42,3 +42,15 @@ class Solution:
             else:
                 ans[i] = product // nums[i]
         return ans
+
+    def product_except_self_2(self, nums: List[int]) -> List[int]:
+        prefix_product = [1]
+        for i in range(1, len(nums)):
+            prefix_product.append(prefix_product[-1] * nums[i - 1])
+        suffix_product = [1]
+        for i in range(1, len(nums)):
+            suffix_product.insert(0, suffix_product[0] * nums[-i])
+        ans = []
+        for i in range(len(nums)):
+            ans.append(prefix_product[i] * suffix_product[i])
+        return ans

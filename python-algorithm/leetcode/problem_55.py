@@ -48,3 +48,18 @@ class Solution:
             if not skip_zero:
                 return False
         return True
+
+    def can_jump_2(self, nums: List[int]) -> bool:
+        zero_pos = []
+        for i, num in enumerate(nums):
+            if num == 0 and i != len(nums) - 1:
+                zero_pos.append(i)
+        for i in zero_pos:
+            j = i - 1
+            while j >= 0 and nums[j] + j <= i:
+                j -= 1
+            if j < 0:
+                return False
+            if nums[j] + j > zero_pos[-1]:
+                return True
+        return True
