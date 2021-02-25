@@ -498,6 +498,7 @@ def test_55(nums, expect):
     from leetcode.problem_55 import Solution
     sol = Solution()
     assert sol.can_jump(nums) == expect
+    assert sol.can_jump_2(nums) == expect
 
 
 @pytest.mark.parametrize("intervals, expect", [

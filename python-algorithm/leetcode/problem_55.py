@@ -33,13 +33,13 @@ class Solution:
         if 0 not in nums:
             return True
         # sufficient and necessary condition to fail: always jump to 0.
-        length = len(nums)
-        zero_indexes = indexes_of(nums, 0)
+        n = len(nums)
+        zero_indexes = [i for i, num in enumerate(nums) if num == 0 and i != n - 1]
         for index in zero_indexes:
             skip_zero = False
             for i in range(index + 1):
                 if nums[i] <= index - i:
-                    if nums[i] + i >= length - 1:
+                    if nums[i] + i >= n - 1:
                         return True
                 # if nums[i] > zero_index - i, means it can jump over 0.
                 else:
@@ -50,10 +50,7 @@ class Solution:
         return True
 
     def can_jump_2(self, nums: List[int]) -> bool:
-        zero_pos = []
-        for i, num in enumerate(nums):
-            if num == 0 and i != len(nums) - 1:
-                zero_pos.append(i)
+        zero_pos = [i for i, num in enumerate(nums) if num == 0 and i != len(nums) - 1]
         for i in zero_pos:
             j = i - 1
             while j >= 0 and nums[j] + j <= i:
