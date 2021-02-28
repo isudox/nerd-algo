@@ -1187,6 +1187,17 @@ def test_208():
     assert trie.search("app")
 
 
+@pytest.mark.parametrize('n, prerequisites, ans', [
+    (2, [[1, 0]], [0, 1]),
+    (4, [[1, 0], [2, 0], [3, 1], [3, 2]], [0, 2, 1, 3]),
+    (1, [], [0])
+])
+def test_210(n: int, prerequisites: List[List[int]], ans: List[int]):
+    from leetcode.problem_210 import Solution
+    sol = Solution()
+    assert sol.find_order(n, prerequisites) == ans
+
+
 @pytest.mark.parametrize("board, words, ans", [
     ([
          ['o', 'a', 'a', 'n'],
@@ -2464,6 +2475,17 @@ def test_1014(arr, expect):
     from leetcode.problem_1014 import Solution
     sol = Solution()
     assert sol.max_score_sightseeing_pair(arr) == expect
+
+
+@pytest.mark.parametrize('words, puzzles, ans', [
+    (["aaaa", "asas", "able", "ability", "actt", "actor", "access"],
+     ["aboveyz", "abrodyz", "abslute", "absoryz", "actresz", "gaswxyz"],
+     [1, 1, 3, 2, 4, 0])
+])
+def test_1178(words: List[str], puzzles: List[str], ans: List[int]):
+    from leetcode.problem_1178 import Solution
+    sol = Solution()
+    assert sol.find_num_of_valid_words(words, puzzles) ==ans
 
 
 @pytest.mark.parametrize("arr, ans", [
