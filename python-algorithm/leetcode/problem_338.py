@@ -50,3 +50,13 @@ class Solution:
             idx += 1
         ans.extend(temp)
         return ans
+
+    def count_bits_2(self, num: int) -> List[int]:
+        ans = [0]
+        step = 1
+        while len(ans) < num + 1:
+            n = min(step, num + 1 - len(ans))
+            for i in range(n):
+                ans.append(ans[i] + 1)
+            step *= 2
+        return ans
