@@ -31,16 +31,36 @@ class Solution:
             return True
 
         def dfs(x: int, store: List[str]):
-            if x < n:
-                ans.append(store)
+            if x == n:
+                ans.append(store[:])
             else:
                 for i in range(x, n):
                     if is_palindrome(x, i):
-                        new_store = store[:]
-                        new_store.append(s[x: i + 1])
-                        dfs(i + 1, new_store)
+                        store.append(s[x : i + 1])
+                        dfs(i + 1, store)
+                        del store[-1]
 
         n = len(s)
+        ans = []
+        dfs(0, [])
+        return ans
+
+    def partition_2(self, s: str) -> List[List[str]]:
+        def dfs(x: int, store: List[str]):
+            if x == n:
+                ans.append(store[:])
+            for i in range(x, n):
+                if dp[x][i]:
+                    store.append(s[x : i + 1])
+                    dfs(i + 1, store)
+                    del store[-1]
+
+        n = len(s)
+        dp = [[True] * n for _ in range(n)]
+        for i in range(n - 1, -1, -1):
+            for j in range(n):
+                if i < j:
+                    dp[i][j] = (dp[i + 1][j - 1]) and (s[i] == s[j])
         ans = []
         dfs(0, [])
         return ans
