@@ -33,7 +33,7 @@ public class Problem131 {
 
     private void dfs(String s, List<List<String>> ans, List<String> cur, int start) {
         if (start >= s.length()) {
-            // deepy copy current list.
+            // deep copy current list.
             ans.add(new ArrayList<>(cur));
         }
         for (int i = start; i < s.length(); i++) {
