@@ -36,7 +36,7 @@ class Solution:
             else:
                 for i in range(x, n):
                     if is_palindrome(x, i):
-                        store.append(s[x : i + 1])
+                        store.append(s[x: i + 1])
                         dfs(i + 1, store)
                         del store[-1]
 
@@ -51,7 +51,7 @@ class Solution:
                 ans.append(store[:])
             for i in range(x, n):
                 if dp[x][i]:
-                    store.append(s[x : i + 1])
+                    store.append(s[x: i + 1])
                     dfs(i + 1, store)
                     del store[-1]
 
