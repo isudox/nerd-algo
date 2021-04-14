@@ -22,10 +22,7 @@ class Solution:
         iteratively.
         time complexity: O(N)
         space complexity: O(1)
-        :param head:
-        :return:
         """
-        # iteratively.
         if head is None or head.next is None:
             return head
         p1, p2 = None, head
@@ -41,8 +38,6 @@ class Solution:
         recursively.
         time complexity: O(N)
         space complexity: O(N)
-        :param head:
-        :return:
         """
         if head is None or head.next is None:
             return head

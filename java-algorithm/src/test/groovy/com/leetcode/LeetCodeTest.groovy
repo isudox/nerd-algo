@@ -3,6 +3,7 @@ package com.leetcode
 import com.common.Converter
 import com.common.ListNode
 import com.common.TreeNode
+import org.spockframework.util.Assert
 import spock.lang.Specification
 
 /**
@@ -464,6 +465,17 @@ class LeetCodeTest extends Specification {
         input           | output
         [1, 2, 3, 4, 5] | [5, 4, 3, 2, 1]
         [1]             | [1]
+    }
+
+    def "208. Implement Trie (Prefix Tree)"() {
+        given:
+        Problem208.Trie trie = new Problem208.Trie()
+        trie.insert("apple")
+        Assert.that(trie.search("apple"))
+        Assert.that(!trie.search("app"))
+        Assert.that(trie.startsWith("app"))
+        trie.insert("app")
+        Assert.that(trie.search("app"))
     }
 
     def "216. Combination Sum III"(int k, int n, List<List<Integer>> expect) {
