@@ -455,6 +455,19 @@ class LeetCodeTest extends Specification {
         [2, 7, 11, 15] | 9      | [1, 2]
     }
 
+    def "179. Largest Number"(int[] nums, String ans) {
+        given:
+        def sol = new Problem179()
+        expect:
+        sol.largestNumber(nums) == ans
+        where:
+        nums              | ans
+        [10, 2]           | "210"
+        [3, 30, 34, 5, 9] | "9534330"
+        [0, 0, 0]         | "0"
+        [10]              | "10"
+    }
+
     def "206. Reverse Linked List"(int[] input, int[] output) {
         given:
         def sol = new Problem206()
