@@ -491,19 +491,42 @@ class LeetCodeTest extends Specification {
         Assert.that(trie.search("app"))
     }
 
+    def "213. House Robber II"(int[] nums, int ans) {
+        given:
+        def sol = new Problem213()
+        expect:
+        sol.rob(nums) == ans
+        where:
+        nums         | ans
+        [2, 3, 2]    | 3
+        [1, 2, 3, 1] | 4
+        [1, 2, 1, 1] | 3
+        [1, 2]       | 2
+    }
+
     def "216. Combination Sum III"(int k, int n, List<List<Integer>> expect) {
         given:
         def solution = new Problem216()
-
         expect:
         solution.combinationSum3(k, n) == expect
-
         where:
         k | n  || expect
         2 | 6  || [[1, 5], [2, 4]]
         3 | 7  || [[1, 2, 4]]
         3 | 9  || [[1, 2, 6], [1, 3, 5], [2, 3, 4]]
         5 | 18 || [[1, 2, 3, 4, 8], [1, 2, 3, 5, 7], [1, 2, 4, 5, 6]]
+    }
+
+    def '264. Ugly Number II'(int n, int ans) {
+        given:
+        def sol = new Problem264()
+        expect:
+        sol.nthUglyNumber(n) == ans
+        where:
+        n    | ans
+        1    | 1
+        10   | 12
+        1690 | 2123366400
     }
 
     def "279. Perfect Squares"(int n, int ans) {

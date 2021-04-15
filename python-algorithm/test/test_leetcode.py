@@ -1301,6 +1301,18 @@ def test_240(matrix: List[List[int]], target: int, ans: bool):
     assert sol.search_matrix(matrix, target) == ans
 
 
+@pytest.mark.parametrize('n, ans', [
+    (1690, 2123366400),
+    (100, 1536),
+    (10, 12),
+    (1, 1)
+])
+def test_264(n: int, ans: int):
+    from leetcode.problem_264 import Solution
+    sol = Solution()
+    assert sol.nth_ugly_number(n) == ans
+
+
 @pytest.mark.timeout(1)
 @pytest.mark.parametrize("n, ans", [
     (12, 3),
