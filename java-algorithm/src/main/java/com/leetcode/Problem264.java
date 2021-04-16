@@ -1,8 +1,12 @@
 package com.leetcode;
 
+import java.util.HashSet;
+import java.util.PriorityQueue;
+import java.util.Set;
+
 /**
  * 264. Ugly Number II
- * https://leetcode.com/problems/ugly-number-ii/description/
+ * https://leetcode.com/problems/ugly-number-ii/
  *
  * Given an integer n, return the n^th ugly number.
  *
@@ -41,5 +45,24 @@ public class Problem264 {
                 p5++;
         }
         return dp[n - 1];
+    }
+    public int nthUglyNumber2(int n) {
+        int[] factors = new int[]{2, 3, 5};
+        PriorityQueue<Long> pq = new PriorityQueue<>();
+        Set<Long> memo = new HashSet<>();
+        pq.offer(1L);
+        int cur = 1;
+        for (int i = 0; i < n; i++) {
+            long min = pq.poll();
+            cur = (int) min;
+            for (int factor : factors) {
+                long next = (long) cur * factor;
+                if (!memo.contains(next)) {
+                    pq.offer(next);
+                }
+                memo.add(next);
+            }
+        }
+        return cur;
     }
 }

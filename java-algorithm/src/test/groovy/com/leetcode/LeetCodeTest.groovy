@@ -380,6 +380,20 @@ class LeetCodeTest extends Specification {
         []                    | 0
     }
 
+    def '87. Scramble String'(String s1, String s2, boolean ans) {
+        given:
+        def sol = new Problem87()
+        expect:
+        sol.isScramble(s1, s2) == ans
+        where:
+        s1                            | s2                            | ans
+        "eebaacbcbcadaaedceaaacadccd" | "eadcaacabaddaceacbceaabeccd" | false
+        "great"                       | "rgeat"                       | true
+        "abcde"                       | "caebd"                       | false
+        "a"                           | "a"                           | true
+        "b"                           | "a"                           | false
+    }
+
     def "90. Subsets II"(int[] nums, List<List<Integer>> expect) {
         given:
         def solution = new Problem90()
@@ -522,6 +536,7 @@ class LeetCodeTest extends Specification {
         def sol = new Problem264()
         expect:
         sol.nthUglyNumber(n) == ans
+        sol.nthUglyNumber2(n) == ans
         where:
         n    | ans
         1    | 1
