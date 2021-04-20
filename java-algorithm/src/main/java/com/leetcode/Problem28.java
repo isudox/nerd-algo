@@ -27,11 +27,11 @@ package com.leetcode;
 public class Problem28 {
 
     public int strStr(String haystack, String needle) {
-        if (needle.equals(""))
+        if (needle.length() == 0)
             return 0;
         if (haystack.length() < needle.length())
             return -1;
-        int i = 0, j = 0, start = 0;
+        int i = 0, j = 0;
         while (i < haystack.length() && j < needle.length()) {
             if (haystack.charAt(i) == needle.charAt(j)) {
                 i++;

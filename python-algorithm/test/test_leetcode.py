@@ -110,6 +110,18 @@ def test_20(s: str, ans: bool):
     assert sol.is_valid(s) == ans
 
 
+@pytest.mark.parametrize('haystack, needle, ans', [
+    ('a' * 50000, 'a' * 99 + 'b', -1),
+    ('hello', 'll', 2)
+])
+def test_28(haystack: str, needle: str, ans: int):
+    from leetcode.problem_28 import Solution
+    sol = Solution()
+    assert sol.str_str(haystack, needle) == ans
+    assert sol.str_str_2(haystack, needle) == ans
+    assert sol.str_str_kmp(haystack, needle) == ans
+
+
 @pytest.mark.parametrize("nums, ans", [
     ([1, 2, 3], [1, 3, 2]),
     ([1, 3, 2], [2, 1, 3]),
