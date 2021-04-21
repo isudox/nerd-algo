@@ -405,6 +405,22 @@ class LeetCodeTest extends Specification {
         [1, 2, 2] | [[], [1], [2], [1, 2], [2, 2], [1, 2, 2]]
     }
 
+    def "91. Decode Ways"(String s, int ans) {
+        given:
+        def sol = new Problem91()
+        expect:
+        sol.numDecodings(s) == ans
+        sol.numDecodings2(s) == ans
+        where:
+        s        | ans
+        "226"    | 3
+        "201"    | 1
+        "12"     | 2
+        "27"     | 1
+        "06"     | 0
+        "110011" | 0
+    }
+
     def "96. Unique Binary Search Trees"(int n, int ans) {
         given:
         def sol = new Problem96()

@@ -774,7 +774,21 @@ def test_85(matrix, expect):
 ])
 def test_90(nums, sets):
     from leetcode.problem_90 import Solution
-    assert Solution().subsets_with_dup(nums) == sets
+    sol = Solution()
+    assert sol.subsets_with_dup(nums) == sets
+
+
+@pytest.mark.parametrize('s, ans', [
+    ('226', 3),
+    ('201', 1),
+    ('11100111', 0),
+    ('12', 2),
+    ('27', 1)
+])
+def test_91(s: str, ans: int):
+    from leetcode.problem_91 import Solution
+    sol = Solution()
+    assert sol.num_decodings(s) == ans
 
 
 @pytest.mark.parametrize("s, ans", [
