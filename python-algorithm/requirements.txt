@@ -4,3 +4,4 @@ flake8==3.9.0
 pytest==6.2.1
 pytest-cov==2.10.1
 pytest-timeout==1.4.2
+sortedcontainers~=2.3.0
