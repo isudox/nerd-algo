@@ -1,68 +1,55 @@
 """377. Combination Sum IV
 https://leetcode.com/problems/combination-sum-iv/
 
-Given an integer array with all positive numbers and no duplicates,
-find the number of possible combinations that add up to a positive
-integer target.
+Given an array of distinct integers nums and a target integer target, return
+the number of possible combinations that add up to target.
 
-Example:
+The answer is guaranteed to fit in a 32-bit integer.
 
-  nums = [1, 2, 3]
-  target = 4
+Example 1:
 
-  The possible combination ways are:
-  (1, 1, 1, 1)
-  (1, 1, 2)
-  (1, 2, 1)
-  (1, 3)
-  (2, 1, 1)
-  (2, 2)
-  (3, 1)
+Input: nums = [1,2,3], target = 4
+Output: 7
+Explanation:
+The possible combination ways are:
+(1, 1, 1, 1)
+(1, 1, 2)
+(1, 2, 1)
+(1, 3)
+(2, 1, 1)
+(2, 2)
+(3, 1)
+Note that different sequences are counted as different combinations.
 
-  Note that different sequences are counted as different combinations.
+Example 2:
 
-  Therefore the output is 7.
+Input: nums = [9], target = 3
+Output: 0
 
-Follow up:
+Constraints:
 
-What if negative numbers are allowed in the given array?
-How does it change the problem?
-What limitation we need to add to the question to allow negative numbers?
+1 <= nums.length <= 200
+1 <= nums[i] <= 1000
+All the elements of nums are unique.
+1 <= target <= 1000
+
+Follow up: What if negative numbers are allowed in the given array? How does
+it change the problem? What limitation we need to add to the question to
+allow negative numbers?
 """
 from typing import List
-from itertools import permutations
 
 
-# TODO
 class Solution:
-    def combination_sum4(self, nums: List[int], target: int) -> int:
+    def combination_sum(self, nums: List[int], target: int) -> int:
         nums.sort()
-        matrix = []
-
-        def backtrack(target: int, start: int, store: List[int]):
-            nonlocal nums, matrix
-            for i in range(start, len(nums)):
-                num = nums[i]
-                if target < num:
+        if nums[0] > target:
+            return 0
+        dp = [0] * (target + 1)
+        dp[0] = 1
+        for i in range(nums[0], target + 1):
+            for num in nums:
+                if num > i:
                     break
-
-                if target == num:
-                    store.append(num)
-                    matrix.append(store[:])
-                    store.pop()
-                    break
-
-                store.append(num)
-                backtrack(target - num, i, store)
-                store.pop()
-
-        def count_permutation(combination: List[int]) -> int:
-            num = ''.join(str(e) for e in combination)
-            return len({''.join(p) for p in permutations(num)})
-
-        backtrack(target, 0, [])
-        ans = 0
-        for i in matrix:
-            ans += count_permutation(i)
-
-        return ans
+                dp[i] += dp[i - num]
+        return dp[-1]

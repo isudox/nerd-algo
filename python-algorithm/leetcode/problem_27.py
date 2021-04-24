@@ -67,3 +67,11 @@ class Solution:
                 i += 1
             cnt += 1
         return len(nums)
+
+    def remove_element_2(self, nums: List[int], val: int) -> int:
+        i, n = 0, len(nums)
+        for num in nums:
+            if num != val:
+                nums[i] = num
+                i += 1
+        return i
