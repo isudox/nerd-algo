@@ -73,14 +73,3 @@ class Solution:
                 cur = cur.right
                 root = root.right
         return dummy.right
-
-
-if __name__ == '__main__':
-    sol = Solution()
-    node = TreeNode(5)
-    l_node = TreeNode(1)
-    r_node = TreeNode(7)
-    node.left = l_node
-    node.right = r_node
-    ans = sol.increasing_bst3(node)
-    print(ans)

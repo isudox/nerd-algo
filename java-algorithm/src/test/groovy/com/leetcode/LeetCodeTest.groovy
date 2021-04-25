@@ -547,6 +547,19 @@ class LeetCodeTest extends Specification {
         5 | 18 || [[1, 2, 3, 4, 8], [1, 2, 3, 5, 7], [1, 2, 4, 5, 6]]
     }
 
+    def '254. Factor Combinations'(int n, List<List<Integer>> ans) {
+        given:
+        def sol = new Problem254()
+        expect:
+        sol.getFactors(n) == ans
+        where:
+        n  | ans
+        1  | []
+        12 | [[2, 2, 3], [2, 6], [3, 4]]
+        32 | [[2, 2, 2, 2, 2], [2, 2, 2, 4], [2, 2, 8], [2, 4, 4], [2, 16], [4, 8]]
+        23848713 | [[3, 3, 7, 378551], [3, 3, 2649857], [3, 7, 1135653], [3, 21, 378551], [3, 7949571], [7, 9, 378551], [7, 3406959], [9, 2649857], [21, 1135653], [63, 378551]]
+    }
+
     def '264. Ugly Number II'(int n, int ans) {
         given:
         def sol = new Problem264()
