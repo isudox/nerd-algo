@@ -46,10 +46,10 @@ public class Problem554 {
         int ans = wall.size();
         Map<Integer, Integer> counter = new HashMap<>();
         for (List<Integer> bricks : wall) {
-            int segment = 0;
+            int segment = 0, count = 0;
             for (int i = 0; i < bricks.size() - 1; i++) {
                 segment += bricks.get(i);
-                int count = counter.getOrDefault(segment, wall.size()) - 1;
+                count = counter.getOrDefault(segment, wall.size()) - 1;
                 counter.put(segment, count);
                 if (count < ans) {
                     ans = count;

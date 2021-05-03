@@ -51,9 +51,3 @@ class Solution:
                     segments[cur] = len(wall) - 1
                 minimum = min(minimum, segments[cur])
         return minimum
-
-
-if __name__ == '__main__':
-    sol = Solution()
-    print(sol.least_bricks([[100000000], [100000000], [100000000]]))
-    print(sol.least_bricks([[1, 2, 2, 1], [3, 1, 2], [1, 3, 2], [2, 4], [3, 1, 2], [1, 3, 1, 1]]))
