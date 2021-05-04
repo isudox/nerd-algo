@@ -29,7 +29,7 @@ package com.leetcode;
  */
 public class Problem7 {
 
-    public static int reverse(int x) {
+    public int reverse(int x) {
         boolean isNeg = false;
         long result = 0L;
         if (x == -2147483648) {
@@ -51,5 +51,19 @@ public class Problem7 {
         }
 
         return Math.toIntExact(result);
+    }
+
+    public int reverse2(int x) {
+        int hi = Integer.MAX_VALUE / 10;
+        int lo = Integer.MIN_VALUE / 10;
+        int ans = 0;
+        while (x != 0) {
+            if (ans > hi || ans < lo) {
+                return 0;
+            }
+            ans = ans * 10 + x % 10;
+            x = x / 10;
+        }
+        return ans;
     }
 }
