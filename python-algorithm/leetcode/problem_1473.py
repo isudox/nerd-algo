@@ -84,3 +84,47 @@ class Solution:
         dp = dict()
         ans = dfs(0, target, -1)
         return ans if ans < float('inf') else -1
+
+    def min_cost2(self, houses: List[int], cost: List[List[int]], m: int, n: int, target: int) -> int:
+        # key: i-j-k, value: min cost. means that the min cost by painting houses[i] with color j to k blocks.
+        dp = [[[float('inf')] * target for _ in range(n)] for _ in range(m)]
+        for i in range(m):
+            for j in range(n):
+                if houses[i] == 0 or houses[i] == j + 1:
+                    for k in range(target):
+                        for pre_j in range(n):
+                            if pre_j == j:
+                                if i == 0 and k == 0:
+                                    dp[i][j][k] = 0
+                                elif i > 0:
+                                    dp[i][j][k] = min(dp[i][j][k], dp[i - 1][j][k])
+                            elif i > 0 and k > 0:
+                                dp[i][j][k] = min(dp[i][j][k], dp[i - 1][pre_j][k - 1])
+                        if dp[i][j][k] != float('inf') and houses[i] == 0:
+                            dp[i][j][k] += cost[i][j]
+
+        ans = min(dp[m - 1][j][target - 1] for j in range(n))
+        return -1 if ans == float('inf') else ans
+
+    def min_cost3(self, houses: List[int], cost: List[List[int]], m: int, n: int, target: int) -> int:
+        dp = [[[float('inf')] * target for _ in range(n)] for _ in range(m)]
+        if houses[0] == 0:
+            for j in range(n):
+                dp[0][j][0] = cost[0][j]
+        else:
+            dp[0][houses[0] - 1][0] = 0
+
+        for i in range(1, m):
+            for j in range(n):
+                if houses[i] == 0 or houses[i] == j + 1:
+                    cur_cost = cost[i][j] if houses[i] == 0 else 0
+                    for k in range(target):
+                        for pre_j in range(n):
+                            if pre_j == j:
+                                dp[i][j][k] = min(dp[i][j][k], dp[i - 1][j][k] + cur_cost)
+                            elif k > 0:
+                                dp[i][j][k] = min(dp[i][j][k], dp[i - 1][pre_j][k - 1] + cur_cost)
+
+        ans = min(dp[m - 1][j][target - 1] for j in range(n))
+        return -1 if ans == float('inf') else ans
+
