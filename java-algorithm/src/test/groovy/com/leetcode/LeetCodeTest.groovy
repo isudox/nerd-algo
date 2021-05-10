@@ -1,8 +1,6 @@
 package com.leetcode
 
-import com.common.Converter
-import com.common.ListNode
-import com.common.TreeNode
+import com.common.*
 import org.spockframework.util.Assert
 import spock.lang.Specification
 
@@ -18,11 +16,9 @@ class LeetCodeTest extends Specification {
     def "1. Two Sum"(int[] nums, int target, int[] result) {
         given:
         def solution = new Problem1()
-
         expect:
         solution.twoSum1(nums, target) == result
         solution.twoSum2(nums, target) == result
-
         where:
         nums                           | target | result
         [1, 5, 8, 10, 23, 99] as int[] | 31     | [2, 4] as int[]
@@ -38,12 +34,10 @@ class LeetCodeTest extends Specification {
         def arr2 = [5, 6, 4] as int[]
         def l1 = Converter.convertListNode(arr1)
         def l2 = Converter.convertListNode(arr2)
-
         when:
         def res1 = solution.addTwoNumbers1(l1, l2)
         def res2 = solution.addTwoNumbers2(l1, l2)
         def expected = Converter.convertListNode([7, 0, 8] as int[])
-
         then:
         Converter.convertArray(expected) == Converter.convertArray(res1)
         Converter.convertArray(expected) == Converter.convertArray(res2)
@@ -52,10 +46,8 @@ class LeetCodeTest extends Specification {
     def "3. Longest Substring Without Repeating Characters"(String s, int len) {
         given:
         def solution = new Problem3()
-
         expect:
         solution.lengthOfLongestSubstring(s) == len
-
         where:
         s          | len
         "abcabcbb" | 3
@@ -72,10 +64,8 @@ class LeetCodeTest extends Specification {
         def l1 = Converter.convertListNode(i1)
         def l2 = Converter.convertListNode(i2)
         def l3 = Converter.convertListNode(i3)
-
         when:
         def res = solution.mergeKLists([l1, l2, l3] as ListNode[])
-
         then:
         Converter.convertArray(res) == [1, 1, 2, 3, 4, 4, 5, 6] as int[]
     }
@@ -84,10 +74,8 @@ class LeetCodeTest extends Specification {
         given:
         def solution = new Problem25()
         def node = Converter.convertListNode(nums)
-
         expect:
         Converter.convertArray(solution.reverseKGroup(node, k)) == res
-
         where:
         nums                     | k | res
         [1] as int[]             | 3 | [1] as int[]
@@ -115,11 +103,9 @@ class LeetCodeTest extends Specification {
     def "32. Longest Valid Parentheses"(String s, int len) {
         given:
         def solution = new Problem32()
-
         expect:
         solution.longestValidParentheses(s) == len
         solution.longestValidParentheses2(s) == len
-
         where:
         s           | len
         ""          | 0
@@ -135,11 +121,9 @@ class LeetCodeTest extends Specification {
     def "33. Search in Rotated Sorted Array"(int[] nums, int target, int res) {
         given:
         def solution = new Problem33()
-
         expect:
         solution.search1(nums, target) == res
         solution.search2(nums, target) == res
-
         where:
         nums                  | target | res
         []                    | 1      | -1
@@ -152,10 +136,8 @@ class LeetCodeTest extends Specification {
     def "34. Find First and Last Position of Element in Sorted Array"(int[] nums, int target, int[] res) {
         given:
         def solution = new Problem34()
-
         expect:
         solution.searchRange(nums, target) == res
-
         where:
         nums                         | target | res
         [5, 7, 7, 8, 8, 10] as int[] | 8      | [3, 4] as int[]
@@ -165,10 +147,8 @@ class LeetCodeTest extends Specification {
     def "35. Search Insert Position"(int[] nums, int target, int res) {
         given:
         def solution = new Problem35()
-
         expect:
         solution.searchInsert(nums, target) == res
-
         where:
         nums         | target | res
         []           | 9      | 0
@@ -182,10 +162,8 @@ class LeetCodeTest extends Specification {
     def "36. Valid Sudoku"(char[][] board, boolean res) {
         given:
         def solution = new Problem36()
-
         expect:
         res == solution.isValidSudoku(board)
-
         where:
         board                                           | res
         [["8", "3", ".", ".", "7", ".", ".", ".", "."],
@@ -211,10 +189,8 @@ class LeetCodeTest extends Specification {
     def "39. Combination Sum"(int[] candidates, int target, List<List<Integer>> ans) {
         given:
         def solution = new Problem39()
-
         expect:
         solution.combinationSum(candidates, target) == ans
-
         where:
         candidates   | target | ans
         [2, 3, 6, 7] | 7      | [[2, 2, 3], [7]]
@@ -224,10 +200,8 @@ class LeetCodeTest extends Specification {
     def "40. Combination Sum II"(int[] candidates, int target, List<List<Integer>> expect) {
         given:
         def solution = new Problem40()
-
         expect:
         solution.combinationSum2(candidates, target) == expect
-
         where:
         candidates             | target | expect
         [10, 1, 2, 7, 6, 1, 5] | 8      | [[1, 1, 6], [1, 2, 5], [1, 7], [2, 6]]
@@ -451,11 +425,9 @@ class LeetCodeTest extends Specification {
     def "136. Single Number"(int[] nums, int ans) {
         given:
         def solution = new Problem136()
-
         expect:
         solution.singleNumber(nums) == ans
         solution.reduce(nums) == ans
-
         where:
         nums            | ans
         [0]             | 0
@@ -672,6 +644,18 @@ class LeetCodeTest extends Specification {
         "acb" | "ahbgdc" | false
     }
 
+    def '403. Frog Jump'(int[] stones, boolean ans) {
+        given:
+        def sol = new Problem403()
+        expect:
+        sol.canCross(stones) == ans
+        sol.canCross2(stones) == ans
+        where:
+        stones                     | ans
+        [0, 1, 3, 5, 6, 8, 12, 17] | true
+        [0, 1, 2, 3, 4, 8, 9, 11]  | false
+    }
+
     def "406. Queue Reconstruction by Height"(int[][] people, int[][] ans) {
         given:
         def sol = new Problem406()
@@ -765,10 +749,8 @@ class LeetCodeTest extends Specification {
     def "791. Custom Sort String"(String s, String t, String ans) {
         given:
         def solution = new Problem791()
-
         expect:
         solution.customSortString(s, t) == ans
-
         where:
         s      | t       | ans
         "cba"  | "abcd"  | "cbad"
@@ -796,11 +778,9 @@ class LeetCodeTest extends Specification {
     def "946. Validate Stack Sequences"(int[] pushed, int[] popped, boolean ans) {
         given:
         def solution = new Problem946()
-
         expect:
         solution.validateStackSequences(pushed, popped) == ans
         solution.ans(pushed, popped) == ans
-
         where:
         pushed          | popped          | ans
         []              | []              | true
@@ -814,10 +794,8 @@ class LeetCodeTest extends Specification {
     def "961. N-Repeated Element in Size 2N Array"(int[] arr, int ans) {
         given:
         def solution = new Problem961()
-
         expect:
         solution.repeatedNTimes(arr) == ans
-
         where:
         arr                      | ans
         [1, 2, 3, 3]             | 3
@@ -828,10 +806,8 @@ class LeetCodeTest extends Specification {
     def "962. Maximum Width Ramp"(int[] arr, int ans) {
         given:
         def solution = new Problem962()
-
         expect:
         solution.maxWidthRamp(arr) == ans
-
         where:
         arr                            | ans
         [6, 0, 8, 2, 1, 5]             | 4
@@ -841,10 +817,8 @@ class LeetCodeTest extends Specification {
     def "963. Minimum Area Rectangle II"(int[][] points, double ans) {
         given:
         def solution = new Problem963()
-
         expect:
         solution.minAreaFreeRect(points) == ans
-
         where:
         points                                   | ans
         [[0, 3], [1, 2], [3, 1], [1, 3], [2, 1]] | 0.0
@@ -855,10 +829,8 @@ class LeetCodeTest extends Specification {
     def "964. Least Operators to Express Number"(int x, int target, int ans) {
         given:
         def solution = new Problem964()
-
         expect:
         solution.leastOpsExpressTarget(x, target) == ans
-
         where:
         x   | target    | ans
         3   | 19        | 5
@@ -869,10 +841,8 @@ class LeetCodeTest extends Specification {
     def "967. Numbers With Same Consecutive Differences"(int n, int k, int[] ans) {
         given:
         def solution = new Problem967()
-
         expect:
         solution.numsSameConsecDiff(n, k) == ans
-
         where:
         n | k || ans
         1 | 0 || [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -884,10 +854,8 @@ class LeetCodeTest extends Specification {
     def "969. Pancake Sorting"(int[] nums, Integer[] res) {
         given:
         def solution = new Problem969()
-
         expect:
         Converter.collToArr(solution.pancakeSort(nums)) == res
-
         where:
         nums         | res
         [3, 2, 4, 1] | [3, 4, 2, 3, 2]
@@ -909,10 +877,8 @@ class LeetCodeTest extends Specification {
     def "974. Subarray Sums Divisible by K"(int[] A, int K, int res) {
         given:
         def solution = new Problem974()
-
         expect:
         solution.subarraysDivByK(A, K) == res
-
         where:
         A                    | K | res
         [1, 2, 3, 4, 5]      | 5 | 4
@@ -922,10 +888,8 @@ class LeetCodeTest extends Specification {
     def "976. Largest Perimeter Triangle"(int[] A, int res) {
         given:
         def solution = new Problem976()
-
         expect:
         solution.largestPerimeter(A) == res
-
         where:
         A            | res
         [2, 1, 2]    | 5
@@ -937,10 +901,8 @@ class LeetCodeTest extends Specification {
     def "977. Squares of a Sorted Array"(int[] A, int[] res) {
         given:
         def solution = new Problem977()
-
         expect:
         solution.sortedSquares2(A) == res
-
         where:
         A                  | res
         [-4, -1, 0, 3, 10] | [0, 1, 9, 16, 100]
@@ -950,10 +912,8 @@ class LeetCodeTest extends Specification {
     def "979. Distribute Coins in Binary Tree"(TreeNode root, int res) {
         given:
         def solution = new Problem979()
-
         expect:
         solution.distributeCoins(root) == res
-
         where:
         root | res
         null | 0
@@ -962,10 +922,8 @@ class LeetCodeTest extends Specification {
     def "980. Unique Paths III"(int[][] grid, int res) {
         given:
         def solution = new Problem980()
-
         expect:
         solution.uniquePathsIII(grid) == res
-
         where:
         grid                                        | res
         [[1, 2], [0, 0]]                            | 1
@@ -976,10 +934,8 @@ class LeetCodeTest extends Specification {
     def "982. Triples with Bitwise AND Equal To Zero"(int[] nums, int res) {
         given:
         def solution = new Problem982()
-
         expect:
         solution.countTriplets(nums) == res
-
         where:
         nums      | res
         [2, 1, 3] | 12
@@ -988,10 +944,8 @@ class LeetCodeTest extends Specification {
     def "983. Minimum Cost For Tickets"(int[] days, int[] costs, int res) {
         given:
         def solution = new Problem983()
-
         expect:
         solution.mincostTickets(days, costs) == res
-
         where:
         days                                    | costs      | res
         [1, 4, 6, 7, 8, 20]                     | [2, 7, 15] | 11
@@ -1001,10 +955,8 @@ class LeetCodeTest extends Specification {
     def "984. String Without AAA or BBB"(int A, int B, String res) {
         given:
         def solution = new Problem984()
-
         expect:
         solution.strWithout3a3b(A, B) == res
-
         where:
         A | B || res
         1 | 1 || "ab"
@@ -1015,10 +967,8 @@ class LeetCodeTest extends Specification {
     def "1014. Best Sightseeing Pair"(int[] arr, int result) {
         given:
         def sol = new Problem1014()
-
         expect:
         sol.maxScoreSightseeingPair(arr) == result
-
         where:
         arr             | result
         [1, 2]          | 2

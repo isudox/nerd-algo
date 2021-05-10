@@ -42,6 +42,9 @@ import java.util.Set;
  * stones[0] == 0
  */
 public class Problem403 {
+    /**
+     * DFS with memo
+     */
     public boolean canCross(int[] stones) {
         int n = stones.length;
         Set<Integer>[] attempts = new HashSet[n];
@@ -74,6 +77,9 @@ public class Problem403 {
         return false;
     }
 
+    /**
+     * DP
+     */
     public boolean canCross2(int[] stones) {
         int n = stones.length;
         for (int i = 1; i < n; i++) {
