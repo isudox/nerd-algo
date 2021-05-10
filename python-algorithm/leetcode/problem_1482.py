@@ -71,19 +71,20 @@ from typing import List
 class Solution:
     def min_days(self, bloom_day: List[int], m: int, k: int) -> int:
         def helper(limit: int) -> bool:
-            flowers, cnt = 0, 0
+            flowers, adj = 0, 0
             for i in range(len(bloom_day)):
+                # 优化: 当剩余花盆数量不足以制作所需花束，提前结束
                 if bloom_day[i] > limit:
-                    cnt = 0
+                    adj = 0
                 else:
-                    cnt += 1
-                    if cnt == k:
+                    adj += 1
+                    if adj == k:
                         flowers += 1
+                        # 优化: 当已经制作完成所需花束，提前结束
                         if flowers == m:
                             return True
-                        cnt = 0
-                if cnt == 0 and len(bloom_day) - 1 - i < (m - flowers) * k:
-                    # 优化，如果剩余花盆数量不足以拼凑成所需的花束，提前结束
+                        adj = 0
+                if adj == 0 and len(bloom_day) - i - 1 < (m - flowers) * k:
                     return False
             return False
 

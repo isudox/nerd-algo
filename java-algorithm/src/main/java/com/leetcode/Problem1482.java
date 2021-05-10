@@ -80,11 +80,10 @@ public class Problem1482 {
         }
         while (lo < hi) {
             int mid = (lo + hi) >> 1;
-            if (helper(bloomDay, m, k, mid)) {
+            if (helper(bloomDay, m, k, mid))
                 hi = mid;
-            } else {
+            else
                 lo = mid + 1;
-            }
         }
         return lo;
     }
@@ -95,11 +94,13 @@ public class Problem1482 {
             if (nums[i] > limit) {
                 cnt = 0;
             } else if (++cnt == k) {
+                // optimize: 当已经制作所需数量的花束时，提前结束
                 if (++flowers == m) {
                     return true;
                 }
                 cnt = 0;
             }
+            // optimize: 当剩余花盆不足以制作所需花束时，提前结束
             if (cnt == 0 && nums.length - 1 - i < (m - flowers) * k) {
                 return false;
             }
