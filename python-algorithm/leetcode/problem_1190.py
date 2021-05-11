@@ -2,9 +2,9 @@
 https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/
 
 You are given a string s that consists of lower case English letters and
-brackets. 
+brackets.
 
-Reverse the strings in each pair of matching parentheses, starting from the
+Reverse the strings in each pair of matching parentheses, starting from the
 innermost one.
 
 Your result should not contain any brackets.
@@ -18,14 +18,14 @@ Example 2:
 
 Input: s = "(u(love)i)"
 Output: "iloveu"
-Explanation: The substring "love" is reversed first, then the whole string is
+Explanation: The substring "love" is reversed first, then the whole string is
 reversed.
 
 Example 3:
 
 Input: s = "(ed(et(oc))el)"
 Output: "leetcode"
-Explanation: First, we reverse the substring "oc", then "etco", and finally,
+Explanation: First, we reverse the substring "oc", then "etco", and finally,
 the whole string.
 
 Example 4:
@@ -43,4 +43,49 @@ It's guaranteed that all parentheses are balanced.
 
 class Solution:
     def reverse_parentheses(self, s: str) -> str:
-        pass
+        stack = []
+        for c in s:
+            if c == ')':
+                temp = ''
+                while stack[-1] != '(':
+                    temp += stack.pop()
+                stack.pop()
+                if not stack:
+                    return temp
+                for temp_c in temp:
+                    stack.append(temp_c)
+            else:
+                stack.append(c)
+        return ''.join(stack)
+
+    def reverse_parentheses2(self, s: str) -> str:
+        store = ['']
+        for c in s:
+            if c == '(':
+                store.append('')
+            elif c == ')':
+                top = store.pop()
+                store[len(store) - 1] += top[::-1]
+            else:
+                store[-1] += c
+        return ''.join(store)
+
+    def reverse_parentheses3(self, s: str) -> str:
+        pairs = dict()
+        store = []
+        for i, c in enumerate(s):
+            if c == '(':
+                store.append(i)
+            if c == ')':
+                j = store.pop()
+                pairs[i], pairs[j] = j, i
+        ans = []
+        i, d = 0, 1
+        while i < len(s):
+            if s[i] == '(' or s[i] == ')':
+                i = pairs[i]
+                d = -d
+            else:
+                ans.append(s[i])
+            i += d
+        return ''.join(ans)

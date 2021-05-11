@@ -26,8 +26,6 @@ class Solution:
     def iterative_inorder_traversal(self, root: TreeNode) -> List[int]:
         """
         iterative traversal
-        :param root:
-        :return:
         """
         ans = []
         stack = []
@@ -44,8 +42,6 @@ class Solution:
     def recursive_inorder_traversal(self, root: TreeNode) -> List[int]:
         """
         recursive traversal, process left if needed, then val, at last right
-        :param root:
-        :return:
         """
         if not root:
             return []
