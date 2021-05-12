@@ -41,5 +41,5 @@ from typing import List
 
 
 class Solution:
-    def stoneGame(self, piles: List[int]) -> bool:
-        return False
+    def stone_game(self, piles: List[int]) -> bool:
+        return True
