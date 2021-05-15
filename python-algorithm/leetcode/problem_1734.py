@@ -54,3 +54,14 @@ class Solution:
         for i in range(n - 1):
             ans.append(ans[i] ^ encoded[i])
         return ans
+    
+    def decode3(self, encoded: List[int]) -> List[int]:
+        n = len(encoded) + 1
+        # https://www.geeksforgeeks.org/calculate-xor-1-n/
+        total = 1 if n % 4 == 1 else 0
+        for i in range(1, n - 1, 2):
+            total ^= encoded[i]
+        encoded.insert(0, total)
+        for i in range(1, n):
+            encoded[i] = encoded[i - 1] ^ encoded[i]
+        return encoded
