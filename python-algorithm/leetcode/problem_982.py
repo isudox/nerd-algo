@@ -1,7 +1,8 @@
 """982. Triples with Bitwise AND Equal To Zero
 https://leetcode.com/problems/triples-with-bitwise-and-equal-to-zero/
 
-Given an array of integers A, find the number of triples of indices (i, j, k) such that:
+Given an array of integers A, find the number of triples of indices (i, j, k)
+such that:
 
   0 <= i < A.length
   0 <= j < A.length
@@ -28,24 +29,44 @@ Example 1:
 
 Note:
 
-  1 <= A.length <= 1000
-  0 <= A[i] < 2^16
+  1 <= nums.length <= 1000
+  0 <= nums[i] < 2^16
 """
 from collections import defaultdict
 from typing import List
 
 
 class Solution:
-    def count_triplets(self, a: 'List[int]') -> 'int':
+    def count_triplets(self, a: List[int]) -> int:
+        ans = 0
         di = defaultdict(int)
-        size, count = len(a), 0
-        for i in a:
-            for j in a:
-                di[i & j] += 1
+        for x in a:
+            for y in a:
+                di[x & y] += 1
+        for z in a:
+            for k in di.keys():
+                if k & z == 0:
+                    ans += di[k]
+        return ans
 
-        for k in a:
-            for key in di.keys():
-                if key & k == 0:
-                    count += di[key]
+    def count_triplets2(self, nums: List[int]) -> int:
+        def count(x: int, y: int, z: int) -> int:
+            if x == y == z:
+                return 1
+            if x == y or x == z or y == z:
+                return 3
+            return 6
 
-        return count
+        ans = 0
+        bin_nums = [[0] * 16 for _ in range(len(nums))]
+        for i in range(len(nums)):
+            j = 0
+            while nums[i]:
+                bin_nums[i][j] = nums[i] & 1
+                nums[i] = nums[i] >> 1
+                j += 1
+
+        for i in range(16):
+            for j in range(len(nums)):
+                pass
+        return ans

@@ -2515,6 +2515,19 @@ def test_1014(arr, expect):
     assert sol.max_score_sightseeing_pair(arr) == expect
 
 
+@pytest.mark.parametrize('clips, time, ans', [
+    ([1, 2], 0, 0),
+    ([[0,2],[4,6],[8,10],[1,9],[1,5],[5,9]], 10, 3),
+    ([[0,1],[1,2]], 5, -1),
+    ([[0,1],[6,8],[0,2],[5,6],[0,4],[0,3],[6,7],[1,3],[4,7],[1,4],[2,5],[2,6],[3,4],[4,5],[5,7],[6,9]], 9, 3),
+    ([[0,4],[2,8]], 5, 2)
+])
+def test_1024(clips: List[List[int]], time: int, ans: int):
+    from leetcode.problem_1024 import Solution
+    sol = Solution()
+    assert sol.video_stitching(clips, time) == ans
+
+
 @pytest.mark.parametrize('words, puzzles, ans', [
     (["aaaa", "asas", "able", "ability", "actt", "actor", "access"],
      ["aboveyz", "abrodyz", "abslute", "absoryz", "actresz", "gaswxyz"],
