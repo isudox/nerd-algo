@@ -62,35 +62,35 @@ class Solution:
                         used[int(board[i][j])] = 1
             return [str(_) for _ in range(1, 10) if used[_] == 0]
 
-        def dfs(pos: int) -> bool:
+        def backtrack(pos: int) -> bool:
             if pos == 81:
                 return True
             x, y = divmod(pos, 9)
             if board[x][y] != '.':
-                return dfs(pos + 1)
+                return backtrack(pos + 1)
             for num in get_options(x, y):
                 board[x][y] = num
-                if dfs(pos + 1):
+                if backtrack(pos + 1):
                     return True
                 else:
                     board[x][y] = '.'
             return False
 
-        dfs(0)
+        backtrack(0)
 
     def solve_sudoku2(self, board: List[List[str]]) -> None:
-        def dfs(pos: int) -> bool:
+        def backtrack(pos: int) -> bool:
             if pos == 81:
                 return True
             row, col = divmod(pos, 9)
             blk = row // 3 * 3 + col // 3
             if board[row][col] != '.':
-                return dfs(pos + 1)
+                return backtrack(pos + 1)
             for num in range(1, 10):
                 if row_candidates[row][num] and col_candidates[col][num] and blk_candidates[blk][num]:
                     board[row][col] = str(num)
                     row_candidates[row][num] = col_candidates[col][num] = blk_candidates[blk][num] = False
-                    if dfs(pos + 1):
+                    if backtrack(pos + 1):
                         return True
                     else:
                         board[row][col] = '.'
@@ -114,4 +114,4 @@ class Solution:
                 for col in range(y * 3, y * 3 + 3):
                     if board[row][col] != '.':
                         blk_candidates[blk][int(board[row][col])] = False
-        dfs(0)
+        backtrack(0)
