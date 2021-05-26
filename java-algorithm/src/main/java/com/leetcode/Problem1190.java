@@ -67,4 +67,32 @@ public class Problem1190 {
         }
         return ans.toString();
     }
+
+    public String reverseParentheses2(String s) {
+        int n = s.length();
+        int[] pairs = new int[n];
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i < n; ++i) {
+            if (s.charAt(i) == '(')
+                stack.add(i);
+            if (s.charAt(i) == ')') {
+                int pre = stack.pop();
+                pairs[pre] = i;
+                pairs[i] = pre;
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        int i = 0, d = 1;
+        while (i < n) {
+            char c = s.charAt(i);
+            if (c == '(' || c == ')') {
+                i = pairs[i];
+                d = -d;
+            } else {
+                sb.append(c);
+            }
+            i += d;
+        }
+        return sb.toString();
+    }
 }

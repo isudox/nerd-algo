@@ -97,12 +97,3 @@ class Solution:
                             break
                         dp[i][j] = min(dp[i][j], dp[i][k] + dp[k + 1][j])
         return dp[0][-1]
-    
-
-if __name__ == '__main__':
-    sol = Solution()
-    print(sol.strange_printer3(
-        "baacdddaaddaaaaccbddbcabdaabdbbcdcbbbacbddcabcaaa"))  # 19
-    print(sol.strange_printer3("ababc"))  # 4
-    print(sol.strange_printer3("abcdgcdjkltg"))  # 11
-    print(sol.strange_printer3("babab"))  # 3
