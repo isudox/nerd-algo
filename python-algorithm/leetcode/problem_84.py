@@ -23,6 +23,11 @@ Example:
 
 Input: [2,1,5,6,2,3]
 Output: 10
+
+Constrints:
+
+1 <= heights.length <= 10^5
+0 <= heights[i] <= 10^4
 """
 from typing import List
 
@@ -84,4 +89,3 @@ class Solution:
                 right += 1
             max_area = max(max_area, (right - left + 1) * heights[i])
         return max_area
-
