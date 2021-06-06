@@ -46,24 +46,24 @@ import java.util.*;
 public class Problem127 {
 
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        Map<String, Boolean> wordSet = new HashMap<>(wordList.size());
-        for (String word : wordList)
-            wordSet.put(word, true);
-        if (wordSet.size() == 0 || !wordSet.containsKey(endWord)) return 0;
-        List<String> queue = new ArrayList<>();
+        Set<String> wordSet = new HashSet<>(wordList);
+        if (wordSet.size() == 0 || !wordSet.contains(endWord))
+            return 0;
+        // BFS
+        Queue<String> queue = new LinkedList<>();
         queue.add(beginWord);
         int ans = 1;
         while (!queue.isEmpty()) {
             int n = queue.size();
             for (int i = 0; i < n; i++) {
-                String word = queue.get(0);
-                queue.remove(0);
-                if (word.equals(endWord)) return ans;
+                String word = queue.poll();
+                if (endWord.equals(word))
+                    return ans;
                 wordSet.remove(word);
                 for (int j = 0; j < word.length(); j++) {
-                    for (int k = 0; k < 26; k++) {
-                        String newWord = word.substring(0, j) + (char) (97 + k) + word.substring(j + 1);
-                        if (wordSet.containsKey(newWord)) {
+                    for (char c = 'a'; c <= 'z'; c++) {
+                        String newWord = word.substring(0, j) + c + word.substring(j + 1);
+                        if (wordSet.contains(newWord)) {
                             queue.add(newWord);
                         }
                     }
@@ -74,4 +74,41 @@ public class Problem127 {
         return 0;
     }
 
+    public int ladderLength2(String beginWord, String endWord, List<String> wordList) {
+        Set<String> wordSet = new HashSet<>(wordList);
+        if (wordSet.size() == 0 || !wordSet.contains(endWord))
+            return 0;
+        int ans = 1;
+        // Bi-BFS
+        // be aware that use HashSet rather than Queue here.
+        Set<String> beginSet = new HashSet<>();
+        Set<String> endSet = new HashSet<>();
+        beginSet.add(beginWord);
+        endSet.add(endWord);
+        while (!beginSet.isEmpty() && !endSet.isEmpty()) {
+            // swap if needed to keep beginSet to be the little one.
+            if (beginSet.size() > endSet.size()) {
+                Set<String> temp = beginSet;
+                beginSet = endSet;
+                endSet = temp;
+            }
+            Set<String> nextBeginSet = new HashSet<>();
+            for (String word : beginSet) {
+                if (endSet.contains(word))
+                    return ans;
+                wordSet.remove(word);
+                for (int j = 0; j < word.length(); j++) {
+                    for (char c = 'a'; c <= 'z'; c++) {
+                        String newWord = word.substring(0, j) + c + word.substring(j + 1);
+                        if (wordSet.contains(newWord)) {
+                            nextBeginSet.add(newWord);
+                        }
+                    }
+                }
+            }
+            beginSet = nextBeginSet;
+            ans++;
+        }
+        return 0;
+    }
 }
