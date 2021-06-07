@@ -4,7 +4,6 @@ https://leetcode.com/problems/target-sum/
 You are given a list of non-negative integers, a1, a2, ..., an, and a target,
 S. Now you have 2 symbols + and -. For each integer, you should choose one
 from + and - as its new symbol.
-⁠
 
 Find out how many ways to assign symbols to make sum of integers equal to
 target S.
@@ -29,6 +28,7 @@ The length of the given array is positive and will not exceed 20.
 The sum of elements in the given array will not exceed 1000.
 Your output answer is guaranteed to be fitted in a 32-bit integer.
 """
+from functools import lru_cache
 from typing import List
 
 
@@ -73,3 +73,31 @@ class Solution:
                     dp[i][1000 + j + nums[i]] += dp[i - 1][1000 + j]
                     dp[i][1000 + j - nums[i]] += dp[i - 1][1000 + j]
         return dp[length - 1][1000 + s] if abs(s) <= 1000 else 0
+
+    def find_target_sum_ways2(self, nums: List[int], target: int) -> int:
+        @lru_cache(None)
+        def dfs(i: int, t: int) -> int:
+            if i == len(nums):
+                return 1 if t == 0 else 0
+            return dfs(i + 1, t - nums[i]) + dfs(i + 1, t + nums[i])
+
+        return dfs(0, target)
+
+    def find_target_sum_ways3(self, nums: List[int], target: int) -> int:
+        offset = sum(nums)
+        if target > offset:
+            return 0
+        limit = 2 * offset + 1
+        dp = [[0] * limit for _ in range(len(nums))]
+        if nums[-1] == 0:
+            dp[-1][offset - nums[-1]] = 2
+        else:
+            dp[-1][offset - nums[-1]] = 1
+            dp[-1][offset + nums[-1]] = 1
+        for i in range(len(nums) - 2, -1, -1):
+            for j in range(-offset, offset + 1):
+                if offset + j >= 0:
+                    dp[i][offset + j] += dp[i + 1][offset + j - nums[i]]
+                if offset + j + nums[i] < limit:
+                    dp[i][offset + j] += dp[i + 1][offset + j + nums[i]]
+        return dp[0][offset + target]
