@@ -27,7 +27,7 @@ class Solution:
             start = int(math.sqrt(k))
             ret = k
             while start:
-                ret = min(ret, 1 + dfs(k - start ** 2, memo))
+                ret = min(ret, 1 + dfs(k - start * start, memo))
                 start -= 1
             memo[k] = ret
             return ret
@@ -68,3 +68,21 @@ class Solution:
         for i in range(1, n + 1):
             if can_divide(n, i):
                 return i
+
+    def num_squares_4(self, n: int) -> int:
+        """BFS"""
+        ans = 0
+        queue = [n]
+        while queue:
+            ans += 1
+            size = len(queue)
+            for i in range(size):
+                vertex = queue.pop(0)
+                limit = int(vertex ** 0.5)
+                for j in range(limit, 0, -1):
+                    diff = vertex - j * j
+                    if diff == 0:
+                        return ans
+                    queue.append(diff)
+        return ans
+
