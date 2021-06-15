@@ -26,6 +26,22 @@ class Solution:
 
         return dfs(target)
 
+    def largest_number3(self, cost: List[int], target: int) -> str:
+        def gt(a: str, b: str) -> bool:
+            return a > b if len(a) == len(b) else len(a) > len(b)
+
+        dp = [''] * (target + 1)
+        for i in range(1, target + 1):
+            dp[i] = '0'
+            for j in range(9):
+                if cost[j] <= i:
+                    ret = dp[i - cost[j]]
+                    if ret != '0':
+                        ret = str(j + 1) + ret
+                        if gt(ret, dp[i]):
+                            dp[i] = ret
+        return dp[target]
+
     def largest_number2(self, cost: List[int], target: int) -> str:
         def get_digits() -> int:
             for i in range(1, len(cost) + 1):
@@ -53,3 +69,9 @@ class Solution:
                 else:
                     break
         return ans
+
+
+if __name__ == '__main__':
+    sol = Solution()
+    print(sol.largest_number2([4, 3, 2, 5, 6, 7, 2, 5, 5], 9))
+    print(sol.largest_number3([4, 3, 2, 5, 6, 7, 2, 5, 5], 9))

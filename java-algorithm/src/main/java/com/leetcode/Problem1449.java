@@ -1,5 +1,6 @@
 package com.leetcode;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,28 +14,27 @@ import java.util.Map;
  */
 public class Problem1449 {
     public String largestNumber(int[] cost, int target) {
-        Map<Integer, String> memo = new HashMap<>();
+        String[] memo = new String[target + 1];
+        Arrays.fill(memo, "");
         return dfs(cost, target, memo);
     }
 
-    private String dfs(int[] cost, int target, Map<Integer, String> memo) {
-        if (memo.containsKey(target))
-            return memo.get(target);
+    private String dfs(int[] cost, int target, String[] memo) {
+        if (!memo[target].equals("")) return memo[target];
         if (target == 0) return "";
-        String ans = "0";
+        memo[target] = "0";
         for (int i = 0; i < cost.length; i++) {
             if (cost[i] <= target) {
                 String ret = dfs(cost, target - cost[i], memo);
                 if (!ret.equals("0")) {
                     ret = (i + 1) + ret;
-                    if (compare(ret, ans) > 0) {
-                        ans = ret;
+                    if (compare(ret, memo[target]) > 0) {
+                        memo[target] = ret;
                     }
                 }
             }
         }
-        memo.put(target, ans);
-        return ans;
+        return memo[target];
     }
 
     private int compare(String s1, String s2) {
@@ -56,15 +56,33 @@ public class Problem1449 {
         return dp[cost.length][target];
     }
 
+    public String largestNumber2(int[] cost, int target) {
+        String[] dp = new String[target + 1];
+        Arrays.fill(dp, "");
+        for (int i = 1; i <= target; i++) {
+            dp[i] = "0";
+            for (int j = 0; j < cost.length; j++) {
+                if (cost[j] <= i) {
+                    String ret = dp[i - cost[j]];
+                    if (!ret.equals("0")) {
+                        ret = (j + 1) + ret;
+                        if (compare(ret, dp[i]) > 0) {
+                            dp[i] = ret;
+                        }
+                    }
+                }
+            }
+        }
+        return dp[target];
+    }
+
     public static void main(String[] args) {
         Problem1449 sol = new Problem1449();
-        System.out.println("" + sol.getSize(new int[]{4, 3, 2, 5, 6, 7, 2, 5, 5}, 9));
-        System.out.println("" + sol.getSize(new int[]{7, 6, 5, 5, 5, 6, 8, 7, 8}, 12));
-        System.out.println("" + sol.getSize(new int[]{2,4,6,2,4,6,4,4,4}, 5));
-        System.out.println("" + sol.getSize(new int[]{6,10,15,40,40,40,40,40,40}, 47));
-        System.out.println("\n");
         System.out.println("" + sol.largestNumber(new int[]{5,6,7,3,4,6,7,4,8}, 29));
         System.out.println("" + sol.largestNumber(new int[]{5, 4, 4, 5, 5, 5, 5, 5, 5}, 19));
         System.out.println("" + sol.largestNumber(new int[]{6,10,15,40,40,40,40,40,40}, 47));
+        System.out.println("" + sol.largestNumber2(new int[]{5,6,7,3,4,6,7,4,8}, 29));
+        System.out.println("" + sol.largestNumber2(new int[]{5, 4, 4, 5, 5, 5, 5, 5, 5}, 19));
+        System.out.println("" + sol.largestNumber2(new int[]{6,10,15,40,40,40,40,40,40}, 47));
     }
 }
