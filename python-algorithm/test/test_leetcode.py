@@ -601,6 +601,31 @@ def test_64(grid, expect):
     assert s.min_path_sum(grid) == expect
 
 
+@pytest.mark.parametrize('s, ans', [
+    ('i.1', False),
+    ('+-.', False),
+    ('1.0.1E-1', False),
+    ('0e', False),
+    ('-.1', True),
+    ('e9', False),
+    ('3.e9', True),
+    ('-1.', True),
+    ('.1', True),
+    ('.1E1', True),
+    ('.', False),
+    ('e', False),
+    ('1e9', True),
+    ('1.e9', True),
+    ('.1e9', True),
+    ('123K', False),
+    ('+.', False),
+])
+def test_65(s: str, ans: bool):
+    from leetcode.problem_65 import Solution
+    sol = Solution()
+    assert sol.is_number(s) == ans
+
+
 @pytest.mark.parametrize("digits, expect", [
     ([1, 2, 3], [1, 2, 4]),
     ([0], [1]),
