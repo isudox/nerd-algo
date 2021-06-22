@@ -681,12 +681,6 @@ class LeetCodeTest extends Specification {
         [[2, 3], [2, 3]]                    | 1
     }
 
-    def "474. Ones and Zeroes"(String[] strs, int m, int n) {
-        given:
-        def sol = new Solution()
-
-    }
-
     def "494. Target Sum"(int[] nums, int s, int expect) {
         given:
         def solution = new Problem494()

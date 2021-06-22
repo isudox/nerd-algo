@@ -18,6 +18,11 @@ package com.leetcode;
  * 1,2,3 → 1,3,2
  * 3,2,1 → 1,2,3
  * 1,1,5 → 1,5,1
+ *
+ * Constraints:
+ *
+ * 1 <= nums.length <= 100
+ * 0 <= nums[i] <= 100
  */
 public class Problem31 {
     public void nextPermutation(int[] nums) {
