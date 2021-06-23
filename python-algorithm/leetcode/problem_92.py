@@ -29,13 +29,30 @@ from common.list_node import ListNode
 
 class Solution:
     def reverse_between(self, head: ListNode, left: int, right: int) -> ListNode:
-        def helper(node: ListNode) -> ListNode:
-            if node is None or node.next is None:
-                return node
-            p1, p2 = None, node
-            while p2 is not None:
+        def helper(l_node: ListNode, r_node: ListNode):
+            start = l_node.next
+            p1, p2 = None, start
+            while p2:
+                if p2 == r_node:
+                    break
                 next_node = p2.next
                 p2.next = p1
                 p1 = p2
                 p2 = next_node
-            return p1
+            l_node.next.next = r_node
+            l_node.next = p1
+
+        if not head or not head.next or left == right:
+            return head
+        dummy = ptr = ListNode(0, head)
+        i = 0
+        start, end = None, None
+        while ptr:
+            if i == left - 1:
+                start = ptr
+            if i == right:
+                end = ptr.next
+            ptr = ptr.next
+            i += 1
+        helper(start, end)
+        return dummy.next
