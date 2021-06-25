@@ -447,6 +447,20 @@ class LeetCodeTest extends Specification {
         [-2, 0, -1]   | 0
     }
 
+    def "159. Longest Substring with At Most Two Distinct Characters"(String s, int ans) {
+        given:
+        def sol = new Problem159()
+        expect:
+        sol.lengthOfLongestSubstringTwoDistinct(s) == ans
+        where:
+        s          | ans
+        "eceba"    | 3
+        "ccaabbb"  | 5
+        "aaaaa"    | 5
+        "abababab" | 8
+        "abaccc"   | 4
+    }
+
     def "167. Two Sum II - Input array is sorted"(int[] nums, int target, int[] ans) {
         given:
         def sol = new Problem167()
@@ -525,10 +539,10 @@ class LeetCodeTest extends Specification {
         expect:
         sol.getFactors(n) == ans
         where:
-        n  | ans
-        1  | []
-        12 | [[2, 2, 3], [2, 6], [3, 4]]
-        32 | [[2, 2, 2, 2, 2], [2, 2, 2, 4], [2, 2, 8], [2, 4, 4], [2, 16], [4, 8]]
+        n        | ans
+        1        | []
+        12       | [[2, 2, 3], [2, 6], [3, 4]]
+        32       | [[2, 2, 2, 2, 2], [2, 2, 2, 4], [2, 2, 8], [2, 4, 4], [2, 16], [4, 8]]
         23848713 | [[3, 3, 7, 378551], [3, 3, 2649857], [3, 7, 1135653], [3, 21, 378551], [3, 7949571], [7, 9, 378551], [7, 3406959], [9, 2649857], [21, 1135653], [63, 378551]]
     }
 
@@ -704,6 +718,20 @@ class LeetCodeTest extends Specification {
         nums        | k | ans
         [1, 1, 1]   | 2 | 2
         [1] * 20000 | 1 | 20000
+    }
+
+    def "576. Out of Boundary Paths"(int m, int n, int maxMove, int startRow, int startColumn, int ans) {
+        given:
+        def sol = new Problem576()
+        expect:
+        sol.findPaths(m, n, maxMove, startRow, startColumn) == ans
+        sol.findPaths2(m, n, maxMove, startRow, startColumn) == ans
+        where:
+        m | n  | maxMove | startRow | startColumn | ans
+        2 | 2  | 2       | 0        | 0           | 6
+        1 | 3  | 3       | 0        | 1           | 12
+        4 | 5  | 8       | 3        | 2           | 3875
+        8 | 50 | 23      | 5        | 26          | 914783380
     }
 
     def "581. Shortest Unsorted Continuous Subarray"(int[] nums, int ans) {
