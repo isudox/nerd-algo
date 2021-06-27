@@ -762,6 +762,20 @@ class LeetCodeTest extends Specification {
         "RRDRDDRRRDDRDRRDRDRRDDRRDRDRRDD" | "Radiant"
     }
 
+    def "773. Sliding Puzzle"(int[][] board, int ans) {
+        given:
+        def sol = new Problem773()
+        expect:
+        sol.slidingPuzzle(board) == ans
+        where:
+        board                  | ans
+        [[1, 2, 3], [4, 5, 0]] | 0
+        [[1, 2, 3], [4, 0, 5]] | 1
+        [[1, 2, 3], [5, 4, 0]] | -1
+        [[4, 1, 2], [5, 0, 3]] | 5
+        [[3, 2, 4], [1, 5, 0]] | 14
+    }
+
     def "785. Is Graph Bipartite"(int[][] graph, boolean ans) {
         given:
         def sol = new Problem785()
@@ -786,6 +800,21 @@ class LeetCodeTest extends Specification {
         ""     | "abc"   | "abc"
         "def"  | "cba"   | "cba"
         "kqep" | "pekeq" | "kqeep"
+    }
+
+    def "909. Snakes and Ladders"(int[][] board, int ans) {
+        given:
+        def sol = new Problem909()
+        expect:
+        sol.snakesAndLadders(board) == ans
+        where:
+        board                      | ans
+        [[-1, -1, -1, -1, -1, -1],
+         [-1, -1, -1, -1, -1, -1],
+         [-1, -1, -1, -1, -1, -1],
+         [-1, 35, -1, -1, 13, -1],
+         [-1, -1, -1, -1, -1, -1],
+         [-1, 15, -1, -1, -1, -1]] | 4
     }
 
     def "941. Valid Mountain Array"(int[] nums, boolean ans) {
