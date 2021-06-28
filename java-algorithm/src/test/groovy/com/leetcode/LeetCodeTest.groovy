@@ -802,6 +802,17 @@ class LeetCodeTest extends Specification {
         "kqep" | "pekeq" | "kqeep"
     }
 
+    def "815. Bus Routes"(int[][] routes, int source, int target, int ans) {
+        given:
+        def sol = new Problem815()
+        expect:
+        sol.numBusesToDestination(routes, source, target) == ans
+        where:
+        routes                                            | source | target | ans
+        [[1, 2, 7], [3, 6, 7]]                            | 1      | 6      | 2
+        [[7, 12], [4, 5, 15], [6], [15, 19], [9, 12, 13]] | 15     | 12     | -1
+    }
+
     def "909. Snakes and Ladders"(int[][] board, int ans) {
         given:
         def sol = new Problem909()
