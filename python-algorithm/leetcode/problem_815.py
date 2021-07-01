@@ -40,3 +40,27 @@ class Solution:
                             bus_queue.append(bus)
                             visited_buses.add(bus)
         return -1
+
+    def num_buses_to_destination2(self, routes: List[List[int]], source: int, target: int) -> int:
+        stop_buses = collections.defaultdict(list)
+        for i, route in enumerate(routes):
+            for stop in route:
+                stop_buses[stop].append(i)
+        visited_buses, visited_stops = set(), set()
+        ans = 0
+        stop_queue = collections.deque([source])
+        while stop_queue:
+            n = len(stop_queue)
+            for _ in range(n):
+                cur_stop = stop_queue.popleft()
+                if cur_stop == target:
+                    return ans
+                for bus in stop_buses[cur_stop]:
+                    if bus not in visited_buses:
+                        visited_buses.add(bus)
+                        for stop in routes[bus]:
+                            if stop not in visited_stops:
+                                visited_stops.add(stop)
+                                stop_queue.append(stop)
+            ans += 1
+        return -1
