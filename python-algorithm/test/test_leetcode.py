@@ -2006,6 +2006,18 @@ def test_721(accounts: List[List[str]], ans: List[List[str]]):
     assert sol.accounts_merge(accounts) == ans
 
 
+@pytest.mark.parametrize('formula, ans', [
+    ("H2O", "H2O"),
+    ("(H2O)", "H2O"),
+    ("Mg(OH)2", "H2MgO2"),
+    ("K4(ON(SO3)2)2", "K4N2O14S4")
+])
+def test_726(formula: str, ans: str):
+    from leetcode.problem_726 import Solution
+    sol = Solution()
+    assert sol.count_of_atoms(formula) == ans
+
+
 @pytest.mark.parametrize('n, ans', [
     (10, 9),
     (2, 2),
