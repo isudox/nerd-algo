@@ -2196,6 +2196,16 @@ def test_922(nums: List[int], ans: List[int]):
     assert nums == ans
 
 
+@pytest.mark.parametrize('nums, goal, ans', [
+    ([1, 0, 1, 0, 1], 2, 4),
+    ([0, 0, 0, 0, 0], 0, 15)
+])
+def test_930(nums: List[int], goal: int, ans: int):
+    from leetcode.problem_930 import Solution
+    sol = Solution()
+    assert sol.num_subarrays_with_sum(nums, goal) == ans
+
+
 @pytest.mark.parametrize("nums, ans", [
     ([1, 2], False),
     ([1, 2, 3], False),
