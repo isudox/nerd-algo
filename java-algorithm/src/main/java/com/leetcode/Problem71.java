@@ -4,10 +4,11 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 /**
- *
+ * 71. Simplify Path
+ * https://leetcode.com/problems/simplify-path/
  */
 public class Problem71 {
-    public String simplifyPath(String path) {
+    public String simplRLockifyPath(String path) {
         String[] splits = path.split("/");
         Deque<String> queue = new ArrayDeque<>();
         for (String split : splits) {
