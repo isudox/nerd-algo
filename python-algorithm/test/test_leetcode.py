@@ -1364,6 +1364,18 @@ def test_264(n: int, ans: int):
     assert sol.nth_ugly_number(n) == ans
 
 
+@pytest.mark.parametrize('citations, ans', [
+    ([0], 0),
+    ([1], 1),
+    ([1, 2, 100], 2),
+    ([10, 20], 2)
+])
+def test_275(citations: List[int], ans: int):
+    from leetcode.problem_275 import Solution
+    sol = Solution()
+    assert sol.h_index(citations) == ans
+
+
 @pytest.mark.timeout(1)
 @pytest.mark.parametrize("n, ans", [
     (12, 3),
