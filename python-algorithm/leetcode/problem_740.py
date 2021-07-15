@@ -68,15 +68,23 @@ class Solution:
 
     def delete_and_earn3(self, nums: List[int]) -> int:
         nums.sort()
+        # dp[0] 表示当前数不选，dp[1] 表示当前数选。从第一个数向后辗转递推
         dp = [0, nums[0]]
         for i in range(1, len(nums)):
             if nums[i] == nums[i - 1]:
+                # 如果当前数和前一个数相等，则在前一个被选择的条件下，再选当前数。
                 dp[1] += nums[i]
             elif nums[i] == nums[i - 1] + 1:
+                # 如果当前数和前一个数相差 1，则一种情况是前一个数没选的条件下，选择当前数；
+                # 或者在前一个数被选择的条件下，舍弃掉当前数
                 temp = dp[0]
-                dp[0] = max(dp)
-                dp[1] = temp + nums[i]
+                dp[0] = max(dp)  # 舍弃掉当前数
+                dp[1] = temp + nums[i]  # 选择当前数
             else:
+                # 如果当前数和前一个数相差大于 1，则一种情况是前一个数已选的条件下，舍弃当前数
+                # 第二种情况是，前一个数已选的条件下，选择当前数；
+                # 第三种情况是，前一个数未选的条件下，选择当前数；（该情况必然非最大，不用考虑）
+                # 第四种情况是，前一个数未选的条件下，舍弃当前数；（同上，非最大，不用考虑）
                 dp[0] = max(dp)
                 dp[1] = dp[0] + nums[i]
         return max(dp)
