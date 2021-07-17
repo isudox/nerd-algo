@@ -11,7 +11,7 @@ package com.leetcode;
  *
  *   Input: [-2,1,-3,4,-1,2,1,-5,4],
  *   Output: 6
- *   Explanation: [4,-1,2,1] has the largest sum = 6.
+ *   Explanation: [4,-1,2,1] has the largest sum = 6.
  *
  * Follow up:
  *
@@ -36,6 +36,30 @@ public class Problem53 {
         }
 
         return maxSum;
+    }
+
+    /**
+     * Prefix Sum.
+     */
+    public int maxSubArray2(int[] nums) {
+        for (int i = 1; i < nums.length; i++)
+            nums[i] += nums[i - 1];
+        int ans = nums[0], min = 0;
+        for (int num : nums) {
+            ans = Math.max(ans, num - min);
+            min = Math.min(min, num);
+        }
+        return ans;
+    }
+
+    public int maxSubArray3(int[] nums) {
+        int ans = nums[0], min = 0, sum = 0;
+        for (int num : nums) {
+            sum += num;
+            ans = Math.max(ans, sum - min);
+            min = Math.min(min, sum);
+        }
+        return ans;
     }
 
     /**

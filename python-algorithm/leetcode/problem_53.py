@@ -45,6 +45,14 @@ class Solution:
             if nums[i] < smallest:
                 smallest = nums[i]
         return ans
+    
+    def max_sub_array3(self, nums: List[int]) -> int:
+        ans, pre_sum, minimum = nums[0], 0, 0
+        for num in nums:
+            pre_sum += num
+            ans = max(ans, pre_sum - minimum)
+            minimum = min(minimum, pre_sum)
+        return ans
 
     def brute_force(self, nums: List[int]) -> int:
         def sum_list(nums: List[int], left: int, right: int) -> int:
@@ -61,8 +69,3 @@ class Solution:
                 if temp_sum > maximum:
                     maximum = temp_sum
         return maximum
-
-
-if __name__ == '__main__':
-    sol = Solution()
-    print(sol.max_sub_array2([-2, -1]))
