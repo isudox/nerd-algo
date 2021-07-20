@@ -14,8 +14,3 @@ class Solution:
                 l += 1
             ans = max(ans, r - l + 1)
         return ans
-
-
-if __name__ == '__main__':
-    sol = Solution()
-    print(sol.max_frequency([1, 4, 8, 13], 5))
