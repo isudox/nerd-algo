@@ -59,6 +59,31 @@ class Solution:
             p = p.next
         return store[head]
 
+    def copyRandomList(self, head: 'Node') -> 'Node':
+        if not head:
+            return None
+        ptr1 = head
+        dummy = Node(0)
+        ptr2 = dummy
+        mapper = {}
+        while ptr1:
+            new_node = Node(ptr1.val)
+            mapper[ptr1] = new_node
+            ptr2.next = new_node
+            ptr2 = ptr2.next
+            ptr1 = ptr1.next
+        ptr1 = head
+        ptr2 = dummy.next
+        while ptr1:
+            random_node = ptr1.random
+            if not random_node:
+                ptr1.random = None
+            else:
+                ptr2.random = mapper[random_node]
+            ptr1 = ptr1.next
+            ptr2 = ptr2.next
+        return dummy.next
+
 
 class Node:
     def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
