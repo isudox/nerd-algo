@@ -26,7 +26,6 @@ from common.tree_node import TreeNode
 
 
 class Solution:
-
     def iterative_postorder_traversal(self, root: TreeNode) -> List[int]:
         if not root:
             return []
@@ -53,14 +52,3 @@ class Solution:
         ans += self.recursive_postorder_traversal(root.right)
         ans.append(root.val)
         return ans
-
-
-if __name__ == '__main__':
-    sol = Solution()
-    root = TreeNode(1)
-    sub1 = TreeNode(2)
-    sub2 = TreeNode(3)
-    root.right = sub1
-    sub1.left = sub2
-    print(sol.recursive_postorder_traversal(root))
-    print(sol.iterative_postorder_traversal(root))
