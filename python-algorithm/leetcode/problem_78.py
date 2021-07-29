@@ -27,14 +27,6 @@ from typing import List
 
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        """
-        []: []
-        [1]: [] [1]
-        [1,2]: [] [1] [2] [1,2]
-        [1,2,3]: [] [1] [2] [1,2] [3] [1,2,3] [1,3] [2,3]
-        :param nums:
-        :return:
-        """
         if not nums:
             return [[]]
         pre_ans = self.subsets(nums[:len(nums) - 1])
@@ -42,4 +34,28 @@ class Solution:
         ans = copy.deepcopy(pre_ans)
         for ele in pre_ans:
             ans.append(ele + [nums[-1]])
+        return ans
+
+    def subsets2(self, nums: List[int]) -> List[List[int]]:
+        ans = [[]]
+        for i in range(len(nums)):
+            n = len(ans)
+            for j in range(n):
+                new_perm = ans[j][:]
+                new_perm.append(nums[i])
+                ans.append(new_perm)
+        return ans
+
+    def subsets3(self, nums: List[int]) -> List[List[int]]:
+        n = len(nums)
+        size = 1 << n
+        ans = []
+        for i in range(size):
+            perm = []
+            for j in range(n):
+                bit = i & 1
+                if bit == 1:
+                    perm.append(nums[j])
+                i = i >> 1
+            ans.append(perm)
         return ans
