@@ -45,9 +45,4 @@ public class Problem149 {
         visited.add(new int[]{i, j});
         return cnt;
     }
-
-    public static void main(String[] args) {
-        Problem149 sol = new Problem149();
-        System.out.println(sol.maxPoints(new int[][]{{0, 0}, {4, 5}, {7, 8}, {8, 9}, {5, 6}, {3, 4}, {1, 1}}));
-    }
 }

@@ -24,9 +24,7 @@ from typing import List
 
 
 class Solution:
-
     def subsets_with_dup(self, nums: List[int]) -> List[List[int]]:
-
         def frequency(collection: List[int], target: int) -> int:
             res = 0
             for i in collection:
@@ -47,4 +45,23 @@ class Solution:
                 if frequency(ele, nums[-1]) < frequency(pre_ans[-1], nums[-1]):
                     continue
             ans.append(ele + [nums[-1]])
+        return ans
+
+    def subsets_with_dup2(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
+        n = len(nums)
+        size = 1 << n
+        ans = []
+        seen = set()
+        for i in range(size):
+            combination= []
+            for j in range(n):
+                bit = i & 1
+                if bit:
+                    combination.append(nums[j])
+                i = i >> 1
+            key = tuple(combination)
+            if key not in seen:
+                ans.append(combination)
+                seen.add(key)
         return ans

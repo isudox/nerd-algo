@@ -78,11 +78,4 @@ public class Problem47 {
         }
     }
 
-    public static void main(String[] args) {
-        Problem47 sol = new Problem47();
-        int[] nums = {1, 2, 3};
-        List<List<Integer>> ans = sol.permuteUnique2(nums);
-        System.out.println(ans.size());
-        System.out.println(ans.get(0));
-    }
 }

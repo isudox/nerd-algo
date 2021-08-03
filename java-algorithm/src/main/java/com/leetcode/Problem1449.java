@@ -1,8 +1,6 @@
 package com.leetcode;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 1449. Form Largest Integer With Digits That Add up to Target
@@ -74,15 +72,5 @@ public class Problem1449 {
             }
         }
         return dp[target];
-    }
-
-    public static void main(String[] args) {
-        Problem1449 sol = new Problem1449();
-        System.out.println("" + sol.largestNumber(new int[]{5,6,7,3,4,6,7,4,8}, 29));
-        System.out.println("" + sol.largestNumber(new int[]{5, 4, 4, 5, 5, 5, 5, 5, 5}, 19));
-        System.out.println("" + sol.largestNumber(new int[]{6,10,15,40,40,40,40,40,40}, 47));
-        System.out.println("" + sol.largestNumber2(new int[]{5,6,7,3,4,6,7,4,8}, 29));
-        System.out.println("" + sol.largestNumber2(new int[]{5, 4, 4, 5, 5, 5, 5, 5, 5}, 19));
-        System.out.println("" + sol.largestNumber2(new int[]{6,10,15,40,40,40,40,40,40}, 47));
     }
 }

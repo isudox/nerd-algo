@@ -39,10 +39,4 @@ public class Problem137 {
         }
         return ans;
     }
-
-    public static void main(String[] args) {
-        Problem137 sol = new Problem137();
-        System.out.println(sol.singleNumber(new int[]{2,2,3,2}));
-        System.out.println(sol.singleNumber(new int[]{-2,-2,1,1,4,1,4,4,-4,-2}));
-    }
 }
