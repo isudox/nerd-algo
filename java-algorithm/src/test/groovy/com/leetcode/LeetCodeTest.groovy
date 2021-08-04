@@ -749,6 +749,16 @@ class LeetCodeTest extends Specification {
         [1, 3, 5, 2]             | 3
     }
 
+    def "611. Valid Triangle Number"(int[] nums, int ans) {
+        given:
+        def sol = new Problem611()
+        expect:
+        sol.triangleNumber(nums) == ans
+        where:
+        nums         | ans
+        [2, 2, 3, 4] | 3
+    }
+
     def "649. Dota2 Senate"(String senate, String ans) {
         given:
         def sol = new Problem649()
