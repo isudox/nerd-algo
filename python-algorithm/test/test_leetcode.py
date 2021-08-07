@@ -2135,6 +2135,18 @@ def test_791(s, t, ans):
     assert sol.custom_sort_string(s, t) == ans
 
 
+@pytest.mark.parametrize('graph, ans', [
+    ([[1, 2], [2, 3], [5], [0], [5], [], []], [2, 4, 5, 6]),
+    ([[1, 2, 3, 4], [1, 2], [3, 4], [0, 4], []], [4]),
+    ([[0], [2, 3, 4], [3, 4], [0, 4], []], [4]),
+    ([[0]], [])
+])
+def test_802(graph: List[List[int]], ans: List[int]):
+    from leetcode.problem_802 import Solution
+    sol = Solution()
+    assert sol.eventual_safe_nodes(graph) == ans
+
+
 @pytest.mark.parametrize('strs, ans', [
     (["tars", "rats", "arts", "star"], 2),
     (["omv", "ovm"], 1),
