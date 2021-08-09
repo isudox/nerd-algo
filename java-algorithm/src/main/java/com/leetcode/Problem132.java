@@ -20,11 +20,4 @@ public class Problem132 {
         }
         return dp[s.length() - 1];
     }
-
-    public static void main(String[] args) {
-        Problem132 sol = new Problem132();
-        System.out.println(sol.minCut("aab"));
-        System.out.println(sol.minCut("a"));
-        System.out.println(sol.minCut("ab"));
-    }
 }
