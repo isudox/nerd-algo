@@ -1738,6 +1738,17 @@ def test_438(s: str, p: str, ans: List[int]):
     assert sol.find_anagrams(s, p) == ans
 
 
+@pytest.mark.parametrize('nums, ans', [
+    ([2, 4, 6, 8, 10], 7),
+    ([7, 7, 7, 7, 7], 16),
+    ([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 16776915)
+])
+def test_446(nums: List[int], ans: int):
+    from leetcode.problem_446 import Solution
+    sol = Solution()
+    assert sol.number_of_arithmetic_slices(nums) == ans
+
+
 @pytest.mark.parametrize('a, b, c, d, ans', [
     ([1, 2], [-2, -1], [-1, 2], [0, 2], 2),
 ])
@@ -1859,6 +1870,16 @@ def test_567(s1: str, s2: str, ans: bool):
     assert sol.check_inclusion_2(s1, s2) == ans
     assert sol.check_inclusion_3(s1, s2) == ans
     assert sol.check_inclusion_4(s1, s2) == ans
+
+
+@pytest.mark.parametrize('m, n, max_move, row, col, ans', [
+    (1, 3, 3, 0, 1, 12),
+    (2, 2, 2, 0, 0, 6)
+])
+def test_576(m: int, n: int, max_move: int, row: int, col: int, ans: int):
+    from leetcode.problem_576 import Solution
+    sol = Solution()
+    assert sol.find_paths(m, n, max_move, row, col) == ans
 
 
 @pytest.mark.parametrize("nums, ans", [

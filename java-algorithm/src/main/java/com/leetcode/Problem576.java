@@ -3,13 +3,6 @@ package com.leetcode;
 /**
  * 576. Out of Boundary Paths
  * https://leetcode.com/problems/out-of-boundary-paths/
- * <p>
- * Constraints:
- * <p>
- * 1 <= m, n <= 50
- * 0 <= maxMove <= 50
- * 0 <= startRow < m
- * 0 <= startColumn < n
  */
 public class Problem576 {
 
