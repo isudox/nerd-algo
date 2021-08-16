@@ -20,11 +20,3 @@ class Solution:
             for j in range(i + 1, len(nums)):
                 dfs(j, nums[j] - nums[i], nums[j], 2)
         return ans
-
-
-if __name__ == '__main__':
-    sol = Solution()
-    print(sol.number_of_arithmetic_slices([1, 2, 3, 3]))
-    print(sol.number_of_arithmetic_slices([2, 4, 6, 8, 10]))
-    print(sol.number_of_arithmetic_slices([7, 7, 7, 7, 7]))
-    print(sol.number_of_arithmetic_slices([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]))
