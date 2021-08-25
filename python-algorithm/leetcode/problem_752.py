@@ -80,9 +80,3 @@ class Solution:
                 queue1, queue2 = queue2, queue1
                 visited1, visited2 = visited2, visited1
         return -1
-
-
-if __name__ == '__main__':
-    sol = Solution()
-    print(sol.open_lock(["0201", "0101", "0102", "1212", "2002"], "0202"))
-    print(sol.open_lock2(["0201", "0101", "0102", "1212", "2002"], "0202"))
