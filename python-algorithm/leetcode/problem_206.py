@@ -13,6 +13,8 @@ Follow up:
 A linked list can be reversed either iteratively or recursively.
 Could you implement both?
 """
+from typing import Optional
+
 from common.list_node import ListNode
 
 
@@ -58,3 +60,20 @@ class Solution:
         for i in range(len(store) - 1, 0, -1):
             store[i].next = store[i - 1]
         return store[-1]
+
+    def reverse_list3(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        def helper(node: Optional[ListNode]) -> Optional[ListNode]:
+            if not node:
+                return None
+            if not node.next:
+                nonlocal ans
+                ans = node
+                return node
+            ret = helper(node.next)
+            ret.next = node
+            node.next = None
+            return node
+
+        ans = None
+        helper(head)
+        return ans
