@@ -41,6 +41,17 @@ def test_4(nums1: List[int], nums2: List[int], ans: float):
     assert sol.find_median_sorted_arrays(nums1, nums2) == ans
 
 
+@pytest.mark.parametrize('s, rows, ans', [
+    ('PAYPALISHIRING', 3, 'PAHNAPLSIIGYIR'),
+    ('PAYPALISHIRING', 4, 'PINALSIGYAHRPI'),
+    ('A', 1, 'A')
+])
+def test_6(s: str, rows: int, ans: str):
+    from leetcode.problem_6 import Solution
+    sol = Solution()
+    assert sol.convert(s, rows) == ans
+
+
 @pytest.mark.parametrize("s, ans", [
     ("42", 42),
     ("   -42", -42),

@@ -3,24 +3,6 @@ package com.leetcode;
 /**
  * 5. Longest Palindromic Substring
  * https://leetcode.com/problems/longest-palindromic-substring/
- * <p>
- * Given a string s, find the longest palindromic substring in s.
- * You may assume that the maximum length of s is 1000.
- * <p>
- * Example 1:
- *
- * <pre>
- *     Input: "babad"
- *     Output: "bab"
- *     Note: "aba" is also a valid answer.
- * </pre>
- * <p>
- * Example 2:
- *
- * <pre>
- *     Input: "cbbd"
- *     Output: "bb"
- * </pre>
  */
 public class Problem5 {
 
@@ -58,5 +40,28 @@ public class Problem5 {
             end++;
         }
         return s.substring(start + 1, end);
+    }
+
+    public String longestPalindrome2(String s) {
+        int maxLen = 0, n = s.length();
+        String ans = "";
+        for (int i = 0; i < n; i++) {
+            String a = expand(s, i, i);
+            String b = expand(s, i, i + 1);
+            String temp = a.length() > b.length() ? a : b;
+            if (temp.length() > maxLen) {
+                maxLen = temp.length();
+                ans = temp;
+            }
+        }
+        return ans;
+    }
+
+    private String expand(String s, int left, int right) {
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            left--;
+            right++;
+        }
+        return s.substring(left + 1, right);
     }
 }
