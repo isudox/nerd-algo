@@ -660,6 +660,28 @@ def test_67(a: str, b: str, result: str):
     assert sol.add_binary(a, b) == result
 
 
+@pytest.mark.parametrize('words, max_width, ans', [
+    (["This", "is", "an", "example", "of", "text", "justification."], 16,
+     [
+         "This    is    an",
+         "example  of text",
+         "justification.  "
+     ]
+     ),
+    (["What", "must", "be", "acknowledgment", "shall", "be"], 16,
+     [
+         "What   must   be",
+         "acknowledgment  ",
+         "shall be        "
+     ]
+     )
+])
+def test_68(words: List[str], max_width: int, ans: List[str]):
+    from leetcode.problem_68 import Solution
+    sol = Solution()
+    assert sol.full_justify(words, max_width) == ans
+
+
 @pytest.mark.parametrize("x, expect", [
     (0, 0),
     (1, 1),

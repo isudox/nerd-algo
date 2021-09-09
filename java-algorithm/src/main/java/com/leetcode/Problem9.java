@@ -36,9 +36,7 @@ public class Problem9 {
             x = temp / 10;
             y = y * 10 + temp % 10;
         }
-        if (y == bak) return true;
-
-        return false;
+        return y == bak;
     }
 
     public boolean isPalindrome2(int x) {
