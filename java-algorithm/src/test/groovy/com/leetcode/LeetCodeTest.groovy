@@ -680,6 +680,18 @@ class LeetCodeTest extends Specification {
         [[7, 0], [4, 4], [7, 1], [5, 0], [6, 1], [5, 2]] | [[5, 0], [7, 0], [5, 2], [6, 1], [4, 4], [7, 1]]
     }
 
+    def "446. Arithmetic Slices II - Subsequence"(int[] nums, int ans) {
+        given:
+        def sol = new Problem446()
+        expect:
+        sol.numberOfArithmeticSlices(nums) == ans
+        where:
+        nums                                                                     | ans
+        [2, 4, 6, 8, 10]                                                         | 7
+        [1, 2, 3, 4, 4, 4]                                                       | 8
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] | 16776915
+    }
+
     def "452. Minimum Number of Arrows to Burst Balloons"(int[][] points, int ans) {
         given:
         def sol = new Problem452()

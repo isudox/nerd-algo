@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """9. Palindrome Number
 https://leetcode.com/problems/palindrome-number/
 

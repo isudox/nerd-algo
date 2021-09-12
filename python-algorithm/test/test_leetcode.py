@@ -108,6 +108,16 @@ def test_16(nums, target, res):
     assert sol.three_sum_closest(nums, target) == res
 
 
+@pytest.mark.parametrize('nums, target, ans', [
+    ([1, 0, -1, 0, -2, 2], 0, [[-2, -1, 1, 2], [-2, 0, 0, 2], [-1, 0, 0, 1]]),
+    ([2, 2, 2, 2, 2], 8, [[2, 2, 2, 2]])
+])
+def test_18(nums: List[int], target: int, ans: List[List[int]]):
+    from leetcode.problem_18 import Solution
+    sol = Solution()
+    assert sol.four_sum(nums, target) == ans
+
+
 @pytest.mark.parametrize("s, ans", [
     ("", True),
     ("[", False),
@@ -1929,6 +1939,18 @@ def test_581(nums, ans):
     assert sol.find_unsorted_subarray(nums) == ans
 
 
+@pytest.mark.parametrize('n, ans', [
+    (1, 2),
+    (2, 3),
+    (3, 3),
+    (1000000000, 2178309)
+])
+def test_600(n: int, ans: int):
+    from leetcode.problem_600 import Solution
+    sol = Solution()
+    assert sol.find_integers(n) == ans
+
+
 @pytest.mark.parametrize('flowerbed, n, ans', [
     ([1, 0, 0, 0, 1], 1, True),
     ([1, 0, 0, 0, 1], 2, False)
@@ -2789,3 +2811,15 @@ def test_1631(heights: List[List[int]], ans: int):
     from leetcode.problem_1631 import Solution
     sol = Solution()
     assert sol.minimum_effort_path(heights) == ans
+
+
+@pytest.mark.parametrize('chalk, k, ans', [
+    ([5, 1, 5], 22, 0),
+    ([3, 4, 1, 2], 25, 1),
+    ([2], 1, 0),
+    ([1,2,3], 1000000000, 2)
+])
+def test_1894(chalk: List[int], k: int, ans: int):
+    from leetcode.problem_1894 import Solution
+    sol = Solution()
+    assert sol.chalk_replacer(chalk, k) == ans
