@@ -999,6 +999,19 @@ class LeetCodeTest extends Specification {
         [-7, -3, 2, 3, 11] | [4, 9, 9, 49, 121]
     }
 
+    def "978. Longest Turbulent Subarray"(int[] arr, int ans) {
+        given:
+        def sol = new Problem978()
+        expect:
+        sol.maxTurbulenceSize(arr) == ans
+        where:
+        arr                          | ans
+        [9, 4, 2, 10, 7, 8, 8, 1, 9] | 5
+        [4, 8, 12, 16]               | 2
+        [1]                          | 1
+        [1, 1, 1]                    | 1
+    }
+
     def "979. Distribute Coins in Binary Tree"(TreeNode root, int res) {
         given:
         def solution = new Problem979()
