@@ -1,4 +1,4 @@
-package leetcode
+package main
 
 func convert(s string, numRows int) string {
 	if numRows == 1 {

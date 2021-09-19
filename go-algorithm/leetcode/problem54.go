@@ -1,4 +1,4 @@
-package leetcode
+package main
 
 func spiralOrder(matrix [][]int) []int {
 	var ans []int

@@ -1,4 +1,4 @@
-package leetcode
+package main
 
 /*
 36. Valid Sudoku

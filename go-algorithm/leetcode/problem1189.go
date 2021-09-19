@@ -1,4 +1,4 @@
-package leetcode
+package main
 
 func maxNumberOfBalloons(text string) int {
 	counter := make(map[uint8]int)
