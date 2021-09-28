@@ -1,4 +1,4 @@
-package main
+package leetcode
 
 func numberOfBoomerangs(points [][]int) int {
 	n := len(points)

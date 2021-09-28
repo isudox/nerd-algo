@@ -1,4 +1,4 @@
-package main
+package leetcode
 
 /*
 350. Intersection of Two Arrays II

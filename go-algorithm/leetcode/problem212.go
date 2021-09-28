@@ -1,4 +1,4 @@
-package main
+package leetcode
 
 type TrieNode struct {
 	children [26]*TrieNode

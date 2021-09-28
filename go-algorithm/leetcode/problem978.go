@@ -1,4 +1,4 @@
-package main
+package leetcode
 
 func maxTurbulenceSize(arr []int) int {
 	n := len(arr)

@@ -1,4 +1,4 @@
-package main
+package leetcode
 
 // 326. Power of Three
 // https://leetcode-cn.com/problems/power-of-three/

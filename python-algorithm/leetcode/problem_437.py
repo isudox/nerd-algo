@@ -33,9 +33,7 @@ from typing import List
 
 
 class Solution:
-    def path_sum(self, root: TreeNode, sum: int) -> int:
-        ans = 0
-
+    def path_sum(self, root: TreeNode, target: int) -> int:
         def recur(node: TreeNode, t: List[int]):
             nonlocal ans
             if not node:
@@ -44,11 +42,12 @@ class Solution:
                 if ele == node.val:
                     ans += 1
             t = [x - node.val for x in t]
-            t.append(sum)
+            t.append(target)
             if node.left:
                 recur(node.left, t)
             if node.right:
                 recur(node.right, t)
 
-        recur(root, [sum])
+        ans = 0
+        recur(root, [target])
         return ans

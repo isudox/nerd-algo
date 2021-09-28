@@ -1,4 +1,4 @@
-package main
+package leetcode
 
 func findNumberOfLIS(nums []int) int {
 	ans := 0
