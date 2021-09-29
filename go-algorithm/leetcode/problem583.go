@@ -1,8 +1,15 @@
-package main
+package leetcode
 
 // 583. Delete Operation for Two Strings
 // https://leetcode.com/problems/delete-operation-for-two-strings/
 func minDistance(word1 string, word2 string) int {
+	var min func(x, y int) int
+	min = func(x, y int) int {
+		if x < y {
+			return x
+		}
+		return y
+	}
 	m, n := len(word1), len(word2)
 	dp := make([][]int, m+1)
 	for i := 0; i <= m; i++ {
@@ -22,11 +29,4 @@ func minDistance(word1 string, word2 string) int {
 		}
 	}
 	return dp[m][n]
-}
-
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
 }

@@ -11,6 +11,13 @@ func shortestPath(grid [][]int, k int) int {
 		visited[i] = make([]bool, n)
 	}
 	dirs := [4][2]int{{0, 1}, {0, -1}, {1, 0}, {-1, 0}}
+	var min func(x, y int) int
+	min = func(a, b int) int {
+		if a < b {
+			return a
+		}
+		return b
+	}
 	var dfs func(x, y, z int) int
 	dfs = func(x, y, z int) int {
 		if x == m-1 && y == n-1 {
@@ -45,11 +52,4 @@ func shortestPath(grid [][]int, k int) int {
 		return -1
 	}
 	return result
-}
-
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
 }
