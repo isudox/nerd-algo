@@ -8,4 +8,4 @@ from common.list_node import ListNode
 
 class Solution:
     def split_list_to_parts(self, head: ListNode, k: int) -> List[ListNode]:
-
+        pass

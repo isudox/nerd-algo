@@ -42,8 +42,3 @@ func helper(node *ListNode, carry int) *ListNode {
 	}
 	return node
 }
-
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
