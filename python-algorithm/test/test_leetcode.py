@@ -2675,6 +2675,18 @@ def test_1024(clips: List[List[int]], time: int, ans: int):
     assert sol.video_stitching(clips, time) == ans
 
 
+@pytest.mark.parametrize('text1, text2, ans', [
+    ("abcde", "ace", 3),
+    ("abc", "abc", 3),
+    ("abc", "def", 0),
+    ("oxcpqrsvwf", "shmtulqrypy", 2)
+])
+def test_1143(text1: str, text2: str, ans: int):
+    from leetcode.problem_1143 import Solution
+    sol = Solution()
+    assert sol.longest_common_subsequence(text1, text2) == ans
+
+
 @pytest.mark.parametrize('words, puzzles, ans', [
     (["aaaa", "asas", "able", "ability", "actt", "actor", "access"],
      ["aboveyz", "abrodyz", "abslute", "absoryz", "actresz", "gaswxyz"],

@@ -8,8 +8,7 @@ func findMinMoves(machines []int) (ans int) {
 		}
 		return x
 	}
-	var max func(x, y int) int
-	max = func(x, y int) int {
+	max := func(x, y int) int {
 		if x > y {
 			return x
 		}
