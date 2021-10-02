@@ -30,10 +30,3 @@ class Solution:
             return ret
 
         return dfs(0, 0)
-
-
-if __name__ == '__main__':
-    sol = Solution()
-    print(sol.longest_common_subsequence("abcde", "ace"))
-    print(sol.longest_common_subsequence(text1="abc", text2="abc"))
-    print(sol.longest_common_subsequence(text1="abc", text2="def"))

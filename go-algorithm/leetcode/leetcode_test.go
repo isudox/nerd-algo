@@ -5,6 +5,23 @@ import (
 	"testing"
 )
 
+func Test_calculateMinimumHP(t *testing.T) {
+	tests := []struct {
+		dungeon [][]int
+		want    int
+	}{
+		{[][]int{{-2, -3, 3}, {-5, -10, 1}, {10, 30, -5}}, 7},
+		//{[][]int{{0}}, 1},
+	}
+	for _, tt := range tests {
+		t.Run("174. Dungeon Game", func(t *testing.T) {
+			if got := calculateMinimumHP(tt.dungeon); got != tt.want {
+				t.Errorf("calculateMinimumHP() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
 func Test_223(t *testing.T) {
 	tests := []struct {
 		ax1  int
@@ -24,6 +41,24 @@ func Test_223(t *testing.T) {
 		t.Run("223. Rectangle Area", func(t *testing.T) {
 			if got := computeArea(tt.ax1, tt.ay1, tt.ax2, tt.ay2, tt.bx1, tt.by1, tt.bx2, tt.by2); got != tt.want {
 				t.Errorf("computeArea() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func Test_405(t *testing.T) {
+	tests := []struct {
+		num int
+		ans string
+	}{
+		{26, "1a"},
+		{0, "0"},
+		{-1, "ffffffff"},
+	}
+	for _, tt := range tests {
+		t.Run("405. Convert a Number to Hexadecimal", func(t *testing.T) {
+			if got := toHex(tt.num); got != tt.ans {
+				t.Errorf("toHex() = %v, want %v", got, tt.ans)
 			}
 		})
 	}
