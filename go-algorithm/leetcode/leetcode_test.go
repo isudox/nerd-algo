@@ -5,13 +5,53 @@ import (
 	"testing"
 )
 
-func Test_calculateMinimumHP(t *testing.T) {
+func Test_55(t *testing.T) {
+	tests := []struct {
+		nums []int
+		want bool
+	}{
+		{[]int{2, 0}, true},
+		{[]int{2, 3, 1, 1, 4}, true},
+		{[]int{3, 2, 1, 0, 4}, false},
+	}
+	for _, tt := range tests {
+		t.Run("55. Jump Game", func(t *testing.T) {
+			if got := canJump(tt.nums); got != tt.want {
+				t.Errorf("canJump() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func Test_166(t *testing.T) {
+	tests := []struct {
+		numerator   int
+		denominator int
+		ans         string
+	}{
+		{1, 2, "0.5"},
+		{2, 1, "2"},
+		{3, 2, "1.5"},
+		{2, 3, "0.(6)"},
+		{1, 6, "0.1(6)"},
+		{4, 333, "0.(012)"},
+		{-50, 8, "-6.25"},
+	}
+	for _, tt := range tests {
+		t.Run("166. Fraction to Recurring Decimal", func(t *testing.T) {
+			if got := fractionToDecimal(tt.numerator, tt.denominator); got != tt.ans {
+				t.Errorf("fractionToDecimal() = %v, want %v", got, tt.ans)
+			}
+		})
+	}
+}
+func Test_174(t *testing.T) {
 	tests := []struct {
 		dungeon [][]int
 		want    int
 	}{
 		{[][]int{{-2, -3, 3}, {-5, -10, 1}, {10, 30, -5}}, 7},
-		//{[][]int{{0}}, 1},
+		{[][]int{{0}}, 1},
 	}
 	for _, tt := range tests {
 		t.Run("174. Dungeon Game", func(t *testing.T) {
