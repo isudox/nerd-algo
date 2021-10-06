@@ -104,6 +104,23 @@ func Test_405(t *testing.T) {
 	}
 }
 
+func Test_414(t *testing.T) {
+	tests := []struct {
+		nums []int
+		ans  int
+	}{
+		{[]int{5,2,2}, 5},
+		//{[]int{1,2,-2147483648}, -2147483648},
+	}
+	for _, tt := range tests {
+		t.Run("414. Third Maximum Number", func(t *testing.T) {
+			if got := thirdMax(tt.nums); got != tt.ans {
+				t.Errorf("thirdMax() = %v, want %v", got, tt.ans)
+			}
+		})
+	}
+}
+
 func Test_698(t *testing.T) {
 	type args struct {
 		nums []int
