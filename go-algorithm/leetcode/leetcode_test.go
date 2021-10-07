@@ -23,6 +23,26 @@ func Test_55(t *testing.T) {
 	}
 }
 
+func Test_79(t *testing.T) {
+	tests := []struct {
+		board [][]byte
+		word  string
+		ans   bool
+	}{
+		{[][]byte{{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}}, "ABCCED", true},
+		{[][]byte{{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}}, "SEE", true},
+		{[][]byte{{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}}, "ABCB", false},
+		{[][]byte{{'A'}}, "A", true},
+	}
+	for _, tt := range tests {
+		t.Run("79. Word Search", func(t *testing.T) {
+			if got := exist(tt.board, tt.word); got != tt.ans {
+				t.Errorf("exist() = %v, want %v", got, tt.ans)
+			}
+		})
+	}
+}
+
 func Test_166(t *testing.T) {
 	tests := []struct {
 		numerator   int
@@ -109,13 +129,29 @@ func Test_414(t *testing.T) {
 		nums []int
 		ans  int
 	}{
-		{[]int{5,2,2}, 5},
+		{[]int{5, 2, 2}, 5},
 		//{[]int{1,2,-2147483648}, -2147483648},
 	}
 	for _, tt := range tests {
 		t.Run("414. Third Maximum Number", func(t *testing.T) {
 			if got := thirdMax(tt.nums); got != tt.ans {
 				t.Errorf("thirdMax() = %v, want %v", got, tt.ans)
+			}
+		})
+	}
+}
+
+func Test_434(t *testing.T) {
+	tests := []struct {
+		s   string
+		ans int
+	}{
+		{"Hello, my name is John", 5},
+	}
+	for _, tt := range tests {
+		t.Run("434. Number of Segments in a String", func(t *testing.T) {
+			if got := countSegments(tt.s); got != tt.ans {
+				t.Errorf("countSegments() = %v, want %v", got, tt.ans)
 			}
 		})
 	}
