@@ -82,6 +82,24 @@ func Test_174(t *testing.T) {
 	}
 }
 
+func Test_187(t *testing.T) {
+	tests := []struct {
+		s   string
+		ans []string
+	}{
+		{"AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT", []string{"AAAAACCCCC", "CCCCCAAAAA"}},
+		{"AAAAAAAAAAAAA", []string{"AAAAAAAAAA"}},
+		{"AAAAAAAAA", []string{}},
+	}
+	for _, tt := range tests {
+		t.Run("187. Repeated DNA Sequences", func(t *testing.T) {
+			if got := findRepeatedDnaSequences(tt.s); !reflect.DeepEqual(got, tt.ans) {
+				t.Errorf("findRepeatedDnaSequences() = %v, want %v", got, tt.ans)
+			}
+		})
+	}
+}
+
 func Test_223(t *testing.T) {
 	tests := []struct {
 		ax1  int
