@@ -124,6 +124,17 @@ func Test_223(t *testing.T) {
 	}
 }
 
+func Test_352(t *testing.T) {
+	t.Run("352. Data Stream as Disjoint Intervals", func(t *testing.T) {
+		r := SummaryRanges{}
+		r.AddNum(1)
+		r.AddNum(3)
+		r.AddNum(7)
+		r.AddNum(2)
+		r.AddNum(6)
+		t.Log(r.GetIntervals())
+	})
+}
 func Test_405(t *testing.T) {
 	tests := []struct {
 		num int

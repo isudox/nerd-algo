@@ -1,16 +1,19 @@
 package leetcode
 
+// Package leetcode 208. Implement Trie (Prefix Tree)
+// https://leetcode.com/problems/implement-trie-prefix-tree/
+
 type Trie struct {
 	children [26]*Trie
-	isEnd bool
+	isEnd    bool
 }
 
 func Constructor() Trie {
 	return Trie{}
 }
 
-func (this *Trie) Insert(word string) {
-	node := this
+func (t *Trie) Insert(word string) {
+	node := t
 	for _, c := range word {
 		c -= 'a'
 		if node.children[c] == nil {
@@ -21,8 +24,8 @@ func (this *Trie) Insert(word string) {
 	node.isEnd = true
 }
 
-func (this *Trie) SearchPrefix(prefix string) *Trie {
-	node := this
+func (t *Trie) SearchPrefix(prefix string) *Trie {
+	node := t
 	for _, c := range prefix {
 		c -= 'a'
 		if node.children[c] == nil {
@@ -33,11 +36,11 @@ func (this *Trie) SearchPrefix(prefix string) *Trie {
 	return node
 }
 
-func (this *Trie) Search(word string) bool {
-	node := this.SearchPrefix(word)
+func (t *Trie) Search(word string) bool {
+	node := t.SearchPrefix(word)
 	return node != nil && node.isEnd
 }
 
-func (this *Trie) StartsWith(prefix string) bool {
-	return this.SearchPrefix(prefix) != nil
+func (t *Trie) StartsWith(prefix string) bool {
+	return t.SearchPrefix(prefix) != nil
 }
