@@ -124,6 +124,22 @@ func Test_223(t *testing.T) {
 	}
 }
 
+func Test_273(t *testing.T) {
+	tests := []struct {
+		num int
+		ans string
+	}{
+		{2147483647, "Two Billion One Hundred Forty Seven Million Four Hundred Eighty Three Thousand Six Hundred Forty Seven"},
+		{1000000, "One Million"},
+	}
+	for _, tt := range tests {
+		t.Run("273. Integer to English Words", func(t *testing.T) {
+			if got := numberToWords(tt.num); got != tt.ans {
+				t.Errorf("numberToWords = %v, want %v", got, tt.ans)
+			}
+		})
+	}
+}
 func Test_352(t *testing.T) {
 	t.Run("352. Data Stream as Disjoint Intervals", func(t *testing.T) {
 		r := SummaryRanges{}
