@@ -128,10 +128,8 @@ func Test_352(t *testing.T) {
 	t.Run("352. Data Stream as Disjoint Intervals", func(t *testing.T) {
 		r := SummaryRanges{}
 		r.AddNum(1)
-		r.AddNum(3)
-		r.AddNum(7)
+		r.AddNum(9)
 		r.AddNum(2)
-		r.AddNum(6)
 		t.Log(r.GetIntervals())
 	})
 }
@@ -181,6 +179,24 @@ func Test_434(t *testing.T) {
 		t.Run("434. Number of Segments in a String", func(t *testing.T) {
 			if got := countSegments(tt.s); got != tt.ans {
 				t.Errorf("countSegments() = %v, want %v", got, tt.ans)
+			}
+		})
+	}
+}
+
+func Test_441(t *testing.T) {
+	tests := []struct {
+		n   int
+		ans int
+	}{
+		{5, 2},
+		{6, 3},
+		{8, 3},
+	}
+	for _, tt := range tests {
+		t.Run("441. Arranging Coins", func(t *testing.T) {
+			if got := arrangeCoins(tt.n); got != tt.ans {
+				t.Errorf("got = %v, want = %v", got, tt.ans)
 			}
 		})
 	}

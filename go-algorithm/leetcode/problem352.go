@@ -18,32 +18,34 @@ func (r *SummaryRanges) AddNum(val int) {
 	}
 	for i, interval := range r.Intervals {
 		if interval[0] <= val && val <= interval[1] {
-			continue
+			break
 		}
-		if interval[0] > val {
-			if i == 0 {
-				r.Intervals = append([][]int{{val, val}}, r.Intervals...)
-			} else {
-				if r.Intervals[i-1][1] == val-1 && interval[0] == val+1 {
-					interval[0] = r.Intervals[i-1][0]
-					r.Intervals = append(r.Intervals[:i-1], r.Intervals[i:]...)
-					return
-				} else if r.Intervals[i-1][1] == val-1 {
-					r.Intervals[i-1][1] = val
-				} else if interval[0] == val+1 {
-					interval[0] = val
-				} else {
-					left := append(r.Intervals[:i], []int{val, val})
-					right := r.Intervals[i:]
-					r.Intervals = append(left, right...)
-					return
-				}
-			}
-		} else {
-			if i == len(r.Intervals)-1 {
-				r.Intervals = append(r.Intervals, []int{val, val})
+		if interval[0] == val+1 {
+			if i > 0 && r.Intervals[i-1][1] == val-1 {
+				interval[0] = r.Intervals[i-1][0]
+				r.Intervals = append(r.Intervals[:i-1], r.Intervals[i:]...)
 				return
+			} else {
+				interval[0] = val
 			}
+			return
+		}
+		if interval[0] > val+1 {
+			if i > 0 && r.Intervals[i-1][1]+1 == val {
+				r.Intervals[i-1][1] = val
+			} else {
+				r.Intervals = append(r.Intervals[:i+1], r.Intervals[i:]...)
+				r.Intervals[i] = []int{val, val}
+			}
+			return
+		}
+		if i == len(r.Intervals)-1 {
+			if interval[1] == val-1 {
+				interval[1] = val
+			} else {
+				r.Intervals = append(r.Intervals, []int{val, val})
+			}
+			return
 		}
 	}
 }
