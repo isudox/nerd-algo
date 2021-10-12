@@ -1,11 +1,32 @@
 package leetcode
 
 import (
+	"github.com/stretchr/testify/assert"
 	"reflect"
 	"testing"
 )
 
+func Test_29(t *testing.T) {
+	a := assert.New(t)
+	tests := []struct {
+		dividend int
+		divisor  int
+		ans      int
+	}{
+		{10, 3, 3},
+		{0, 1, 0},
+		{1, 1, 1},
+		{7, -3, -2},
+		{-2147483648, -1, 2147483647},
+		{-2147483648, 1, -2147483648},
+	}
+	for _, t := range tests {
+		a.Equal(t.ans, divide(t.dividend, t.divisor))
+	}
+}
+
 func Test_55(t *testing.T) {
+	a := assert.New(t)
 	tests := []struct {
 		nums []int
 		want bool
@@ -15,15 +36,12 @@ func Test_55(t *testing.T) {
 		{[]int{3, 2, 1, 0, 4}, false},
 	}
 	for _, tt := range tests {
-		t.Run("55. Jump Game", func(t *testing.T) {
-			if got := canJump(tt.nums); got != tt.want {
-				t.Errorf("canJump() = %v, want %v", got, tt.want)
-			}
-		})
+		a.Equal(canJump(tt.nums), tt.want)
 	}
 }
 
 func Test_79(t *testing.T) {
+	a := assert.New(t)
 	tests := []struct {
 		board [][]byte
 		word  string
@@ -34,12 +52,8 @@ func Test_79(t *testing.T) {
 		{[][]byte{{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}}, "ABCB", false},
 		{[][]byte{{'A'}}, "A", true},
 	}
-	for _, tt := range tests {
-		t.Run("79. Word Search", func(t *testing.T) {
-			if got := exist(tt.board, tt.word); got != tt.ans {
-				t.Errorf("exist() = %v, want %v", got, tt.ans)
-			}
-		})
+	for _, t := range tests {
+		a.Equal(exist(t.board, t.word), t.ans)
 	}
 }
 
