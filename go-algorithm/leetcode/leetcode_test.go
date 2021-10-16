@@ -74,6 +74,25 @@ func Test_79(t *testing.T) {
 	}
 }
 
+func Test_123(t *testing.T) {
+	tests := []struct {
+		prices []int
+		ans    int
+	}{
+		{[]int{3, 3, 5, 0, 0, 3, 1, 4}, 6},
+		{[]int{1, 2, 3, 4, 5}, 4},
+		{[]int{7, 6, 4, 3, 1}, 0},
+		{[]int{1}, 0},
+	}
+	for _, tt := range tests {
+		t.Run("123", func(t *testing.T) {
+			if got := maxProfit3(tt.prices); got != tt.ans {
+				t.Errorf("maxProfit3() = %v, want %v", got, tt.ans)
+			}
+		})
+	}
+}
+
 func Test_166(t *testing.T) {
 	tests := []struct {
 		numerator   int

@@ -58,26 +58,32 @@ it's effect on the expression's value while considering the multiply operator.
 
 class Solution:
     def add_operators(self, num: str, target: int) -> List[str]:
-        result = []
-        length = len(num)
+        ans = []
 
-        def recurse(start: int, pre_target: int, pre_expr: str):
-            if start == length:
-                if pre_target == target:
-                    result.append(pre_expr)
-            for i in range(start + 1, len(num) + 1):
-                cur_num = num[start:i]
-                if pre_expr[-1] == '+':
-                    pre_target += int(cur_num)
-                    recurse(i, pre_target, pre_expr + cur_num + '+')
-                    recurse(i, pre_target, pre_expr + cur_num + '-')
-                    recurse(i, pre_target, pre_expr + cur_num + '*')
-                if pre_expr[-1] == '-':
-                    pre_target -= int(cur_num)
-                    recurse(i, pre_target, pre_expr + cur_num + '+')
-                    recurse(i, pre_target, pre_expr + cur_num + '-')
-                    recurse(i, pre_target, pre_expr + cur_num + '*')
-                if pre_expr[-1] == '*':
-                    pass
-
-        return result
+        def backtrack(store: List[str], i: int, res: int, mul: int):
+            if i == len(num):
+                if res == target:
+                    ans.append(''.join(store))
+                return
+            size = len(store)
+            if i > 0:
+                store.append('')
+            val = 0
+            for j in range(i, len(num)):
+                if j > i and num[i] == '0':
+                    break
+                val = val * 10 + int(num[j])
+                store.append(num[j])
+                if i == 0:
+                    backtrack(store, j + 1, val, val)
+                else:
+                    store[size] = '+'
+                    backtrack(store, j + 1, res + val, val)
+                    store[size] = '-'
+                    backtrack(store, j + 1, res - val, -val)
+                    store[size] = '*'
+                    backtrack(store, j + 1, res - mul + mul * val, mul * val)
+            del store[size:]
+        
+        backtrack([], 0, 0, 0)
+        return ans
