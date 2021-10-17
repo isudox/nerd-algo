@@ -14,8 +14,8 @@ public final class TreeNode {
     public TreeNode() {
     }
 
-    public TreeNode(int x) {
-        val = x;
+    public TreeNode(int val) {
+        this.val = val;
     }
 
     public TreeNode(int val, TreeNode left, TreeNode right) {
