@@ -3,7 +3,7 @@ package leetcode
 // 496. Next Greater Element I
 // https://leetcode.com/problems/next-greater-element-i/
 
-func nextGreaterElement(nums1 []int, nums2 []int) []int {
+func nextGreaterElement1(nums1 []int, nums2 []int) []int {
 	m, n := len(nums1), len(nums2)
 	memo := make(map[int]int)
 	var stack []int

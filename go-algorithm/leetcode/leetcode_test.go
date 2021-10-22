@@ -57,6 +57,24 @@ func Test_55(t *testing.T) {
 	}
 }
 
+func Test_66(t *testing.T) {
+	tests := []struct {
+		digits []int
+		ans    []int
+	}{
+		{[]int{9}, []int{1, 0}},
+		{[]int{9, 9}, []int{1, 0, 0}},
+		{[]int{9, 9, 9}, []int{1, 0, 0, 0}},
+	}
+	for _, tt := range tests {
+		t.Run("66. Plus One", func(t *testing.T) {
+			if got := plusOne(tt.digits); !reflect.DeepEqual(got, tt.ans) {
+				t.Errorf("plusOne got %+v, want %+v", got, tt.ans)
+			}
+		})
+	}
+}
+
 func Test_79(t *testing.T) {
 	a := assert.New(t)
 	tests := []struct {
@@ -298,6 +316,24 @@ func Test_441(t *testing.T) {
 	}
 }
 
+func Test_496(t *testing.T) {
+	tests := []struct {
+		nums1 []int
+		nums2 []int
+		ans   []int
+	}{
+		{[]int{4, 1, 2}, []int{1, 3, 4, 2}, []int{-1, 3, -1}},
+		{[]int{2, 4}, []int{1, 2, 3, 4}, []int{3, -1}},
+	}
+	for _, tt := range tests {
+		t.Run("496. Next Greater Element I", func(t *testing.T) {
+			if got := nextGreaterElement1(tt.nums1, tt.nums2); !reflect.DeepEqual(got, tt.ans) {
+				t.Errorf("nextGreaterElement1() = %v, want %v", got, tt.ans)
+			}
+		})
+	}
+}
+
 func Test_698(t *testing.T) {
 	type args struct {
 		nums []int
@@ -370,6 +406,38 @@ func Test_929(t *testing.T) {
 		t.Run("929. Unique Email Addresses", func(t *testing.T) {
 			if got := numUniqueEmails(tt.emails); got != tt.want {
 				t.Errorf("numUniqueEmails() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func Test_993(t *testing.T) {
+	node1 := &TreeNode{Val: 1, Left: nil, Right: nil}
+	node2 := &TreeNode{2, nil, nil}
+	node3 := &TreeNode{3, nil, nil}
+	node4 := &TreeNode{4, nil, nil}
+	node5 := &TreeNode{5, nil, nil}
+	node6 := &TreeNode{6, nil, nil}
+	node7 := &TreeNode{7, nil, nil}
+	node8 := &TreeNode{8, nil, nil}
+	node9 := &TreeNode{9, nil, nil}
+	node1.Right = node2
+	node2.Left, node2.Right = node3, node4
+	node3.Left, node3.Right = node5, node6
+	node4.Left, node4.Right = node7, node8
+	node6.Left = node9
+	tests := []struct {
+		root *TreeNode
+		x    int
+		y    int
+		ans  bool
+	}{
+		{node1, 5, 8, true},
+	}
+	for _, tt := range tests {
+		t.Run("993. Cousins in Binary Tree", func(t *testing.T) {
+			if got := isCousins(tt.root, tt.x, tt.y); got != tt.ans {
+				t.Errorf("isCousins() = %v, want %v", got, tt.ans)
 			}
 		})
 	}
