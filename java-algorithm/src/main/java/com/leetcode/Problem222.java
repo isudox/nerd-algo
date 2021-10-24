@@ -2,30 +2,30 @@ package com.leetcode;
 
 import com.common.TreeNode;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 /**
  * 222. Count Complete Tree Nodes
  * https://leetcode.com/problems/count-complete-tree-nodes/
- *
- * Given a complete binary tree, count the number of nodes.
- *
- * Definition:
- * In a complete binary tree every level, except possibly the last,
- * is completely filled, and all nodes in the last level are as far left as possible.
- * It can have between 1 and 2h nodes inclusive at the last level h.
- *
- * Example:
- *
- * Input:
- *     1
- *    / \
- *   2   3
- *  / \  /
- * 4  5 6
- *
- * Output: 6
  */
 public class Problem222 {
     public int countNodes(TreeNode root) {
-        return 0;
+        if (null == root) return 0;
+        Deque<TreeNode> queue = new ArrayDeque<>();
+        queue.add(root);
+        int ans = 0;
+        while (queue.size() > 0) {
+            int n = queue.size();
+            ans += n;
+            for (int i = 0; i < n; i++) {
+                TreeNode node = queue.pollFirst();
+                if (node.left != null)
+                    queue.add(node.left);
+                if (node.right != null)
+                    queue.add(node.right);
+            }
+        }
+        return ans;
     }
 }
