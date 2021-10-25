@@ -8,7 +8,7 @@ type Trie struct {
 	isEnd    bool
 }
 
-func Constructor() Trie {
+func _() Trie {
 	return Trie{}
 }
 

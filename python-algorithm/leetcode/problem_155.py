@@ -25,9 +25,6 @@ minStack.getMin();   --> Returns -2.
 class MinStack:
 
     def __init__(self):
-        """
-        initialize your data structure here.
-        """
         self.elements = []
         self.min_cache = []
 

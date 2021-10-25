@@ -92,6 +92,17 @@ func Test_79(t *testing.T) {
 	}
 }
 
+func Test_155(t *testing.T) {
+	minStack := MinStack{}
+	minStack.Push(-2)
+	minStack.Push(0)
+	minStack.Push(-1)
+	println("getMin = ", minStack.GetMin())
+	println("top = ", minStack.Top())
+	minStack.Pop()
+	println("getMin = ", minStack.GetMin())
+}
+
 func Test_123(t *testing.T) {
 	tests := []struct {
 		prices []int
