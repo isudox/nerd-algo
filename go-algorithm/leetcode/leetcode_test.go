@@ -75,6 +75,10 @@ func Test_66(t *testing.T) {
 	}
 }
 
+func Test_75(t *testing.T) {
+	sortColors([]int{1, 2, 0})
+}
+
 func Test_79(t *testing.T) {
 	a := assert.New(t)
 	tests := []struct {
