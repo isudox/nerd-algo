@@ -33,7 +33,7 @@ func maxLength(arr []string) int {
 				seen[c-'a'] = false
 			}
 		}
-		ret2 := dfs(i + 1, seen)
+		ret2 := dfs(i+1, seen)
 		if ret2 > ret {
 			ret = ret2
 		}

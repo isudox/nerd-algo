@@ -15,9 +15,9 @@ func maxProfit3(prices []int) int {
 	secondBuy, secondSell := -prices[0], 0
 	for i := 1; i < n; i++ {
 		firstBuy2 := max(firstBuy, -prices[i])
-		firstSell2 := max(firstBuy + prices[i], firstSell)
-		secondBuy2 := max(secondBuy, firstSell - prices[i])
-		secondSell2 := max(secondSell, secondBuy + prices[i])
+		firstSell2 := max(firstBuy+prices[i], firstSell)
+		secondBuy2 := max(secondBuy, firstSell-prices[i])
+		secondSell2 := max(secondSell, secondBuy+prices[i])
 		firstBuy = firstBuy2
 		firstSell = firstSell2
 		secondBuy = secondBuy2

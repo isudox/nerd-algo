@@ -5,14 +5,14 @@ func convert(s string, numRows int) string {
 		return s
 	}
 	n := len(s)
-	x := n / (2 * numRows - 2)
-	y := n % (2 * numRows - 2)
+	x := n / (2*numRows - 2)
+	y := n % (2*numRows - 2)
 	if y <= numRows {
 		y = 1
 	} else {
 		y += 1 - numRows
 	}
-	cols := x * (numRows - 1) + y
+	cols := x*(numRows-1) + y
 	matrix := make([][]string, numRows)
 	for i := 0; i < numRows; i++ {
 		matrix[i] = make([]string, cols)

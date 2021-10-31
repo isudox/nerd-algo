@@ -5,9 +5,9 @@ package leetcode
 https://leetcode.com/problems/find-peak-element/
 */
 func findPeakElement(nums []int) int {
-	i, j := 0, len(nums) - 1
+	i, j := 0, len(nums)-1
 	for i < j {
-		mid := i + (j - i) / 2
+		mid := i + (j-i)/2
 		if nums[mid] > nums[mid+1] {
 			j = mid
 		} else {

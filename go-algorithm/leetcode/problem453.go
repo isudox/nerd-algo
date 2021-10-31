@@ -10,5 +10,5 @@ func minMoves(nums []int) int {
 		}
 		sum += num
 	}
-	return sum - min * len(nums)
+	return sum - min*len(nums)
 }

@@ -6,7 +6,7 @@ func findComplement(num int) int {
 	ans := 0
 	mul := 0
 	for num > 0 {
-		if num & 1 == 0 {
+		if num&1 == 0 {
 			ans += 1 << mul
 		}
 		num = num >> 1

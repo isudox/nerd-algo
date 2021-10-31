@@ -17,7 +17,7 @@ func spiralOrder(matrix [][]int) []int {
 	visited[0][0] = true
 	cnt := 1
 	for cnt < size {
-		nx, ny := x + dirs[i][0], y + dirs[i][1]
+		nx, ny := x+dirs[i][0], y+dirs[i][1]
 		if 0 <= nx && nx < m && 0 <= ny && ny < n && !visited[nx][ny] {
 			x = nx
 			y = ny
