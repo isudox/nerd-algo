@@ -1,4 +1,4 @@
-package leetcode
+package main
 
 func peakIndexInMountainArray(arr []int) int {
 	i, j := 0, len(arr)-1

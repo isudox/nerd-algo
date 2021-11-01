@@ -1,4 +1,4 @@
-package leetcode
+package main
 
 func maxProfit3(prices []int) int {
 	max := func(x, y int) int {

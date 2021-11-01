@@ -1,4 +1,4 @@
-package leetcode
+package main
 
 func numSquares(n int) int {
 	memo := make(map[int]int)

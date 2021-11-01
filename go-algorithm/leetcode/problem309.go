@@ -1,4 +1,4 @@
-package leetcode
+package main
 
 func maxProfit(prices []int) int {
 	n := len(prices)

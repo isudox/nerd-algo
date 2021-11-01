@@ -1,4 +1,4 @@
-package leetcode
+package main
 
 // 226. Invert Binary Tree
 // https://leetcode.com/problems/invert-binary-tree/

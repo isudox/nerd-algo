@@ -1,4 +1,4 @@
-package leetcode
+package main
 
 func splitListToParts(head *ListNode, k int) []*ListNode {
 	n := 0

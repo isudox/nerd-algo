@@ -1,6 +1,6 @@
-package leetcode
+package main
 
-// Package leetcode 208. Implement Trie (Prefix Tree)
+// package main 208. Implement Trie (Prefix Tree)
 // https://leetcode.com/problems/implement-trie-prefix-tree/
 
 type Trie struct {

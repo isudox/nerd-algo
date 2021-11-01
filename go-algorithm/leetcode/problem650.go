@@ -1,4 +1,4 @@
-package leetcode
+package main
 
 func minSteps(n int) int {
 	dp := make([][]int, n+1)

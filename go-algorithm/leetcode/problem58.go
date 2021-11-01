@@ -1,4 +1,4 @@
-package leetcode
+package main
 
 func lengthOfLastWord(s string) int {
 	n := len(s)

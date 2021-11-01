@@ -1,4 +1,4 @@
-package leetcode
+package main
 
 func isCousins(root *TreeNode, x int, y int) bool {
 	store := make(map[int]int)

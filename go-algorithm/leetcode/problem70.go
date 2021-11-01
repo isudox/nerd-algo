@@ -1,4 +1,4 @@
-package leetcode
+package main
 
 // 70. Climbing Stairs
 // https://leetcode.com/problems/climbing-stairs/

@@ -1,4 +1,4 @@
-package leetcode
+package main
 
 func findMinMoves(machines []int) (ans int) {
 	var abs func(x int) int
