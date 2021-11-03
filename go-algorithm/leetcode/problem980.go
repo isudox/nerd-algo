@@ -22,16 +22,16 @@ func uniquePathsIII(grid [][]int) int {
 	for i := 0; i < m; i++ {
 		visited[i] = make([]bool, n)
 	}
-	var backtrack func(x, y, zero int)
-	backtrack = func(x, y, zero int) {
+	var backtrack func(x, y, zeros int)
+	backtrack = func(x, y, zeros int) {
 		for _, d := range []struct{ x, y int }{{0, 1}, {0, -1}, {1, 0}, {-1, 0}} {
 			nx, ny := x+d.x, y+d.y
 			if 0 <= nx && nx < m && 0 <= ny && ny < n && !visited[nx][ny] && grid[nx][ny] != -1 {
 				if grid[nx][ny] == 0 {
 					visited[nx][ny] = true
-					backtrack(nx, ny, zero+1)
+					backtrack(nx, ny, zeros+1)
 					visited[nx][ny] = false
-				} else if zero == zeroCnt {
+				} else if zeros == zeroCnt {
 					ans++
 				}
 			}
