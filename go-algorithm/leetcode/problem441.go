@@ -9,7 +9,6 @@ func arrangeCoins(n int) int {
 	}
 	if sum == n {
 		return ans - 1
-	} else {
-		return ans - 2
 	}
+	return ans - 2
 }
