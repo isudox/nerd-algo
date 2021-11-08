@@ -16,7 +16,6 @@ public class Problem441 {
     }
 
     public int arrangeCoins2(int n) {
-        // (x+1) * x / 2 = n
         int l = 1, r = n;
         while (l < r) {
             int mid = l + (r - l + 1) / 2;
@@ -31,9 +30,5 @@ public class Problem441 {
             }
         }
         return l;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new Problem441().arrangeCoins2(5));
     }
 }
