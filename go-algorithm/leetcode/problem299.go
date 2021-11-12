@@ -8,8 +8,7 @@ import "fmt"
 func getHint(secret string, guess string) string {
 	n := len(secret)
 	bulls, cows := 0, 0
-	counter1 := make([]int, 10)
-	counter2 := make([]int, 10)
+	cnt1, cnt2 := make([]int, 10), make([]int, 10)
 	min := func(x, y int) int {
 		if x < y {
 			return x
@@ -20,11 +19,11 @@ func getHint(secret string, guess string) string {
 		if secret[i] == guess[i] {
 			bulls++
 		}
-		counter1[secret[i]-'0']++
-		counter2[guess[i]-'0']++
+		cnt1[secret[i]-'0']++
+		cnt2[guess[i]-'0']++
 	}
 	for i := 0; i < 10; i++ {
-		cows += min(counter1[i], counter2[i])
+		cows += min(cnt1[i], cnt2[i])
 	}
 	cows -= bulls
 	return fmt.Sprintf("%dA%dB", bulls, cows)

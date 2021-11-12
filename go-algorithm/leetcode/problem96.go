@@ -25,7 +25,3 @@ func numTrees(n int) int {
 	}
 	return dfs(1, n)
 }
-
-func main() {
-	numTrees(3)
-}
