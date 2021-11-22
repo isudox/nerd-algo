@@ -57,9 +57,3 @@ func largestDivisibleSubset(nums []int) []int {
 	}
 	return ans
 }
-
-//func main() {
-//	arg := []int{5, 9, 18, 54, 108, 540, 90, 180, 360, 720}
-//	ans := largestDivisibleSubset(arg)
-//	fmt.Printf("ans: %v", ans) //[2,4,8]
-//}
