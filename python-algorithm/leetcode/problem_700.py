@@ -13,3 +13,8 @@ class Solution:
         if root.val > val:
             return self.searchBST(root.left, val)
         return root
+
+    def searchBST2(self, root: TreeNode, val: int) -> TreeNode:
+        while root and root.val != val:
+            root = root.left if root.val > val else root.right
+        return root

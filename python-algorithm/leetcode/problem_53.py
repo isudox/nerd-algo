@@ -45,7 +45,7 @@ class Solution:
             if nums[i] < smallest:
                 smallest = nums[i]
         return ans
-    
+
     def max_sub_array3(self, nums: List[int]) -> int:
         ans, pre_sum, minimum = nums[0], 0, 0
         for num in nums:
