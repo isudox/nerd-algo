@@ -34,8 +34,3 @@ class Solution:
             else:
                 i += 1
         return ans
-
-
-if __name__ == '__main__':
-    sol = Solution()
-    print(sol.original_digits("zerozero"))
