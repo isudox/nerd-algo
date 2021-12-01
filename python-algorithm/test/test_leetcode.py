@@ -1877,6 +1877,15 @@ def test_494(nums, target, expect):
     assert solution.brute_force(nums, target) == expect
 
 
+@pytest.mark.parametrize('score, ans', [
+    ([5, 4, 3, 2, 1], ["Gold Medal", "Silver Medal", "Bronze Medal", "4", "5"]),
+    ([10, 3, 8, 9, 4], ["Gold Medal", "5", "Bronze Medal", "Silver Medal", "4"])
+])
+def test_506(score: List[int], ans: List[str]):
+    import leetcode.problem_506 as sol
+    assert sol.find_relative_ranks(score) == ans
+
+
 @pytest.mark.parametrize('ring, key, ans', [
     ('godding', 'gd', 4),
     ("bcaeea", "ae", 4),
