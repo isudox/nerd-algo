@@ -20,7 +20,7 @@ def avg(nums: List[int]) -> float:
 
 
 if __name__ == '__main__':
-    nums = [1996836, 61, 56221,2556, 25283]
+    nums = [2416196, 294, 56247, 294, 26783]
     nums2 = [1996731, 61, 56217, 2556, 25283]
     # base = 9819688
     # ans = div(nums, base)
