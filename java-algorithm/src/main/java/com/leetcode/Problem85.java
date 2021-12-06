@@ -46,7 +46,7 @@ public class Problem85 {
                     p++;
                 } else {
                     int h = heights[stack.pop()];
-                    
+
                 }
             }
         }
