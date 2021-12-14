@@ -2,6 +2,7 @@
 https://leetcode.com/problems/shortest-completing-word/
 """
 import collections
+from typing import List
 
 
 class Solution:

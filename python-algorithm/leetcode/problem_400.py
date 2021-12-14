@@ -16,4 +16,3 @@ class Solution:
         num = start + pos // x
         need = pos % x
         return num // 10 ** (x - need - 1) % 10
-

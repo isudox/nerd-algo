@@ -1,24 +1,5 @@
 """416. Partition Equal Subset Sum
-https://leetcode.com/problems/partition-equal-subset-sum/description/
-
-Given a non-empty array nums containing only positive integers, find if the
-array can be partitioned into two subsets such that the sum of elements in
-both subsets is equal.
-
-Example 1:
-Input: nums = [1,5,11,5]
-Output: true
-Explanation: The array can be partitioned as [1, 5, 5] and [11].
-
-Example 2:
-Input: nums = [1,2,3,5]
-Output: false
-Explanation: The array cannot be partitioned into equal sum subsets.
-
-Constraints:
-
-1 <= nums.length <= 200
-1 <= nums[i] <= 100
+https://leetcode.com/problems/partition-equal-subset-sum
 """
 from typing import List
 
@@ -26,19 +7,43 @@ from typing import List
 class Solution:
     def can_partition(self, nums: List[int]) -> bool:
         summary = sum(nums)
-        target = summary // 2
-        if summary != 2 * target:
+        half = summary // 2
+        if summary != 2 * half:
             return False
+        nums.sort()
         n = len(nums)
         # dp[i][j] means i-th num sum to j
-        dp = [[False] * (target + 1) for _ in range(n + 1)]
-        dp[0][0] = True
-        for i in range(1, n + 1):
-            for j in range(target + 1):
-                if j >= nums[i - 1]:
-                    dp[i][j] = dp[i - 1][j] or dp[i - 1][j - nums[i - 1]]
-                else:
-                    dp[i][j] = dp[i - 1][j]
-                if j == target and dp[i][j] is True:
-                    return True
-        return dp[n][target]
+        dp = [[False] * (half + 1) for _ in range(n)]
+        for i in range(n - 1, -1, -1):
+            for j in range(half + 1):
+                if nums[i] > j:
+                    dp[i][j] = False
+                elif nums[i] == j:
+                    dp[i][j] = True
+                elif i < n - 1:
+                    dp[i][j] = dp[i + 1][j] or dp[i + 1][j - nums[i]]
+        return dp[0][half]
+
+    def can_partition_1(self, nums: List[int]) -> bool:
+        summary = sum(nums)
+        half = summary // 2
+        if summary != 2 * half:
+            return False
+        nums.sort()
+        seen = [[False] * (half + 1) for _ in range(len(nums))]
+
+        def dfs(i: int, target: int) -> bool:
+            if i >= len(nums):
+                return False
+            if nums[i] == target:
+                return True
+            if nums[i] > target:
+                return False
+            if seen[i][target]:
+                return False
+            ret = dfs(i + 1, target - nums[i]) or dfs(i + 1, target)
+            if not ret:
+                seen[i][target] = True
+            return ret
+
+        return dfs(0, half)
