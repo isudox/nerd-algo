@@ -20,17 +20,16 @@ Output: -1->0->3->4->5
 from common.list_node import ListNode
 
 
-class Solution:
-    def insertion_sort_list(self, head: ListNode) -> ListNode:
-        if not head or not head.next:
-            return head
-        start = ListNode(0)
-        while head:
-            ptr = start
-            while ptr.next and ptr.next.val < head.val:
-                ptr = ptr.next
-            cur = head
-            head = head.next
-            cur.next = ptr.next
-            ptr.next = cur
-        return start.next
+def insertion_sort_list(head: ListNode) -> ListNode:
+    if not head or not head.next:
+        return head
+    dummy = ListNode(0)
+    while head:
+        ptr = dummy
+        while ptr.next and ptr.next.val < head.val:
+            ptr = ptr.next
+        cur = head
+        head = head.next
+        cur.next = ptr.next
+        ptr.next = cur
+    return dummy.next
