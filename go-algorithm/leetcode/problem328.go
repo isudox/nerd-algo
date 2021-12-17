@@ -17,6 +17,7 @@ func oddEvenList(head *ListNode) *ListNode {
 		}
 		p1 = p1.Next
 	}
+	return nil
 }
 
 func main() {

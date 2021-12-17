@@ -533,6 +533,23 @@ class LeetCodeTest extends Specification {
         5 | 18 || [[1, 2, 3, 4, 8], [1, 2, 3, 5, 7], [1, 2, 4, 5, 6]]
     }
 
+    def "221. Maximal Square"(char[][] matrix, int ans) {
+        given:
+        def sol = new Problem221()
+        expect:
+        sol.maximalSquare(matrix) == ans
+        where:
+        matrix | ans
+        [
+                ["1", "0", "1", "1", "0", "1"],
+                ["1", "1", "1", "1", "1", "1"],
+                ["0", "1", "1", "0", "1", "1"],
+                ["1", "1", "1", "0", "1", "0"],
+                ["0", "1", "1", "1", "1", "1"],
+                ["1", "1", "0", "1", "1", "1"]
+        ]      | 4
+    }
+
     def '254. Factor Combinations'(int n, List<List<Integer>> ans) {
         given:
         def sol = new Problem254()
