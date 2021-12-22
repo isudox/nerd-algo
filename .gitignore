@@ -9,6 +9,7 @@
 *.dylib
 *.dll
 *.mod
+!go.mod
 *.smod
 *.lai
 *.la
