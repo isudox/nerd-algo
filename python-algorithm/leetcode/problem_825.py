@@ -14,26 +14,16 @@ from typing import List
 
 class Solution:
     def numFriendRequests(self, ages: List[int]) -> int:
-        def helper(x: int, y: int) -> bool:
-            if y <= 0.5 * x + 7:
-                return False
-            if y > x:
-                return False
-            if y > 100 and x < 100:
-                return False
-            return True
-
         ans = 0
         n = len(ages)
         ages.sort()
         l, r = 0, 0
-        for i in range(n):
-            while i > l and not helper(ages[l], ages[i]):
-                i += 1
-            if r < i:
-                r = i
-            while r < n and helper(ages[r], ages[i]):
+        for age in ages:
+            if age < 15:
+                continue
+            while ages[l] <= 0.5 * age + 7:
+                l += 1
+            while r + 1 < n and ages[r + 1] <= age:
                 r += 1
-            if r > l:
-                ans += r - l - 1
+            ans += r - l
         return ans
