@@ -2,6 +2,7 @@
 https://leetcode.com/problems/concatenated-words/
 """
 import collections
+import functools
 from typing import List
 
 
@@ -19,14 +20,16 @@ class Trie:
             node = node.children[idx]
         node.end = True
 
+    @functools.lru_cache(None)
     def search(self, word: str, pos: int) -> bool:
         if pos >= len(word):
             return True
         node = self
         for i in range(pos, len(word)):
-            node = node.children[ord(word[i]) - 97]
-            if not node:
+            pos = ord(word[i]) - 97
+            if pos not in node.children:
                 return False
+            node = node.children[pos]
             if node.end and self.search(word, i + 1):
                 return True
         return False
@@ -45,9 +48,3 @@ class Solution:
             else:
                 root.insert(word)
         return ans
-
-
-if __name__ == '__main__':
-    sol = Solution()
-    print(sol.findAllConcatenatedWordsInADict(
-        ["cat", "cats", "catsdogcats", "dog", "dogcatsdog", "hippopotamuses", "rat", "ratcatdogcat"]))
