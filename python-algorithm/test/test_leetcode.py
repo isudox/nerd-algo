@@ -1508,9 +1508,8 @@ def test_309(prices: List[int], ans):
     ([1, 0, 1], 2),
 ])
 def test_312(nums: List[int], ans: int):
-    from leetcode.problem_312 import Solution
-    sol = Solution()
-    assert sol.max_coins(nums) == ans
+    from leetcode.problem_312 import max_coins
+    assert max_coins(nums) == ans
 
 
 @pytest.mark.timeout(1)
