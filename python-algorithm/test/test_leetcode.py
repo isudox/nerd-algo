@@ -1726,11 +1726,10 @@ def test_410(nums: List[int], n: int, ans: int):
     ("98", "9", "107"),
 ])
 def test_415(num1: str, num2: str, ans: str):
-    from leetcode.problem_415 import Solution
-    sol = Solution()
+    import leetcode.problem_415 as sol
     assert sol.add_strings(num1, num2) == ans
     assert sol.add_strings_2(num1, num2) == ans
-    assert sol.add_strings_3(num1, num2) == ans
+    assert sol.add_strings(num1, num2) == ans
 
 
 @pytest.mark.parametrize('nums, ans', [
@@ -1783,7 +1782,8 @@ def test_438(s: str, p: str, ans: List[int]):
 @pytest.mark.parametrize('nums, ans', [
     ([2, 4, 6, 8, 10], 7),
     ([7, 7, 7, 7, 7], 16),
-    ([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 16776915)
+    ([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+     16776915)
 ])
 def test_446(nums: List[int], ans: int):
     from leetcode.problem_446 import Solution
@@ -2092,7 +2092,8 @@ def test_718(a, b, ans):
       ["John", "johnnybravo@mail.com"],
       ["John", "johnsmith@mail.com", "john_newyork@mail.com"],
       ["Mary", "mary@mail.com"]],
-     [["John", 'john00@mail.com', 'john_newyork@mail.com', 'johnsmith@mail.com'],
+     [["John", 'john00@mail.com', 'john_newyork@mail.com',
+       'johnsmith@mail.com'],
       ["John", "johnnybravo@mail.com"],
       ["Mary", "mary@mail.com"]])
 ])
@@ -2175,7 +2176,8 @@ def test_771(jewels: str, stones: str, expect: int):
     ([[0, 2], [1, 3]], 3),
     ([[3, 2], [0, 1]], 3),
     ([[10, 12, 4, 6], [9, 11, 3, 5], [1, 7, 13, 8], [2, 0, 15, 14]], 14),
-    ([[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]], 16)
+    ([[0, 1, 2, 3, 4], [24, 23, 22, 21, 5], [12, 13, 14, 15, 16],
+      [11, 17, 18, 19, 20], [10, 9, 8, 7, 6]], 16)
 ])
 def test_778(grid: List[List[int]], ans: int):
     from leetcode.problem_778 import Solution
@@ -2261,7 +2263,9 @@ def test_841(rooms: List[List[int]], ans: bool):
     ("0123", []),
     ("1101111", [11, 0, 11, 11]),
     ("0000", [0, 0, 0, 0]),
-    ("539834657215398346785398346991079669377161950407626991734534318677529701785098211336528511", [])
+    (
+    "539834657215398346785398346991079669377161950407626991734534318677529701785098211336528511",
+    [])
 ])
 def test_842(s: str, ans: List[int]):
     from leetcode.problem_842 import Solution
@@ -2672,10 +2676,11 @@ def test_1014(arr, expect):
 
 @pytest.mark.parametrize('clips, time, ans', [
     ([1, 2], 0, 0),
-    ([[0,2],[4,6],[8,10],[1,9],[1,5],[5,9]], 10, 3),
-    ([[0,1],[1,2]], 5, -1),
-    ([[0,1],[6,8],[0,2],[5,6],[0,4],[0,3],[6,7],[1,3],[4,7],[1,4],[2,5],[2,6],[3,4],[4,5],[5,7],[6,9]], 9, 3),
-    ([[0,4],[2,8]], 5, 2)
+    ([[0, 2], [4, 6], [8, 10], [1, 9], [1, 5], [5, 9]], 10, 3),
+    ([[0, 1], [1, 2]], 5, -1),
+    ([[0, 1], [6, 8], [0, 2], [5, 6], [0, 4], [0, 3], [6, 7], [1, 3], [4, 7],
+      [1, 4], [2, 5], [2, 6], [3, 4], [4, 5], [5, 7], [6, 9]], 9, 3),
+    ([[0, 4], [2, 8]], 5, 2)
 ])
 def test_1024(clips: List[List[int]], time: int, ans: int):
     from leetcode.problem_1024 import Solution
@@ -2703,7 +2708,7 @@ def test_1143(text1: str, text2: str, ans: int):
 def test_1178(words: List[str], puzzles: List[str], ans: List[int]):
     from leetcode.problem_1178 import Solution
     sol = Solution()
-    assert sol.find_num_of_valid_words(words, puzzles) ==ans
+    assert sol.find_num_of_valid_words(words, puzzles) == ans
 
 
 @pytest.mark.parametrize("arr, ans", [
@@ -2788,8 +2793,9 @@ def test_1423(card_points: List[int], k: int, ans: int):
 
 
 @pytest.mark.parametrize('n, edges, ans', [
-    (5, [[0,1,1],[1,2,1],[2,3,2],[0,3,2],[0,4,3],[3,4,3],[1,4,6]], [[0,1],[2,3,4,5]]),
-    (4, [[0,1,1],[1,2,1],[2,3,1],[0,3,1]], [[],[0,1,2,3]]),
+    (5, [[0, 1, 1], [1, 2, 1], [2, 3, 2], [0, 3, 2], [0, 4, 3], [3, 4, 3],
+         [1, 4, 6]], [[0, 1], [2, 3, 4, 5]]),
+    (4, [[0, 1, 1], [1, 2, 1], [2, 3, 1], [0, 3, 1]], [[], [0, 1, 2, 3]]),
 ])
 def test_1489(n: int, edges: List[List[int]], ans: List[List[int]]):
     from leetcode.problem_1489 import Solution
@@ -2823,7 +2829,8 @@ def test_1584(points: List[List[int]], ans: int):
 
 
 @pytest.mark.parametrize('heights, ans', [
-    ([[1, 2, 1, 1, 1], [1, 2, 1, 2, 1], [1, 2, 1, 2, 1], [1, 2, 1, 2, 1], [1, 1, 1, 2, 1]], 0),
+    ([[1, 2, 1, 1, 1], [1, 2, 1, 2, 1], [1, 2, 1, 2, 1], [1, 2, 1, 2, 1],
+      [1, 1, 1, 2, 1]], 0),
     ([[1, 2, 3], [3, 8, 4], [5, 3, 5]], 1),
     ([[1, 2, 2], [3, 8, 2], [5, 3, 5]], 2)
 ])
@@ -2837,7 +2844,7 @@ def test_1631(heights: List[List[int]], ans: int):
     ([5, 1, 5], 22, 0),
     ([3, 4, 1, 2], 25, 1),
     ([2], 1, 0),
-    ([1,2,3], 1000000000, 2)
+    ([1, 2, 3], 1000000000, 2)
 ])
 def test_1894(chalk: List[int], k: int, ans: int):
     from leetcode.problem_1894 import Solution
