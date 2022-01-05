@@ -20,47 +20,46 @@ s contains only lowercase English letters.
 from typing import List
 
 
-class Solution:
-    def partition(self, s: str) -> List[List[str]]:
-        def is_palindrome(begin: int, end: int) -> bool:
-            while begin < end:
-                if s[begin] != s[end]:
-                    return False
-                begin += 1
-                end -= 1
-            return True
+def partition(s: str) -> List[List[str]]:
+    def is_palindrome(begin: int, end: int) -> bool:
+        while begin < end:
+            if s[begin] != s[end]:
+                return False
+            begin += 1
+            end -= 1
+        return True
 
-        def dfs(x: int, store: List[str]):
-            if x == n:
-                ans.append(store[:])
-            else:
-                for i in range(x, n):
-                    if is_palindrome(x, i):
-                        store.append(s[x: i + 1])
-                        dfs(i + 1, store)
-                        del store[-1]
+    def dfs(x: int, store: List[str]):
+        if x == n:
+            ans.append(store[:])
+            return
+        for i in range(x, n):
+            if is_palindrome(x, i):
+                store.append(s[x: i + 1])
+                dfs(i + 1, store)
+                store.pop()
 
-        n = len(s)
-        ans = []
-        dfs(0, [])
-        return ans
+    n = len(s)
+    ans = []
+    dfs(0, [])
+    return ans
 
-    def partition_2(self, s: str) -> List[List[str]]:
-        def dfs(x: int, store: List[str]):
-            if x == n:
-                ans.append(store[:])
-            for i in range(x, n):
-                if dp[x][i]:
-                    store.append(s[x: i + 1])
-                    dfs(i + 1, store)
-                    del store[-1]
 
-        n = len(s)
-        dp = [[True] * n for _ in range(n)]
-        for i in range(n - 1, -1, -1):
-            for j in range(n):
-                if i < j:
-                    dp[i][j] = (dp[i + 1][j - 1]) and (s[i] == s[j])
-        ans = []
-        dfs(0, [])
-        return ans
+def partition_2(s: str) -> List[List[str]]:
+    def dfs(x: int, store: List[str]):
+        if x == n:
+            ans.append(store[:])
+        for i in range(x, n):
+            if dp[x][i]:
+                store.append(s[x: i + 1])
+                dfs(i + 1, store)
+                store.pop()
+
+    n = len(s)
+    dp = [[True] * n for _ in range(n)]
+    for i in range(n - 1, -1, -1):
+        for j in range(i + 1, n):
+            dp[i][j] = (dp[i + 1][j - 1]) and (s[i] == s[j])
+    ans = []
+    dfs(0, [])
+    return ans
