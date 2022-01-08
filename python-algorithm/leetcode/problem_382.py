@@ -11,13 +11,14 @@ class Solution:
 
     def __init__(self, head: Optional[ListNode]):
         self.head = head
-        self.store = []
-        ptr = head
-        while ptr:
-            self.store.append(ptr.val)
-            ptr = ptr.next
-        self.n = len(self.store)
 
     def get_random(self) -> int:
-        r = random.randrange(0, self.n)
-        return self.store[r]
+        scope = 1
+        chosen_val = 0
+        cur = self.head
+        while cur:
+            if random.random() < 1 / scope:
+                chosen_val = cur.val
+            cur = cur.next
+            scope += 1
+        return chosen_val
