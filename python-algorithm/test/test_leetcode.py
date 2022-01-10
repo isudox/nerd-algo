@@ -665,9 +665,10 @@ def test_66(digits, expect):
     ("100", "110010", "110110")
 ])
 def test_67(a: str, b: str, result: str):
-    from leetcode.problem_67 import Solution
-    sol = Solution()
+    import leetcode.problem_67 as sol
     assert sol.add_binary(a, b) == result
+    assert sol.add_binary_1(a, b) == result
+    assert sol.add_binary_2(a, b) == result
 
 
 @pytest.mark.parametrize('words, max_width, ans', [
