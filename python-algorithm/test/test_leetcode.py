@@ -2747,6 +2747,18 @@ def test_1300(arr, target, expect):
     assert sol.find_best_value(arr, target) == expect
 
 
+@pytest.mark.parametrize('arr, ans', [
+    ([100, -23, -23, 404, 100, 23, 23, 23, 3, 404], 3),
+    ([2], 0),
+    ([7, 6, 9, 6, 9, 6, 9, 7], 1),
+    ([6, 1, 9], 2),
+    ([11, 22, 7, 7, 7, 7, 7, 7, 7, 22, 13], 3)
+])
+def test_1345(arr: List[int], ans: int):
+    import leetcode.problem_1345 as sol
+    assert sol.min_jumps(arr) == ans
+
+
 @pytest.mark.parametrize("arr, ans", [
     ([0, 1, 2, 3, 4, 5, 6, 7, 8], [0, 1, 2, 4, 8, 3, 5, 6, 7]),
     ([1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1],
