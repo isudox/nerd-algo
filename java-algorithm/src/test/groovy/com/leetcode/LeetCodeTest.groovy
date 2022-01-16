@@ -852,6 +852,20 @@ class LeetCodeTest extends Specification {
         [[7, 12], [4, 5, 15], [6], [15, 19], [9, 12, 13]] | 15     | 12     | -1
     }
 
+    def "849. Maximize Distance to Closest Person"(int[] seats, int ans) {
+        given:
+        def sol = new Problem849()
+        expect:
+        sol.maxDistToClosest(seats) == ans
+        where:
+        seats                 | ans
+        [1, 0, 0, 0, 1, 0, 1] | 2
+        [1, 0, 0, 0]          | 3
+        [0, 0, 0, 1]          | 3
+        [0, 0, 1, 0, 1, 1]    | 2
+        [0, 1]                | 1
+    }
+
     def "909. Snakes and Ladders"(int[][] board, int ans) {
         given:
         def sol = new Problem909()
