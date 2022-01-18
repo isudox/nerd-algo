@@ -1965,8 +1965,7 @@ def test_600(n: int, ans: int):
     ([1, 0, 0, 0, 1], 2, False)
 ])
 def test_605(flowerbed: List[int], n: int, ans: bool):
-    from leetcode.problem_605 import Solution
-    sol = Solution()
+    import leetcode.problem_605 as sol
     assert sol.can_place_flowers(flowerbed, n) == ans
 
 

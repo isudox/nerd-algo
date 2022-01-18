@@ -778,6 +778,19 @@ class LeetCodeTest extends Specification {
         [1, 3, 5, 2]             | 3
     }
 
+    def "605. Can Place Flowers"(int[] flowerbed, int n, boolean ans) {
+        given:
+        def sol = new Problem605()
+        expect:
+        sol.canPlaceFlowers(flowerbed, n) == ans
+        where:
+        flowerbed          | n | ans
+        [1, 0, 0, 0, 0, 1] | 2 | false
+        [1, 0, 0, 0, 1]    | 2 | false
+        [0, 0]             | 2 | false
+        [0, 0, 0, 0, 1]    | 2 | true
+    }
+
     def "611. Valid Triangle Number"(int[] nums, int ans) {
         given:
         def sol = new Problem611()

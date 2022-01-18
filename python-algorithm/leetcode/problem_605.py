@@ -29,16 +29,16 @@ Constraints:
 from typing import List
 
 
-class Solution:
-    def can_place_flowers(self, flowerbed: List[int], n: int) -> bool:
-        size = len(flowerbed)
-        count = 0
-        for i in range(size):
-            if size - i + count < n:
-                return False
-            if flowerbed[i] == 0 and (i == 0 or flowerbed[i - 1] == 0) and (i == size - 1 or flowerbed[i + 1] == 0):
-                count += 1
-                if count >= n:
-                    return True
-                flowerbed[i] = 1
-        return count >= n
+def can_place_flowers(flowerbed: List[int], n: int) -> bool:
+    size = len(flowerbed)
+    count = 0
+    for i in range(size):
+        if size - i + count < n:
+            return False
+        if flowerbed[i] == 0 and (i == 0 or flowerbed[i - 1] == 0) and (
+            i == size - 1 or flowerbed[i + 1] == 0):
+            count += 1
+            if count >= n:
+                return True
+            flowerbed[i] = 1
+    return count >= n
