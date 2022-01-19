@@ -1969,6 +1969,17 @@ def test_605(flowerbed: List[int], n: int, ans: bool):
     assert sol.can_place_flowers(flowerbed, n) == ans
 
 
+@pytest.mark.parametrize('nums, ans', [
+    ([0, 0, 0], 0),
+    ([2, 2, 3, 4], 3),
+    ([4, 2, 3, 4], 4),
+    ([1, 1, 3, 4], 0),
+])
+def test_611(nums: List[int], ans: int):
+    import leetcode.problem_611 as sol
+    assert sol.triangle_number(nums) == ans
+
+
 @pytest.mark.parametrize("tasks, n, ans", [
     (["A", "A", "A", "B", "B", "B"], 2, 8),
     (["A", "A", "A", "B", "B", "B"], 0, 6),

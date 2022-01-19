@@ -799,6 +799,7 @@ class LeetCodeTest extends Specification {
         where:
         nums         | ans
         [2, 2, 3, 4] | 3
+        [1, 1, 3, 4] | 0
     }
 
     def "649. Dota2 Senate"(String senate, String ans) {
