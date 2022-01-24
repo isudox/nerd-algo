@@ -1011,8 +1011,7 @@ def test_126(begin_word: str, end_word: str, word_list: List[str],
     ('hit', 'cog', ["hot", "dot", "dog", "lot", "log", "cog"], 5)
 ])
 def test_127(begin_word: str, end_word: str, word_list: List[str], ans: int):
-    from leetcode.problem_127 import Solution
-    sol = Solution()
+    import leetcode.problem_127 as sol
     assert sol.ladder_length(begin_word, end_word, word_list) == ans
     assert sol.ladder_length_2(begin_word, end_word, word_list) == ans
 
@@ -2873,3 +2872,12 @@ def test_1894(chalk: List[int], k: int, ans: int):
     from leetcode.problem_1894 import Solution
     sol = Solution()
     assert sol.chalk_replacer(chalk, k) == ans
+
+
+@pytest.mark.parametrize('n, edges, time, change, ans', [
+    (5, [[1, 2], [1, 3], [1, 4], [3, 4], [4, 5]], 3, 5, 13),
+    (2, [[1, 2]], 3, 2, 11),
+])
+def test_2045(n: int, edges: List[List[int]], time: int, change: int, ans: int):
+    import leetcode.problem_2045 as sol
+    assert sol.second_minimum(n, edges, time, change) == ans
