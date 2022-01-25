@@ -10,10 +10,11 @@ def second_minimum(n: int, edges: List[List[int]], time: int, change: int) -> in
     for u, v in edges:
         graph[u].append(v)
         graph[v].append(u)
-    dist = [[float('inf')] * 2 for _ in range(n + 1)]
+    maximum = len(edges) + 3
+    dist = [[maximum] * 2 for _ in range(n + 1)]
     dist[1][0] = 0
     q = [(1, 0)]
-    while dist[n][1] == float('inf'):
+    while dist[n][1] == maximum:
         p = q.pop(0)
         for np in graph[p[0]]:
             d = p[1] + 1

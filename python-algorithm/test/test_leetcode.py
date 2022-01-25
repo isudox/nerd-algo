@@ -2336,8 +2336,7 @@ def test_930(nums: List[int], goal: int, ans: int):
     ([0, 3, 2, 1], True)
 ])
 def test_941(nums: List[int], ans: bool):
-    from leetcode.problem_941 import Solution
-    sol = Solution()
+    import leetcode.problem_941 as sol
     assert sol.valid_mountain_array(nums) == ans
     assert sol.valid_mountain_array_1(nums) == ans
 
