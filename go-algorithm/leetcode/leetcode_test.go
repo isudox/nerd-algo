@@ -426,6 +426,25 @@ func Test_929(t *testing.T) {
 	}
 }
 
+func Test_941(t *testing.T) {
+	tests := []struct {
+		arr []int
+		ans bool
+	}{
+		{[]int{2, 1}, false},
+		{[]int{3, 5, 5}, false},
+		{[]int{1, 2, 3, 2, 1}, true},
+		{[]int{9, 8, 7, 6, 5, 4, 3, 2, 1, 0}, false},
+	}
+	for _, tt := range tests {
+		t.Run("941. Valid Mountain Array", func(t *testing.T) {
+			if got := validMountainArray(tt.arr); got != tt.ans {
+				t.Errorf("validMountainArray() = %v, want %v", got, tt.ans)
+			}
+		})
+	}
+}
+
 func Test_993(t *testing.T) {
 	node1 := &TreeNode{Val: 1, Left: nil, Right: nil}
 	node2 := &TreeNode{2, nil, nil}

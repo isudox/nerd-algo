@@ -33,30 +33,30 @@ Note:
 from typing import List
 
 
-class Solution:
-    def valid_mountain_array(self, nums: List[int]) -> bool:
-        n = len(nums)
-        if n < 3:
-            return False
-        if nums[0] >= nums[1]:
-            return False
-        found_peak = False
-        for i in range(n - 1):
-            if not found_peak:
-                if nums[i] == nums[i + 1]:
-                    return False
-                if nums[i] > nums[i + 1]:
-                    found_peak = True
-            else:
-                if nums[i] <= nums[i + 1]:
-                    return False
-        return found_peak
+def valid_mountain_array(nums: List[int]) -> bool:
+    n = len(nums)
+    if n < 3:
+        return False
+    if nums[0] >= nums[1]:
+        return False
+    found_peak = False
+    for i in range(n - 1):
+        if not found_peak:
+            if nums[i] == nums[i + 1]:
+                return False
+            if nums[i] > nums[i + 1]:
+                found_peak = True
+        else:
+            if nums[i] <= nums[i + 1]:
+                return False
+    return found_peak
 
-    def valid_mountain_array_1(self, nums: List[int]) -> bool:
-        n = len(nums)
-        i, j = 0, n - 1
-        while i < n - 1 and nums[i] < nums[i + 1]:
-            i += 1
-        while j > 0 and nums[j] < nums[j - 1]:
-            j -= 1
-        return i == j and i != 0 and i != n - 1
+
+def valid_mountain_array_1(nums: List[int]) -> bool:
+    n = len(nums)
+    i, j = 0, n - 1
+    while i < n - 1 and nums[i] < nums[i + 1]:
+        i += 1
+    while j > 0 and nums[j] < nums[j - 1]:
+        j -= 1
+    return i == j and i != 0 and i != n - 1
