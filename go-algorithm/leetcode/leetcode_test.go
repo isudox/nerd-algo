@@ -297,6 +297,26 @@ func Test_414(t *testing.T) {
 	}
 }
 
+func Test_421(t *testing.T) {
+	tests := []struct {
+		nums []int
+		ans  int
+	}{
+		{[]int{3, 10, 5, 25, 2, 8}, 28},
+		{[]int{0}, 0},
+		{[]int{2, 4}, 6},
+		{[]int{8, 10, 2}, 10},
+		{[]int{14, 70, 53, 83, 49, 91, 36, 80, 92, 51, 66, 70}, 127},
+	}
+	for _, tt := range tests {
+		t.Run("421. Maximum XOR of Two Numbers in an Array", func(t *testing.T) {
+			if got := findMaximumXOR(tt.nums); got != tt.ans {
+				t.Errorf("findMaximumXOR() = %v, want %v", got, tt.ans)
+			}
+		})
+	}
+}
+
 func Test_434(t *testing.T) {
 	tests := []struct {
 		s   string
