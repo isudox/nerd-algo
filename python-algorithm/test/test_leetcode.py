@@ -817,8 +817,7 @@ def test_79(board, word, expect):
     ([6, 2, 5, 4, 5, 1, 6], 12)
 ])
 def test_84(heights, expect):
-    from leetcode.problem_84 import Solution
-    sol = Solution()
+    import leetcode.problem_84 as sol
     assert sol.largest_rectangle_area_1(heights) == expect
 
 
