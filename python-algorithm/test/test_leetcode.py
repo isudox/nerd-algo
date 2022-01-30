@@ -1220,8 +1220,7 @@ def test_167(nums, target, ans):
     ([1, 2, 3, 4, 5, 6], 4, [3, 4, 5, 6, 1, 2])
 ])
 def test_189(nums: List[int], k: int, ans: List[int]):
-    from leetcode.problem_189 import Solution
-    sol = Solution()
+    import leetcode.problem_189 as sol
     sol.rotate_5(nums, k)
     assert nums == ans
 
