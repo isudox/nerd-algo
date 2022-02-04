@@ -2,6 +2,7 @@ package main
 
 // 55. Jump Game
 // https://leetcode.com/problems/jump-game/
+
 func canJump(nums []int) bool {
 	n := len(nums)
 	store := make(map[int]bool)

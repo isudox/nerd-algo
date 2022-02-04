@@ -2,6 +2,7 @@ package main
 
 // 79. Word Search
 // https://leetcode.com/problems/word-search/
+
 func exist(board [][]byte, word string) bool {
 	m, n := len(board), len(board[0])
 	var bfs func(x, y, z int, seen [][]bool) bool
