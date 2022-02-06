@@ -2236,8 +2236,7 @@ def test_791(s, t, ans):
     ([[0]], [])
 ])
 def test_802(graph: List[List[int]], ans: List[int]):
-    from leetcode.problem_802 import Solution
-    sol = Solution()
+    import leetcode.problem_802 as sol
     assert sol.eventual_safe_nodes(graph) == ans
 
 

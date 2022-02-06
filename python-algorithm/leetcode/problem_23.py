@@ -12,9 +12,9 @@ Input: lists = [[1,4,5],[1,3,4],[2,6]]
 Output: [1,1,2,3,4,4,5,6]
 Explanation: The linked-lists are:
 [
-⁠ 1->4->5,
-⁠ 1->3->4,
-⁠ 2->6
+ 1->4->5,
+ 1->3->4,
+ 2->6
 ]
 merging them into one sorted list:
 1->1->2->3->4->4->5->6
@@ -44,23 +44,22 @@ import heapq
 import collections
 
 
-class Solution:
-    def merge_k_lists(self, lists: List[ListNode]) -> ListNode:
-        ans = ListNode(0)
-        mapper = collections.defaultdict(list)
-        store = list()
-        heapq.heapify(store)
-        for node in lists:
-            if node:
-                heapq.heappush(store, node.val)
-                mapper[node.val].append(node)
-        p = ans
-        while store:
-            val = heapq.heappop(store)
-            p.next = ListNode(val)
-            p = p.next
-            node = mapper[val].pop(0)
-            if node.next:
-                heapq.heappush(store, node.next.val)
-                mapper[node.next.val].append(node.next)
-        return ans.next
+def merge_k_lists(lists: List[ListNode]) -> ListNode:
+    ans = ListNode(0)
+    mapper = collections.defaultdict(list)
+    store = list()
+    heapq.heapify(store)
+    for node in lists:
+        if node:
+            heapq.heappush(store, node.val)
+            mapper[node.val].append(node)
+    p = ans
+    while store:
+        val = heapq.heappop(store)
+        p.next = ListNode(val)
+        p = p.next
+        node = mapper[val].pop(0)
+        if node.next:
+            heapq.heappush(store, node.next.val)
+            mapper[node.next.val].append(node.next)
+    return ans.next
