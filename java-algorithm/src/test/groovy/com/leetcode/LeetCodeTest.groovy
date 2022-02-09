@@ -1112,6 +1112,19 @@ class LeetCodeTest extends Specification {
         4 | 1 || "aabaa"
     }
 
+    def "1001. Grid Illumination"(int n, int[][] lamps, int[][] queries, int[] ans) {
+        given:
+        def sol = new Problem1001()
+        expect:
+        sol.gridIllumination(n, lamps, queries) == ans
+        where:
+        n | lamps            | queries                  | ans
+//        5 | [[0, 0], [4, 4]] | [[1, 1], [1, 0]]         | [1, 0]
+//        5 | [[0, 0], [4, 4]] | [[1, 1], [1, 1]]         | [1, 1]
+//        5 | [[0, 0], [0, 4]] | [[0, 4], [0, 1], [1, 4]] | [1, 1, 0]
+        5 | [[0, 0], [1, 0]] | [[1, 1], [1, 1]]         | [1, 0]
+    }
+
     def "1014. Best Sightseeing Pair"(int[] arr, int result) {
         given:
         def sol = new Problem1014()
