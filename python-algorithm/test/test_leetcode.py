@@ -1913,8 +1913,7 @@ def test_547(is_connected: List[List[int]], ans: int):
     ("ab", "eidboaoo", False),
 ])
 def test_567(s1: str, s2: str, ans: bool):
-    from leetcode.problem_567 import Solution
-    sol = Solution()
+    import leetcode.problem_567 as sol
     assert sol.check_inclusion(s1, s2) == ans
     assert sol.check_inclusion_2(s1, s2) == ans
     assert sol.check_inclusion_3(s1, s2) == ans
