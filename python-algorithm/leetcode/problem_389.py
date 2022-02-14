@@ -35,15 +35,24 @@ Constraints:
     t.length == s.length + 1
     s and t consist of lower-case English letters.
 """
+import collections
 
 
-class Solution:
-    def find_the_difference(self, s: str, t: str) -> str:
-        store = [0] * 26
-        for c in s:
-            store[ord(c) - ord('a')] += 1
-        for c in t:
-            if store[ord(c) - ord('a')] > 0:
-                store[ord(c) - ord('a')] -= 1
-            else:
-                return c
+def find_the_difference(s: str, t: str) -> str:
+    store = [0] * 26
+    for c in s:
+        store[ord(c) - ord('a')] += 1
+    for c in t:
+        if store[ord(c) - ord('a')] > 0:
+            store[ord(c) - ord('a')] -= 1
+        else:
+            return c
+
+
+def find_the_difference_2(s: str, t: str) -> str:
+    cnt_s = collections.Counter(s)
+    cnt_t = collections.Counter(t)
+    for k, v in cnt_t.items():
+        if v != cnt_s[k]:
+            return k
+    return ''

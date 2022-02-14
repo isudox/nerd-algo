@@ -1677,9 +1677,9 @@ def test_378(matrix, k, ans):
     ("ae", "aea", "a")
 ])
 def test_389(s: str, t: str, ans: str):
-    from leetcode.problem_389 import Solution
-    sol = Solution()
+    import leetcode.problem_389 as sol
     assert sol.find_the_difference(s, t) == ans
+    assert sol.find_the_difference_2(s, t) == ans
 
 
 @pytest.mark.parametrize("s, t, ans", [
