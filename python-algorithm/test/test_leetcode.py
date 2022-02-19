@@ -1091,10 +1091,9 @@ def test_134(gas: List[int], cost: List[int], ans: int):
     ([4, 3, 5, 3, 4], 5)
 ])
 def test_136(nums, ans):
-    from leetcode.problem_136 import Solution
-    solution = Solution()
-    assert solution.single_number(nums) == ans
-    assert solution.reduce_func(nums) == ans
+    import leetcode.problem_136 as sol
+    assert sol.single_number(nums) == ans
+    assert sol.reduce_func(nums) == ans
 
 
 @pytest.mark.parametrize("string, word_dict, expect", [

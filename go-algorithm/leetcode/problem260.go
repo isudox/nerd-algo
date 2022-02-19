@@ -3,7 +3,7 @@ package main
 // 260. Single Number III
 // https://leetcode.com/problems/single-number-iii/
 
-func singleNumber(nums []int) []int {
+func singleNumber3(nums []int) []int {
 	counter := make(map[int]int)
 	for _, num := range nums {
 		if _, ok := counter[num]; ok {
