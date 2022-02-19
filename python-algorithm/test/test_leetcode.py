@@ -225,9 +225,8 @@ def test_38(n, expect):
     ([1, 3], 1, [[1]])
 ])
 def test_39(candidates, target, expect):
-    from leetcode.problem_39 import Solution
-    solution = Solution()
-    assert solution.combination_sum(candidates, target) == expect
+    import leetcode.problem_39 as sol
+    assert sol.combination_sum(candidates, target) == expect
 
 
 @pytest.mark.parametrize("candidates, target, expect", [

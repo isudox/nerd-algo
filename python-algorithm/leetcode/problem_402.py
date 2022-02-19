@@ -68,3 +68,29 @@ class Solution:
             num = num[:i] + num[i + 1:]
             count += 1
         return str(int(num))
+
+    def removeKdigits(self, num: str, k: int) -> str:
+        n = len(num)
+        if n == k:
+            return '0'
+        m = n - k
+        ans = ''
+        pos = 0
+        while k > 0 and len(ans) < m:
+            min_num = num[pos]
+            min_pos = pos
+            for i in range(pos, pos + k + 1):
+                if num[i] < min_num:
+                    min_num = num[i]
+                    min_pos = i
+            ans += min_num
+            k -= min_pos - pos
+            pos = min_pos + 1
+
+        if len(ans) < m:
+            ans += num[pos:]
+        i = 0
+        while i < len(ans) and ans[i] == '0':
+            i += 1
+        ans = ans[i:]
+        return ans if ans != '' else '0'

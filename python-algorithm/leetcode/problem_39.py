@@ -34,28 +34,19 @@ Example 2:
 from typing import List
 
 
-class Solution:
-    def combination_sum(self, candidates: List[int], target: int) \
-            -> List[List[int]]:
-        ans = []
-        candidates.sort()
+def combination_sum(candidates: List[int], target: int) -> List[List[int]]:
+    def helper(pos: int, perm: List[int], need: int):
+        if need == 0:
+            nonlocal ans
+            ans.append(perm[:])
+        for i in range(pos, len(candidates)):
+            if candidates[i] > need:
+                return
+            perm.append(candidates[i])
+            helper(i, perm, need - candidates[i])
+            perm.pop()
 
-        def backtrack(nums: List[int], targ: int, start: int, store: List[int]):
-            for i in range(start, len(nums)):
-                num = nums[i]
-                if targ < num:
-                    break
-
-                store.append(num)
-                if targ == num:
-                    nonlocal ans
-                    ans.append(store[:])
-                    store.pop()
-                    break
-
-                backtrack(nums, targ - num, i, store)
-                store.pop()
-
-        backtrack(candidates, target, 0, [])
-
-        return ans
+    candidates.sort()
+    ans = []
+    helper(0, [], target)
+    return ans
