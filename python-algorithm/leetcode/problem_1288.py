@@ -6,11 +6,12 @@ from typing import List
 
 def remove_covered_intervals(intervals: List[List[int]]) -> int:
     n = len(intervals)
-    intervals.sort(key=lambda x: (-x[0], x[1]))
-    removed = 0
-    for i in range(n):
-        for j in range(i + 1, n):
-            if intervals[j][0] <= intervals[i][0] and intervals[j][1] >= intervals[i][1]:
-                removed += 1
-                break
-    return n - removed
+    intervals.sort(key=lambda x: (x[0], -x[1]))
+    ans = n
+    r_max = intervals[0][1]
+    for i in range(1, n):
+        if intervals[i][1] <= r_max:
+            ans -= 1
+        else:
+            r_max = intervals[i][1]
+    return ans

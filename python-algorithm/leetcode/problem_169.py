@@ -16,17 +16,15 @@ Example 2:
 Input: [2,2,1,1,1,2,2]
 Output: 2
 """
+import collections
 from typing import List
 
 
-class Solution:
-    def majority_element(self, nums: List[int]) -> int:
-        n = len(nums) // 2
-        counter = {}
-        for num in nums:
-            if num in counter:
-                counter[num] = counter[num] + 1
-            else:
-                counter[num] = 1
-            if counter[num] > n:
-                return num
+def majority_element(nums: List[int]) -> int:
+    n = len(nums) / 2
+    counter = collections.Counter()
+    for num in nums:
+        counter[num] += 1
+        if counter[num] > n:
+            return num
+    return 0
