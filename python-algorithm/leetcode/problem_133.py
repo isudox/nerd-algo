@@ -6,19 +6,17 @@ https://leetcode.com/problems/clone-graph/
 class Solution:
     def clone_graph(self, node: 'Node') -> 'Node':
         def dfs(v: Node):
-            if v in mark:
-                return mark[v]
-            clone = Node(v.val)
-            mark[v] = clone
-            clone_neighbors = []
+            if v.val in visited:
+                return visited[v.val]
+            ret = Node(v.val)
+            visited[v.val] = ret
             for e in v.neighbors:
-                clone_neighbors.append(dfs(e))
-            clone.neighbors = clone_neighbors
-            return mark[v]
+                ret.neighbors.append(dfs(e))
+            return ret
 
         if not node:
-            return None
-        mark = {}
+            return node
+        visited = {}
         return dfs(node)
 
 
