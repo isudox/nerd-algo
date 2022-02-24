@@ -16,19 +16,8 @@ Output: -1->0->3->4->5
 from common.list_node import ListNode
 
 
-# Definition for a list node.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
 class Solution:
     def sort_list(self, head: ListNode) -> ListNode:
-        """
-        merge sort
-        :param head:
-        :return:
-        """
-
         def merge_sorted_list(l1: ListNode, l2: ListNode) -> ListNode:
             if not l1:
                 return l2
@@ -43,10 +32,6 @@ class Solution:
             return merged_list
 
         def get_middle_node(l: ListNode) -> ListNode:
-            """
-            get the middle ListNode.
-            :return:
-            """
             if not l:
                 return l
             slow_ptr = l

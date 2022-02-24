@@ -2237,6 +2237,16 @@ def test_802(graph: List[List[int]], ans: List[int]):
     assert sol.eventual_safe_nodes(graph) == ans
 
 
+@pytest.mark.parametrize('dominoes, ans', [
+    ('RR.L', 'RR.L'),
+    ('..R..', '..RRR'),
+    ('.L.R...LR..L..', 'LL.RR.LLRRLL..')
+])
+def test_838(dominoes: str, ans: str):
+    import leetcode.problem_838 as sol
+    assert sol.push_dominoes(dominoes) == ans
+
+
 @pytest.mark.parametrize('strs, ans', [
     (["tars", "rats", "arts", "star"], 2),
     (["omv", "ovm"], 1),

@@ -28,7 +28,6 @@ public class Problem136 {
 
     public int singleNumber(int[] nums) {
         Arrays.sort(nums);
-
         int i = 0;
         while (i < nums.length) {
             if (i == nums.length - 1) {
@@ -40,7 +39,6 @@ public class Problem136 {
                 break;
             }
         }
-
         return nums[i];
     }
 
