@@ -866,6 +866,17 @@ class LeetCodeTest extends Specification {
         [[7, 12], [4, 5, 15], [6], [15, 19], [9, 12, 13]] | 15     | 12     | -1
     }
 
+    def "847. Shortest Path Visiting All Nodes"(int[][] graph, int ans) {
+        given:
+        def sol = new Problem847()
+        expect:
+        sol.shortestPathLength(graph) == ans
+        where:
+        graph                                    | ans
+        [[1, 2, 3], [0], [0], [0]]               | 4
+        [[1], [0, 2, 4], [1, 3, 4], [2], [1, 2]] | 4
+    }
+
     def "849. Maximize Distance to Closest Person"(int[] seats, int ans) {
         given:
         def sol = new Problem849()

@@ -2,7 +2,7 @@ package com.common;
 
 import java.util.Map;
 
-public class UnionFind<E> {
+public final class UnionFind<E> {
 
     private Map<E, E> parent;
 
