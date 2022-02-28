@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"strconv"
 	"time"
 )
 
@@ -57,4 +58,9 @@ func main() {
 	} else {
 		fmt.Println(b)
 	}
+
+	ts := time.Now()
+	fmt.Println(ts.Format("20060102"))
+	fmt.Println(ts.String())
+	fmt.Println(strconv.Itoa(int(ts.Unix())))
 }
