@@ -1,5 +1,14 @@
 package main
 
+// 6. ZigZag Conversion
+// https://leetcode.com/problems/zigzag-conversion/
+
+/*
+A
+Y A
+P
+*/
+
 func convert(s string, numRows int) string {
 	if numRows == 1 {
 		return s
@@ -39,6 +48,34 @@ func convert(s string, numRows int) string {
 		for col := 0; col < cols; col++ {
 			if matrix[row][col] != "" {
 				ans += matrix[row][col]
+			}
+		}
+	}
+	return ans
+}
+
+func convert2(s string, numRows int) string {
+	if numRows == 1 {
+		return s
+	}
+	ans := ""
+	n := len(s)
+	step := (numRows - 1) * 2
+	for i := 0; i < numRows; i++ {
+		for pos := 0; pos < n+step; pos += step {
+			if i == 0 || i == numRows-1 {
+				x := pos + i
+				if 0 <= x && x < n {
+					ans += string(s[x])
+				}
+			} else {
+				x, y := pos-i, pos+i
+				if 0 <= x && x < n {
+					ans += string(s[x])
+				}
+				if 0 <= y && y < n {
+					ans += string(s[y])
+				}
 			}
 		}
 	}
