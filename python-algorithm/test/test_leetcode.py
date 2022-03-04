@@ -1905,6 +1905,20 @@ def test_547(is_connected: List[List[int]], ans: int):
     assert sol.find_circle_num(is_connected) == ans
 
 
+@pytest.mark.parametrize('s, ans', [
+    ('1', '0'),
+    ('101', '99'),
+    ('151', '141'),
+    ('1000', '999'),
+    ('123', '121'),
+    ('88', '77')
+])
+def test_564(s: str, ans: str):
+    from leetcode.problem_564 import Solution
+    sol = Solution()
+    assert sol.nearestPalindromic(s) == ans
+
+
 @pytest.mark.parametrize('s1, s2, ans', [
     ("abc", "agcabg", True),
     ("ab", "eidbaooo", True),
@@ -2278,8 +2292,8 @@ def test_841(rooms: List[List[int]], ans: bool):
     ("1101111", [11, 0, 11, 11]),
     ("0000", [0, 0, 0, 0]),
     (
-    "539834657215398346785398346991079669377161950407626991734534318677529701785098211336528511",
-    [])
+        "539834657215398346785398346991079669377161950407626991734534318677529701785098211336528511",
+        [])
 ])
 def test_842(s: str, ans: List[int]):
     from leetcode.problem_842 import Solution

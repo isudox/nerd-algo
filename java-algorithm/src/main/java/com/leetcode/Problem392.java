@@ -28,7 +28,6 @@ package com.leetcode;
  *
  * Input: s = "axc", t = "ahbgdc"
  * Output: false
- *  
  *
  * Constraints:
  *
