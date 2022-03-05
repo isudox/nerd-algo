@@ -1,5 +1,11 @@
 package main
 
+import (
+	"encoding/json"
+	"fmt"
+	"time"
+)
+
 // 413. Arithmetic Slices
 // https://leetcode.com/problems/arithmetic-slices/
 
@@ -20,4 +26,34 @@ func numberOfArithmeticSlices(nums []int) int {
 		}
 	}
 	return ans
+}
+
+type Person struct {
+	Name string
+}
+
+type School struct {
+	Extension *string
+}
+
+func change(person *Person) {
+	person.Name = "BBB"
+}
+
+func main() {
+	p := &Person{
+		Name: "AAA",
+	}
+
+	ext := make(map[string]interface{})
+	ext["name"] = p.Name
+	extBody, _ := json.Marshal(ext)
+	extStr := string(extBody)
+
+	sch := &School{
+		Extension: &extStr,
+	}
+	go change(p)
+	time.Sleep(time.Second * 1)
+	println(fmt.Sprintf("%+v", *sch.Extension))
 }

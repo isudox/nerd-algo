@@ -339,7 +339,7 @@ func Test_434(t *testing.T) {
 		s   string
 		ans int
 	}{
-		{"Hello, my name is John", 5},
+		{"Hello, my Name is John", 5},
 	}
 	for _, tt := range tests {
 		t.Run("434. Number of Segments in a String", func(t *testing.T) {
