@@ -14,6 +14,11 @@ type Param struct {
 }
 
 func main() {
+	now := time.Now()
+	endTime := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, now.Location())
+	startTime := endTime.Add(-24 * time.Hour)
+	taskId := fmt.Sprintf("%v%v", "12345", startTime.Format("20060102"))
+	println("taskId=" + taskId)
 	//param := &Param{
 	//	Num:  0,
 	//	Name: "A",
