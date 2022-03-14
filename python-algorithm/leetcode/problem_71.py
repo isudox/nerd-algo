@@ -45,20 +45,14 @@ path is a valid absolute Unix path.
 
 class Solution:
     def simplify_path(self, path: str) -> str:
-        queue = []
+        stack = []
         splits = path.split('/')
         for split in splits:
             if split == '' or split == '.':
                 continue
             if split == '..':
-                if queue:
-                    queue.pop()
+                if stack:
+                    stack.pop()
             else:
-                queue.append(split)
-        return '/' + '/'.join(queue)
-
-
-if __name__ == '__main__':
-    sol = Solution()
-    print(sol.simplify_path("/../"))
-    print(sol.simplify_path("/a/./b/../../c/"))
+                stack.append(split)
+        return '/' + '/'.join(stack)
