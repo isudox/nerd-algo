@@ -22,6 +22,7 @@ Constraints:
     1 <= s.length <= 10^4
     s consists of lowercase English letters.
 """
+import collections
 
 
 class Solution:
@@ -37,10 +38,18 @@ class Solution:
             stack.append(c)
         return ''.join(stack)
 
-
-if __name__ == '__main__':
-    sol = Solution()
-    print(sol.remove_duplicate_letters('bcabc'))  # abc
-    print(sol.remove_duplicate_letters("cbacdcbc"))  # acdb
-    print(sol.remove_duplicate_letters("bcdefga"))  # acdb
-    print(sol.remove_duplicate_letters("ecbacba"))  # "eacb"
+    def removeDuplicateLetters(self, s: str) -> str:
+        last_pos = collections.defaultdict(int)
+        for i in range(len(s) - 1, -1, -1):
+            if s[i] not in last_pos:
+                last_pos[s[i]] = i
+        visited = collections.defaultdict(int)
+        stack = []
+        for i, ch in enumerate(s):
+            if visited[ch]:
+                continue
+            visited[ch] += 1
+            while stack and stack[-1] > ch and last_pos[stack[-1]] > i:
+                visited[stack.pop()] -= 1
+            stack.append(ch)
+        return ''.join(stack)

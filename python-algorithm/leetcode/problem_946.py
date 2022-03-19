@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """946. Validate Stack Sequences
 https://leetcode.com/problems/validate-stack-sequences/
 
@@ -32,11 +31,6 @@ from typing import List
 
 class Solution:
     def validate_stack_sequences(self, pushed, popped):
-        """
-        :type pushed: List[int]
-        :type popped: List[int]
-        :rtype: bool
-        """
         if len(pushed) != len(popped):
             return False
         if len(pushed) == 0 and len(popped) == 0:
@@ -83,3 +77,15 @@ class Solution:
                 j += 1
 
         return j == len(popped)
+
+    def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
+        stack = []
+        i = j = 0
+        while i < len(pushed):
+            if not stack or stack[-1] != popped[j]:
+                stack.append(pushed[i])
+                i += 1
+            else:
+                stack.pop()
+                j += 1
+        return stack[::-1] == popped[j:]

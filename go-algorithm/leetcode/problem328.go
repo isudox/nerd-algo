@@ -19,23 +19,3 @@ func oddEvenList(head *ListNode) *ListNode {
 	}
 	return nil
 }
-
-//func main() {
-//	// 1 2 3 4 5
-//	// 1 3 5
-//	var p1 = &ListNode{1, nil}
-//	var p2 = &ListNode{2, nil}
-//	var p3 = &ListNode{3, nil}
-//	var p4 = &ListNode{4, nil}
-//	var p5 = &ListNode{5, nil}
-//	p1.Next = p2
-//	p2.Next = p3
-//	p3.Next = p4
-//	p4.Next = p5
-//	ptr := p1
-//	oddEvenList(p1)
-//	for ptr != nil {
-//		println(ptr.Val)
-//		ptr = ptr.Next
-//	}
-//}
