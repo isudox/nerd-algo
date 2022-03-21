@@ -1,11 +1,9 @@
-
-
 package main
 
 // 4. median of two sorted arrays
 // https://leetcode.com/problems/median-of-two-sorted-arrays/
 
-func findmediansortedarrays(nums1 []int, nums2 []int) float64 {
+func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 	i, j, m, n := 0, 0, len(nums1), len(nums2)
 	merged := make([]int, 0)
 	for i < m && j < n {
@@ -27,22 +25,5 @@ func findmediansortedarrays(nums1 []int, nums2 []int) float64 {
 		return float64(merged[(m+n)/2])
 	}
 	mid0, mid1 := (m+n)/2-1, (m+n)/2
+	return float64(merged[mid0]+merged[mid1]) / 2
 }
-
-
-
-
-
-
-
-
-}
-}
-}
-}
-}
-}
-}
-}
-}
-	return float64(merged[m
