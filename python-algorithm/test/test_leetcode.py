@@ -152,8 +152,7 @@ def test_28(haystack: str, needle: str, ans: int):
     ([1], [1])
 ])
 def test_31(nums: List[int], ans: List[int]):
-    from leetcode.problem_31 import Solution
-    sol = Solution()
+    import leetcode.problem_31 as sol
     sol.next_permutation(nums)
     assert nums == ans
 

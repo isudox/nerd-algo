@@ -2,6 +2,10 @@ package com.leetcode;
 
 import java.util.*;
 
+/**
+ * 310. Minimum Height Trees
+ * https://leetcode.com/problems/minimum-height-trees/
+ */
 public class Problem310 {
 
     private final Map<Integer, Set<Integer>> graph = new HashMap<>();

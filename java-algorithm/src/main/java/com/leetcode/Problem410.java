@@ -41,9 +41,4 @@ public class Problem410 {
         }
         return i;
     }
-
-    public static void main(String[] args) {
-        Problem410 p = new Problem410();
-        System.out.println(p.splitArray(new int[]{1, 2, 3, 4, 5}, 2));
-    }
 }
