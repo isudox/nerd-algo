@@ -20,25 +20,24 @@ func _() RandomizedSet {
 func (t *RandomizedSet) Insert(val int) bool {
 	if _, ok := t.table[val]; ok {
 		return false
-	} else {
-		t.store = append(t.store, val)
-		t.table[val] = len(t.store) - 1
-		return true
 	}
+	t.store = append(t.store, val)
+	t.table[val] = len(t.store) - 1
+	return true
 }
 
 func (t *RandomizedSet) Remove(val int) bool {
-	if index, ok := t.table[val]; ok {
-		t.store[index], t.store[len(t.store)-1] = t.store[len(t.store)-1], t.store[index]
-		t.store = t.store[:len(t.store)-1]
-		delete(t.table, val)
-		if index < len(t.store) {
-			t.table[t.store[index]] = index
-		}
-		return true
-	} else {
+	if _, ok := t.table[val]; !ok {
 		return false
 	}
+	index := t.table[val]
+	t.store[index], t.store[len(t.store)-1] = t.store[len(t.store)-1], t.store[index]
+	t.store = t.store[:len(t.store)-1]
+	delete(t.table, val)
+	if index < len(t.store) {
+		t.table[t.store[index]] = index
+	}
+	return true
 }
 
 func (t *RandomizedSet) GetRandom() int {

@@ -1,8 +1,5 @@
 package com.misc;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Amazon OA | Sum of Server Powers
  * https://leetcode.com/discuss/interview-question/1759431/amazon-oa-sum-of-server-powers
@@ -23,59 +20,15 @@ public class SumOfPower {
         }
         int ans = 0;
         for (int i = 0; i < nums.length; i++) {
-            MonoStack ms = new MonoStack();
+            int min = nums[i];
             for (int j = i; j < nums.length; j++) {
-                ms.add(nums[j]);
+                if (nums[j] < nums[i]) {
+                    min = nums[j];
+                }
                 int sum = preSum[j + 1] - preSum[i];
-                int min = ms.peek();
                 ans += sum * min;
             }
         }
         return ans;
-    }
-
-    private static class MonoStack {
-        private List<Integer> list;
-
-        public MonoStack() {
-            list = new ArrayList<>();
-        }
-
-        public void add(int num) {
-            List<Integer> tmp = new ArrayList<>();
-            while (!list.isEmpty() && list.get(list.size() - 1) < num) {
-                tmp.add(list.remove(list.size() - 1));
-            }
-            list.add(num);
-            while (!tmp.isEmpty()) {
-                list.add(tmp.remove(tmp.size() - 1));
-            }
-        }
-
-        public void remove(int num) {
-            int lo = 0, hi = list.size() - 1;
-            while (lo <= hi) {
-                int mid = lo + (hi - lo) / 2;
-                if (list.get(mid) == num) {
-                    list.remove(mid);
-                    return;
-                }
-                if (list.get(mid) < num) {
-                    hi = mid - 1;
-                } else {
-                    lo = mid + 1;
-                }
-            }
-            list.remove(lo);
-        }
-
-        public int peek() {
-            return list.get(list.size() - 1);
-        }
-    }
-
-    public static void main(String[] args) {
-        SumOfPower p = new SumOfPower();
-        System.out.println(p.getSum(new int[]{1, 3, 4}));
     }
 }
