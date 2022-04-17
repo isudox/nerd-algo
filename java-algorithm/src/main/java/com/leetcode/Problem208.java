@@ -23,7 +23,7 @@ package com.leetcode;
  */
 public class Problem208 {
 
-    static class Trie {
+    private static class Trie {
 
         private Trie[] children = new Trie[26];
         private boolean endpoint = false;
