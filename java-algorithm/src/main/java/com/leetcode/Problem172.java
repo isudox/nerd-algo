@@ -9,9 +9,4 @@ public class Problem172 {
         if (n == 0) return 0;
         return n / 5 + trailingZeroes(n / 5);
     }
-
-    public static void main(String[] args) {
-        Problem172 p = new Problem172();
-        System.out.println(p.trailingZeroes(30));
-    }
 }
