@@ -1,7 +1,6 @@
 package com.leetcode;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * 1202. Smallest String With Swaps
@@ -51,28 +50,25 @@ public class Problem1202 {
     public String smallestStringWithSwaps(String s, List<List<Integer>> pairs) {
         int size = s.length();
         UnionFind uf = new UnionFind(size);
-        List<Character> ans = new ArrayList<>(size);
         Map<Integer, PriorityQueue<Character>> graph = new HashMap<>();
         for (List<Integer> pair : pairs) {
             uf.union(pair.get(0), pair.get(1));
         }
         for (int i = 0; i < size; i++) {
             int root = uf.find(i);
-            if (graph.containsKey(root)) {
-                graph.get(root).add(s.charAt(i));
-            } else {
-                PriorityQueue<Character> pq = new PriorityQueue<>();
-                pq.add(s.charAt(i));
-                graph.put(root, pq);
+            if (!graph.containsKey(root)) {
+                graph.put(root, new PriorityQueue<>());
             }
+            graph.get(root).add(s.charAt(i));
         }
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < size; i++) {
-            ans.add(graph.get(uf.find(i)).poll());
+            sb.append(graph.get(uf.find(i)).poll());
         }
-        return ans.stream().map(Object::toString).collect(Collectors.joining());
+        return sb.toString();
     }
 
-    public static class UnionFind {
+    private static class UnionFind {
         private final int[] parent;
 
         public UnionFind(int size) {
