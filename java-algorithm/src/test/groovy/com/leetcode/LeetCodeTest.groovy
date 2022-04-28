@@ -1129,11 +1129,11 @@ class LeetCodeTest extends Specification {
         expect:
         sol.gridIllumination(n, lamps, queries) == ans
         where:
-        n | lamps            | queries                  | ans
+        n | lamps            | queries          | ans
 //        5 | [[0, 0], [4, 4]] | [[1, 1], [1, 0]]         | [1, 0]
 //        5 | [[0, 0], [4, 4]] | [[1, 1], [1, 1]]         | [1, 1]
 //        5 | [[0, 0], [0, 4]] | [[0, 4], [0, 1], [1, 4]] | [1, 1, 0]
-        5 | [[0, 0], [1, 0]] | [[1, 1], [1, 1]]         | [1, 0]
+        5 | [[0, 0], [1, 0]] | [[1, 1], [1, 1]] | [1, 0]
     }
 
     def "1014. Best Sightseeing Pair"(int[] arr, int result) {
@@ -1170,5 +1170,17 @@ class LeetCodeTest extends Specification {
         [1, 2, 2, 1, 1, 3]                 | true
         [1, 2]                             | false
         [-3, 0, 1, -3, 1, 1, 1, -3, 10, 0] | true
+    }
+
+    def "1631. Path With Minimum Effort"(int[][] heights, int ans) {
+        given:
+        def sol = new Problem1631()
+        expect:
+        sol.minimumEffortPath(heights) == ans
+        where:
+        heights                                                                               | ans
+        [[1, 2, 2], [3, 8, 2], [5, 3, 5]]                                                     | 2
+        [[1, 2, 3], [3, 8, 4], [5, 3, 5]]                                                     | 1
+        [[1, 2, 1, 1, 1], [1, 2, 1, 2, 1], [1, 2, 1, 2, 1], [1, 2, 1, 2, 1], [1, 1, 1, 2, 1]] | 0
     }
 }
