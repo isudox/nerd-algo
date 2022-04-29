@@ -2890,6 +2890,31 @@ def test_1894(chalk: List[int], k: int, ans: int):
     assert sol.chalk_replacer(chalk, k) == ans
 
 
+@pytest.mark.parametrize('grid, ans', [
+    ([[2, 5, 4], [1, 5, 1]], 4),
+    ([[2, 5, 4], [5, 4, 1]], 5),
+    ([[3, 3, 1], [8, 5, 2]], 4),
+    ([[1, 3, 1, 15], [1, 3, 3, 1]], 7),
+    ([[20, 3, 20, 17, 2, 12, 15, 17, 4, 15], [20, 10, 13, 14, 15, 5, 2, 3, 14, 3]], 63)
+])
+def test_2017(grid: List[List[int]], ans: int):
+    from leetcode.problem_2017 import Solution
+    sol = Solution()
+    assert sol.grid_game(grid) == ans
+
+
+@pytest.mark.parametrize('board, word, ans', [
+    ([["#", " ", "#"], [" ", " ", "#"], ["#", "c", " "]], "abc", True),
+    ([[" ", "#", "a"], [" ", "#", "c"], [" ", "#", "a"]], "ac", False),
+    ([["#", " ", "#"], [" ", " ", "#"], ["#", " ", "c"]], "ca", True),
+    ([[" "], ["b"], [" "], ["a"]], "abcd", False),
+])
+def test_2018(board: List[List[str]], word: str, ans: bool):
+    from leetcode.problem_2018 import Solution
+    sol = Solution()
+    assert sol.placeWordInCrossword(board, word) == ans
+
+
 @pytest.mark.parametrize('n, edges, time, change, ans', [
     (5, [[1, 2], [1, 3], [1, 4], [3, 4], [4, 5]], 3, 5, 13),
     (2, [[1, 2]], 3, 2, 11),

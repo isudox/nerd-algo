@@ -6,22 +6,20 @@ from typing import List
 
 class Solution:
     def is_bipartite(self, graph: List[List[int]]) -> bool:
-        def mark(idx: int, flag: int):
-            nonlocal ans
-            marked[idx] = flag
-            for point in graph[idx]:
-                if marked[point] == flag:
-                    ans = False
-                    return
-                if marked[point] == 0:
-                    mark(point, -flag)
+        def dfs(x: int, flag: int) -> bool:
+            groups[x] = flag
+            for y in graph[x]:
+                if groups[y] == flag:
+                    return False
+                if groups[y] == 0:
+                    if not dfs(y, -flag):
+                        return False
+            return True
 
         n = len(graph)
-        marked = [0] * n  # 0 unmarked, 1 marked a, -1 marked b
-        ans = True
+        groups = [0] * n  # 0 ungrouped, 1: group A, -1: group B
         for i in range(n):
-            if marked[i] == 0:
-                mark(i, 1)
-                if not ans:
+            if groups[i] == 0:
+                if not dfs(i, 1):
                     return False
         return True
