@@ -1,12 +1,5 @@
 """1631. Path With Minimum Effort
 https://leetcode.com/problems/path-with-minimum-effort/
-
-Constraints:
-
-    rows == heights.length
-    columns == heights[i].length
-    1 <= rows, columns <= 100
-    1 <= heights[i][j] <= 10^6
 """
 import sys
 from typing import List

@@ -9,6 +9,7 @@ import java.util.Queue;
  */
 public class Problem1631 {
     private static final int[][] dirs = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
     public int minimumEffortPath(int[][] heights) {
         int m = heights.length, n = heights[0].length;
 
@@ -39,5 +40,46 @@ public class Problem1631 {
             }
         }
         return ans;
+    }
+
+    public int minimumEffortPath2(int[][] heights) {
+        int m = heights.length, n = heights[0].length;
+        int min = Integer.MAX_VALUE, max = 0;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (heights[i][j] < min) {
+                    min = heights[i][j];
+                }
+                if (heights[i][j] > max) {
+                    max = heights[i][j];
+                }
+            }
+        }
+        int maxDiff = max - min, minDiff = 0;
+        while (minDiff < maxDiff) {
+            boolean[][] seen = new boolean[m][n];
+            int midDiff = (maxDiff + minDiff) / 2;
+            dfs(heights, 0, 0, midDiff, seen);
+            if (seen[m - 1][n - 1]) {
+                maxDiff = midDiff;
+            } else {
+                minDiff = midDiff + 1;
+            }
+        }
+        return minDiff;
+    }
+
+    private void dfs(int[][] heights, int x, int y, int diff, boolean[][] seen) {
+        seen[x][y] = true;
+        if (x == heights.length - 1 && y == heights[0].length - 1) {
+            return;
+        }
+        for (int[] d : dirs) {
+            int nx = x + d[0], ny = y + d[1];
+            if (0 <= nx && nx < heights.length && 0 <= ny && ny < heights[0].length
+                    && !seen[nx][ny] && Math.abs(heights[x][y] - heights[nx][ny]) <= diff) {
+                dfs(heights, nx, ny, diff, seen);
+            }
+        }
     }
 }
