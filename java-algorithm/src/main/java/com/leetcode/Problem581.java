@@ -1,24 +1,10 @@
 package com.leetcode;
 
+import java.util.Arrays;
+
 /**
  * 581. Shortest Unsorted Continuous Subarray
  * https://leetcode.com/problems/shortest-unsorted-continuous-subarray/
- *
- * Given an integer array, you need to find one continuous subarray that
- * if you only sort this subarray in ascending order, then the whole array
- * will be sorted in ascending order, too.
- *
- * You need to find the shortest such subarray and output its length.
- *
- * Example 1:
- * Input: [2, 6, 4, 8, 10, 9, 15]
- * Output: 5
- * Explanation: You need to sort [6, 4, 8, 10, 9] in ascending order to make
- * the whole array sorted in ascending order.
- *
- * Note:
- * Then length of the input array is in range [1, 10,000].
- * The input array may contain duplicates, so ascending order here means <=.
  */
 public class Problem581 {
     /**
@@ -45,5 +31,59 @@ public class Problem581 {
         if (l == -1)
             return 0;
         return r - l + 1;
+    }
+
+    /**
+     * Time complexity: O(N log N)
+     * Space complexity: O(N)
+     */
+    public int findUnsortedSubarray2(int[] nums) {
+        int n = nums.length;
+        if (n < 2) {
+            return 0;
+        }
+        int[] sortedNums = new int[n];
+        System.arraycopy(nums, 0, sortedNums, 0, n);
+        Arrays.sort(sortedNums);
+        int i = 0, j = n - 1;
+        while (i < n && sortedNums[i] == nums[i]) {
+            i++;
+        }
+        while (j >= 0 && sortedNums[j] == nums[j]) {
+            j--;
+        }
+        return i < j ? j - i + 1 : 0;
+    }
+
+    /**
+     * Time complexity: O(N log N)
+     * Space complexity: O(N)
+     */
+    public int findUnsortedSubarray3(int[] nums) {
+        int n = nums.length;
+        if (n < 2) {
+            return 0;
+        }
+        int max = nums[0], right = 0;
+        for (int i = 1; i < n; i++) {
+            if (nums[i] > max) {
+                max = nums[i];
+                continue;
+            }
+            if (nums[i] < max) {
+                right = i;
+            }
+        }
+        int min = nums[n - 1], left = n - 1;
+        for (int j = n - 2; j >= 0; j--) {
+            if (nums[j] < min) {
+                min = nums[j];
+                continue;
+            }
+            if (nums[j] > min) {
+                left = j;
+            }
+        }
+        return left > right ? 0 : right - left + 1;
     }
 }
