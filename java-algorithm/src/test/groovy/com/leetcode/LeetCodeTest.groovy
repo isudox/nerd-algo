@@ -1183,4 +1183,14 @@ class LeetCodeTest extends Specification {
         [[1, 2, 3], [3, 8, 4], [5, 3, 5]]                                                     | 1
         [[1, 2, 1, 1, 1], [1, 2, 1, 2, 1], [1, 2, 1, 2, 1], [1, 2, 1, 2, 1], [1, 1, 1, 2, 1]] | 0
     }
+
+    def "2156. Find Substring With Given Hash Value"(String s, int power, int modulo, int k, int hashValue, String ans) {
+        given:
+        def sol = new Problem2156()
+        expect:
+        sol.subStrHash(s, power, modulo, k, hashValue) == ans
+        where:
+        s                                                           | power | modulo | k  | hashValue | ans
+        "xqgfatvtlwnnkxipmipcpqwbxihxblaplpfckvxtihonijhtezdnkjmmk" | 22    | 51     | 41 | 9         | "xqgfatvtlwnnkxipmipcpqwbxihxblaplpfckvxti"
+    }
 }
