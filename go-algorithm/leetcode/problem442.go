@@ -14,6 +14,7 @@ func findDuplicates(nums []int) []int {
 	}
 	return ans
 }
+
 func findDuplicates2(nums []int) []int {
 	abs := func(x int) int {
 		if x < 0 {
