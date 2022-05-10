@@ -22,6 +22,21 @@ from typing import List
 
 
 class Solution:
+    def combination_sum(self, k: int, n: int) -> List[List[int]]:
+        def helper(start: int, target: int, m: int) -> List[List[int]]:
+            if m == 1 and start <= target <= 9:
+                return [[target]]
+            ret = []
+            for i in range(start, min(9, target - start) + 1):
+                combines = helper(i + 1, target - i, m - 1)
+                if len(combines) > 0:
+                    for combine in combines:
+                        combine.insert(0, i)
+                    ret.extend(combines)
+            return ret
+
+        return helper(1, n, k)
+
     def combination_sum3(self, k: int, n: int) -> List[List[int]]:
         def backtrack(target: int, start: int, store: List[int]):
             for i in range(start, 10):
