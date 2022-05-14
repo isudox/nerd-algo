@@ -25,8 +25,9 @@ public class Problem47 {
         List<List<Integer>> ans = new ArrayList<>();
         do {
             List<Integer> list = new ArrayList<>(nums.length);
-            for (int num : nums)
+            for (int num : nums) {
                 list.add(num);
+            }
             ans.add(list);
         } while (next(nums));
         return ans;
@@ -57,25 +58,29 @@ public class Problem47 {
     }
 
     public List<List<Integer>> permuteUnique2(int[] nums) {
+        Arrays.sort(nums);
         List<List<Integer>> ans = new ArrayList<>();
-        backtrack(nums, 0, new ArrayList<>(), new boolean[nums.length], ans);
+        backtrack(nums, new ArrayList<>(), new boolean[nums.length], ans);
         return ans;
     }
 
-    private void backtrack(int[] nums, int pos, List<Integer> perm, boolean[] visited, List<List<Integer>> ans) {
-        if (nums.length == pos)
+    private void backtrack(int[] nums, List<Integer> perm, boolean[] visited, List<List<Integer>> ans) {
+        if (perm.size() == nums.length) {
             ans.add(new ArrayList<>(perm));
-        Set<Integer> duplicates = new HashSet<>();
+            return;
+        }
         for (int i = 0; i < nums.length; i++) {
-            if (visited[i] || duplicates.contains(nums[i]))
+            if (visited[i]) {
                 continue;
+            }
+            if (i > 0 && nums[i] == nums[i - 1] && !visited[i - 1]) {
+                continue;
+            }
             perm.add(nums[i]);
-            duplicates.add(nums[i]);
             visited[i] = true;
-            backtrack(nums, pos + 1, perm, visited, ans);
+            backtrack(nums, perm, visited, ans);
             perm.remove(perm.size() - 1);
             visited[i] = false;
         }
     }
-
 }
