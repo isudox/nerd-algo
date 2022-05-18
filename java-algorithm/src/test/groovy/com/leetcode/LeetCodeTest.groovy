@@ -815,6 +815,16 @@ class LeetCodeTest extends Specification {
         "RRDRDDRRRDDRDRRDRDRRDDRRDRDRRDD" | "Radiant"
     }
 
+    def "668. Kth Smallest Number in Multiplication Table"(int m, int n, int k, int ans) {
+        given:
+        def sol = new Problem668()
+        expect:
+        sol.findKthNumber(m, n, k) == ans
+        where:
+        m    | n     | k         | ans
+        9895 | 28405 | 100787757 | 31666344
+    }
+
     def "773. Sliding Puzzle"(int[][] board, int ans) {
         given:
         def sol = new Problem773()
