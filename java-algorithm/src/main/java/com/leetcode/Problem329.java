@@ -35,33 +35,36 @@ package com.leetcode;
  */
 public class Problem329 {
 
-    private static final int[][] MOVES = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+    private static final int[][] DIRS = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
     public int longestIncreasingPath(int[][] matrix) {
-        if (null == matrix || matrix.length == 0 || matrix[0].length == 0)
+        if (null == matrix || matrix.length == 0 || matrix[0].length == 0) {
             return 0;
+        }
         int rows = matrix.length, cols = matrix[0].length;
         int[][] memo = new int[rows][cols];
         int ans = 0;
-        for (int i = 0; i < rows; i++)
-            for (int j = 0; j < cols; j++)
-                ans = Math.max(ans, find_path(i, j, matrix, memo));
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                int ret = dfs(i, j, matrix, memo);
+                if (ret > ans) {
+                    ans = ret;
+                }
+            }
+        }
         return ans;
     }
 
-    private int find_path(int x, int y, int[][] matrix, int[][] memo) {
+    private int dfs(int x, int y, int[][] matrix, int[][] memo) {
         if (memo[x][y] != 0)
             return memo[x][y];
         int ret = 1;
-        for (int[] move : MOVES) {
-            int new_x = x + move[0], new_y = y + move[1];
-            if (new_x >= 0 && new_x < matrix.length &&
-                    new_y >= 0 && new_y < matrix[0].length &&
-                    matrix[new_x][new_y] > matrix[x][y]) {
-                ret = Math.max(ret, 1 + find_path(new_x, new_y, matrix, memo));
+        for (int[] d : DIRS) {
+            int nx = x + d[0], ny = y + d[1];
+            if (0 <= nx && nx < matrix.length && 0 <= ny && ny < matrix[0].length && matrix[nx][ny] > matrix[x][y]) {
+                ret = Math.max(ret, 1 + dfs(nx, ny, matrix, memo));
             }
         }
-        memo[x][y] = ret;
-        return ret;
+        return memo[x][y] = ret;
     }
 }
