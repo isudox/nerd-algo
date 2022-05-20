@@ -58,4 +58,33 @@ public class Problem63 {
         }
         return dp[rows - 1][cols - 1];
     }
+
+    private static final int[][] DIRS = new int[][]{{0, 1}, {1, 0}};
+    private static int[][] memo;
+
+    public int uniquePathsWithObstacles2(int[][] grid) {
+        int m = grid.length, n = grid[0].length;
+        if (grid[0][0] != 0 || grid[m - 1][n - 1] != 0) {
+            return 0;
+        }
+        memo = new int[m][n];
+        return dfs(grid, 0, 0);
+    }
+
+    private int dfs(int[][] grid, int x, int y) {
+        if (memo[x][y] > 0) {
+            return memo[x][y];
+        }
+        if (x == grid.length - 1 && y == grid[0].length - 1) {
+            return 1;
+        }
+        int cnt = 0;
+        for (int[] d : DIRS) {
+            int nx = x + d[0], ny = y + d[1];
+            if (0 <= nx && nx < grid.length && 0 <= ny && ny < grid[0].length && grid[nx][ny] == 0) {
+                cnt += dfs(grid, nx, ny);
+            }
+        }
+        return memo[x][y] = cnt;
+    }
 }
