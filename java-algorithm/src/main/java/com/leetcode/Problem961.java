@@ -34,7 +34,6 @@ import java.util.Map;
  * A.length is even
  */
 public class Problem961 {
-
     public int repeatedNTimes(int[] a) {
         int n = a.length / 2;
         Map<Integer, Integer> counter = new HashMap<>();
@@ -45,5 +44,20 @@ public class Problem961 {
             }
         }
         throw new IllegalArgumentException();
+    }
+
+    public int repeatedNTimes2(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+            if (i - 1 >= 0 && nums[i - 1] == nums[i]) {
+                return nums[i];
+            }
+            if (i - 2 >= 0 && nums[i - 2] == nums[i]) {
+                return nums[i];
+            }
+            if (i - 3 >= 0 && nums[i - 3] == nums[i]) {
+                return nums[i];
+            }
+        }
+        return -1;
     }
 }
