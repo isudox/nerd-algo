@@ -1,5 +1,7 @@
 package com.leetcode;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Stack;
 
 /**
@@ -27,22 +29,19 @@ public class Problem32 {
      * An easy method with {@link Stack}
      */
     public int longestValidParentheses(String s) {
-        int max = 0, count, len = s.length();
-        Stack<Integer> stack = new Stack<>();
-
-        for (int i = 0; i < len; i++) {
-            if (s.charAt(i) == ')'
-                    && !stack.isEmpty()
-                    && s.charAt(stack.peek()) == '(') {
-                stack.pop();
-                count = stack.isEmpty() ? i + 1 : i - stack.peek();
-                max = Math.max(count, max);
+        Deque<Integer> deque = new ArrayDeque<>();
+        int ans = 0, cnt = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char cur = s.charAt(i);
+            if (cur == ')' && !deque.isEmpty() && s.charAt(deque.peekLast()) == '(') {
+                deque.pollLast();
+                cnt = deque.isEmpty() ? i + 1 : i - deque.peekLast();
+                ans = Math.max(ans, cnt);
             } else {
-                stack.push(i);
+                deque.addLast(i);
             }
         }
-
-        return max;
+        return ans;
     }
 
     /**
