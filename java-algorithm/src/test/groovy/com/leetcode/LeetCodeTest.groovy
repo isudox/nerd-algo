@@ -613,6 +613,16 @@ class LeetCodeTest extends Specification {
         [10, 9, 2, 5, 3, 7, 101, 18] | 4
     }
 
+    def "304. Range Sum Query 2D - Immutable"(int[][] nums, int ans) {
+        given:
+        def numMatrix = new Problem304.NumMatrix(nums)
+        expect:
+        numMatrix.sumRegion(2, 1, 4, 3) == ans
+        where:
+        nums | ans
+        [[3,0,1,4,2],[5,6,3,2,1],[1,2,0,1,5],[4,1,0,1,7],[1,0,3,0,5]] | 8
+    }
+
     def "312. Burst Balloons"(int[] nums, int ans) {
         given:
         def sol = new Problem312()
