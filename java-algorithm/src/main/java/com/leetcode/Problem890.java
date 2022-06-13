@@ -13,7 +13,7 @@ public class Problem890 {
     public List<String> findAndReplacePattern(String[] words, String pattern) {
         List<String> ans = new ArrayList<>();
         for (String word : words) {
-            if (check(word, pattern)) {
+            if (check(word, pattern) && check(pattern, word)) {
                 ans.add(word);
             }
         }
@@ -24,23 +24,15 @@ public class Problem890 {
         if (word.length() != pattern.length()) {
             return false;
         }
-        Map<Character, Character> map1 = new HashMap<>();
-        Map<Character, Character> map2 = new HashMap<>();
+        Map<Character, Character> map = new HashMap<>();
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i), p = pattern.charAt(i);
-            if (map1.containsKey(p)) {
-                if (map1.get(p) != c) {
+            if (map.containsKey(p)) {
+                if (map.get(p) != c) {
                     return false;
                 }
             } else {
-                map1.put(p, c);
-            }
-            if (map2.containsKey(c)) {
-                if (map2.get(c) != p) {
-                    return false;
-                }
-            } else {
-                map2.put(c, p);
+                map.put(p, c);
             }
         }
         return true;
