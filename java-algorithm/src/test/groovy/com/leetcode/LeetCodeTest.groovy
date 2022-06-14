@@ -619,8 +619,8 @@ class LeetCodeTest extends Specification {
         expect:
         numMatrix.sumRegion(2, 1, 4, 3) == ans
         where:
-        nums | ans
-        [[3,0,1,4,2],[5,6,3,2,1],[1,2,0,1,5],[4,1,0,1,7],[1,0,3,0,5]] | 8
+        nums                                                                                  | ans
+        [[3, 0, 1, 4, 2], [5, 6, 3, 2, 1], [1, 2, 0, 1, 5], [4, 1, 0, 1, 7], [1, 0, 3, 0, 5]] | 8
     }
 
     def "312. Burst Balloons"(int[] nums, int ans) {
@@ -786,6 +786,17 @@ class LeetCodeTest extends Specification {
         [1]                      | 0
         [5, 3, 9, 1, 7, 3, 2, 5] | 8
         [1, 3, 5, 2]             | 3
+    }
+
+    def "583"(String word1, String word2, int ans) {
+        given:
+        def sol = new Problem583()
+        expect:
+        sol.minDistance(word1, word2) == ans
+        where:
+        word1      | word2  | ans
+        "sea"      | "eat"  | 2
+        "leetcode" | "etco" | 4
     }
 
     def "605. Can Place Flowers"(int[] flowerbed, int n, boolean ans) {
