@@ -788,7 +788,7 @@ class LeetCodeTest extends Specification {
         [1, 3, 5, 2]             | 3
     }
 
-    def "583"(String word1, String word2, int ans) {
+    def "583. Delete Operation for Two Strings"(String word1, String word2, int ans) {
         given:
         def sol = new Problem583()
         expect:
