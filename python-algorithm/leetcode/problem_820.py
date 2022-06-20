@@ -3,15 +3,15 @@ https://leetcode.com/problems/short-encoding-of-words/
 """
 from typing import List
 
-"""
-Input: words = ["time", "me", "bell"] Output: 10
-Explanation: A valid encoding would be s =
-"time#bell#" and indices = [0, 2, 5]
-"""
+
 class Solution:
     def minimumLengthEncoding(self, words: List[str]) -> int:
-        ans = words[0] + '#'
-        for i in range(1, len(words)):
-            word = words[i]
-            
-        return 0
+        n = len(words)
+        for i in range(n):
+            words[i] = words[i][::-1]
+        words.sort()
+        ans = len(words[-1]) + 1
+        for i in range(1, n):
+            if not words[i].startswith(words[i - 1]):
+                ans += len(words[i - 1]) + 1
+        return ans
