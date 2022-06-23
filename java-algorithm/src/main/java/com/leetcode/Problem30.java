@@ -1,10 +1,12 @@
 package com.leetcode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+
 
 /**
+ * 30. Substring with Concatenation of All Words
+ * https://leetcode.com/problems/substring-with-concatenation-of-all-words/
+ *
  * You are given a string, s, and a list of words, words,
  * that are all of the same length.
  * Find all starting indices of substring(s) in s that is a concatenation of
@@ -29,42 +31,44 @@ import java.util.List;
  * Output: []
  */
 public class Problem30 {
-
     public List<Integer> findSubstring(String s, String[] words) {
-        List<Integer> result = new ArrayList<>();
-        if (words.length == 0)
-            return result;
-        List<String> wordList = Arrays.asList(words);
+        if (words.length == 0) {
+            return new ArrayList<>();
+        }
         int len = words[0].length();
         int sLen = s.length();
-        if (len > sLen)
-            return result;
+        if (len > sLen) {
+            return new ArrayList<>();
+        }
+        Map<String, Integer> dict = new HashMap<>();
+        for (String word : words) {
+            dict.put(word, dict.getOrDefault(word, 0) + 1);
+        }
         int wordsLen = len * (words.length);
+        List<Integer> result = new ArrayList<>();
         int i = 0;
         while (i <= sLen - wordsLen) {
-            String word = s.substring(i, i + len);
-            if (wordList.contains(word)) {
-                String substr = s.substring(i, i + wordsLen);
-                if (isValid(substr, wordList, len))
-                    result.add(i);
+            String substr = s.substring(i, i + wordsLen);
+            if (isValid(substr, dict, len)) {
+                result.add(i);
             }
             i++;
         }
         return result;
     }
 
-    private boolean isValid(String str, List<String> wordList, int len) {
+    private boolean isValid(String str, Map<String, Integer> dict, int len) {
         List<String> list = new ArrayList<String>();
-        for (int i = 0; i < str.length() / len; i++) {
-            String s = str.substring(i * len, (i + 1) * len);
-            list.add(s);
+        Map<String, Integer> counter = new HashMap<>();
+        for (Map.Entry<String, Integer> entry : dict.entrySet()) {
+            counter.put(entry.getKey(), entry.getValue());
         }
-        for (String s : wordList) {
-            if (list.contains(s)) {
-                list.remove(s);
-            } else {
+        for (int i = 0; i < str.length(); i += len) {
+            String s = str.substring(i, i + len);
+            if (counter.getOrDefault(s, 0) == 0) {
                 return false;
             }
+            counter.put(s, counter.get(s) - 1);
         }
         return true;
     }
