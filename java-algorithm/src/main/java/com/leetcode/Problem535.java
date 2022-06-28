@@ -10,14 +10,12 @@ import java.util.Random;
  */
 public class Problem535 {
     private static class Codec {
-
         private String alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         private static final String BASE_URL = "https://tinyurl.com/";
         private final Random rand = new Random();
         private String key = getKey();
         private final Map<String, String> map = new HashMap<>();
 
-        // Encodes a URL to a shortened URL.
         public String encode(String longUrl) {
             while (map.containsKey(key)) {
                 key = getKey();
@@ -26,7 +24,6 @@ public class Problem535 {
             return BASE_URL + key;
         }
 
-        // Decodes a shortened URL to its original URL.
         public String decode(String shortUrl) {
             String key = shortUrl.substring(BASE_URL.length());
             return map.getOrDefault(key, "");
