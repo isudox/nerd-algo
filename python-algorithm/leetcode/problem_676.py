@@ -14,7 +14,7 @@ class MagicDictionary:
             self.trie.add(d)
 
     def search(self, searchWord: str) -> bool:
-        return self.trie.search(searchWord)
+        return self.trie.search(searchWord, False)
 
 
 class Trie:
@@ -31,21 +31,24 @@ class Trie:
             cur = cur.children[ch]
         cur.end = True
 
-    def search(self, word: str, cnt: bool) -> bool:
+    def search(self, word: str, changed: bool) -> bool:
         cur = self
         for i, ch in enumerate(word):
             if ch not in cur.children:
-                if not cnt:
+                if changed:
                     return False
-                cnt = True
                 for nxt in cur.children:
-                    cur = cur.children[nxt]
-                    if cur.search(word[i + 1:], True):
+                    if cur.children[nxt].search(word[i + 1:], True):
                         return True
                 return False
-            else:
+            elif changed:
                 cur = cur.children[ch]
-        if cnt == 1:
+            else:
+                for nxt in cur.children:
+                    if cur.children[nxt].search(word[i + 1:], False if nxt == ch else True):
+                        return True
+                return False
+        if not changed:
             return False
         if not cur.end:
             return False
