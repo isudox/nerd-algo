@@ -7,18 +7,18 @@ Given a binary tree, return the level order traversal of its nodes' values.
 For example:
 Given binary tree [3,9,20,null,null,15,7],
 
-⁠   3
-⁠  / \
-⁠ 9  20
-⁠   /  \
-⁠  15   7
+   3
+  / \
+ 9  20
+   /  \
+  15   7
 
 return its level order traversal as:
 
 [
-⁠ [3],
-⁠ [9,20],
-⁠ [15,7]
+ [3],
+ [9,20],
+ [15,7]
 ]
 """
 from typing import List
@@ -30,17 +30,16 @@ class Solution:
     def level_order(self, root: TreeNode) -> List[List[int]]:
         if not root:
             return []
-
         ans = []
         queue = [root]
         while queue:
-            cur = []
+            level = []
             for i in range(len(queue)):
                 node = queue.pop(0)
-                cur.append(node.val)
+                level.append(node.val)
                 if node.left:
                     queue.append(node.left)
                 if node.right:
                     queue.append(node.right)
-            ans.append(cur)
+            ans.append(level)
         return ans
