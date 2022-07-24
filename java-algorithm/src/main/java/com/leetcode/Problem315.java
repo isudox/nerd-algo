@@ -30,16 +30,14 @@ public class Problem315 {
         for (int i = n - 1; i > -1; i--) {
             int index = binarySearch(sortedNums, nums[i]);
             sortedNums.add(index, nums[i]);
-            ans.add(index);
+            ans.add(0, index);
         }
-        Collections.reverse(ans);
         return ans;
     }
 
     private int binarySearch(List<Integer> list, int target) {
         int lo = 0, hi = list.size();
         while (lo < hi) {
-            // int mid = lo + (hi - lo) >> 1;
             int mid = lo + (hi - lo) / 2;
             if (list.get(mid) < target) {
                 lo = mid + 1;
