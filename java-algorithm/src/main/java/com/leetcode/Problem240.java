@@ -21,4 +21,15 @@ public class Problem240 {
         }
         return false;
     }
+
+    public boolean searchMatrix2(int[][] matrix, int target) {
+        int m = matrix.length, n = matrix[0].length;
+        int i = m - 1, j = 0; // left-down corner
+        while (i >= 0 && j < n) {
+            if (matrix[i][j] == target) return true;
+            if (matrix[i][j] < target) j++;
+            else i--;
+        }
+        return false;
+    }
 }
