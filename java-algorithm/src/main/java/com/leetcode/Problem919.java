@@ -2,7 +2,6 @@ package com.leetcode;
 
 import com.common.TreeNode;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
