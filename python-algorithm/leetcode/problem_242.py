@@ -19,20 +19,15 @@ You may assume the string contains only lowercase alphabets.
 Follow up:
 What if the inputs contain unicode characters? How would you adapt your solution to such case?
 """
+from collections import Counter
 
 
 class Solution:
     def is_anagram(self, s: str, t: str) -> bool:
-        store = {}
-        for c in s:
-            store[c] = 1 + (store[c] if c in store else 0)
-        for c in t:
-            if c not in store:
-                return False
-            if store[c] > 1:
-                store[c] -= 1
-            else:
-                del store[c]
-        if store:
+        if len(s) != len(t):
             return False
+        cnt_s, cnt_t = Counter(s), Counter(t)
+        for k, v in cnt_s.items():
+            if k not in cnt_t or cnt_t[k] != v:
+                return False
         return True
