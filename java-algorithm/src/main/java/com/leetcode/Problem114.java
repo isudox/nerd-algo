@@ -23,10 +23,4 @@ public class Problem114 {
         recur(node.left, list);
         recur(node.right, list);
     }
-
-    public static void main(String[] args) {
-        Problem114 p = new Problem114();
-        TreeNode root = new TreeNode(0, new TreeNode(1), new TreeNode(2));
-        p.flatten(root);
-    }
 }
