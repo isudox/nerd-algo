@@ -1,5 +1,7 @@
 package com.leetcode;
 
+import java.util.PriorityQueue;
+
 /**
  * 378. Kth Smallest Element in a Sorted Matrix
  * https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/
@@ -24,7 +26,6 @@ package com.leetcode;
  * You may assume k is always valid, 1 ≤ k ≤ n2.
  */
 public class Problem378 {
-
     public int kthSmallest(int[][] matrix, int k) {
         int n = matrix.length;
         int lo = matrix[0][0];
@@ -52,5 +53,15 @@ public class Problem378 {
             }
         }
         return lo;
+    }
+    public int kthSmallest2(int[][] matrix, int k) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        for (int[] row : matrix) {
+            for (int num : row) {
+                pq.add(-num);
+                if (pq.size() > k) pq.poll();
+            }
+        }
+        return -pq.peek();
     }
 }
