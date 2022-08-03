@@ -8,7 +8,7 @@ import pytest
      "jesslookedjustliketimherbrother", 7),
 ])
 def test_re_space(d: List[str], s: str, ans: int):
-    from other.ctci.re_space import Solution
+    from misc.ctci.re_space import Solution
     sol = Solution()
     assert sol.re_space(d, s) == ans
 
@@ -19,7 +19,7 @@ def test_re_space(d: List[str], s: str, ans: int):
     (["S#O", "M.T", "M.."], 17)
 ])
 def test_xun_bao(maze: List[str], ans: int):
-    from other.leetcode_cn.xun_bao import Solution
+    from misc.leetcode_cn.xun_bao import Solution
     sol = Solution()
     #assert sol.minimal_steps(maze) == ans
 
@@ -30,7 +30,7 @@ def test_xun_bao(maze: List[str], ans: int):
     (506, 1),
 ])
 def test_lcof(num, expect):
-    from other.leetcode_cn.lcof import Solution
+    from misc.leetcode_cn.lcof import Solution
     solution = Solution()
     assert solution.translate_num(num) == expect
 
@@ -48,6 +48,6 @@ def test_lcof(num, expect):
      ], 4)
 ])
 def test_black_white_matrix(matrix, expect):
-    from other.black_white_matrix import Solution
+    from misc.black_white_matrix import Solution
     s = Solution()
     assert s.brute_force(matrix) == expect
