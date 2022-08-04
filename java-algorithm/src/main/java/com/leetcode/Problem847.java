@@ -30,9 +30,4 @@ public class Problem847 {
         }
         return ans;
     }
-
-    public static void main(String[] args) {
-        Problem847 sol = new Problem847();
-        System.out.println(sol.shortestPathLength(new int[][]{{1, 2, 3}, {0}, {0}, {0}}));
-    }
 }
