@@ -12,21 +12,17 @@ def count_vowel_permutation(n: int) -> int:
             if j == 0:
                 # 'ea', 'ia', 'ua'
                 dp[i][j] += dp[i - 1][1] + dp[i - 1][2] + dp[i - 1][4]
-                dp[i][j] = dp[i][j] % base
             if j == 1:
                 # 'ae', 'ie'
                 dp[i][j] += dp[i - 1][0] + dp[i - 1][2]
-                dp[i][j] = dp[i][j] % base
             if j == 2:
                 # 'ei', 'oi'
                 dp[i][j] += dp[i - 1][1] + dp[i - 1][3]
-                dp[i][j] = dp[i][j] % base
             if j == 3:
                 # 'io'
                 dp[i][j] += dp[i - 1][2]
-                dp[i][j] = dp[i][j] % base
             if j == 4:
                 # 'iu', 'ou'
                 dp[i][j] += dp[i - 1][2] + dp[i - 1][3]
-                dp[i][j] = dp[i][j] % base
+            dp[i][j] %= base
     return sum(dp[-1]) % base
