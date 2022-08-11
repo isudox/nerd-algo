@@ -20,21 +20,20 @@ which represents the following height balanced BST:
    /   /
  -10  5
 """
-from typing import List
+from typing import List, Optional
 
 from common.tree_node import TreeNode
 
 
 class Solution:
-    def sorted_array_to_bst(self, nums: List[int]) -> TreeNode:
+    def sorted_array_to_bst(self, nums: List[int]) -> Optional[TreeNode]:
         """
         recursive
         time complexity: O(N)
         space complexity: O(lgN)
         """
 
-        def recur(start: int, end: int) -> TreeNode:
-            # [start, end)
+        def recur(start: int, end: int) -> Optional[TreeNode]:
             if end == start:
                 return None
             mid = (start + end) // 2

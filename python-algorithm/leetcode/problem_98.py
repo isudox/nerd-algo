@@ -1,5 +1,5 @@
 """98. Validate Binary Search Tree
-https://leetcode.com/problems/validate-binary-search-tree/description/
+https://leetcode.com/problems/validate-binary-search-tree/
 
 Given a binary tree, determine if it is a valid binary search tree (BST).
 
@@ -55,18 +55,15 @@ class Solution:
         :param root:
         :return:
         """
-        seq = []
         stack = []
+        prev = None
         while root or stack:
-            if root:
+            while root:
                 stack.append(root)
                 root = root.left
-            else:
-                top_ele = stack.pop()
-                seq.append(top_ele.val)
-                if top_ele.right:
-                    root = top_ele.right
-        for i in range(1, len(seq)):
-            if seq[i - 1] >= seq[i]:
+            root = stack.pop()
+            if prev and prev.val >= root.val:
                 return False
+            prev = root
+            root = root.right
         return True
