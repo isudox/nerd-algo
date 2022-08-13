@@ -6,29 +6,6 @@ import java.util.*;
 /**
  * 30. Substring with Concatenation of All Words
  * https://leetcode.com/problems/substring-with-concatenation-of-all-words/
- *
- * You are given a string, s, and a list of words, words,
- * that are all of the same length.
- * Find all starting indices of substring(s) in s that is a concatenation of
- * each word in words exactly once and without any intervening characters.
- *
- *
- *
- * Example 1:
- *
- * Input:
- *   s = "barfoothefoobarman",
- *   words = ["foo","bar"]
- * Output: [0,9]
- * Explanation: Substrings starting at index 0 and 9 are "barfoo" and "foobar" respectively.
- * The output order does not matter, returning [9,0] is fine too.
- *
- * Example 2:
- *
- * Input:
- *   s = "wordgoodgoodgoodbestword",
- *   words = ["word","good","best","word"]
- * Output: []
  */
 public class Problem30 {
     public List<Integer> findSubstring(String s, String[] words) {
@@ -71,5 +48,35 @@ public class Problem30 {
             counter.put(s, counter.get(s) - 1);
         }
         return true;
+    }
+
+    public List<Integer> findSubstring2(String s, String[] words) {
+        int m = words.length, n = words[0].length(), k = s.length();
+        int win = m * n;
+        List<Integer> ans = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            if (i + win > k) break;
+            Map<String, Integer> store = new HashMap<>();
+            for (int j = 0; j < m; j++) {
+                String word = s.substring(i + j * n, i + (j + 1) * n);
+                store.put(word, store.getOrDefault(word, 0) + 1);
+            }
+            for (String word : words) {
+                store.put(word, store.getOrDefault(word, 0) - 1);
+                if (store.get(word) == 0) store.remove(word);
+            }
+            for (int start = i; start < k - win + 1; start += n) {
+                if (start != i) {
+                    String word = s.substring(start + win - n, start + win);
+                    store.put(word, store.getOrDefault(word, 0) + 1);
+                    if (store.get(word) == 0) store.remove(word);
+                    word = s.substring(start - n, start);
+                    store.put(word, store.getOrDefault(word, 0) - 1);
+                    if (store.get(word) == 0) store.remove(word);
+                }
+                if (store.isEmpty()) ans.add(start);
+            }
+        }
+        return ans;
     }
 }
