@@ -7,29 +7,13 @@ from common.tree_node import TreeNode
 
 class Solution:
     def lowestCommonAncestor(self, root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode:
-        def helper(node: TreeNode, target: TreeNode, path: List[TreeNode]) -> bool:
-            if not node:
-                return False
-            path.append(node)
-            if node.val == target.val:
-                nonlocal paths
-                paths.append(path[::-1])
-                return True
-            if node.val < target.val:
-                if helper(node.right, target, path):
-                    return True
-                path.pop()
-            if node.val > target.val:
-                if helper(node.left, target, path):
-                    return True
-                path.pop()
-            return False
-
-        paths = []
-        helper(root, p, [])
-        helper(root, q, [])
-        node_set = set(paths[0])
-        for i in range(len(paths[1])):
-            if paths[1][i] in node_set:
-                return paths[1][i]
+        if p.val > q.val:
+            return self.lowestCommonAncestor(root, q, p)
+        while root:
+            if p.val <= root.val <= q.val:
+                return root
+            if root.val > q.val:
+                root = root.left
+            else:
+                root = root.right
         return None
