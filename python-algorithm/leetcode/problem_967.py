@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """967. Numbers With Same Consecutive Differences
 https://leetcode.com/problems/numbers-with-same-consecutive-differences/
 
@@ -35,31 +34,21 @@ from typing import List
 
 class Solution:
     def nums_same_consec_diff(self, n, k):
-        """
-        :type n: int
-        :type k: int
-        :rtype: List[int]
-        """
+        def dfs(num: int, i: int) -> List[int]:
+            if i >= n:
+                return [num]
+            ret = []
+            pre = num % 10
+            if k == 0:
+                ret.extend(dfs(num * 10 + pre, i + 1))
+                return ret
+            if pre >= k:
+                ret.extend(dfs(num * 10 + pre - k, i + 1))
+            if pre + k < 10:
+                ret.extend(dfs(num * 10 + pre + k, i + 1))
+            return ret
 
-        def assemble(nums: List[int]) -> List[int]:
-            nonlocal k
-            new_nums = []
-            for num in nums:
-                next_digit = None
-                if num % 10 + k < 10:
-                    next_digit = num % 10 + k
-                    new_nums.append(num * 10 + next_digit)
-                if num % 10 - k >= 0 and (num % 10 - k) != next_digit:
-                    next_digit = num % 10 - k
-                    new_nums.append(num * 10 + next_digit)
-            return new_nums
-
-        if n == 1:
-            return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-        res = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-        for i in range(1, n):
-            res = assemble(res)
-
-        return res
+        ans = []
+        for i in range(1, 10):
+            ans.extend(dfs(i, 1))
+        return ans
