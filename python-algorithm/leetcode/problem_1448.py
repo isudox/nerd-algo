@@ -16,5 +16,5 @@ class Solution:
             if node.right:
                 ret += dfs(node.right, maxx)
             return ret
-            
+
         return dfs(root, -1000000)
