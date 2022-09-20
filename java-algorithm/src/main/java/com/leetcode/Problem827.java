@@ -14,12 +14,6 @@ public class Problem827 {
     public int largestIsland(int[][] grid) {
         int n = grid.length;
         int[][] dirs = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
-//        parent = new int[n * n + 1];
-//        size = new int[n * n + 1];
-//        for (int i = 1; i <= n * n; i++) {
-//            parent[i] = i;
-//            size[i] = 1;
-//        }
         UnionFind uf = new UnionFind(n * n + 1);
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
