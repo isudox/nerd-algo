@@ -2,6 +2,9 @@ package com.leetcode;
 
 import com.common.TreeNode;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 /**
  * 112. Path Sum
  * https://leetcode.com/problems/path-sum/
@@ -9,7 +12,7 @@ import com.common.TreeNode;
  * Given a binary tree and a sum, determine if the tree has a root-to-leaf path
  * such that adding up all the values along the path equals the given sum.
  *
- * Note: A leaf is a node with no children.
+ * Note: A leaf is a node with no children.
  *
  * Example:
  *
@@ -42,4 +45,44 @@ public class Problem112 {
 			return true;
 		return false;
     }
+
+	public boolean hasPathSum2(TreeNode root, int targetSum) {
+		if (root == null) {
+			return false;
+		}
+		Deque<Tuple> queue = new ArrayDeque<>();
+		queue.offerLast(new Tuple(root, targetSum));
+		while (!queue.isEmpty()) {
+			int n = queue.size();
+			for (int i = 0; i < n; i++) {
+				Tuple t = queue.pollFirst();
+				TreeNode node = t.node;
+				int target = t.target;
+				if (t.valid()) {
+					return true;
+				}
+				if (t.node.left != null) {
+					queue.offerLast(new Tuple(t.node.left, t.target - t.node.val));
+				}
+				if (t.node.right != null) {
+					queue.offerLast(new Tuple(t.node.right, t.target - t.node.val));
+				}
+			}
+		}
+		return false;
+	}
+
+	private static class Tuple {
+		TreeNode node;
+		int target;
+
+		public Tuple(TreeNode node, int target) {
+			this.node = node;
+			this.target = target;
+		}
+
+		public boolean valid() {
+			return node.left == null && node.right == null && node.val == target;
+		}
+	}
 }
