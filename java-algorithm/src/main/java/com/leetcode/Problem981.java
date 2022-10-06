@@ -1,52 +1,62 @@
 package com.leetcode;
 
+import java.util.*;
+
 /**
  * 981. Time Based Key-Value Store
  * https://leetcode.com/problems/time-based-key-value-store/
- *
- * Create a timebased key-value store class TimeMap, that supports two operations.
- *
- * 1. set(string key, string value, int timestamp)
- *
- *     Stores the key and value, along with the given timestamp.
- *
- * 2. get(string key, int timestamp)
- *
- *     Returns a value such that set(key, value, timestamp_prev) was called
- *     previously, with timestamp_prev <= timestamp.
- *     If there are multiple such values, it returns the one with the largest
- *     timestamp_prev.
- *     If there are no values, it returns the empty string ("").
- *
- * Example 1:
- *   Input: inputs = ["TimeMap","set","get","get","set","get","get"], inputs = [[],["foo","bar",1],["foo",1],["foo",3],["foo","bar2",4],["foo",4],["foo",5]]
- *   Output: [null,null,"bar","bar",null,"bar2","bar2"]
- *   Explanation:
- *   TimeMap kv;
- *   kv.set("foo", "bar", 1); // store the key "foo" and value "bar" along with timestamp = 1
- *   kv.get("foo", 1);  // output "bar"
- *   kv.get("foo", 3); // output "bar" since there is no value corresponding to foo at timestamp 3 and timestamp 2, then the only value is at timestamp 1 ie "bar"
- *   kv.set("foo", "bar2", 4);
- *   kv.get("foo", 4); // output "bar2"
- *   kv.get("foo", 5); //output "bar2"
- *
- * Example 2:
- *   Input: inputs = ["TimeMap","set","set","get","get","get","get","get"],
- *   inputs = [[],["love","high",10],["love","low",20],["love",5],["love",10],["love",15],["love",20],["love",25]]
- *   Output: [null,null,null,"","high","high","low","low"]
  */
 public class Problem981 {
 
-    /** Initialize your data structure here. */
-    public Problem981() {
+    private static class TimeMap {
+        Map<String, List<Integer>> times;
+        Map<String, String> values;
 
-    }
+        public TimeMap() {
+            this.times = new HashMap<>();
+            this.values = new HashMap<>();
+        }
 
-    public void set(String key, String value, int timestamp) {
+        public void set(String key, String value, int timestamp) {
+            if (!times.containsKey(key)) {
+                times.put(key, new ArrayList<>());
+            }
+            List<Integer> list = times.get(key);
+            list.add(timestamp);
+            times.put(key, list);
+            values.put(key + timestamp, value);
+        }
 
-    }
+        public String get(String key, int timestamp) {
+            if (!times.containsKey(key)) {
+                return "";
+            }
+            if (timestamp < times.get(key).get(0)) {
+                return "";
+            }
+            int pos = binarySearch(times.get(key), timestamp);
+            return values.get(key + times.get(key).get(pos));
+        }
 
-    public String get(String key, int timestamp) {
-        return "";
+        // find first index of nums, which nums[index] <= target
+        int binarySearch(List<Integer> nums, int target) {
+            int lo = 0, hi = nums.size() - 1;
+            while (lo < hi) {
+                int mid = lo + (hi - lo) / 2;
+                int num = nums.get(mid);
+                if (num == target) {
+                    return mid;
+                }
+                if (num < target) {
+                    if (nums.get(mid + 1) > target) {
+                        return mid;
+                    }
+                    lo = mid + 1;
+                } else {
+                    hi = mid - 1;
+                }
+            }
+            return lo;
+        }
     }
 }
