@@ -51,6 +51,7 @@ class Solution:
                     ans.extend(mapper[i])
                 else:
                     ans.extend(mapper[i][:k - len(ans)])
+        return ans
 
     def top_k_frequent2(self, words: List[str], k: int) -> List[str]:
         counter = Counter(words)

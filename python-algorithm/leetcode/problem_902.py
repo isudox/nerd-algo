@@ -17,10 +17,7 @@ class Solution:
             for num in digits:
                 if num > nums[x]:
                     break
-                if num < nums[x]:
-                    ret += dfs(x + 1, True)
-                else:
-                    ret += dfs(x + 1, False)
+                ret += dfs(x + 1, num < nums[x])
             return ret
 
         ans = 0

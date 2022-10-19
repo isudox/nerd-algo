@@ -34,11 +34,6 @@ Output: "1211"
 
 class Solution:
     def count_and_say(self, n: int) -> str:
-        assert 1 <= n <= 30
-
-        if n == 1:
-            return "1"
-
         def say(num_str: str) -> str:
             res = ""
             cur_digit = num_str[0]
@@ -53,8 +48,9 @@ class Solution:
             res += str(cur_digit_count) + cur_digit
             return res
 
+        if n == 1:
+            return "1"
         ans = "1"
         for i in range(1, n):
             ans = say(ans)
-
         return ans
