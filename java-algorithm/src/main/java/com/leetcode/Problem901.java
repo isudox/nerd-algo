@@ -1,21 +1,38 @@
 package com.leetcode;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * 908. Smallest Range I
- * https://leetcode.com/problems/smallest-range-i/
+ * 901. Online Stock Span
+ * https://leetcode.com/problems/online-stock-span/
  */
 public class Problem901 {
-    public int smallestRangeI(int[] nums, int k) {
-        if (nums.length == 1) {
-            return 0;
+    static class StockSpanner {
+        private final List<Integer> stocks;
+        private final List<Integer> spanners;
+
+        public StockSpanner() {
+            this.stocks = new ArrayList<>();
+            this.spanners = new ArrayList<>();
         }
-        Arrays.sort(nums);
-        int min = nums[0], max = nums[nums.length - 1];
-        if (max - min <= 2 * k) {
-            return 0;
+
+        public int next(int price) {
+            int cnt = 1;
+            int n = stocks.size();
+            if (n > 0 && stocks.get(n - 1) <= price) {
+                int i = n - 1;
+                while (i >= 0) {
+                    if (stocks.get(i) > price) {
+                        break;
+                    }
+                    cnt += spanners.get(i);
+                    i -= spanners.get(i);
+                }
+            }
+            stocks.add(price);
+            spanners.add(cnt);
+            return cnt;
         }
-        return max - min - 2 * k;
     }
 }
