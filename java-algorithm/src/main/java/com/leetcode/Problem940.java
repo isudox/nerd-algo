@@ -1,7 +1,8 @@
 package com.leetcode;
 
 /**
- * <a href="https//leetcode.com/problems/distinct-subsequences-ii/">940. Distinct Subsequences II</a>
+ * 940. Distinct Subsequences II
+ * https://leetcode.com/problems/distinct-subsequences-ii/
  */
 public class Problem940 {
     public int distinctSubseqII(String s) {
