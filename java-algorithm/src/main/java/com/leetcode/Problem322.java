@@ -38,4 +38,30 @@ public class Problem322 {
         }
         return dp[amount];
     }
+
+    public int coinChange2(int[] coins, int amount) {
+        Arrays.sort(coins);
+        int ans = dfs(coins, amount, new int[amount + 1]);
+        return ans < Integer.MAX_VALUE ? ans : -1;
+    }
+
+    private int dfs(int[] coins, int need, int[] memo) {
+        if (need == 0) {
+            return 0;
+        }
+        if (memo[need] > 0) {
+            return memo[need];
+        }
+        int ret = Integer.MAX_VALUE;
+        for (int coin : coins) {
+            if (coin > need) {
+                break;
+            }
+            int res = dfs(coins, need - coin, memo);
+            if (res < Integer.MAX_VALUE) {
+                ret = Math.min(ret, dfs(coins, need - coin, memo) + 1);
+            }
+        }
+        return memo[need] = ret;
+    }
 }
