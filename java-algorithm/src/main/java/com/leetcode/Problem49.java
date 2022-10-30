@@ -48,4 +48,25 @@ public class Problem49 {
                 key.append((char) ('a' + i)).append(alph[i]);
         return key.toString();
     }
+
+    public List<List<String>> groupAnagrams2(String[] strs) {
+        Map<String, List<String>> store = new HashMap<>();
+        for (String str : strs) {
+            int[] count = new int[26];
+            for (int i = 0; i < str.length(); i++) {
+                count[str.charAt(i) - 'a']++;
+            }
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < 26; i++) {
+                if (count[i] > 0) {
+                    sb.append((char) ('a' + i)).append(count[i]);
+                }
+            }
+            String key = sb.toString();
+            List<String> list = store.getOrDefault(key, new ArrayList<>());
+            list.add(str);
+            store.put(key, list);
+        }
+        return new ArrayList<>(store.values());
+    }
 }
