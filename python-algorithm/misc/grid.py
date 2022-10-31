@@ -13,8 +13,3 @@ class Solution:
                     dp0[i][j] += dp1[i][c]
                     dp1[i][j] += dp0[i][c]
         return dp1[-1][-1]
-
-
-if __name__ == '__main__':
-    sol = Solution()
-    print(sol.count(2, 4))
