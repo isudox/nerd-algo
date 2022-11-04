@@ -29,10 +29,3 @@ class Solution:
             if len(q1) > len(q2):
                 q1, q2 = q2, q1
         return -1
-
-
-if __name__ == '__main__':
-    sol = Solution()
-    print(sol.minMutation("AACCTTGG",
-                          "AATTCCGG",
-                          ["AATTCCGG","AACCTGGG","AACCCCGG","AACCTACC"]))
