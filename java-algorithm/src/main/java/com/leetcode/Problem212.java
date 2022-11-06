@@ -5,10 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 212. Word Search II
+ * https://leetcode.com/problems/word-search-ii/
+ */
 public class Problem212 {
-
     private final Map<Character, List<int[]>> pos = new HashMap<>();
-
     private final int[][] dirs = new int[][]{{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
 
     public List<String> findWords(char[][] board, String[] words) {
@@ -26,9 +28,11 @@ public class Problem212 {
                 }
             }
         }
-        for (String word : words)
-            if (validate(board, word))
+        for (String word : words) {
+            if (validate(board, word)) {
                 ans.add(word);
+            }
+        }
         return ans;
     }
 
