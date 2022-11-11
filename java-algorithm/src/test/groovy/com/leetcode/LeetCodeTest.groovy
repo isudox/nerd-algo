@@ -539,7 +539,7 @@ class LeetCodeTest extends Specification {
         expect:
         sol.maximalSquare(matrix) == ans
         where:
-        matrix | ans
+        matrix                                  | ans
         [
                 ["1", "0", "1", "1", "0", "1"],
                 ["1", "1", "1", "1", "1", "1"],
@@ -547,7 +547,7 @@ class LeetCodeTest extends Specification {
                 ["1", "1", "1", "0", "1", "0"],
                 ["0", "1", "1", "1", "1", "1"],
                 ["1", "1", "0", "1", "1", "1"]
-        ]      | 4
+        ]                                       | 4
     }
 
     def '254. Factor Combinations'(int n, List<List<Integer>> ans) {
@@ -920,6 +920,16 @@ class LeetCodeTest extends Specification {
         [0, 0, 0, 1]          | 3
         [0, 0, 1, 0, 1, 1]    | 2
         [0, 1]                | 1
+    }
+
+    def "864. Shortest Path to Get All Keys"(String[] grid, int ans) {
+        given:
+        def sol = new Problem864()
+        expect:
+        sol.shortestPathAllKeys(grid) == ans
+        where:
+        grid                        | ans
+        ["@.a.#", "###.#", "b.A.B"] | 8
     }
 
     def "909. Snakes and Ladders"(int[][] board, int ans) {
