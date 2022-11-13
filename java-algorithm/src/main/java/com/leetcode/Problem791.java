@@ -1,77 +1,26 @@
 package com.leetcode;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 791. Custom Sort String
  * https://leetcode.com/problems/custom-sort-string/
- *
- * `S` and `T` are strings composed of lowercase letters. In `S`,
- * no letter occurs more than once.
- *
- * S was sorted in some custom order previously. We want to permute the characters
- * of T so that they match the order that S was sorted. More specifically,
- * if x occurs before y in S, then x should occur before y in the returned string.
- *
- * Return any permutation of T (as a string) that satisfies this property.
- *
- * Example 1:
- *
- * Input:
- * S = "cba"
- * T = "abcd"
- * Output: "cbad"
- * Explanation:
- * "a", "b", "c" appear in S, so the order of "a", "b", "c" should be "c", "b", and "a".
- * Since "d" does not appear in S, it can be at any position in T.
- * "dcba", "cdba", "cbda" are also valid outputs.
- *
- * Example 2:
- *
- * Input:
- * S = "kqep"
- * T = "pekeq"
- * Output: "kqeep"
- *
- *
- * Note:
- *
- * S has length at most 26, and no character is repeated in S.
- * T has length at most 200.
- * S and T consist of lowercase letters only.
  */
 public class Problem791 {
-
-    public String customSortString(String s, String t) {
+    public String customSortString2(String order, String s) {
         Map<Character, Integer> map = new HashMap<>();
-        List<Integer> list = new ArrayList<>();
-        int tLen = t.length(), sLen = s.length();
-
-        for (int i = 0; i < tLen; i++) {
-            char c = t.charAt(i);
-            if (s.contains(Character.toString(c))) {
-                list.add(i);
-                map.put(c, map.getOrDefault(c, 0) + 1);
-            }
+        for (int i = 0; i < order.length(); i++) {
+            map.put(order.charAt(i), i);
         }
-        StringBuilder ans = new StringBuilder();
-        for (int i = 0; i < sLen; i++) {
-            char c = s.charAt(i);
-            if (map.containsKey(c)) {
-                for (int j = 0; j < map.get(c); j++) {
-                    ans.append(c);
-                }
-            }
+        Character[] cs = new Character[s.length()];
+        for (int i = 0; i < s.length(); i++) {
+            cs[i] = s.charAt(i);
         }
-        for (int i = 0; i < tLen; i++) {
-            if (!list.contains(i)) {
-                ans.append(t.charAt(i));
-            }
+        Arrays.sort(cs, (a, b) -> map.getOrDefault(a, 100) - map.getOrDefault(b, 101));
+        StringBuilder sb = new StringBuilder();
+        for (char c : cs) {
+            sb.append(c);
         }
-
-        return ans.toString();
+        return sb.toString();
     }
 }
