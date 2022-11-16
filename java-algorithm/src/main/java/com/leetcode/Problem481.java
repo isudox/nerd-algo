@@ -6,9 +6,6 @@ package com.leetcode;
  */
 public class Problem481 {
     public int magicalString(int n) {
-        if (n == 1) {
-            return 1;
-        }
         int[] nums = new int[n];
         nums[0] = 1;
         nums[1] = 2;
