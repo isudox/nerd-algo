@@ -4,7 +4,7 @@ package com.leetcode;
  * 754. Reach a Number
  * https://leetcode.cn/problems/reach-a-number/
  */
-class Solution {
+class Problem754 {
     public int reachNumber(int target) {
         return 0;
     }
