@@ -1,64 +1,33 @@
 """980. Unique Paths III
 https://leetcode.com/problems/unique-paths-iii/
-
-On a 2-dimensional grid, there are 4 types of squares:
-
-  1 represents the starting square.  There is exactly one starting square.
-  2 represents the ending square.  There is exactly one ending square.
-  0 represents empty squares we can walk over.
-  -1 represents obstacles that we cannot walk over.
-  Return the number of 4-directional walks from the starting square to the
-  ending square, that walk over every non-obstacle square exactly once.
-
-Example 1:
-
-Input: [[1,0,0,0],[0,0,0,0],[0,0,2,-1]]
-  Output: 2
-  Explanation: We have the following two paths:
-  1. (0,0),(0,1),(0,2),(0,3),(1,3),(1,2),(1,1),(1,0),(2,0),(2,1),(2,2)
-  2. (0,0),(1,0),(2,0),(2,1),(1,1),(0,1),(0,2),(0,3),(1,3),(1,2),(2,2)
-
-Note:
-
-  1 <= grid.length * grid[0].length <= 20
 """
+from typing import List
 
 
 class Solution:
+    def uniquePathsIII(self, grid: List[List[int]]) -> int:
+        def backtrack(x: int, y: int, zero: int):
+            if grid[x][y] == 2:
+                if zero == zeros:
+                    nonlocal ans
+                    ans += 1
+                return
+            visited[x][y] = True
+            for dx, dy in [[0, 1], [0, -1], [1, 0], [-1, 0]]:
+                nx, ny = x + dx, y + dy
+                if 0 <= nx < m and 0 <= ny < n and not visited[nx][ny] and grid[nx][ny] != -1:
+                    backtrack(nx, ny, zero + (1 if grid[nx][ny] == 0 else 0))
+            visited[x][y] = False
 
-    def unique_paths_iii(self, grid):
-        """
-        :type grid: List[List[int]]
-        :rtype: int
-        """
-        lines, columns = len(grid), len(grid[0])
-        start_i = start_j = zero_count = ans = 0
-        for i in range(lines):
-            for j in range(columns):
+        ans = 0
+        a, b, zeros = 0, 0, 0
+        m, n = len(grid), len(grid[0])
+        for i in range(m):
+            for j in range(n):
                 if grid[i][j] == 0:
-                    zero_count += 1
-                elif grid[i][j] == 1:
-                    start_i, start_j = i, j
-        visited = [[False for _ in range(columns)] for _ in range(lines)]
-        visited[start_i][start_j] = True
-
-        def backtrack(visited, i, j, zero):
-            nonlocal zero_count, ans
-            # 4-directional walks
-            d = [(0, 1), (0, -1), (1, 0), (-1, 0)]
-            for x, y in d:
-                x += i
-                y += j
-                if (0 <= x < lines
-                        and 0 <= y < columns
-                        and not visited[x][y]
-                        and grid[x][y] != -1):
-                    if grid[x][y] == 0:
-                        visited[x][y] = True
-                        backtrack(visited, x, y, zero + 1)
-                        visited[x][y] = False
-                    elif zero == zero_count:
-                        ans += 1
-
-        backtrack(visited, start_i, start_j, 0)
+                    zeros += 1
+                if grid[i][j] == 1:
+                    a, b = i, j
+        visited = [[False] * n for _ in range(m)]
+        backtrack(a, b, 0)
         return ans
