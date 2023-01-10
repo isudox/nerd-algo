@@ -1,40 +1,5 @@
 """100. Same Tree
 https://leetcode.com/problems/same-tree/
-
-Given two binary trees, write a function to check if they are the same or not.
-
-Two binary trees are considered the same if they are structurally identical
-and the nodes have the same value.
-
-Example 1:
-
-Input:     1         1
-          / \       / \
-         2   3     2   3
-
-        [1,2,3],   [1,2,3]
-
-Output: true
-
-Example 2:
-
-Input:     1         1
-          /           \
-         2             2
-
-        [1,2],     [1,null,2]
-
-Output: false
-
-Example 3:
-
-Input:     1         1
-          / \       / \
-         2   1     1   2
-
-        [1,2,1],   [1,1,2]
-
-Output: false
 """
 from typing import List
 
@@ -43,19 +8,29 @@ from common.tree_node import TreeNode
 
 class Solution:
     def is_same_tree(self, p: TreeNode, q: TreeNode) -> bool:
-        def traversal(node: TreeNode) -> List[int]:
-            ret = []
-            if node is None:
-                return []
-            ret.append(node.val)
-            if node.left:
-                ret.extend(traversal(node.left))
-            else:
-                ret.append(None)
-            if node.right:
-                ret.extend(traversal(node.right))
-            else:
-                ret.append(None)
-            return ret
+        if not p and not q:
+            return True
+        if not p or not q:
+            return False
+        stk0, stk1 = [p], [q]
+        while stk0 and stk1:
+            if len(stk0) != len(stk1):
+                return False
+            n = len(stk0)
+            for i in range(n):
+                node0, node1 = stk0.pop(0), stk1.pop(0)
+                if node0.val != node1.val:
+                    return False
+                if (node0.left and not node1.left) or (node1.left and not node0.left):
+                    return False
+                if node0.left:
+                    stk0.append(node0.left)
+                if node0.right:
+                    stk0.append(node0.right)
+                if node1.left:
+                    stk1.append(node1.left)
+                if node1.right:
+                    stk1.append(node1.right)
+        return len(stk0) == len(stk1)
 
-        return traversal(p) == traversal(q)
+
