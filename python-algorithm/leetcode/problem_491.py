@@ -1,26 +1,36 @@
 """491. Increasing Subsequences
 https://leetcode.com/problems/increasing-subsequences/
-
-Given an integer array, your task is to find all the different possible
-increasing subsequences of the given array, and the length of an increasing
-subsequence should be at least 2.
-
-Example:
-
-Input: [4, 6, 7, 7]
-Output: [[4,6], [4,7], [4,6,7], [4,6,7,7], [6,7], [6,7,7], [7,7], [4,7,7]]
-
-Constraints:
-
-The length of the given array will not exceed 15.
-The range of integer in the given array is [-100,100].
-The given array may contain duplicates, and two equal integers should also be
-considered as a special case of increasing sequence.
 """
 from typing import List
 
 
 class Solution:
+    def findSubsequences(self, nums: List[int]) -> List[List[int]]:
+        n = len(nums)
+        limit = 1 << n
+        ans = []
+        seen = set()
+        for i in range(limit):
+            sub, pre = [], -10000
+            key = ''
+            flag = True
+            j = 0
+            while i:
+                ok = i & 1
+                if ok:
+                    if nums[j] < pre:
+                        flag = False
+                        break
+                    sub.append(nums[j])
+                    pre = nums[j]
+                    key += '-' + str(nums[j])
+                i >>= 1
+                j += 1
+            if flag and len(sub) > 1 and key not in seen:
+                ans.append(sub)
+                seen.add(key)
+        return ans
+
     def find_subsequences(self, nums: List[int]) -> List[List[int]]:
         n = len(nums)
         if n < 2:

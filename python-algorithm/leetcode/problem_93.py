@@ -1,21 +1,30 @@
 """93. Restore IP Addresses
 https://leetcode.com/problems/restore-ip-addresses/
-
-Given a string containing only digits, restore it by returning
-all possible valid IP address combinations.
-
-A valid IP address consists of exactly four integers
-(each integer is between 0 and 255) separated by single points.
-
-Example:
-
-Input: "25525511135"
-Output: ["255.255.11.135", "255.255.111.35"]
 """
 from typing import List
 
 
 class Solution:
+    def restoreIpAddresses(self, s: str) -> List[str]:
+        def backtrack(ip: str, i: int, need: int):
+            n = len(s) - i
+            if n < need or n > need * 3:
+                return
+            if i == len(s) and need == 0:
+                ans.append(ip[1:])
+                return
+            if s[i] == '0':
+                backtrack(ip + '.0', i + 1, need - 1)
+                return
+            for j in range(1, 4):
+                num = s[i:i + j]
+                if 0 <= int(num) <= 255:
+                    backtrack(ip + '.' + num, i + j, need - 1)
+
+        ans = []
+        backtrack('', 0, 4)
+        return ans
+
     def restore_ip_addresses(self, s: str) -> List[str]:
         def dfs(pos: int, count: int, ip: str):
             m = len(s) - pos  # count * 1 <= m <= count*3
