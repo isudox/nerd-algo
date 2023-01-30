@@ -1,19 +1,17 @@
 """1137. N-th Tribonacci Number
 https://leetcode.com/problems/n-th-tribonacci-number/
 """
+from functools import lru_cache
 
 
 class Solution:
     def tribonacci(self, n: int) -> int:
-        def helper(x: int) -> int:
-            if memo[x] != 0:
-                return memo[x]
+        @lru_cache(None)
+        def dfs(x: int) -> int:
             if x == 0:
                 return 0
-            if x == 1 or x == 2:
+            if x <= 2:
                 return 1
-            memo[x] = helper(x - 3) + helper(x - 2) + helper(x - 1)
-            return memo[x]
+            return dfs(x - 3) + dfs(x - 2) + dfs(x - 1)
 
-        memo = [0] * (n + 1)
-        return helper(n)
+        return dfs(n)
