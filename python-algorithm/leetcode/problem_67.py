@@ -1,24 +1,5 @@
 """67. Add Binary
 https://leetcode.com/problems/add-binary/
-
-Given two binary strings, return their sum (also a binary string).
-
-The input strings are both non-empty and contains only characters 1 or 0.
-
-Example 1:
-
-Input: a = "11", b = "1"
-Output: "100"
-Example 2:
-
-Input: a = "1010", b = "1011"
-Output: "10101"
-
-Constraints:
-
-Each string consists only of '0' or '1' characters.
-1 <= a.length, b.length <= 10^4
-Each string is either "0" or doesn't contain any leading zero.
 """
 
 
@@ -39,7 +20,7 @@ def add_binary(a: str, b: str) -> str:
     return add_binary(c, '1') + ans
 
 
-def add_binary_1( a: str, b: str) -> str:
+def add_binary_1(a: str, b: str) -> str:
     m, n = len(a), len(b)
     if m < n:
         return add_binary_1(b, a)
@@ -71,5 +52,4 @@ def add_binary_2(a: str, b: str) -> str:
     while int_sum:
         int_sum, left = divmod(int_sum, 2)
         ans = str(left) + ans
-
     return ans

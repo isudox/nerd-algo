@@ -1,28 +1,20 @@
 """45. Jump Game II
 https://leetcode.com/problems/jump-game-ii/
-
-Given an array of non-negative integers, you are initially positioned
-at the first index of the array.
-
-Each element in the array represents your maximum jump length at that position.
-
-Your goal is to reach the last index in the minimum number of jumps.
-
-Example:
-
-Input: [2,3,1,1,4]
-Output: 2
-Explanation: The minimum number of jumps to reach the last index is 2.
-    Jump 1 step from index 0 to 1, then 3 steps to the last index.
-
-Note:
-
-You can assume that you can always reach the last index.
 """
 from typing import List
 
 
 class Solution:
+    def jump2(self, nums: List[int]) -> int:
+        n = len(nums)
+        dp = [0] * n
+        for i in range(n - 2, -1, -1):
+            if i + nums[i] >= n - 1:
+                steps = n + 1
+                for j in range(1, nums[i] + 1):
+                    pass
+        return dp[0]
+
     def jump(self, nums: List[int]) -> int:
         def test(i: int, pre_steps: int):
             if i == size - 1:
