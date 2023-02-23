@@ -7,17 +7,16 @@ from typing import List
 
 class Solution:
     def find_maximized_capital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
-        pairs = [(capital[i], profits[i]) for i in range(len(capital))]
-        pairs.sort(key=lambda x: (x[0]))
+        pairs = list(zip(capital, profits))
+        pairs.sort(key=lambda x: x[0])
         pq = []
-        pos = 0
-        while k > 0:
-            while pos < len(profits) and pairs[pos][0] <= w:
-                heapq.heappush(pq, -pairs[pos][1])
-                pos += 1
-            if pq:
-                w += -heapq.heappop(pq)
-                k -= 1
-            else:
+        i = 0
+        while k:
+            while i < len(profits) and pairs[i][0] <= w:
+                heapq.heappush(pq, -pairs[i][1])
+                i += 1
+            if not pq:
                 break
+            w -= heapq.heappop(pq)
+            k -= 1
         return w
