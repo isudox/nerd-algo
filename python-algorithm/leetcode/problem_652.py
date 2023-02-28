@@ -19,7 +19,7 @@ class Solution:
             store[key] += 1
             return key
 
-        store = collections.defaultdict(int)
+        store = collections.Counter()
         ans = []
         dfs(root)
         return ans
