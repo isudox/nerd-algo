@@ -38,10 +38,4 @@ public class Problem1457 {
         }
         return true;
     }
-
-    public static void main(String[] args) {
-        Problem1457 sol = new Problem1457();
-        TreeNode root = new TreeNode(1, null, new TreeNode(2));
-        System.out.println(sol.pseudoPalindromicPaths(root));
-    }
 }
