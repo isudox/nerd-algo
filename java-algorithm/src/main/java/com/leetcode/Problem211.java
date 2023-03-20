@@ -56,12 +56,4 @@ public class Problem211 {
             return t.end;
         }
     }
-
-    public static void main(String[] args) {
-        Problem211.WordDictionary wordDictionary = new Problem211.WordDictionary();
-        wordDictionary.addWord("bad");
-        wordDictionary.addWord("dad");
-        wordDictionary.addWord("mad");
-        System.out.println(wordDictionary.search("b.."));
-    }
 }
