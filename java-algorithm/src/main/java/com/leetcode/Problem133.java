@@ -13,22 +13,22 @@ import java.util.Map;
 public class Problem133 {
     public Node cloneGraph(Node node) {
         Map<Integer, Node> store = new HashMap<>();
-        return helper(node, store);
+        return dfs(node, store);
     }
 
-    private Node helper(Node node, Map<Integer, Node> store) {
+    private Node dfs(Node node, Map<Integer, Node> store) {
         if (node == null) {
             return null;
         }
         if (store.containsKey(node.val)) {
             return store.get(node.val);
         }
-        Node newNode = new Node(node.val);
-        store.put(node.val, newNode);
+        Node cloneNode = new Node(node.val);
+        store.put(node.val, cloneNode);
         for (Node neighbor : node.neighbors) {
-            newNode.neighbors.add(helper(neighbor, store));
+            cloneNode.neighbors.add(dfs(neighbor, store));
         }
-        return newNode;
+        return cloneNode;
     }
 
     private static class Node {
