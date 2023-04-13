@@ -1,4 +1,4 @@
-# Nerd Algorithm
+# Nerd Algo
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/isudox/nerd-algorithm.svg?branch=master)](https://travis-ci.com/isudox/nerd-algorithm)

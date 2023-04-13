@@ -26,9 +26,3 @@ class Solution:
             seen[tmp] = True
             ans.append(tmp)
         return ans
-
-
-if __name__ == '__main__':
-    sol = Solution()
-    print(sol.circularPermutation(2, 3))
-    print(sol.circularPermutation(3, 2))
