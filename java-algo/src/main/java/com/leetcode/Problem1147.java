@@ -21,6 +21,6 @@ public class Problem1147 {
                 suff = new StringBuilder();
             }
         }
-        return i == j || !pref.isEmpty() ? ans + 1 : ans;
+        return i == j || pref.length() > 0 ? ans + 1 : ans;
     }
 }
