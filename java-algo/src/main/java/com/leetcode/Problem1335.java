@@ -12,7 +12,7 @@ public class Problem1335 {
         if (n < d) {
             return -1;
         }
-        int[][] maxDifficulty = new int[n][n]; // 预计算从 第 i 到第 j 项工作的最大难度
+        int[][] maxDifficulty = new int[n][n]; // 预计算从第 i 到第 j 项工作的最大难度
         for (int i = 0; i < n; i++) {
             maxDifficulty[i][i] = jobDifficulty[i];
             for (int j = i + 1; j < n; j++) {
