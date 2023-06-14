@@ -3,6 +3,9 @@ package com.leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ *
+ */
 public class Problem2352 {
     public int equalPairs(int[][] grid) {
         int n = grid.length;
