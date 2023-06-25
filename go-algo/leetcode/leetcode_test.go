@@ -1,9 +1,31 @@
 package main
 
 import (
+	"fmt"
 	"reflect"
 	"testing"
 )
+
+func TestMisc(t *testing.T) {
+	datas := map[string]int{
+		"2": 1,
+		"1": 2,
+	}
+	n := 10000
+	cnt0, cnt1 := 0, 0
+	for i := 0; i < n; i++ {
+		var num = 0
+		for _, d := range datas {
+			num = num*10 + d
+		}
+		if num == 12 {
+			cnt0++
+		} else {
+			cnt1++
+		}
+	}
+	fmt.Printf("12: %d\n21: %d\n", cnt0, cnt1)
+}
 
 func Test_29(t *testing.T) {
 	tests := []struct {
