@@ -6,7 +6,7 @@ import java.util.PriorityQueue;
  * 2462. Total Cost to Hire K Workers
  * https://leetcode.com/problems/total-cost-to-hire-k-workers/
  */
-class Problm2462 {
+class Problem2462 {
     public long totalCost(int[] costs, int k, int candidates) {
         int n = costs.length;
         int left = -1, right = -1;
