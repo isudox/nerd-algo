@@ -1,10 +1,17 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"reflect"
 	"testing"
+	"time"
 )
+
+type ABC struct {
+	Num  int       `json:"num,omitempty"`
+	Time time.Time `json:"time,omitempty"`
+}
 
 func TestMisc(t *testing.T) {
 	datas := map[string]int{
@@ -25,6 +32,17 @@ func TestMisc(t *testing.T) {
 		}
 	}
 	fmt.Printf("12: %d\n21: %d\n", cnt0, cnt1)
+	ts := time.Now()
+	fmt.Printf("time:%d\n", ts.Unix())
+	abc := ABC{
+		Num:  1,
+		Time: ts,
+	}
+	bs, _ := json.Marshal(abc)
+	fmt.Printf("json: %s\n", string(bs))
+	cba := ABC{}
+	_ = json.Unmarshal(bs, &cba)
+	fmt.Printf("time:%d", cba.Time.Unix())
 }
 
 func Test_29(t *testing.T) {
