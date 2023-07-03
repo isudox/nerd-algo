@@ -22,9 +22,3 @@ class Solution:
         if len(memo) != 2:
             return False
         return s[memo[0]] == goal[memo[1]] and s[memo[1]] == goal[memo[0]]
-
-
-if __name__ == '__main__':
-    sol = Solution()
-    print(sol.buddy_strings("aab", "aab"))
-    print(sol.buddy_strings("bac", "bac"))
