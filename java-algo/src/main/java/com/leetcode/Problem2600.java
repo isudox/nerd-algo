@@ -6,7 +6,16 @@ package com.leetcode;
  */
 class Solution {
     public int kItemsWithMaximumSum(int numOnes, int numZeros, int numNegOnes, int k) {
-        
-        return 0;
+        int ans = 0;
+        int[] cnt = new int[]{numOnes, numZeros, numNegOnes};
+        for (int i = 0; i < 3; i++) {
+            if (k <= 0) {
+                break;
+            }
+            int n = Math.min(cnt[i], k);
+            ans += (1 - i) * n;
+            k -= n;
+        }
+        return ans;
     }
 }
