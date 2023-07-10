@@ -36,3 +36,21 @@ class Solution:
             return min(dfs(node.left), dfs(node.right)) + 1
 
         return dfs(root)
+    
+    def minDepth(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        q = [root]
+        ans = 0
+        while q:
+            ans += 1
+            n = len(q)
+            for _ in range(n):
+                node = q.pop(0)
+                if not node.left and not node.right:
+                    return ans
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+        return ans
