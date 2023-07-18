@@ -91,19 +91,21 @@ class LRUCache2:
         self.keys.append(key)
 
 
+class LinkedMap:
+    def __init__(self, key: int, val: int):
+        self.key = key
+        self.val = val
+        self.prev = None
+        self.next = None
+
+
 class LRUCache3:
-    class LinkedMap:
-        def __init__(self, key, value):
-            self.key = key
-            self.value = value
-            self.prev = None
-            self.next = None
 
     def __init__(self, capacity):
         self.capacity = capacity
         self.map = {}
-        self.head = self.LinkedMap(0, -1)
-        self.tail = self.LinkedMap(0, -1)
+        self.head = LinkedMap(0, -1)
+        self.tail = LinkedMap(0, -1)
         self.head.next = self.tail
         self.tail.prev = self.head
 
@@ -111,7 +113,7 @@ class LRUCache3:
         if key not in self.map:
             return -1
         target = self.map[key]
-        self._remove(target)
+        self._del(target)
         self._add(target)
         return target.value
 
@@ -119,14 +121,14 @@ class LRUCache3:
         if key not in self.map:
             if len(self.map) == self.capacity:
                 del self.map[self.head.next.key]
-                self._remove(self.head.next)
+                self._del(self.head.next)
         else:
-            self._remove(self.map[key])
-        target = self.LinkedMap(key, value)
+            self._del(self.map[key])
+        target = LinkedMap(key, value)
         self._add(target)
         self.map[key] = target
 
-    def _remove(self, node):
+    def _del(self, node):
         p = node.prev
         n = node.next
         p.next = n
