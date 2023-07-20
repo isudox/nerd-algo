@@ -23,3 +23,18 @@ class Solution:
             if nums[i] > hi:
                 hi = nums[i]
         return ans
+
+    def maxSubarraySumCircular2(self, nums: List[int]) -> int:
+        max_presum = [nums[0]]
+        for i in range(1, len(nums)):
+            nums[i] += nums[i - 1]
+            max_presum.append(max(max_presum[-1], nums[i]))
+        ans = nums[0]
+        min_pos = 0
+        for i in range(1, len(nums)):
+            ans = max(ans, nums[i], nums[i] - nums[min_pos])
+            if nums[i] <= nums[min_pos]:
+                min_pos = i
+        for i in range(len(nums)):
+            ans = max(ans, nums[-1] - nums[i] + max_presum[i])
+        return ans
