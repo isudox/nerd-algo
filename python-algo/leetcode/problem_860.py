@@ -6,7 +6,7 @@ from typing import List
 
 class Solution:
     def lemonade_change(self, bills: List[int]) -> bool:
-        store = {5: 0, 10: 0, 20: 0}
+        store = {5: 0, 10: 0}
         for bill in bills:
             if bill == 10:
                 if not store[5]:
