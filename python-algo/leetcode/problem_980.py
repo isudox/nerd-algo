@@ -6,28 +6,33 @@ from typing import List
 
 class Solution:
     def uniquePathsIII(self, grid: List[List[int]]) -> int:
-        def backtrack(x: int, y: int, zero: int):
-            if grid[x][y] == 2:
-                if zero == zeros:
-                    nonlocal ans
-                    ans += 1
+        def backtrack(x: int, y: int, cnt: int):
+            if x == ex and y == ey:
+                if cnt != moves:
+                    return
+                nonlocal ans
+                ans += 1
                 return
-            visited[x][y] = True
-            for dx, dy in [[0, 1], [0, -1], [1, 0], [-1, 0]]:
+            grid[x][y] = 9
+            for dx, dy in dirs:
                 nx, ny = x + dx, y + dy
-                if 0 <= nx < m and 0 <= ny < n and not visited[nx][ny] and grid[nx][ny] != -1:
-                    backtrack(nx, ny, zero + (1 if grid[nx][ny] == 0 else 0))
-            visited[x][y] = False
+                if 0 <= nx < len(grid) and 0 <= ny < len(grid[0]) and (grid[nx][ny] == 0 or grid[nx][ny] == 2):
+                    backtrack(nx, ny, cnt + 1)
+            grid[x][y] = 0
 
-        ans = 0
-        a, b, zeros = 0, 0, 0
-        m, n = len(grid), len(grid[0])
-        for i in range(m):
-            for j in range(n):
+        sx = sy = ex = ey = 0
+        moves = 1
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] == -1:
+                    continue
                 if grid[i][j] == 0:
-                    zeros += 1
-                if grid[i][j] == 1:
-                    a, b = i, j
-        visited = [[False] * n for _ in range(m)]
-        backtrack(a, b, 0)
+                    moves += 1
+                elif grid[i][j] == 1:
+                    sx, sy = i, j
+                else:
+                    ex, ey = i, j
+        ans = 0
+        dirs = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+        backtrack(sx, sy, 0)
         return ans
