@@ -5,7 +5,7 @@ from typing import List
 
 
 class Solution:
-    def lemonade_change(self, bills: List[int]) -> bool:
+    def lemonadeChange(self, bills: List[int]) -> bool:
         store = {5: 0, 10: 0}
         for bill in bills:
             if bill == 10:
@@ -20,5 +20,6 @@ class Solution:
                     store[5] -= 3
                 else:
                     return False
-            store[bill] += 1
+            if bill < 20:
+                store[bill] += 1
         return True

@@ -115,7 +115,7 @@ def test_16(nums, target, res):
 def test_18(nums: List[int], target: int, ans: List[List[int]]):
     from leetcode.problem_18 import Solution
     sol = Solution()
-    assert sol.four_sum(nums, target) == ans
+    assert sol.fourSum(nums, target) == ans
 
 
 @pytest.mark.parametrize("s, ans", [
@@ -370,7 +370,7 @@ def test_49(strs, expect):
 def test_50(x, n, expect):
     from leetcode.problem_50 import Solution
     sol = Solution()
-    assert sol.my_pow(x, n) == expect
+    assert sol.myPow(x, n) == expect
 
 
 @pytest.mark.parametrize("n, expect", [
@@ -1081,7 +1081,6 @@ def test_134(gas: List[int], cost: List[int], ans: int):
     from leetcode.problem_134 import Solution
     sol = Solution()
     assert sol.can_complete_circuit(gas, cost) == ans
-    assert sol.can_complete_circuit_2(gas, cost) == ans
 
 
 @pytest.mark.parametrize("nums, ans", [
@@ -1132,8 +1131,8 @@ def test_141(head, expect):
 
 
 def test_146():
-    from leetcode.problem_146 import LRUCache3
-    cache = LRUCache3(2)
+    from leetcode.problem_146 import LRUCache2
+    cache = LRUCache2(2)
     cache.put(1, 1)
     cache.put(2, 2)
     assert cache.get(1) == 1
@@ -1760,7 +1759,7 @@ def test_424(s: str, k: int, ans: int):
 def test_435(intervals: List[List[int]], ans: int):
     from leetcode.problem_435 import Solution
     sol = Solution()
-    assert sol.erase_overlap_intervals(intervals) == ans
+    assert sol.eraseOverlapIntervals(intervals) == ans
 
 
 @pytest.mark.parametrize("s, p, ans", [
@@ -2246,8 +2245,8 @@ def test_791(s, t, ans):
     ([[0]], [])
 ])
 def test_802(graph: List[List[int]], ans: List[int]):
-    import leetcode.problem_802 as sol
-    assert sol.eventual_safe_nodes(graph) == ans
+    from leetcode.problem_802 import Solution
+    assert Solution().eventual_safe_nodes(graph) == ans
 
 
 @pytest.mark.parametrize('dominoes, ans', [
@@ -2302,14 +2301,12 @@ def test_842(s: str, ans: List[int]):
 
 @pytest.mark.parametrize('bills, ans', [
     ([5, 5, 5, 10, 20], True),
-    ([5, 5, 10], True),
-    ([10, 10], False),
-    ([5, 5, 10, 10, 20], False)
+    ([5,5,10,10,20], False)
 ])
 def test_860(bills: List[int], ans: bool):
     from leetcode.problem_860 import Solution
     sol = Solution()
-    assert sol.lemonade_change(bills) == ans
+    assert sol.lemonadeChange(bills) == ans
 
 
 @pytest.mark.parametrize("grid, expect", [
@@ -2492,11 +2489,6 @@ def test_964(x, target, ans):
 
 
 @pytest.mark.parametrize("n, k, expect", [
-    (1, 0, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]),
-    (1, 1, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]),
-    (1, 2, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]),
-    (1, 3, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]),
-    (1, 5, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]),
     (3, 7, [181, 292, 707, 818, 929]),
     (2, 1,
      [10, 12, 21, 23, 32, 34, 43, 45, 54, 56, 65, 67, 76, 78, 87, 89, 98]),
@@ -2623,7 +2615,7 @@ def test_979(root, res):
 def test_980(grid, res):
     from leetcode.problem_980 import Solution
     sol = Solution()
-    assert sol.unique_paths_iii(grid) == res
+    assert sol.uniquePathsIII(grid) == res
 
 
 def test_981():

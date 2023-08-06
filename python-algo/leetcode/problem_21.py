@@ -8,8 +8,7 @@ from common.list_node import ListNode
 
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
-        dummy = ListNode(0)
-        ptr = dummy
+        ptr = dummy = ListNode(0)
         p1, p2 = list1, list2
         while p1 and p2:
             if p1.val <= p2.val:
