@@ -2,31 +2,17 @@
 https://leetcode.com/problems/search-a-2d-matrix/
 """
 from typing import List
+import bisect
 
 
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        m, n = len(matrix), len(matrix[0])
-        row = -1
-        x, y = 0, m - 1
-        while x <= y:
-            mid = x + (y - x) // 2
-            if matrix[mid][0] <= target <= matrix[mid][-1]:
-                row = mid
-                break
-            if matrix[mid][0] > target:
-                y = mid - 1
-            else:
-                x = mid + 1
-        if row == -1:
+        col = [row[0] for row in matrix]
+        pos = bisect.bisect_right(col, target)
+        if pos == 0:
             return False
-        i, j = 0, n - 1
-        while i <= j:
-            mid = i + (j - i) // 2
-            if matrix[row][mid] == target:
-                return True
-            if matrix[row][mid] < target:
-                i = mid + 1
-            else:
-                j = mid - 1
-        return False
+        if pos == len(col) and target > matrix[-1][-1]:
+            return False
+        row = matrix[pos - 1]
+        pos = bisect.bisect_left(row, target)
+        return pos < len(matrix[0]) and row[pos] == target
