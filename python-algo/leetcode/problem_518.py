@@ -17,14 +17,11 @@ class Solution:
         return dp[-1][-1]
 
     def change2(self, amount: int, coins: List[int]) -> int:
-        # dp[i] 表示构成总和 i 的组合数
         dp = [1] + [0] * amount
         for coin in coins:
-            for i in range(1, amount + 1):
-                if i >= coin:
-                    # 当前硬币值 < 所需目标和时，累加之前已知的组合数
-                    dp[i] += dp[i - coin]
-        return dp[-1]
+            for i in range(coin, amount + 1):
+                dp[i] += dp[i - coin]
+        return dp[amount]
 
     def change3(self, amount: int, coins: List[int]) -> int:
         def dfs(i: int, j: int) -> int:

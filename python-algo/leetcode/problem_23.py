@@ -1,47 +1,27 @@
 """23. Merge k Sorted Lists
 https://leetcode.com/problems/merge-k-sorted-lists/
-
-You are given an array of k linked-lists lists, each linked-list is sorted in
-ascending order.
-
-Merge all the linked-lists into one sorted linked-list and return it.
-
-Example 1:
-
-Input: lists = [[1,4,5],[1,3,4],[2,6]]
-Output: [1,1,2,3,4,4,5,6]
-Explanation: The linked-lists are:
-[
- 1->4->5,
- 1->3->4,
- 2->6
-]
-merging them into one sorted list:
-1->1->2->3->4->4->5->6
-
-Example 2:
-
-Input: lists = []
-Output: []
-
-Example 3:
-
-Input: lists = [[]]
-Output: []
-
-Constraints:
-
-k == lists.length
-0 <= k <= 10^4
-0 <= lists[i].length <= 500
--10^4 <= lists[i][j] <= 10^4
-lists[i] is sorted in ascending order.
-The sum of lists[i].length won't exceed 10^4.
 """
-from typing import List
+from typing import List, Optional
 from common.list_node import ListNode
+from heapq import heappush, heappop
 import heapq
 import collections
+
+
+class Solution:
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        pq = []
+        for i, node in enumerate(lists):
+            if node:  # pq 为什么要传入三元组，这是因为 Python3 在 tuple[0] 相同的时候会继续比较后面的元素，而 ListNode 不具备比较关系，所以加一个 i 作为比较
+                heappush(pq, (node.val, i, node))
+        cur = dummy = ListNode(0)
+        while pq:
+            _, i, node = heappop(pq)
+            if node.next:
+                heappush(pq, (node.next.val, i, node.next))
+            cur.next = node
+            cur = cur.next
+        return dummy.next
 
 
 def merge_k_lists(lists: List[ListNode]) -> ListNode:

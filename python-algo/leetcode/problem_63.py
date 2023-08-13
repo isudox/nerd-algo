@@ -1,44 +1,24 @@
 """63. Unique Paths II
 https://leetcode.com/problems/unique-paths-ii/
-
-A robot is located at the top-left corner of a m x n grid
-(marked 'Start' in the diagram below).
-
-The robot can only move either down or right at any point in time.
-The robot is trying to reach the bottom-right corner of the grid
-(marked 'Finish' in the diagram below).
-
-Now consider if some obstacles are added to the grids.
-How many unique paths would there be?
-
-An obstacle and empty space is marked as 1 and 0 respectively in the grid.
-
-Note: m and n will be at most 100.
-
-Example 1:
-
-Input:
-[
-  [0,0,0],
-  [0,1,0],
-  [0,0,0]
-]
-Output: 2
-Explanation:
-There is one obstacle in the middle of the 3x3 grid above.
-There are two ways to reach the bottom-right corner:
-1. Right -> Right -> Down -> Down
-2. Down -> Down -> Right -> Right
 """
 from typing import List
 
 
 class Solution:
-    def unique_paths_with_obstacles(self, obstacle_grid):
-        """
-        :type obstacle_grid: List[List[int]]
-        :rtype: int
-        """
+    def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
+        m, n = len(obstacleGrid), len(obstacleGrid[0])
+        dp = [[0] * n for _ in range(m)]
+        dp[0][0] = 1
+        for i in range(m):
+            for j in range(n):
+                if obstacleGrid[i][j] == 1:
+                    dp[i][j] = 0
+                    continue
+                dp[i][j] += dp[i - 1][j] if i >= 1 else 0
+                dp[i][j] += dp[i][j - 1] if j >= 1 else 0
+        return dp[-1][-1]
+
+    def unique_paths_with_obstacles(self, obstacle_grid: List[List[int]]):
         rows, cols = len(obstacle_grid), len(obstacle_grid[0])
         dp = [[1] * cols for _ in range(rows)]
         for _ in range(cols):
@@ -58,3 +38,18 @@ class Solution:
                 else:
                     dp[i][j] = dp[i][j - 1] + dp[i - 1][j]
         return dp[rows - 1][cols - 1]
+
+    def uniquePathsWithObstacles2(self, obstacleGrid: List[List[int]]) -> int:
+        if not obstacleGrid or not obstacleGrid[0]:
+            return 0
+        dp = [1] + [0] * (len(obstacleGrid[0]) - 1)
+        for row in obstacleGrid:
+            dp[0] = 0 if row[0] == 1 else dp[0]
+            for i in range(1, len(obstacleGrid[0])):
+                dp[i] = 0 if row[i] == 1 else dp[i] + dp[i - 1]
+        return dp[-1]
+
+
+if __name__ == '__main__':
+    sol = Solution()
+    print(sol.uniquePathsWithObstacles2([[0, 0, 0], [0, 1, 0], [0, 0, 0]]))
