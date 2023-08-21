@@ -2914,3 +2914,15 @@ def test_2018(board: List[List[str]], word: str, ans: bool):
 def test_2045(n: int, edges: List[List[int]], time: int, change: int, ans: int):
     import leetcode.problem_2045 as sol
     assert sol.second_minimum(n, edges, time, change) == ans
+
+
+@pytest.mark.parametrize('start, target, ret', [
+    ("_L__R__R_", "L______RR", True),
+    ("R_L_", "__LR", False),
+    ("_R", "R_", False)
+])
+def test_2337(start: str, target: str, ret: bool):
+    from leetcode.problem_2337 import Solution
+    sol = Solution()
+    assert sol.canChange(start, target) == ret
+
