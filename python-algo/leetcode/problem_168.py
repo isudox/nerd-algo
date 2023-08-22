@@ -12,5 +12,5 @@ class Solution:
                 ans = 'Z' + ans
                 columnNumber -= 1
             else:
-                ans = chr(ord('A') - 1 + rem) + ans
+                ans = chr(64 + rem) + ans
         return ans
