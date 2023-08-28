@@ -5,27 +5,21 @@ from typing import List
 
 
 class Solution:
-    def insert(self, intervals: List[List[int]], new_interval: List[int]) -> List[List[int]]:
-        def sort_list(arr: List[List[int]]):
-            return sorted(arr, key=lambda x: x[0])
-
-        def is_overlap(arr1: List[int], arr2: List[int]):
-            return arr1[1] >= arr2[0] and arr1[0] <= arr2[1]
-
-        def merge_list(arr1: List[int], arr2: List[int]):
-            left = min(arr1[0], arr1[1], arr2[0], arr2[1])
-            right = max(arr1[0], arr1[1], arr2[0], arr2[1])
-            arr1[0], arr1[1] = left, right
-
-        if not new_interval:
+    def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
+        if not intervals or intervals[-1][1] < newInterval[0]:
+            intervals.append(newInterval)
             return intervals
-
-        intervals.append(new_interval)
-        intervals = sort_list(intervals)
+        for i, interval in enumerate(intervals):
+            if interval[0] >= newInterval[0]:
+                intervals.insert(i, newInterval)
+                break
+            if i == len(intervals) - 1:
+                intervals.append(newInterval)
         ans = [intervals[0]]
         for i in range(1, len(intervals)):
-            if is_overlap(ans[-1], intervals[i]):
-                merge_list(ans[-1], intervals[i])
-            else:
+            if ans[-1][1] < intervals[i][0]:
                 ans.append(intervals[i])
+            else:
+                ans[-1][0] = min(ans[-1][0], intervals[i][0])
+                ans[-1][1] = max(ans[-1][1], intervals[i][1])
         return ans
