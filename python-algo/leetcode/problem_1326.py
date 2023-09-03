@@ -1,5 +1,5 @@
-"""
-
+"""1326. Minimum Number of Taps to Open to Water a Garden
+https://leetcode.com/problems/minimum-number-of-taps-to-open-to-water-a-garden/
 """
 from typing import List
 
@@ -14,7 +14,7 @@ class Solution:
         dp = [n + 1] * (n + 1)
         dp[0] = 0
         for a, b in intervals:
-            if dp[a] == n + 1:
+            if dp[a] > n:
                 return -1
             for i in range(a, b + 1):
                 dp[i] = min(dp[i], dp[a] + 1)
