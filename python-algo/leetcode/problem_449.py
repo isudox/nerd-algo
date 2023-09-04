@@ -1,7 +1,7 @@
 """449. Serialize and Deserialize BST
 https://leetcode.com/problems/serialize-and-deserialize-bst/
 """
-from typing import Optional
+from typing import Optional, List
 
 import common.converter
 from common.tree_node import TreeNode
@@ -32,5 +32,5 @@ class Codec:
 
         if not data:
             return None
-        nums = data.split(',')
+        nums = list(map(int, data.split(',')))  # need parse str to int here
         return helper(0, len(nums) - 1)

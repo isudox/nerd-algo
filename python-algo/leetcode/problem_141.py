@@ -7,15 +7,10 @@ from common.list_node import ListNode
 
 class Solution:
     def has_cycle(self, head: ListNode) -> bool:
-        if not head or not head.next:
-            return False
-        p1, p2 = head, head
-        while p2:
-            p1 = p1.next
-            p2 = p2.next
-            if not p2:
-                return False
-            p2 = p2.next
-            if p1 == p2:
+        slow, fast = head, head
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+            if fast == slow:
                 return True
         return False
