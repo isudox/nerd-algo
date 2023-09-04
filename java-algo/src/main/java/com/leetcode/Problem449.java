@@ -9,14 +9,13 @@ import com.common.TreeNode;
 public class Problem449 {
     private static class Codec {
         public String serialize(TreeNode root) {
-            StringBuilder sb = new StringBuilder();
             if (root == null) {
                 return "";
             }
+            StringBuilder sb = new StringBuilder();
             sb.append(root.val);
-            sb.append(",");
-            if (root.left != null) sb.append(serialize(root.left));
-            if (root.right != null) sb.append(serialize(root.right));
+            if (root.left != null) sb.append(",").append(serialize(root.left));
+            if (root.right != null) sb.append(",").append(serialize(root.right));
             return sb.toString();
         }
 
@@ -24,7 +23,6 @@ public class Problem449 {
             if (data.length() == 0) {
                 return null;
             }
-            data = data.substring(0, data.length() - 1);
             String[] arr = data.split(",");
             int[] nums = new int[arr.length];
             for (int i = 0; i < arr.length; i++) {
