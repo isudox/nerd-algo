@@ -16,7 +16,6 @@ points to, or null if it does not point to any node.
 
 
 class Solution:
-
     def copy_random_list(self, head: 'Node') -> 'Node':
         if not head:
             return head
@@ -38,11 +37,6 @@ class Solution:
         return store[0]
 
     def copy_random_list_2(self, head: 'Node') -> 'Node':
-        """
-        for-loop 2 times.
-        time complexity: O(N)
-        space complexity: O(N)
-        """
         if not head:
             return head
         store = {}

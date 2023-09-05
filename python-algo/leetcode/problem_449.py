@@ -1,9 +1,8 @@
 """449. Serialize and Deserialize BST
 https://leetcode.com/problems/serialize-and-deserialize-bst/
 """
-from typing import Optional, List
+from typing import Optional
 
-import common.converter
 from common.tree_node import TreeNode
 
 
