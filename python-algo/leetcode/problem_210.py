@@ -6,24 +6,21 @@ import collections
 
 
 class Solution:
-    def find_order(self, n: int, prerequisites: List[List[int]]) -> List[int]:
-        pre_courses = collections.defaultdict(set)
-        next_courses = collections.defaultdict(set)
-        for p in prerequisites:
-            pre_courses[p[0]].add(p[1])
-            next_courses[p[1]].add(p[0])
-        learned = []
-        for i in range(n):
-            if i not in pre_courses:
-                learned.append(i)
+    def find_order(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+        pre_courses = collections.defaultdict(int)
+        next_courses = collections.defaultdict(list)
+        for a, b in prerequisites:
+            pre_courses[a] += 1
+            next_courses[b].append(a)
+        learned = [i for i in range(numCourses) if i not in pre_courses]
         ans = []
         while learned:
-            m = len(learned)
-            for i in range(m):
-                i = learned.pop()
-                ans.append(i)
-                for next_course in next_courses[i]:
-                    pre_courses[next_course].remove(i)
-                    if not pre_courses[next_course]:
-                        learned.append(next_course)
-        return ans if len(ans) == n else []
+            sz = len(learned)
+            for _ in range(sz):
+                cur = learned.pop()
+                ans.append(cur)
+                for nxt in next_courses[cur]:
+                    pre_courses[nxt] -= 1
+                    if not pre_courses[nxt]:
+                        learned.append(nxt)
+        return ans if len(ans) == numCourses else []

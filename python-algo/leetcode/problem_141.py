@@ -1,6 +1,5 @@
 """141. Linked List Cycle
 https://leetcode.com/problems/linked-list-cycle/
-Can you solve it using O(1) (i.e. constant) memory?
 """
 from common.list_node import ListNode
 
