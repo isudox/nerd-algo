@@ -1,14 +1,17 @@
+"""
+https://leetcode.cn/problems/movement-of-robots/
+"""
 from typing import List
 
 
-# [-2,0,2], "RLL", 3 -> 8
 class Solution:
     def sumDistance(self, nums: List[int], s: str, d: int) -> int:
-        ans, base = 0, int(1e9 + 7)
-        store = {'L': [], 'R': []}
-        for i in range(len(s)):
-            store[s[i]].append(i)
-        for i in store['L']:
-            for j in store['R']:
-                ans = (ans + abs(nums[i] - nums[j] - 2 * d)) % base
-        return ans
+        nums = [nums[i] + d * (-1 if c == 'L' else 1) for i, c in enumerate(s)]
+        nums.sort()
+        base, n = int(1e9 + 7), len(nums)
+        return sum([(nums[i] - nums[i - 1]) * i * (n - i) for i in range(1, n)]) % base
+
+
+if __name__ == '__main__':
+    sol = Solution()
+    print(sol.sumDistance(nums=[-2, 0, 2], s="RLL", d=3))
