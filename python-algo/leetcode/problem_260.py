@@ -1,12 +1,12 @@
 """260. Single Number III
-https://leetcode-cn.com/problems/single-number-iii/
+https://leetcode.com/problems/single-number-iii/
 
 Given an integer array nums, in which exactly two elements appear only once
 and all the other elements appear exactly twice. Find the two elements that
 appear only once. You can return the answer in any order.
 
-Follow up: Your algorithm should run in linear runtime complexity. Could you
-implement it using only constant space complexity?
+Follow up: Your algorithm should run in linear runtime complexity.
+Could you implement it using only constant space complexity?
 
 Example 1:
 
@@ -31,17 +31,23 @@ Constraints:
     Each integer in nums will appear twice, only two integers will appear once.
 """
 from typing import List
+import collections
 
 
 class Solution:
     def single_number(self, nums: List[int]) -> List[int]:
-        ans = []
-        memo = dict()
+        counter = collections.Counter(nums)
+        return [num for num, cnt in counter.items() if cnt == 1]
+
+    def singleNumber(self, nums: List[int]) -> List[int]:
+        xorsum = 0
         for num in nums:
-            if num in memo:
-                del memo[num]
+            xorsum ^= num
+        lsb = xorsum & (-xorsum)
+        type1 = type2 = 0
+        for num in nums:
+            if num & lsb:
+                type1 ^= num
             else:
-                memo[num] = 1
-        for num in memo.keys():
-            ans.append(num)
-        return ans
+                type2 ^= num
+        return [type1, type2]
