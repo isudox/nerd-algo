@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * 341. Flatten Nested List Iterator
+ */
 public class Problem341 {
 
     private interface NestedInteger {
