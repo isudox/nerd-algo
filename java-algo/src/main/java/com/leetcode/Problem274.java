@@ -1,5 +1,8 @@
 package com.leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 274. H-Index
  * https://leetcode.com/problems/h-index
