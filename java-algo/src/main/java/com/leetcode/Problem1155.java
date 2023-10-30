@@ -14,10 +14,8 @@ public class Problem1155 {
         dp[0][0] = 1;
         for (int i = 1; i <= n; i++) {
             for (int j = i; j <= target; j++) {
-                for (int x = 1; x <= k; x++) {
-                    if (j >= x) {
-                        dp[i][j] = (dp[i][j] + dp[i - 1][j - x]) % base;
-                    }
+                for (int x = 1; x <= Math.min(k, j); x++) {
+                    dp[i][j] = (dp[i][j] + dp[i - 1][j - x]) % base;
                 }
             }
         }
