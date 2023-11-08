@@ -15,28 +15,20 @@ public class Problem318 {
         }
         for (int i = 0; i < words.length; i++) {
             for (int j = i + 1; j < words.length; j++) {
-                int ret = helper(store[i], store[j]);
-                if (ret > ans) {
-                    ans = ret;
+                if (helper(store[i], store[j])) {
+                    ans = Math.max(ans, words[i].length() * words[j].length());
                 }
             }
         }
         return ans;
     }
 
-    private int helper(int[] a, int[] b) {
-        int cnt1 = 0, cnt2 = 0;
-        for (int i = 0; i < 26; i++) {
+    private boolean helper(int[] a, int[] b) {
+        for (int i = 0; i < 26; ++i) {
             if (a[i] > 0 && b[i] > 0) {
-                return 0;
-            }
-            if (a[i] > 0) {
-                cnt1 += a[i];
-            }
-            if (b[i] > 0) {
-                cnt2 += b[i];
+                return false;
             }
         }
-        return cnt1 * cnt2;
+        return true;
     }
 }
