@@ -8,36 +8,25 @@ import java.util.Arrays;
  */
 public class Problem2300 {
     public int[] successfulPairs(int[] spells, int[] potions, long success) {
-        int m = spells.length, n = potions.length;
-        int[] ans = new int[m];
+        int n = spells.length, m = potions.length;
+        int[] ans = new int[n];
         Arrays.sort(potions);
-        for (int i = 0; i < m; i++) {
-            long need = success / spells[i] + (success % spells[i] > 0 ? 1 : 0);
-            if (need > potions[n - 1]) {
-                ans[i] = 0;
+        for (int i = 0; i < n; i++) {
+            long x = success / spells[i] + (success % spells[i] > 0 ? 1 : 0);
+            if (potions[m - 1] < x) {
                 continue;
             }
-            ans[i] = find(potions, (int) need);
+            int lo = 0, hi = potions.length - 1, mid;
+            while (lo < hi) {
+                mid = (lo + hi) >> 1;
+                if (potions[mid] < x) {
+                    lo = mid + 1;
+                } else {
+                    hi = mid;
+                }
+            }
+            ans[i] = m - lo;
         }
         return ans;
-    }
-
-    private int find(int[] nums, int num) {
-        if (nums[nums.length - 1] < num) {
-            return 0;
-        }
-        if (nums[0] >= num) {
-            return nums.length;
-        }
-        int lo = 0, hi = nums.length - 1;
-        while (lo < hi) {
-            int mid = lo + (hi - lo) / 2;
-            if (nums[mid] >= num) {
-                hi = mid;
-            } else {
-                lo = mid + 1;
-            }
-        }
-        return nums.length - lo;
     }
 }
