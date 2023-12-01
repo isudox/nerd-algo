@@ -573,3 +573,20 @@ func Test_993(t *testing.T) {
 		})
 	}
 }
+
+func TestXXXX(t *testing.T) {
+	var ss []string
+	println(helper0(ss...))
+	ss = []string{"a", "b"}
+	println(helper0(ss...))
+
+	var arr = make([]int, 10)
+	for i := 0; i < 10; i++ {
+		arr[i] = i
+	}
+	println(arr[8])
+}
+
+func helper0(ss ...string) int {
+	return len(ss)
+}
