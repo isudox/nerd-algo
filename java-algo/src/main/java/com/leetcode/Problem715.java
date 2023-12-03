@@ -4,6 +4,10 @@ package com.leetcode;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * Range  Module
+ * https://leetcode.com/problems/range-module
+ */
 public class Problem715 {
     private static class RangeModule {
         TreeMap<Integer, Integer> intervals;
