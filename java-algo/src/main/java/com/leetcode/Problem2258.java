@@ -7,5 +7,6 @@ package com.leetcode;
 public class Problem2258 {
     public int maximumMinutes(int[][] grid) {
 
+        return 0;
     }
 }
