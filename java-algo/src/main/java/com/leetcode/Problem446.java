@@ -39,8 +39,8 @@ public class Problem446 {
     }
 
     static class Tuple {
-        private int pos;
-        private long diff;
+        int pos;
+        long diff;
 
         public Tuple(int pos, long diff) {
             this.pos = pos;
