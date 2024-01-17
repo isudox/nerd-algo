@@ -1,5 +1,7 @@
 package com.leetcode;
 
+import com.common.ListNode;
+
 class Problem83 {
     public ListNode deleteDuplicates(ListNode head) {
         ListNode p = head;

@@ -1,7 +1,9 @@
 package com.leetcode;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * 1207. Unique Number of Occurrences
@@ -13,10 +15,10 @@ public class Problem1207 {
         for (int num : arr) {
             memo.put(num, memo.getOrDefault(num, 0) + 1);
         }
-        Map<Integer, Boolean> counter = new HashMap<>(memo.size());
-        for (Integer value : memo.values()) {
-            if (counter.containsKey(value)) return false;
-            counter.put(value, true);
+        Set<Integer> counter = new HashSet<>();
+        for (Integer cnt : memo.values()) {
+            if (counter.contains(cnt)) return false;
+            counter.add(cnt);
         }
         return true;
     }

@@ -585,6 +585,10 @@ func TestXXXX(t *testing.T) {
 		arr[i] = i
 	}
 	println(arr[8])
+	aa := map[string]string{
+		"a": "A",
+	}
+	println("aa[b]:" + aa["b"])
 }
 
 func helper0(ss ...string) int {
