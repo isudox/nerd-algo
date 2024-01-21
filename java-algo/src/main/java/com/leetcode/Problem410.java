@@ -13,7 +13,6 @@ public class Problem410 {
         }
         int avg = preSum[n] % m == 0 ? preSum[n] / m : preSum[n] / m + 1;
         int ans = 0;
-        int[] segments = new int[m];
         for (int i = 0; i < m; i++) {
             int cur = avg * i;
             int pos = search(preSum, cur);
@@ -40,5 +39,40 @@ public class Problem410 {
             }
         }
         return i;
+    }
+
+    public int splitArray2(int[] nums, int m) {
+        int lo = 0, hi = 0;
+        for (int num : nums) {
+            hi += num;
+            if (lo < num) {
+                lo = num;
+            }
+        }
+        while (lo < hi) {
+            int mid = (hi - lo) / 2 + lo;
+            if (check(nums, mid, m)) {
+                hi = mid;
+            } else {
+                lo = mid + 1;
+            }
+        }
+        return lo;
+    }
+
+    private boolean check(int[] nums, int limit, int m) {
+        int sum = 0, cnt = 1;
+        for (int num : nums) {
+            if (sum + num > limit) {
+                cnt++;
+                if (cnt > m) {
+                    return false;
+                }
+                sum = num;
+            } else {
+                sum += num;
+            }
+        }
+        return cnt <= m;
     }
 }

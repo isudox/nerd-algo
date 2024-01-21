@@ -27,8 +27,7 @@ public class Problem2225 {
             int w = entry.getValue()[0], l = entry.getValue()[1];
             if (w > 0 && l == 0) {
                 list1.add(p);
-            }
-            if (l == 1) {
+            } else if (l == 1) {
                 list2.add(p);
             }
         }
