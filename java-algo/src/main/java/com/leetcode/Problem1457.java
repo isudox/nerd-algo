@@ -8,16 +8,16 @@ import com.common.TreeNode;
  */
 public class Problem1457 {
     private int ans = 0;
-    public int pseudoPalindromicPaths (TreeNode root) {
+
+    public int pseudoPalindromicPaths(TreeNode root) {
         dfs(root, new int[10]);
         return ans;
     }
 
     private void dfs(TreeNode node, int[] counter) {
-        counter[node.val] += 1;
+        counter[node.val]++;
         if (node.left == null && node.right == null) {
-            if (check(counter))
-                ans++;
+            check(counter);
         }
         if (node.left != null) {
             dfs(node.left, counter);
@@ -25,17 +25,18 @@ public class Problem1457 {
         if (node.right != null) {
             dfs(node.right, counter);
         }
-        counter[node.val] -= 1;
+        counter[node.val]--;
     }
 
-    private boolean check(int[] counter) {
+    private void check(int[] counter) {
         int odds = 0;
         for (int i = 0; i < 10; i++) {
             if (counter[i] % 2 == 1) {
-                if (++odds > 1)
-                    return false;
+                if (++odds > 1) {
+                    return;
+                }
             }
         }
-        return true;
+        this.ans++;
     }
 }
