@@ -2,7 +2,7 @@ package com.leetcode;
 
 /**
  * 775. Global and Local Inversions
- * https://leetcode.cn/problems/global-and-local-inversions/
+ * https://leetcode.com/problems/global-and-local-inversions/
  */
 public class Problem775 {
     public boolean isIdealPermutation(int[] nums) {

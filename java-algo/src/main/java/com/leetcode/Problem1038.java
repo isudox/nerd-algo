@@ -4,7 +4,7 @@ import com.common.TreeNode;
 
 /**
  * 1038. Binary Search Tree to Greater Sum Tree
- * https://leetcode.cn/problems/binary-search-tree-to-greater-sum-tree/
+ * https://leetcode.com/problems/binary-search-tree-to-greater-sum-tree/
  */
 public class Problem1038 {
     private int sum = 0;

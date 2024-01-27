@@ -6,7 +6,7 @@ import java.util.*;
 
 /**
  * 04.06. Successor LCCI
- * https://leetcode.cn/problems/successor-lcci/
+ * https://leetcode.com/problems/successor-lcci/
  */
 public class Successor {
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {

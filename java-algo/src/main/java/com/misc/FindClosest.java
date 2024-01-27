@@ -1,7 +1,7 @@
 package com.misc;
 
 /**
- * https://leetcode.cn/problems/find-closest-lcci/
+ * https://leetcode.com/problems/find-closest-lcci/
  */
 public class FindClosest {
     public int findClosest(String[] words, String word1, String word2) {

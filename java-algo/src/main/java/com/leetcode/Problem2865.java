@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * 2865. Beautiful Towers I
- * https://leetcode.cn/problems/beautiful-towers-i/
+ * https://leetcode.com/problems/beautiful-towers-i/
  */
 public class Problem2865 {
     public long maximumSumOfHeights(List<Integer> maxHeights) {

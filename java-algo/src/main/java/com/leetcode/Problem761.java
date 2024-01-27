@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * 761. Special Binary String
- * https://leetcode.cn/problems/special-binary-string
+ * https://leetcode.com/problems/special-binary-string
  */
 class Problem761 {
     public String makeLargestSpecial(String s) {

@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * 1125. Smallest Sufficient Team
- * https://leetcode.cn/problems/smallest-sufficient-team/
+ * https://leetcode.com/problems/smallest-sufficient-team/
  */
 public class Problem1125 {
     public int[] smallestSufficientTeam(String[] req_skills, List<List<String>> people) {

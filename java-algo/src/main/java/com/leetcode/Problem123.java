@@ -4,7 +4,7 @@ import java.util.Map;
 
 /**
  * 123. Best Time to Buy and Sell Stock III
- * https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/
+ * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
  */
 class Problem123 {
     public int maxProfit(int[] prices) {

@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * 1072. Flip Columns For Maximum Number of Equal Rows
- * https://leetcode.cn/problems/flip-columns-for-maximum-number-of-equal-rows/
+ * https://leetcode.com/problems/flip-columns-for-maximum-number-of-equal-rows/
  */
 public class Problem1072 {
     public int maxEqualRowsAfterFlips(int[][] matrix) {

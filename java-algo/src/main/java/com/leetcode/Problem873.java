@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
  * 873. Length of Longest Fibonacci Subsequence
- * https://leetcode.cn/problems/length-of-longest-fibonacci-subsequence/
+ * https://leetcode.com/problems/length-of-longest-fibonacci-subsequence/
  */
 public class Problem873 {
     public int lenLongestFibSubseq(int[] arr) {

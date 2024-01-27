@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * 927. Three Equal Parts
- * https://leetcode.cn/problems/three-equal-parts/
+ * https://leetcode.com/problems/three-equal-parts/
  */
 public class Problem927 {
     public int[] threeEqualParts(int[] arr) {

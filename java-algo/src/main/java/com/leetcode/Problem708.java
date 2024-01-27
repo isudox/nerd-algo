@@ -2,7 +2,7 @@ package com.leetcode;
 
 /**
  * 708. Insert into a Sorted Circular Linked List
- * https://leetcode.cn/problems/insert-into-a-sorted-circular-linked-list/
+ * https://leetcode.com/problems/insert-into-a-sorted-circular-linked-list/
  */
 public class Problem708 {
     public Node insert(Node head, int insertVal) {

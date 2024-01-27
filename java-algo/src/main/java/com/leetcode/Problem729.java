@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * 729. My Calendar I
- * https://leetcode.cn/problems/my-calendar-i/
+ * https://leetcode.com/problems/my-calendar-i/
  */
 public class Problem729 {
     private static class MyCalendar {

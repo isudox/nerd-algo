@@ -3,7 +3,7 @@ package com.leetcode;
 import java.util.PriorityQueue;
 
 /**
- * https://leetcode.cn/problems/take-gifts-from-the-richest-pile
+ * https://leetcode.com/problems/take-gifts-from-the-richest-pile
  */
 public class Problem2558 {
     public long pickGifts(int[] gifts, int k) {

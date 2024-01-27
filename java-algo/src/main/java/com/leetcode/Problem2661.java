@@ -2,7 +2,7 @@ package com.leetcode;
 
 /**
  * 2661. First Completely Painted Row or Column
- * https://leetcode.cn/problems/first-completely-painted-row-or-column/
+ * https://leetcode.com/problems/first-completely-painted-row-or-column/
  */
 public class Problem2661 {
     public int firstCompleteIndex(int[] arr, int[][] mat) {

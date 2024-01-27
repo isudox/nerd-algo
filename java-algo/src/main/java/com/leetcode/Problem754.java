@@ -2,7 +2,7 @@ package com.leetcode;
 
 /**
  * 754. Reach a Number
- * https://leetcode.cn/problems/reach-a-number/
+ * https://leetcode.com/problems/reach-a-number/
  */
 class Problem754 {
     public int reachNumber(int target) {

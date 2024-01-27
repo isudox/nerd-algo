@@ -5,7 +5,7 @@ import java.util.Deque;
 
 /**
  * 921. Minimum Add to Make Parentheses Valid
- * https://leetcode.cn/problems/minimum-add-to-make-parentheses-valid/
+ * https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/
  */
 public class Problem921 {
     public int minAddToMakeValid(String s) {

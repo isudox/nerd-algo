@@ -2,7 +2,7 @@ package com.leetcode;
 
 /**
  * 1375. Number of Times Binary String Is Prefix-Aligned
- * https://leetcode.cn/problems/number-of-times-binary-string-is-prefix-aligned/
+ * https://leetcode.com/problems/number-of-times-binary-string-is-prefix-aligned/
  */
 public class Problem1375 {
     int left = -1;

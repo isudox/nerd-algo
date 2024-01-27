@@ -2,7 +2,7 @@ package com.leetcode;
 
 /**
  * 801. Minimum Swaps To Make Sequences Increasing
- * https://leetcode.cn/problems/minimum-swaps-to-make-sequences-increasing/
+ * https://leetcode.com/problems/minimum-swaps-to-make-sequences-increasing/
  */
 public class Problem801 {
     public int minSwap(int[] nums1, int[] nums2) {

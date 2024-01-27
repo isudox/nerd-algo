@@ -5,7 +5,6 @@ package com.leetcode;
  * https://leetcode.com/problems/out-of-boundary-paths/
  */
 public class Problem576 {
-
     public int findPaths(int m, int n, int maxMove, int startRow, int startColumn) {
         int[][][] memo = new int[m][n][maxMove + 1];
         return dfs(m, n, maxMove, startRow, startColumn, memo);

@@ -2,7 +2,7 @@ package com.leetcode;
 
 /**
  * 342. Power of Four
- * https://leetcode.cn/problems/power-of-four/
+ * https://leetcode.com/problems/power-of-four/
  */
 class Problem342 {
     public boolean isPowerOfFour(int n) {
