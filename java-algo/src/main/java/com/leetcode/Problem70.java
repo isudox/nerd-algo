@@ -6,7 +6,7 @@ package com.leetcode;
  */
 public class Problem70 {
     public int climbStairs(int n) {
-        int a = 0, b = 0, c = 1;
+        int a, b = 0, c = 1;
         for (int i = 1; i <= n; i++) {
             a = b;
             b = c;
