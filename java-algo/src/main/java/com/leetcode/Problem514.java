@@ -5,23 +5,8 @@ import java.util.*;
 /**
  * 514. Freedom Trail
  * https://leetcode.com/problems/freedom-trail/
- *
- * Input: ring = "godding", key = "gd"
- * Output: 4
- * Explanation:
- * For the first key character 'g', since it is already in place, we just need 1 step to spell this character.
- * For the second key character 'd', we need to rotate the ring "godding" anticlockwise by two steps to make it become "ddinggo".
- * Also, we need 1 more step for spelling.
- * So the final output is 4.
- *
- * Note:
- *
- *     Length of both ring and key will be in range 1 to 100.
- *     There are only lowercase letters in both strings and might be some duplicate characters in both strings.
- *     It's guaranteed that string key could always be spelled by rotating the string ring.
  */
 public class Problem514 {
-
     public int findRotateSteps(String ring, String key) {
         int keyLen = key.length(), ringLen = ring.length();
         Map<Character, List<Integer>> charPos = new HashMap<>();
