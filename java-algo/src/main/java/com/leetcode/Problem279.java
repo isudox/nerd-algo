@@ -9,11 +9,6 @@ import java.util.List;
  */
 public class Problem279 {
 
-    /**
-     * Greedy
-     * Time Complexity:
-     * Space Complexity:
-     */
     public int numSquares(int n) {
         return recur(n, new int[n + 1]);
     }
