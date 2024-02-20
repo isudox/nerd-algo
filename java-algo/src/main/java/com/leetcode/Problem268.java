@@ -13,4 +13,25 @@ public class Problem268 {
         }
         return sum;
     }
+
+    public int missingNumber2(int[] nums) {
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            int x = nums[i];
+            if (x < 0 || x == n) {
+                continue;
+            }
+            while ( x < n && nums[x] != -1) {
+                int y = nums[x];
+                nums[x] = -1;
+                x = y;
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            if (nums[i] != -1) {
+                return i;
+            }
+        }
+        return n;
+    }
 }
