@@ -9,8 +9,12 @@ import java.util.*;
 public class Problem787 {
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
         int[][] edges = new int[n][n];
+        Map<Integer, List<Integer>> graph = new HashMap<>();
         for (int[] f : flights) {
             edges[f[0]][f[1]] = f[2];
+            List<Integer> list = graph.getOrDefault(f[0], new ArrayList<>());
+            list.add(f[1]);
+            graph.put(f[0], list);
         }
         int ans = Integer.MAX_VALUE;
         int[] minPrices = new int[n];
@@ -22,8 +26,7 @@ public class Problem787 {
             for (int i = 0; i < sz; i++) {
                 int[] tuple = q.pollFirst();
                 int stop = tuple[0], price = tuple[1];
-                for (int nxt = 0; nxt < n; nxt++) {
-                    if (edges[stop][nxt] == 0) continue;
+                for (int nxt : graph.getOrDefault(stop, new ArrayList<>())) {
                     int tmpPrice = price + edges[stop][nxt];
                     if (nxt == dst) {
                         if (tmpPrice < ans) {

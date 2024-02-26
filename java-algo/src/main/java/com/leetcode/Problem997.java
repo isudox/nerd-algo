@@ -13,8 +13,9 @@ class Problem997 {
         }
         int total = n * (1 + n) / 2;
         for (int i = 1; i <= n; i++) {
-            if (store[i] + i == total)
+            if (store[i] + i == total) {
                 return i;
+            }
         }
         return -1;
     }
