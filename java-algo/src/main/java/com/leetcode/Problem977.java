@@ -5,14 +5,6 @@ import java.util.Arrays;
 /**
  * 977. Squares of a Sorted Array
  * https://leetcode.com/problems/squares-of-a-sorted-array/
- * <p>
- * Given an array of integers A sorted in non-decreasing order, return an array
- * of the squares of each number, also in sorted non-decreasing order.
- * <p>
- * Example 1:
- * <p>
- * Input: [-4,-1,0,3,10]
- * Output: [0,1,9,16,100]
  */
 public class Problem977 {
 
