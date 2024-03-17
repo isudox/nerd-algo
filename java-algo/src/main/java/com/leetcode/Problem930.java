@@ -10,16 +10,13 @@ import java.util.Map;
 public class Problem930 {
     public int numSubarraysWithSum(int[] nums, int goal) {
         int ans = 0;
-        Map<Integer, Integer> counter = new HashMap<>();
-        counter.put(0, 1);
-        int i = 0;
-        int preSum = 0;
-        while (i < nums.length) {
-            preSum += nums[i++];
-            if (counter.containsKey(preSum - goal)) {
-                ans += counter.get(preSum - goal);
-            }
-            counter.put(preSum, counter.getOrDefault(preSum, 0) + 1);
+        int sum = 0;
+        Map<Integer, Integer> seen = new HashMap<>();
+        seen.put(0, 1);
+        for (int num : nums) {
+            sum += num;
+            ans += seen.getOrDefault(sum - goal, 0);
+            seen.put(sum, seen.getOrDefault(sum, 0) + 1);
         }
         return ans;
     }

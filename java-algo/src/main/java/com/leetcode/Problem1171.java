@@ -11,9 +11,6 @@ import java.util.Map;
  */
 public class Problem1171 {
     public ListNode removeZeroSumSublists(ListNode head) {
-        if (head == null) {
-            return null;
-        }
         Map<Integer, ListNode> seen = new HashMap<>();
         ListNode cur = head;
         int sum = 0;
