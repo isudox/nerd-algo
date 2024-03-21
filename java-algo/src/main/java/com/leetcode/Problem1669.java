@@ -1,22 +1,30 @@
 package com.leetcode;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import com.common.ListNode;
 
+/**
+ * 1669. Merge In Between Linked Lists
+ * https://leetcode.com/problems/merge-in-between-linked-lists/
+ */
 public class Problem1669 {
-    public int maxResult(int[] nums, int k) {
-        Deque<Integer> q = new ArrayDeque<>();
-        q.offer(0);
-        for (int i = 1; i < nums.length; i++) {
-            nums[i] += nums[q.peekFirst()];
-            while (!q.isEmpty() && nums[q.peekLast()] <= nums[i]) {
-                q.pollLast();
-            }
-            q.offerLast(i);
-            if (i - q.peekFirst() >= k) {
-                q.pollFirst();
-            }
+    public ListNode mergeInBetween(ListNode list1, int a, int b, ListNode list2) {
+        ListNode tail = list2;
+        while (tail.next != null) {
+            tail = tail.next;
         }
-        return nums[nums.length - 1];
+        ListNode dummy = new ListNode(-1, list1);
+        ListNode cur = list1, pre = dummy;
+        for (int i = 0; i <= b; i++) {
+            if (i == a) {
+                pre.next = list2;
+            }
+            if (i == b) {
+                tail.next = cur.next;
+                break;
+            }
+            pre = cur;
+            cur = cur.next;
+        }
+        return dummy.next;
     }
 }

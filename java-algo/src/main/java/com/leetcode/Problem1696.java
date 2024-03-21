@@ -3,6 +3,10 @@ package com.leetcode;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
+/**
+ * 1696. Jump Game VI
+ * https://leetcode.com/problems/jump-game-vi/
+ */
 public class Problem1696 {
     public int maxResult(int[] nums, int k) {
         int n = nums.length;

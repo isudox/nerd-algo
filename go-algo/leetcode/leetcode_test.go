@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"reflect"
+	"strconv"
 	"testing"
 	"time"
 )
@@ -589,6 +590,12 @@ func TestXXXX(t *testing.T) {
 		"a": "A",
 	}
 	println("aa[b]:" + aa["b"])
+
+	val, err := strconv.ParseInt("5d8c5d85c8", 36, 64)
+	if err != nil {
+		println("error:%+v", err)
+	}
+	println("val=", val)
 }
 
 func helper0(ss ...string) int {
