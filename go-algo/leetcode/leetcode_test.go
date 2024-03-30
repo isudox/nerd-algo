@@ -596,8 +596,17 @@ func TestXXXX(t *testing.T) {
 		println("error:%+v", err)
 	}
 	println("val=", val)
+	makeIt()
 }
 
 func helper0(ss ...string) int {
 	return len(ss)
+}
+
+func makeIt() (s ABC) {
+	defer func() {
+		fmt.Printf("s.Num = %d", s.Num)
+	}()
+	s.Num = 1
+	return ABC{2, time.Now()}
 }
