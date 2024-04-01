@@ -610,3 +610,9 @@ func makeIt() (s ABC) {
 	s.Num = 1
 	return ABC{2, time.Now()}
 }
+
+func TestInt(t *testing.T) {
+	var a int64 = 2 << 32
+	var b int = int(a)
+	println(b)
+}
