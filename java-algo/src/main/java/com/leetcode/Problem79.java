@@ -5,7 +5,7 @@ package com.leetcode;
  * https://leetcode.com/problems/word-search/
  */
 public class Problem79 {
-    private static final int[][] dirs = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+    private static final int[][] dirs = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
     private char[][] board;
     private String word;
     private int m;
