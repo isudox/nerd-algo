@@ -1,55 +1,32 @@
 package com.leetcode;
 
-import java.util.Stack;
-
 /**
  * 85. Maximal Rectangle
  * https://leetcode.com/problems/maximal-rectangle/
  */
 public class Problem85 {
-
-    private int ans;
-    private char[][] matrix;
-
     public int maximalRectangle(char[][] matrix) {
-        if (matrix == null || matrix[0] == null) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
             return 0;
         }
         int rows = matrix.length, cols = matrix[0].length;
         int[] heights = new int[cols];
         int ans = 0;
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < cols; col++) {
-                if (matrix[row][col] == 0) {
-                    heights[col] = 0;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (matrix[i][j] == '1') {
+                    heights[j]++;
                 } else {
-                    heights[col]++;
+                    heights[j] = 0;
                 }
             }
-            ans = Math.max(ans, helper(heights));
+            for (int x = 0; x < heights.length; x++) {
+                for (int y = x, minHeight = Integer.MAX_VALUE; y < heights.length; y++) {
+                    minHeight = Math.min(minHeight, heights[y]);
+                    ans = Math.max(ans, minHeight * (y - x + 1));
+                }
+            }
         }
         return ans;
-    }
-
-    private int helper(int[] heights) {
-        int ret = 0;
-        Stack<Integer> stack = new Stack<>();
-        int p = 0;
-        while (p < heights.length) {
-            if (stack.isEmpty()) {
-                stack.push(p);
-                p++;
-            } else {
-                int peek = stack.peek();
-                if (heights[p] >= heights[peek]) {
-                    stack.push(p);
-                    p++;
-                } else {
-                    int h = heights[stack.pop()];
-
-                }
-            }
-        }
-        return ret;
     }
 }
