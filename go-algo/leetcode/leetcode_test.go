@@ -615,4 +615,11 @@ func TestInt(t *testing.T) {
 	var a int64 = 2 << 32
 	var b int = int(a)
 	println(b)
+
+	var mm map[string]string
+	if val, ok := mm["pay_promotion_amount"]; ok {
+		println(val)
+	} else {
+		println("failed")
+	}
 }
