@@ -12,11 +12,13 @@ public class Problem129 {
     }
 
     private int dfs(TreeNode node, int prev) {
-        if (null == node)
+        if (null == node) {
             return 0;
+        }
         int cur = prev * 10 + node.val;
-        if (null == node.left && null == node.right)
+        if (null == node.left && null == node.right) {
             return cur;
+        }
         return dfs(node.left, cur) + dfs(node.right, cur);
     }
 }
