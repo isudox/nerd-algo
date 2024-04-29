@@ -12,10 +12,11 @@ public class Problem514 {
         Map<Character, List<Integer>> charPos = new HashMap<>();
         for (int i = 0; i < ringLen; i++) {
             char c = ring.charAt(i);
-            if (charPos.containsKey(c))
+            if (charPos.containsKey(c)) {
                 charPos.get(c).add(i);
-            else
-                charPos.put(c, new ArrayList<>(Arrays.asList(i)));
+            } else {
+                charPos.put(c, new ArrayList<>(List.of(i)));
+            }
         }
         int[][] memo = new int[ringLen][keyLen];
         for (int i = 0; i < ringLen; i++) {
