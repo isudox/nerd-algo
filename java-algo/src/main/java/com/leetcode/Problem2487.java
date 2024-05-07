@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Problem2487 {
     public ListNode removeNodes(ListNode head) {
-        if (head == null) {
+        if (head == null || head.next == null) {
             return null;
         }
         List<ListNode> list = new ArrayList<>();
