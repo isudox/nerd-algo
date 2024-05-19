@@ -5,19 +5,21 @@ import com.common.TreeNode;
 /**
  * 979. Distribute Coins in Binary Tree
  * https://leetcode.com/problems/distribute-coins-in-binary-tree/
- *
- * Given the root of a binary tree with N nodes, each node in the tree has
- * node.val coins, and there are N coins total.
- *
- * In one move, we may choose two adjacent nodes and move one coin from one
- * node to another.
- * (The move may be from parent to child, or from child to parent.)
- *
- * Return the number of moves required to make every node have exactly one coin.
  */
 public class Problem979 {
+    private int ans = 0;
 
     public int distributeCoins(TreeNode root) {
-        return 0;
+        dfs(root);
+        return ans;
+    }
+
+    private int dfs(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+        int leftCoins = dfs(node.left), rightCoins = dfs(node.right);
+        ans += Math.abs(leftCoins) + Math.abs(rightCoins);
+        return node.val - 1 + leftCoins + rightCoins;
     }
 }
