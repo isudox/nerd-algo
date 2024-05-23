@@ -8,29 +8,8 @@ import java.util.List;
 /**
  * 78. Subsets
  * https://leetcode.com/problems/subsets/
- *
- * Given a set of distinct integers, nums,
- * return all possible subsets (the power set).
- *
- * Note: The solution set must not contain duplicate subsets.
- *
- * Example:
- *
- * Input: nums = [1,2,3]
- * Output:
- * [
- *   [3],
- *   [1],
- *   [2],
- *   [1,2,3],
- *   [1,3],
- *   [2,3],
- *   [1,2],
- *   []
- * ]
  */
 public class Problem78 {
-
     public List<List<Integer>> subsets(int[] nums) {
         int len = nums.length;
         List<List<Integer>> list = Collections.singletonList(new ArrayList<>());
@@ -49,4 +28,23 @@ public class Problem78 {
 
         return list;
     }
+
+    public List<List<Integer>> subsets2(int[] nums) {
+        int n = nums.length;
+        int limit = 1 << n;
+        List<List<Integer>> ans = new ArrayList<>();
+        for (int i = 0; i < limit; i++) {
+            int x = i;
+            List<Integer> subset = new ArrayList<>();
+            for (int num : nums) {
+                if ((x & 1) == 1) {
+                    subset.add(num);
+                }
+                x >>= 1;
+            }
+            ans.add(subset);
+        }
+        return ans;
+    }
+
 }
