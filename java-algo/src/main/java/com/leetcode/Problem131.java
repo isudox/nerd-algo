@@ -30,7 +30,9 @@ public class Problem131 {
 
     private boolean isPalindrome(String s, int x, int y) {
         while (x < y) {
-            if (s.charAt(x++) != s.charAt(y--)) return false;
+            if (s.charAt(x++) != s.charAt(y--)) {
+                return false;
+            }
         }
         return true;
     }
