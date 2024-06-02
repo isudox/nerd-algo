@@ -9,13 +9,14 @@ import java.util.Arrays;
 public class Problem1608 {
     public int specialArray(int[] nums) {
         Arrays.sort(nums);
-        int lo = 0, hi = nums.length;
+        int lo = 0, hi = Math.min(nums.length, nums[nums.length - 1]);
+        Arrays.binarySearch(nums, lo);
         while (lo <= hi) {
             int mid = (lo + hi) >> 1;
             int pos = search(nums, mid);
             int cnt = nums.length - pos;
             if (cnt == mid) return mid;
-            else if (cnt < mid) hi = mid - 1;
+            if (cnt < mid) hi = mid - 1;
             else lo = mid + 1;
         }
         return -1;
