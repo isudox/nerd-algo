@@ -1,6 +1,7 @@
 package com.leetcode;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  */
 public class Problem648 {
     public String replaceWords(List<String> dictionary, String sentence) {
-        dictionary.sort((o1, o2) -> o1.length() - o2.length());
+        dictionary.sort(Comparator.comparingInt(String::length));
         String[] words = sentence.split(" ");
         List<String> ans = new ArrayList<>();
         for (String word : words) {

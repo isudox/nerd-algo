@@ -8,7 +8,7 @@ import java.util.Map;
  * https://leetcode.com/problems/continuous-subarray-sum/
  */
 class Problem523 {
-    public boolean checkSubarraySum(int[] nums, int k) {
+    public boolean checkSubarraySum2(int[] nums, int k) {
         Map<Integer, Integer> store = new HashMap<>();
         store.put(0, -1);
         for (int i = 0; i < nums.length; i++) {
