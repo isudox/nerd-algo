@@ -4,7 +4,6 @@ package com.common;
  * Definition for a binary tree node.
  */
 public final class TreeNode {
-
     public int val;
 
     public TreeNode left;
