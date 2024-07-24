@@ -1,21 +1,13 @@
 package com.leetcode;
 
+import com.common.Pair;
+
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
 public class Problem460 {
-    static class Pair<T1, T2> {
-        T1 first;
-        T2 second;
-
-        public Pair(T1 first, T2 second) {
-            this.first = first;
-            this.second = second;
-        }
-    }
-
     static class LFUCache {
         // key: original key, value: frequency and original value.
         private Map<Integer, Pair<Integer, Integer>> cache;
@@ -42,13 +34,13 @@ public class Problem460 {
             if (frequencyAndValue == null) {
                 return -1;
             }
-            final int frequency = frequencyAndValue.first;
+            final int frequency = frequencyAndValue.getFirst();
             final Set<Integer> keys = frequencies.get(frequency);
             keys.remove(key);
             if (minf == frequency && keys.isEmpty()) {
                 ++minf;
             }
-            final int value = frequencyAndValue.second;
+            final int value = frequencyAndValue.getSecond();
             insert(key, frequency + 1, value);
             return value;
         }
@@ -59,7 +51,7 @@ public class Problem460 {
             }
             Pair<Integer, Integer> frequencyAndValue = cache.get(key);
             if (frequencyAndValue != null) {
-                cache.put(key, new Pair<>(frequencyAndValue.first, value));
+                cache.put(key, new Pair<>(frequencyAndValue.getFirst(), value));
                 get(key);
                 return;
             }
