@@ -1213,6 +1213,17 @@ class LeetCodeTest extends Specification {
         [-3, 0, 1, -3, 1, 1, 1, -3, 10, 0] | true
     }
 
+    def "1334. Find the City With the Smallest Number of Neighbors at a Threshold Distance"(int n, int[][] edges, int distanceThreshold, int ans) {
+        given:
+        def p = new Problem1334()
+        expect:
+        p.findTheCity(n, edges, distanceThreshold) == ans
+        where:
+        n | edges                                                                | distanceThreshold | ans
+        5 | [[0, 1, 2], [0, 4, 8], [1, 2, 3], [1, 4, 2], [2, 3, 1], [3, 4, 1]]   | 2                 | 0
+        6 | [[0, 1, 10], [0, 2, 1], [2, 3, 1], [1, 3, 1], [1, 4, 1], [4, 5, 10]] | 20                | 5
+    }
+
     def "1631. Path With Minimum Effort"(int[][] heights, int ans) {
         given:
         def sol = new Problem1631()
