@@ -1236,6 +1236,20 @@ class LeetCodeTest extends Specification {
         [[1, 2, 1, 1, 1], [1, 2, 1, 2, 1], [1, 2, 1, 2, 1], [1, 2, 1, 2, 1], [1, 1, 1, 2, 1]] | 0
     }
 
+    def "1653. Minimum Deletions to Make String Balanced"(String s, int ans) {
+        given:
+        def p = new Problem1653()
+        expect:
+        p.minimumDeletions(s) == ans
+        where:
+        s           | ans
+        "aababbab"  | 2
+        "bbaaaaabb" | 2
+        "abba"      | 1
+        "aa"        | 0
+        "bb"        | 0
+    }
+
     def "2156. Find Substring With Given Hash Value"(String s, int power, int modulo, int k, int hashValue, String ans) {
         given:
         def sol = new Problem2156()
