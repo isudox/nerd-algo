@@ -6,24 +6,40 @@ package com.leetcode;
  */
 public class Problem912 {
     public int[] sortArray(int[] nums) {
-        insertSort(nums);
+        mergeSort(nums, 0, nums.length - 1);
         return nums;
     }
 
-    private void insertSort(int[] nums) {
-        for (int i = 1; i < nums.length; i++) {
-            for (int j = i; j >= 1; j--) {
-                if (nums[j] >= nums[j - 1]) {
-                    break;
-                }
-                swap(nums, j, j - 1);
-            }
+    private void mergeSort(int[] array, int low, int high) {
+        if (low >= high) {
+            return;
         }
+        int mid = low + (high - low) / 2;
+        mergeSort(array, low, mid);
+        mergeSort(array, mid + 1, high);
+        merge(array, low, mid, high);
     }
 
-    private void swap(int[] nums, int i, int j) {
-        int tmp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = tmp;
+    private void merge(int[] array, int low, int mid, int high) {
+        int n1 = mid - low + 1;
+        int n2 = high - mid;
+        int[] leftPart = new int[n1];
+        int[] rightPart = new int[n2];
+        System.arraycopy(array, low, leftPart, 0, n1);
+        System.arraycopy(array, mid + 1, rightPart, 0, n2);
+        int p1 = 0, p2 = 0, writeInd = low;
+        while (p1 < n1 && p2 < n2) {
+            if (leftPart[p1] <= rightPart[p2]) {
+                array[writeInd++] = leftPart[p1++];
+            } else {
+                array[writeInd++] = rightPart[p2++];
+            }
+        }
+        while (p1 < n1) {
+            array[writeInd++] = leftPart[p1++];
+        }
+        while (p2 < n2) {
+            array[writeInd++] = rightPart[p2++];
+        }
     }
 }
