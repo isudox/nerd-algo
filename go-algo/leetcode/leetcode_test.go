@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"reflect"
 	"strconv"
+	"sync"
 	"testing"
 	"time"
 )
@@ -12,6 +13,7 @@ import (
 type ABC struct {
 	Num  int       `json:"num,omitempty"`
 	Time time.Time `json:"time,omitempty"`
+	Name *string   `json:"name,omitempty"`
 }
 
 func TestMisc(t *testing.T) {
@@ -608,18 +610,27 @@ func makeIt() (s ABC) {
 		fmt.Printf("s.Num = %d", s.Num)
 	}()
 	s.Num = 1
-	return ABC{2, time.Now()}
+	return ABC{2, time.Now(), nil}
 }
 
 func TestInt(t *testing.T) {
-	var a int64 = 2 << 32
-	var b int = int(a)
-	println(b)
-
-	var mm map[string]string
-	if val, ok := mm["pay_promotion_amount"]; ok {
-		println(val)
-	} else {
-		println("failed")
+	var ss = "hello world"
+	var instance = &ABC{
+		Name: &ss,
 	}
+	var m = &sync.Map{}
+	m.Store("name", instance.Name)
+	var tags = make(map[string]string)
+	m.Range(func(k, v interface{}) bool {
+		key, ok := k.(string)
+		val, ok2 := v.(string)
+		println("val:" + val)
+		if (ok || ok2) && val != "" {
+			println("parse is ok")
+			tags[key] = val
+		}
+		return true
+	})
+	str, _ := json.Marshal(tags)
+	println(string(str))
 }
