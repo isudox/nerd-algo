@@ -11,8 +11,8 @@ public class Problem719 {
         Arrays.sort(nums);
         int i = 0, j = 1000000;
         while (i < j) {
-            int mid = i + (j - i) / 2;
-            if (helper(nums, mid) >= k) {
+            int mid = (i + j) / 2;
+            if (helper(nums, mid, k) >= k) {
                 j = mid;
             } else {
                 i = mid + 1;
@@ -21,13 +21,16 @@ public class Problem719 {
         return j;
     }
 
-    private int helper(int[] nums, int x) {
+    private int helper(int[] nums, int x, int k) {
         int cnt = 0;
         for (int i = 0, j = i + 1; i < nums.length; i++) {
             while (j < nums.length && nums[j] - nums[i] <= x) {
                 j++;
             }
             cnt += j - i - 1;
+            if (cnt >= k) {
+                break;
+            }
         }
         return cnt;
     }
