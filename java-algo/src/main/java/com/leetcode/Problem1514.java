@@ -2,27 +2,28 @@ package com.leetcode;
 
 /**
  * 1514. Path with Maximum Probability
- * https://leetcode.com/problems/path-with-maximum-probability
+ * https://leetcode.com/problems/path-with-maximum-probability/
  */
 public class Problem1514 {
     public double maxProbability(int n, int[][] edges, double[] succProb, int start, int end) {
         double[] maxProb = new double[n];
-        maxProb[start] = 1d;
+        maxProb[start] = 1.0;
         for (int i = 0; i < n - 1; i++) {
-            boolean hasUpdated = false;
+            boolean hasUpdate = false;
             for (int j = 0; j < edges.length; j++) {
-                int u = edges[j][0], v = edges[j][1];
+                int u = edges[j][0];
+                int v = edges[j][1];
                 double pathProb = succProb[j];
                 if (maxProb[u] * pathProb > maxProb[v]) {
                     maxProb[v] = maxProb[u] * pathProb;
-                    hasUpdated = true;
+                    hasUpdate = true;
                 }
                 if (maxProb[v] * pathProb > maxProb[u]) {
                     maxProb[u] = maxProb[v] * pathProb;
-                    hasUpdated = true;
+                    hasUpdate = true;
                 }
             }
-            if (!hasUpdated) {
+            if (!hasUpdate) {
                 break;
             }
         }
