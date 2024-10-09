@@ -1,25 +1,21 @@
 package com.leetcode;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-
 /**
  * 921. Minimum Add to Make Parentheses Valid
  * https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/
  */
 public class Problem921 {
     public int minAddToMakeValid(String s) {
-        int ans = 0;
-        Deque<Character> deque = new ArrayDeque<>();
+        int left = 0, insert = 0;
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '(') {
-                deque.offerLast('(');
-            } else if (!deque.isEmpty()) {
-                deque.pollLast();
+                left++;
+            } else if (left > 0) {
+                left--;
             } else {
-                ans++;
+                insert++;
             }
         }
-        return ans + deque.size();
+        return insert + left;
     }
 }
