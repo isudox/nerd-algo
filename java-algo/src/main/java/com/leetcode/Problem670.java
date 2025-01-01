@@ -1,5 +1,9 @@
 package com.leetcode;
 
+/**
+ * 670. Maximum Swap
+ * https://leetcode.com/problems/maximum-swap/
+ */
 public class Problem670 {
     public int maximumSwap(int num) {
         char[] charArray = String.valueOf(num).toCharArray();
@@ -17,13 +21,9 @@ public class Problem670 {
         if (idx1 < 0) {
             return num;
         }
-        swap(charArray, idx1, idx2);
+        char temp = charArray[idx1];
+        charArray[idx1] = charArray[idx2];
+        charArray[idx2] = temp;
         return Integer.parseInt(new String(charArray));
-    }
-
-    public void swap(char[] charArray, int i, int j) {
-        char temp = charArray[i];
-        charArray[i] = charArray[j];
-        charArray[j] = temp;
     }
 }

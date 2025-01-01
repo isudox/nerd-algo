@@ -1,21 +1,20 @@
 package com.leetcode;
 
+/**
+ * 1422. Maximum Score After Splitting a String
+ * https://leetcode.com/problems/maximum-score-after-splitting-a-string/description/
+ */
 public class Problem1422 {
     public int maxScore(String s) {
-        int n = s.length();
-        int[] cnt0 = new int[n + 1];
-        int total0 = 0;
-        for (int i = 1; i <= n; i++) {
-            cnt0[i] = cnt0[i - 1];
-            if (s.charAt(i - 1) == '0') {
-                cnt0[i]++;
-                total0++;
-            }
+        int ans = 0, cnt0 = 0, cnt1 = 0;
+        for (int i = 0; i < s.length(); i++) {
+            cnt1 += s.charAt(i) - '0';
         }
-        int ans = 0;
-        for (int i = 0; i < n - 1; i++) {
-            int cur = cnt0[i + 1] + (n - 1 - i) - (total0 - cnt0[i + 1]);
-            ans = Math.max(ans, cur);
+        for (int i = 0; i < s.length() - 1; i++) { // split s[:i] and s[i+1:]
+            if (s.charAt(i) == '0') {
+                cnt0++;
+            }
+            ans = Math.max(cnt0 + cnt1 - (i - cnt0 + 1), ans);
         }
         return ans;
     }
