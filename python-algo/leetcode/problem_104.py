@@ -5,7 +5,7 @@ from common.tree_node import TreeNode
 
 
 class Solution:
-    def max_depth(self, root: TreeNode) -> int:
+    def max_depth(self, root: TreeNode|None) -> int:
         if not root:
             return 0
         return max(self.max_depth(root.left), self.max_depth(root.right)) + 1

@@ -613,7 +613,29 @@ func makeIt() (s ABC) {
 	return ABC{2, time.Now(), nil}
 }
 
+type Processor struct {
+}
+
+func (p *Processor) do() {
+	println("processor do it.")
+}
+
+type MyProcessor struct {
+	*Processor
+}
+
+func Proc() (flag bool) {
+	println("flag: %b", false)
+	return true
+}
+
 func TestInt(t *testing.T) {
+	ret := Proc()
+	println("ret:%b", ret)
+
+	mp := &MyProcessor{}
+	mp.Processor.do()
+
 	var ss = "hello world"
 	var instance = &ABC{
 		Name: &ss,
